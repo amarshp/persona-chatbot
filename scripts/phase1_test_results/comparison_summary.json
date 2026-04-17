@@ -1,0 +1,49 @@
+{
+  "chapter_range": "1-20",
+  "chapters_tested": 20,
+  "wall_time_s": 65.5,
+  "contestants": {
+    "sonnet_1x20": {
+      "model": "claude-sonnet-4.6",
+      "provider": "copilot",
+      "chapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "tokens_in": 58904,
+      "tokens_out": 2586,
+      "latency_ms": 65504,
+      "retries": 0,
+      "batches": [
+        {
+          "batch": "ch1-20",
+          "tokens_in": 58904,
+          "tokens_out": 2586,
+          "latency_ms": 65504,
+          "retries": 0
+        }
+      ],
+      "truncated": false,
+      "cached": false,
+      "success": true
+    }
+  }
+}

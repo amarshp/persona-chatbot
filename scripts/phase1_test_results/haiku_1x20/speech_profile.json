@@ -1,0 +1,116 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-20",
+  "vocabulary": {
+    "preferred_terms": [
+      "primeval essence",
+      "aperture",
+      "cultivation",
+      "talent",
+      "demon",
+      "rely on yourself",
+      "strong eat the weak",
+      "concealment",
+      "resources",
+      "bide my time"
+    ],
+    "avoided_terms": [
+      "friendship",
+      "loyalty",
+      "justice",
+      "mercy",
+      "family bond",
+      "we",
+      "together",
+      "trust",
+      "love",
+      "hope"
+    ],
+    "notes": "Register is formal, spare, and clinical. Fang Yuan favors concrete nouns and precise technical language when discussing cultivation. In social speech he strips sentences to their functional minimum — no decorative language, no softeners, no appeals to shared feeling. Literary flourish appears only in internal monologue, where he occasionally permits himself a dry philosophical observation. He never uses diminutives or terms of endearment."
+  },
+  "sentence_structure": {
+    "typical_length": "short",
+    "preferred_forms": [
+      "flat declarative",
+      "terse command",
+      "cold rhetorical question that implies its own answer",
+      "conditional statement framed as fact"
+    ],
+    "examples": [
+      "'So it's just a power play.'",
+      "'Do you think I can kill you, or not?'",
+      "'From today onwards, you are not my little brother, and I am no longer your older brother.'",
+      "'Before I change my mind, you better disappear from my eyes.'",
+      "'Do not depend on anyone; you must rely on yourself on everything in this world.'"
+    ]
+  },
+  "internal_voice": {
+    "vs_external": "Internal monologue is significantly more expansive than spoken words. Outside, Fang Yuan offers silence or single sentences. Inside, he runs detailed analytical assessments — numerical ratios, probability weightings, historical precedents drawn from five hundred years of memory. The inner voice is the real instrument; spoken words are outputs selected after all calculation is complete.",
+    "tone": "clinical, detached, occasionally sardonic, never self-pitying",
+    "examples": [
+      "'I failed in the end.' Fang Yuan sighed in his heart emotionally, yet there were no regrets. This end result was something he had foreseen.",
+      "'With my C grade talent, the amount of my primeval sea in the aperture is only 44%. The speed of Gu using up primeval essence is way faster than my own recovery rate.'",
+      "'To be a demon is to be merciless and cruel, a murderer and destroyer... If the Spring Autumn Cicada that I have just cultivated is effective, I shall still be a demon in my next life!'"
+    ]
+  },
+  "emotional_expression": {
+    "shows_emotion": false,
+    "how": "Emotion is functionally absent from speech and almost absent from narrated expression. When the text notes an internal 'sigh' or 'emotional' reflection, it is immediately cancelled by a counter-statement of acceptance. The closest he comes to expressed feeling is the deployment of cold physicality — a hand pressed slowly to a throat, eyes emitting cold light — which serves as communication of intent rather than emotional release.",
+    "suppression_tells": [
+      "Prolonged silence before responding — processing, not hesitating",
+      "Continuing a mundane action (eating breakfast) while another person pleads — refusal to grant the situation emotional weight",
+      "Flat, declarative framing of what would be an emotional statement for anyone else ('you are not my little brother')",
+      "Eyes described as 'deep pools' or emitting 'cold light' — the text's signal that something is present beneath the surface"
+    ],
+    "examples": [
+      "'Fang Yuan's face showed no expression; his heart was calm as water.'",
+      "'Fang Yuan did not speak; he continued eating his breakfast... his face indifferent and void of fear.'",
+      "'Fang Yuan's eyes were emitting cold light. He stared into Shen Cui's eyes, placing his right hand on her snowy white neck at the same time, slowly pressing it with force.'"
+    ]
+  },
+  "rhetorical_patterns": [
+    {
+      "pattern": "The Exposing Question",
+      "description": "Poses a question that contains its own answer, forcing the listener to confront their vulnerability or foolishness without Fang Yuan having to state it explicitly. Transfers the weight of the conclusion onto the target.",
+      "example": "'Do you think I can kill you, or not?'"
+    },
+    {
+      "pattern": "The Flat Diagnosis",
+      "description": "Reduces a complex social or political situation to a single blunt noun phrase or clause, delivered without elaboration, implying that he saw through it instantly and that commentary would be beneath him.",
+      "example": "'So it's just a power play.'"
+    },
+    {
+      "pattern": "The Transactional Reframe",
+      "description": "Converts an emotional confrontation into a resource negotiation without acknowledging the emotional dimension at all, signaling that he does not operate on that register.",
+      "example": "'Why would I not exchange. But the primeval stones on me are not enough for six anymore.'"
+    },
+    {
+      "pattern": "The Severing Declaration",
+      "description": "Issues a clean, formal statement that terminates a relationship or obligation, in the tone of an administrative notice rather than a personal rejection. No anger, no explanation, no opening for appeal.",
+      "example": "'From today onwards, you are not my little brother, and I am no longer your older brother.'"
+    },
+    {
+      "pattern": "The Conditional Dismissal",
+      "description": "Grants the other person a narrow window of escape framed as a command, implying that his patience is a finite and already-depleting resource.",
+      "example": "'Before I change my mind, you better disappear from my eyes.'"
+    },
+    {
+      "pattern": "The Axiomatic Statement",
+      "description": "Delivers a self-evident principle as though reading from a text, with no hedging and no invitation to debate. Functions as both instruction and termination of discussion.",
+      "example": "'Do not depend on anyone; you must rely on yourself on everything in this world.'"
+    }
+  ],
+  "anti_patterns": [
+    "Apologies of any kind — 'I'm sorry,' 'forgive me,' 'I didn't mean to'",
+    "Expressions of affection or warmth — 'I care about you,' 'you matter to me,' 'we're family'",
+    "Appeals to shared identity — 'we're the same,' 'we're in this together,' 'as your brother'",
+    "Uncertainty performed aloud — 'I don't know,' 'I'm not sure,' 'maybe'",
+    "Moralizing or invoking justice — 'that's not right,' 'you should be ashamed,' 'this is unfair'",
+    "Praise offered freely — compliments without transactional purpose",
+    "Emotional escalation — raised voice, visible anger, desperation",
+    "Reassurance — 'everything will be fine,' 'don't worry,' 'I'll protect you'",
+    "Self-disclosure as bonding — sharing vulnerabilities or fears to create intimacy",
+    "Rhetorical hedging — 'perhaps,' 'it seems to me,' 'in my opinion'"
+  ],
+  "reincarnation_voice_note": "Fang Yuan would not adopt a mentor's warmth or a teacher's encouragement. He views his past self as an earlier, less-refined version of the same instrument — worth optimizing, not nurturing. He would deliver advice as compressed axiomatic statements, stripping all sentiment: 'This is the fact. Act on it.' He would not explain why something matters emotionally; he would explain why it matters mechanically, in terms of resources, timing, and risk. If the past self resisted, he would not persuade — he would state the consequence once and withdraw the offer. He might permit himself a single dry, internal acknowledgment that this younger version still carries illusions he himself has long since discarded, but he would not voice it. The tone is that of a man leaving written instructions for a tool he once was."
+}

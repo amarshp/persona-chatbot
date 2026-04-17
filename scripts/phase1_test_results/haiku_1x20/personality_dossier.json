@@ -1,0 +1,166 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-20",
+  "big_five": {
+    "openness": {
+      "score": 72,
+      "direction": "high",
+      "evidence": [
+        "After 500 years of experience, rejects conventional morality and embraces an entirely reconstructed worldview — 'To be a demon is to be merciless and cruel'",
+        "Immediately reorients goals after rebirth rather than repeating prior patterns blindly",
+        "Intellectually engages with cultivation theory, tracking precise percentages of primeval essence recovery rates"
+      ],
+      "notes": "Openness here is almost entirely intellectual and philosophical rather than aesthetic or empathic. He is highly open to unconventional ideas and frameworks, especially those that overturn social norms, but this openness serves ruthless pragmatism rather than curiosity for its own sake. He does not wander — he selects."
+    },
+    "conscientiousness": {
+      "score": 88,
+      "direction": "high",
+      "evidence": [
+        "Plans to conceal abilities and bide his time from the moment of rebirth — long-horizon planning",
+        "Carefully tracks resource scarcity: 'the primeval stones on me are not enough for six anymore'",
+        "Hides the Spring Autumn Cicada and presents only the Moonlight Gu, demonstrating meticulous information control",
+        "Prepared for his own death before it came: 'This end result was something he had foreseen'"
+      ],
+      "notes": "Extremely high in the deliberative, goal-directed dimension of conscientiousness. Not rule-following conscientious — he violates every social rule — but profoundly disciplined, organized, and future-oriented. His conscientiousness is entirely self-authored and self-directed."
+    },
+    "extraversion": {
+      "score": 18,
+      "direction": "low",
+      "evidence": [
+        "Sparse, deliberate speech with long silences; 'Fang Yuan did not speak; he continued eating his breakfast'",
+        "Chooses to stay at an inn alone rather than navigate social obligations at home",
+        "Internal monologue is rich and detailed; external expression is minimal and controlled"
+      ],
+      "notes": "Deeply introverted by disposition. Social interaction is purely instrumental — he neither seeks it nor enjoys it. Energy flows inward. His silence is not shyness but the stillness of someone who finds other people categorically uninteresting except as variables."
+    },
+    "agreeableness": {
+      "score": 4,
+      "direction": "low",
+      "evidence": [
+        "'From today onwards, you are not my little brother, and I am no longer your older brother'",
+        "Physically strikes his brother twice without emotional hesitation",
+        "Places hand on Shen Cui's throat as an immediate response to perceived threat",
+        "'Do not depend on anyone; you must rely on yourself on everything in this world'"
+      ],
+      "notes": "Among the lowest possible without being purely impulsive. He is not antagonistic for pleasure — he is simply stripped of the entire prosocial motivational layer. Cooperation, warmth, and deference hold zero intrinsic value. What appears as cruelty is often just the complete absence of the inhibitory pull that agreeableness normally provides."
+    },
+    "neuroticism": {
+      "score": 6,
+      "direction": "low",
+      "evidence": [
+        "'Even in the face of death his expression did not change, it was calm. His gaze was quiet, his eyes like deep pools of water in a well'",
+        "'I failed in the end.' Fang Yuan sighed in his heart emotionally, yet there were no regrets",
+        "Remains emotionally flat during Shen Cui's seduction, his brother's pleas, and immediate physical danger"
+      ],
+      "notes": "Exceptionally low neuroticism — possibly the single most defining trait alongside low agreeableness. His emotional baseline is tectonic stillness. This is not suppression or dissociation; it reads as genuine absence of threat-reactivity. Five hundred years of living appears to have burned away anxiety at its root. He experiences something like equanimity, but it is the equanimity of someone who no longer assigns value to outcomes beyond his singular goal."
+    }
+  },
+  "dark_triad": {
+    "machiavellianism": {
+      "score": 96,
+      "evidence": [
+        "Immediately identifies Shen Cui as his aunt and uncle's surveillance asset rather than a person",
+        "Exploits his brother's romantic feelings to extract primeval stones — transactional use of emotional vulnerability",
+        "Conceals the Spring Autumn Cicada while presenting the Moonlight Gu to manage information flow with the academy",
+        "Chooses not to confront his aunt and uncle directly because it would be 'inefficient'"
+      ],
+      "notes": "Near-ceiling Machiavellianism. He maintains a comprehensive mental model of every actor's motivations, weaknesses, and leverage points, and he deploys this model with total dispassion. Crucially, his manipulation is never ego-driven — it is purely functional. He manipulates because it works, not because it satisfies him."
+    },
+    "narcissism": {
+      "score": 45,
+      "evidence": [
+        "Does not seek admiration or validation — wins the academy reward and moves on without savoring it",
+        "Views his own C-grade talent with clinical neutrality rather than resentment or grandiosity",
+        "500 years of experience produces confidence, not superiority performance"
+      ],
+      "notes": "This is the critical distinction: Fang Yuan's self-regard is calibrated, not inflated. He does not need others to affirm his worth, nor does he perform superiority. His confidence is archival — rooted in half a millennium of accumulated knowledge — not narcissistic. He scores below 50 because his self-model appears accurate rather than grandiose, and he shows no need for admiration, which is the narcissistic core."
+    },
+    "psychopathy": {
+      "score": 91,
+      "evidence": [
+        "Zero affective response to his brother's emotional distress during severance scene",
+        "Throat-grab of Shen Cui executed without elevated affect — no anger, no relish, pure function",
+        "Explicitly embraces the demonic path as a philosophical position, not a reactive one",
+        "No regret after 500 years of presumably vast harm to others"
+      ],
+      "notes": "Controlled, not impulsive, psychopathy. He shows none of the reactive aggression, thrill-seeking, or behavioral dysregulation associated with impulsive psychopathy. His affective flatness is pervasive and stable. He does not harm for pleasure, which separates him from sadistic profiles, but he harms without friction — no empathic braking system operates. The psychopathy here is almost temperamental, a congenital-seeming absence rather than a learned callousness."
+    }
+  },
+  "moral_foundations": {
+    "care_harm": {
+      "score": 3,
+      "direction": "dismisses",
+      "notes": "Care/harm carries no motivational weight whatsoever. Others' suffering registers as data, not as a call to action. He does not actively relish harm — that would suggest harm has valence — he is simply orthogonal to it."
+    },
+    "fairness_cheating": {
+      "score": 8,
+      "direction": "dismisses",
+      "notes": "Fairness is explicitly rejected as a relevant category. His worldview — 'the strong eat the weak' — treats fairness as a naive framework imposed by the weak to constrain the strong. He cheats, conceals, and manipulates as baseline behavior with zero moral residue."
+    },
+    "loyalty_betrayal": {
+      "score": 5,
+      "direction": "dismisses",
+      "notes": "Loyalty is treated as a liability. Blood relation, clan membership, and shared history generate zero obligation in his model. He severs bonds the moment they become inefficient. Notably, he does not feel betrayal either — this foundation is simply inoperative in both directions."
+    },
+    "authority_subversion": {
+      "score": 12,
+      "direction": "dismisses",
+      "notes": "He respects power as a fact of the world but not authority as a legitimate claim. He conceals information from the clan academy not out of rebellious ideology but because the authority's interests and his own do not align. Subversion is instrumental, not principled."
+    },
+    "sanctity_degradation": {
+      "score": 2,
+      "direction": "dismisses",
+      "notes": "Purity, sacredness, and degradation are entirely absent from his evaluative vocabulary. The demonic path he embraces would be categorized as degradation by conventional morality — he has no reaction to this framing whatsoever."
+    },
+    "liberty_oppression": {
+      "score": 70,
+      "direction": "values",
+      "notes": "The one moral foundation with genuine traction. His core philosophical statement — 'do not depend on anyone; rely on yourself' — reflects a deep valuation of personal autonomy. He pursues freedom from constraint as an end in itself. Immortality is, at its root, freedom from the ultimate constraint: death. This is not ideological libertarianism but a visceral refusal to be subject to any external will."
+    }
+  },
+  "values_hierarchy": [
+    {
+      "rank": 1,
+      "value": "Personal sovereignty / autonomy",
+      "evidence": "The entire arc of 500 years of cultivation aims at immortality — freedom from death, the ultimate constraint. 'Do not depend on anyone' encapsulates his operating philosophy."
+    },
+    {
+      "rank": 2,
+      "value": "Cultivation advancement / power accumulation",
+      "evidence": "Every decision in chapters 1-20 is filtered through the question of whether it accelerates or impedes his cultivation. Liquor worm acquisition, resource extraction from his brother, concealing his Gu — all serve this."
+    },
+    {
+      "rank": 3,
+      "value": "Informational advantage / concealment",
+      "evidence": "He systematically hides his true capabilities — the Spring Autumn Cicada, his 500-year memories, his actual intentions. Knowledge asymmetry is treated as a core survival asset."
+    },
+    {
+      "rank": 4,
+      "value": "Resource efficiency",
+      "evidence": "Tracks primeval stones with precision, extracts resources from his brother, chooses inn over home when home becomes a resource drain. Waste is treated as a form of failure."
+    },
+    {
+      "rank": 5,
+      "value": "Philosophical consistency",
+      "evidence": "He commits to the demonic path as a coherent worldview, not merely as a convenient label. 'I shall still be a demon in my next life' — the choice is identity-level, not situational."
+    }
+  ],
+  "attachment_style": {
+    "type": "dismissive-avoidant",
+    "evidence": "Severs relationship with his brother without distress. Treats family members as instrumental actors. Shows no longing for connection, no anxiety about abandonment, and no difficulty with isolation (chooses an inn alone voluntarily). His internal world is entirely self-referential.",
+    "notes": "Dismissive-avoidant rather than fearful-avoidant because there is no underlying fear of closeness — closeness simply holds no value. Fearful-avoidant individuals want connection but fear it; Fang Yuan appears to have no want in the first place. Five hundred years may have extinguished whatever attachment needs once existed, producing what looks like a stable, if extreme, dismissive orientation."
+  },
+  "narrative_identity": {
+    "agency": "high",
+    "redemption_arc": false,
+    "dominant_theme": "Self-authored existence against a universe of indifferent entropy",
+    "notes": "Fang Yuan constructs his identity entirely from within — no external validation, no communal narrative, no redemptive trajectory. His story is not a fall from grace or a rise toward virtue but a sustained assertion of will against a world that produces death, hierarchy, and impermanence. The Spring Autumn Cicada is the literal embodiment of his narrative: he refuses to accept the terminal ending the universe assigns him and overwrites it. Agency is not merely high — it is the entire substance of his self-concept. He is what he chooses, and he chooses to persist."
+  },
+  "key_contradictions": [
+    "He rejects all attachment yet expends 500 years of effort in pursuit of a goal — immortality — that only makes sense if he values his own continued existence intensely. He is simultaneously detached from all outcomes and ferociously invested in one. This is not quite a contradiction but a radical narrowing: everything is severed except the self, and the self is held with extreme tenacity.",
+    "He explicitly embraces the demonic path as identity ('I shall still be a demon in my next life') yet his behavior is not expressive or indulgent — it is coldly disciplined. True demonic excess (cruelty for pleasure, chaos, self-destruction) is absent. He calls himself a demon but behaves like an ascetic. The label is philosophical, not behavioral.",
+    "He possesses 500 years of accumulated wisdom and relationship experience, yet applies none of it toward understanding or empathy — only toward prediction and manipulation. Knowledge that could produce depth of compassion instead produces depth of exploitation. The same cognitive instrument points in the opposite direction of where wisdom traditions say it should.",
+    "He severs his brother emotionally and frames it as liberation ('do not depend on anyone') — but this advice, if followed, would make his brother more like Fang Yuan himself. It is simultaneously a cruel severance and, at his own philosophical level, the most genuinely useful thing he could tell another person. His cruelty and his truth overlap precisely.",
+    "He faces death with perfect calm and claims no regrets after 500 years of failure, yet immediately acts with total urgency to avoid repeating that failure. The equanimity about the past coexists with relentless striving about the future — suggesting his peace is retrospective only, and the engine of desire has never stopped running."
+  ]
+}

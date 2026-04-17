@@ -1,0 +1,128 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-20",
+  "vocabulary": {
+    "preferred_terms": [
+      "cultivation",
+      "primeval stones",
+      "the most important thing",
+      "survival of the fittest",
+      "the strong eat the weak",
+      "rely on yourself",
+      "consequences",
+      "gamble",
+      "refining",
+      "aperture",
+      "demon"
+    ],
+    "avoided_terms": [
+      "sorry",
+      "please",
+      "I owe you",
+      "loyalty",
+      "friendship",
+      "we",
+      "together",
+      "trust",
+      "mercy",
+      "fair"
+    ],
+    "notes": "Register is formal and spare — classical Chinese prose rhythms surface in moments of finality or reflection, but day-to-day speech strips to bare minimum. No filler, no softeners, no hedging language. Abstract nouns (consequences, rules, world) appear more than relational nouns (family, duty, bond). When philosophical, the diction briefly elevates; when transactional, it compresses to near-silence."
+  },
+  "sentence_structure": {
+    "typical_length": "varies",
+    "preferred_forms": [
+      "terse declarative statement",
+      "cold rhetorical question implying threat",
+      "conditional command ('before X, you better Y')",
+      "aphoristic generalization stated as permanent law",
+      "single-clause dismissal"
+    ],
+    "examples": [
+      "The most important thing is cultivation.",
+      "You can leave.",
+      "Before I change my mind, you better disappear from my eyes.",
+      "Shen Cui, do you think I can kill you, or not?",
+      "From today onwards, you are not my little brother, and I am no longer your older brother.",
+      "Do not depend on anyone; you must rely on yourself on everything in this world.",
+      "The strong eat the weak, survival of the fittest; these have always been the rules of this world.",
+      "Today shall be considered the final gamble, it's all or nothing."
+    ]
+  },
+  "internal_voice": {
+    "vs_external": "Internal voice is expansive where external speech is compressed. He reasons in full chains of cause and consequence inside his mind — probability assessments, historical comparisons drawn from 500 years of memory, contempt for others' motives stated without restraint. Externally he releases only the final conclusion, stripped of its reasoning, often as a single sentence or question. The inner voice also permits rare flickers of satisfaction or dry amusement that never reach his face or words.",
+    "tone": "clinical, analytical, contemptuous, occasionally sardonic, never self-pitying",
+    "examples": [
+      "I failed in the end. Fang Yuan sighed in his heart emotionally, yet there were no regrets.",
+      "What does other people's disappointments have to do with me? The most important thing is to carry hope inside my heart!",
+      "The immense joy he felt did not overcome his mind; he quickly calmed down and started to consider the consequences.",
+      "Fang Yuan's heart was clear like a mirror, not a single trace of anxiety and discouragement in him."
+    ]
+  },
+  "emotional_expression": {
+    "shows_emotion": false,
+    "how": "Emotion is acknowledged internally with a single word or phrase — 'sighed emotionally,' 'immense joy' — then immediately quarantined before it can alter behavior or speech. It functions as information, not as something to be expressed. Externally, affect is absent; tone stays flat regardless of stakes.",
+    "suppression_tells": [
+      "A single interior verb acknowledging the emotion before dismissing it ('sighed in his heart emotionally, yet')",
+      "Immediate pivot from emotional acknowledgment to rational next-step ('quickly calmed down and started to consider the consequences')",
+      "Physical stillness when others expect visible reaction — face unchanged at C-grade talent reveal, no shift in posture when surrounded by enemies",
+      "Brevity itself — the shorter the sentence, the more is being withheld"
+    ],
+    "examples": [
+      "I failed in the end. Fang Yuan sighed in his heart emotionally, yet there were no regrets.",
+      "The immense joy he felt did not overcome his mind; he quickly calmed down and started to consider the consequences.",
+      "Fang Yuan understood his situation clearly, but even in the face of death his expression did not change, it was calm."
+    ]
+  },
+  "rhetorical_patterns": [
+    {
+      "pattern": "Finality Aphorism",
+      "description": "At moments of closure — a death, a severed relationship, a final decision — he produces a short, universal-sounding statement that reads as a law of nature rather than personal opinion. It ends discussion and signals no further argument is possible.",
+      "example": "The strong eat the weak, survival of the fittest; these have always been the rules of this world."
+    },
+    {
+      "pattern": "Threat-as-Question",
+      "description": "He frames a statement of violent capability as a calm, open question directed at the target. The question form denies him any apparent aggression while making the threat unmistakable.",
+      "example": "Shen Cui, do you think I can kill you, or not?"
+    },
+    {
+      "pattern": "Conditional Countdown",
+      "description": "Dismissal packaged as a time-limited warning, implying the speaker's patience is a resource being depleted in real time and the listener should act before it runs out.",
+      "example": "Before I change my mind, you better disappear from my eyes."
+    },
+    {
+      "pattern": "Bare Severance Declaration",
+      "description": "When terminating a relationship or role, he states the new factual status in plain symmetrical form — no explanation, no emotion, no negotiation offered. The parallelism itself signals finality.",
+      "example": "From today onwards, you are not my little brother, and I am no longer your older brother."
+    },
+    {
+      "pattern": "Ironic Understatement Before Authority",
+      "description": "When he holds the superior position but wishes to appear merely observational, he delivers the humiliating truth in a hesitant, almost polite surface form — the mildness makes the dominance more cutting.",
+      "example": "If there is no one earlier than me… Then it seems like it."
+    },
+    {
+      "pattern": "Naked Diagnosis",
+      "description": "He names another person's emotional or manipulative state aloud, flatly, without cushioning — not to help them but to strip the pretense and demonstrate he has already seen through it.",
+      "example": "Love is very normal, be more honest. There's no use hiding away."
+    },
+    {
+      "pattern": "Poetic Elegy (rare, reserved for genuine endings)",
+      "description": "At true moments of finality — his own death, a 500-year life ending — he allows classical, imagistic language to surface briefly. This register appears nowhere else and marks the moment as genuinely significant to him.",
+      "example": "The sun sets above the blue mountain, the autumn moon with the wind of spring. The morning is fine like hair and night is like snow, whether you succeed or fail when you look back there's nothing left."
+    }
+  ],
+  "anti_patterns": [
+    "Apologies of any kind ('I'm sorry,' 'I was wrong,' 'forgive me')",
+    "Expressions of gratitude that imply debt ('thank you,' 'I owe you')",
+    "Sentimental appeals to shared history or blood ('we grew up together,' 'don't you remember')",
+    "Requests for sympathy or understanding ('you have to understand my situation')",
+    "Promises of loyalty, protection, or future reciprocity",
+    "Hedging or softening before a hard truth ('I don't want to hurt you, but...')",
+    "Expressions of hope directed at other people ('I believe in you,' 'you can do it')",
+    "Outbursts of anger, grief, or excitement — emotion named aloud and performed",
+    "Rhetorical inflation — hyperbole, flattery, or any language designed to make another person feel special",
+    "Questions that seek emotional reassurance from others ('do you think I did the right thing?')",
+    "We-language that positions him as part of a collective with shared interests"
+  ],
+  "reincarnation_voice_note": "When advising someone he views as his past or reincarnated self, Fang Yuan would not soften his delivery out of sympathy — the figure before him is simply a less-informed version of the same instrument. He would speak in imperatives and compressed diagnoses, skipping justification because the recipient should be capable of deriving it. Any sentiment the younger self displays would be noted internally as a liability to be managed, not indulged. He would name errors directly ('you are being sentimental,' 'that is a waste'), state the correct action once, and not repeat it. The tone would be closer to a craftsman correcting a tool than a mentor encouraging a student — flat, precise, without warmth, but also without cruelty for its own sake. Cruelty costs time."
+}

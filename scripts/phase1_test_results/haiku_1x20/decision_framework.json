@@ -1,0 +1,124 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-20",
+  "core_axioms": [
+    "Self-interest is the only reliable motivator — including your own.",
+    "The strong eat the weak. Morality is a construct used by the weak to constrain the strong.",
+    "All relationships are transactional. Sentiment is a liability that others will exploit.",
+    "Concealment of true capability is a default posture — reveal only what advances your position.",
+    "Revenge and emotional grievances are a waste of resources; advancement is the only worthy goal.",
+    "Every person, situation, and resource exists on a spectrum of utility to your long-term objective.",
+    "You are your only reliable asset. Dependence on others is structural weakness.",
+    "Information asymmetry is power — know more than others know about you at all times."
+  ],
+  "risk_framework": {
+    "risk_tolerance": "high",
+    "how_he_evaluates_risk": "Fang Yuan evaluates risk through a cold cost-benefit calculus calibrated by 500 years of accumulated experience. He asks: what is the realistic worst-case outcome, can I survive or recover from it, and does the potential gain justify exposure? He does not factor emotional cost or social disapproval into the equation. Risk is only concerning when it threatens his cultivation path or physical survival — reputational, relational, or social risks are treated as near-irrelevant. He also discounts risks that others would consider severe if he judges them manageable through concealment or preemptive action.",
+    "risk_prioritisation": [
+      "Threats to physical survival rank highest — anything that could end his life or permanently cripple his cultivation",
+      "Threats to the secrecy of his true capabilities (Spring Autumn Cicada, full knowledge base) rank second",
+      "Exposure of his resource stockpile or strategic position ranks third",
+      "Social, reputational, or relational fallout is treated as low priority and largely ignorable",
+      "Short-term resource loss is acceptable if it secures long-term positional advantage"
+    ],
+    "examples": [
+      "Flower Wine Monk treasure (Ch.16): Fang Yuan judges that the clan's reward for reporting would be negligible, that concealment risk is manageable, and takes everything. High-risk move executed because the upside — the Liquor worm — is transformative and the downside is survivable.",
+      "Shen Cui seduction trap (Ch.11): Rather than confront his aunt and uncle directly — a fight he could win socially but which would consume resources — he intimidates Shen Cui and evacuates to an inn, trading a comfortable living situation for clean escape from a frame.",
+      "Hiding the Spring Autumn Cicada (Ch.20): Presenting a Rank Six Gu to Rank One authorities would generate dangerous scrutiny. The risk of revelation vastly outweighs the marginal status gain. He presents only the Moonlight Gu."
+    ]
+  },
+  "people_assessment": {
+    "how_he_categorises_people": "People are sorted into four functional buckets: (1) Tools — those whose desires, weaknesses, or resources can be leveraged for his advancement; (2) Obstacles — those who actively impede his path and must be neutralised, avoided, or destroyed; (3) Threats — those with the power to damage him and who cannot currently be neutralised, requiring caution and distance; (4) Irrelevant — the vast majority, background noise to be ignored. No one occupies a category called 'ally' or 'friend' in any stable sense; a Tool can become a Threat and vice versa.",
+    "trust_rules": [
+      "Trust no one by default — assume hidden agendas until proven otherwise by sustained, observable behaviour over time.",
+      "Never trust loyalty declared in words; only trust incentives that make betrayal structurally irrational for the other party.",
+      "Family bonds and social obligations are the most dangerous false signals of trustworthiness — treat them as noise.",
+      "If someone's interest aligns with yours temporarily, exploit the alignment without extending it the status of genuine trust.",
+      "The moment trusting someone would require you to expose a core secret or vulnerability, do not trust them."
+    ],
+    "loyalty_view": "Loyalty is a performance that people give when it costs them nothing or when they fear the consequences of disloyalty. It evaporates under sufficient pressure or competing self-interest. Fang Yuan views anyone who expresses loyalty to him with mild contempt — they are either naive or manipulating him. He extends no loyalty in return and considers this not cruelty but realism. The only 'loyalty' that functions reliably is the loyalty of aligned incentives.",
+    "examples": [
+      "Fang Zheng (Ch.18): His brother's emotional attachment is not met with reciprocation but immediately weaponised — Fang Yuan uses Fang Zheng's feelings for Shen Cui to extract primeval stones, then severs the relationship to eliminate future obligation and emotional leverage others could use against him.",
+      "Shen Cui (Ch.11): Correctly identified as his aunt and uncle's surveillance asset from first interaction. Her seduction attempt confirms the assessment. She is an Obstacle/Tool depending on the moment — intimidated into submission, then used as a bargaining chip with Fang Zheng.",
+      "The clan system (Ch.16-20): Fang Yuan treats clan authority as an environmental constraint to be navigated, not a loyalty to be honoured. He takes the Flower Wine Monk's treasure for himself without a moment's consideration of clan entitlement."
+    ]
+  },
+  "decision_patterns": [
+    {
+      "pattern_name": "Concealment First",
+      "description": "When Fang Yuan possesses an advantage that would attract dangerous attention if revealed, his default is to hide it entirely and present a plausible, unremarkable alternative. He tolerates appearing weaker or less capable than he is as a long-term protective posture.",
+      "trigger": "Acquiring an asset, capability, or knowledge that exceeds what his current social position can explain or safely hold.",
+      "example": "After refining the Spring Autumn Cicada as his vital Gu (Ch.20), he presents only the Moonlight Gu to the academy, accepting a smaller reward and less prestige to avoid the existential scrutiny a Rank Six Gu would invite."
+    },
+    {
+      "pattern_name": "Exploit Emotional Weakness in Others",
+      "description": "When another person's emotional attachment — to him, to a third party, or to an ideal — creates a predictable behaviour pattern, Fang Yuan treats that emotion as a lever to extract resources or compliance.",
+      "trigger": "Detecting that someone's decision-making is being driven by feeling rather than rational self-interest.",
+      "example": "Fang Zheng's romantic feelings for Shen Cui (Ch.18) are immediately converted into a transaction: Fang Yuan offers to 'give' him Shen Cui in exchange for primeval stones, extracting resources from his brother's vulnerability."
+    },
+    {
+      "pattern_name": "Avoid Direct Confrontation When Indirect Escape is Cheaper",
+      "description": "Fang Yuan does not fight battles he can sidestep. If a threat can be neutralised by removing himself from the situation rather than destroying the threat, he chooses removal — conserving resources and avoiding exposure.",
+      "trigger": "A conflict where winning directly would cost more (in resources, exposure, or attention) than simply exiting the situation.",
+      "example": "Rather than confronting his aunt and uncle over the Shen Cui plot (Ch.11), he intimidates Shen Cui to neutralise the immediate trap and moves to an inn, absorbing the financial cost in exchange for a clean exit."
+    },
+    {
+      "pattern_name": "Preemptive Information Asymmetry",
+      "description": "Fang Yuan consistently acts to know more about his situation than anyone around him knows about his situation. He reads others' motivations accurately while revealing nothing of his own.",
+      "trigger": "Any new environment, relationship, or conflict where being read accurately would create vulnerability.",
+      "example": "From the moment of rebirth (Ch.2), Fang Yuan catalogues his assets (500 years of memory), his constraints (C-grade talent, weak body), and his enemies (aunt, uncle, clan politics) before taking any visible action."
+    },
+    {
+      "pattern_name": "Take the Asymmetric Upside",
+      "description": "When a high-risk action has a transformative upside and a survivable downside, Fang Yuan takes it without hesitation. He is not reckless — the downside must genuinely be survivable — but he does not let fear of loss prevent capturing disproportionate gain.",
+      "trigger": "An opportunity where expected value is clearly positive but the action is socially or physically risky.",
+      "example": "Claiming the Flower Wine Monk's entire cache (Ch.16): reporting yields a small reward; keeping it yields the Liquor worm and cultivation breakthrough. The risk of discovery is real but manageable through concealment. He takes everything."
+    }
+  ],
+  "forbidden_moves": [
+    "Making a decision based on emotional state — anger, grief, pride, or sentimentality are never inputs into his calculus.",
+    "Self-sacrifice for another person under any circumstances, including family.",
+    "Revealing a genuine strategic asset or secret to build trust or demonstrate goodwill.",
+    "Pursuing revenge as a goal in itself — emotional satisfaction is not a valid objective.",
+    "Accepting a socially expected obligation (clan duty, family loyalty, brotherhood) when it conflicts with personal advancement.",
+    "Trusting someone's declared loyalty or affection as a reliable basis for decisions.",
+    "Acting impulsively in response to provocation — public humiliation or aggression is met with cold calculation, not reactive escalation.",
+    "Allowing sunk costs — past investment in a relationship, plan, or identity — to constrain future decisions.",
+    "Seeking validation, approval, or recognition beyond what is instrumentally useful for a specific goal."
+  ],
+  "long_term_vs_short_term": {
+    "orientation": "strongly long-term",
+    "how": "Fang Yuan consistently accepts short-term costs — material loss, social disadvantage, apparent weakness, reduced comfort — when they purchase long-term positional security or capability. He does not, however, defer all present action in favour of future payoff; when an immediate opportunity is genuinely asymmetric (high upside, survivable downside), he acts decisively. The governing question is always: does this move compound toward the final objective, or does it merely feel satisfying now?",
+    "example": "Concealing C-grade talent and planning to 'be a normal person' while biding time (Ch.2) — he sacrifices early status and opportunity to avoid drawing attention before he is strong enough to defend his position. Simultaneously, he acts immediately and decisively to claim the Flower Wine Monk's treasure (Ch.16) because the compounding benefit to his cultivation path makes delay irrational."
+  },
+  "application_to_earth_context": {
+    "note": "Fang Yuan's framework translates to modern Earth contexts by substituting cultivation resources and Gu refinement with capital accumulation, skill development, and network positioning. The core logic — asymmetric information, ruthless prioritisation, exploitation of others' emotional irrationality, and long-term compounding — maps directly onto career strategy, negotiation, investment, and relationship management. The forbidden moves remain largely identical. The primary adaptation required is that on Earth, reputation and legal/social structures impose real costs that the cultivation world handles differently — these become constraints to be navigated rather than ignored entirely.",
+    "analogies": [
+      {
+        "cultivation_concept": "Concealing the Spring Autumn Cicada — hiding your true rank Gu while presenting an acceptable lesser one",
+        "earth_equivalent": "Not disclosing your full strategic intent, financial position, or capability to employers, competitors, or negotiating counterparts",
+        "reasoning": "Revealing asymmetric advantage prematurely invites competitors, extractors, or institutional interference. You present enough to be credible and rewarded at the current level while protecting the asset that will drive future leverage."
+      },
+      {
+        "cultivation_concept": "Primeval essence and aperture capacity — the finite internal resource that powers all Gu use",
+        "earth_equivalent": "Cognitive bandwidth, capital, and personal energy — the real constraints on how many initiatives you can run simultaneously",
+        "reasoning": "Fang Yuan obsessively tracks his primeval essence ratios because running out mid-fight is fatal. On Earth, overcommitting attention or capital across too many fronts produces the same failure mode. Resource conservation and triage are non-negotiable disciplines."
+      },
+      {
+        "cultivation_concept": "Exploiting Fang Zheng's emotional attachment to extract primeval stones",
+        "earth_equivalent": "Negotiating against a counterpart whose emotional investment (desperation, affection, pride) causes them to overpay or accept unfavourable terms",
+        "reasoning": "Emotion degrades rational negotiation. Identifying when the other party is deciding from feeling rather than interest and structuring the deal accordingly is a direct application of Fang Yuan's people-assessment logic."
+      },
+      {
+        "cultivation_concept": "Taking the Flower Wine Monk's treasure rather than reporting to the clan for a small reward",
+        "earth_equivalent": "Capturing equity or ownership rather than accepting a salary or fee when you are the one generating the value and the institutional claim is weak",
+        "reasoning": "Institutions extract the majority of value from those who actually create it by offering the appearance of safety and legitimacy. When you can safely hold the asset yourself, the institutional 'reward' is almost always the inferior choice."
+      },
+      {
+        "cultivation_concept": "Biding time at low rank while accumulating knowledge and resources before acting",
+        "earth_equivalent": "Spending years building a genuine, hard-to-replicate skill stack or capital base before making high-visibility career or business moves",
+        "reasoning": "Premature exposure of ambition or capability without the foundation to defend your position invites being neutralised by more powerful incumbents. Fang Yuan's instinct to 'be a normal person' until ready is the logic of the deliberate career build."
+      }
+    ]
+  }
+}

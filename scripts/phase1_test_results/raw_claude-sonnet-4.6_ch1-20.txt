@@ -1,0 +1,177 @@
+{
+  "personality_evidence": [
+    {
+      "trait": "Lack of regret / acceptance of consequences",
+      "observation": "Facing death surrounded by enemies, Fang Yuan feels no regret about his choices, having prepared for this outcome when he made his original decision.",
+      "quote": "I failed in the end. Fang Yuan sighed in his heart emotionally, yet there were no regrets.",
+      "chapter": 1
+    },
+    {
+      "trait": "Demonic resolve / willingness to be reborn as a demon",
+      "observation": "Even at the moment of death, Fang Yuan affirms he would choose the same path again.",
+      "quote": "If the Spring Autumn Cicada that I have just cultivated is effective, I shall still be a demon in my next life!",
+      "chapter": 1
+    },
+    {
+      "trait": "Calm under pressure",
+      "observation": "Surrounded by enemies with no escape, Fang Yuan's expression does not change and he remains calm.",
+      "quote": "Fang Yuan understood his situation clearly, but even in the face of death his expression did not change, it was calm.",
+      "chapter": 1
+    },
+    {
+      "trait": "Strategic self-awareness",
+      "observation": "Immediately upon rebirth, Fang Yuan assesses his situation clearly and begins planning his priorities.",
+      "quote": "The most important thing is cultivation.",
+      "chapter": 2
+    },
+    {
+      "trait": "Understanding of the strong-eat-weak worldview",
+      "observation": "Fang Yuan reflects on why he holds no hatred toward those who wronged him, concluding survival of the fittest governs all worlds.",
+      "quote": "The strong eat the weak, survival of the fittest; these have always been the rules of this world.",
+      "chapter": 2
+    },
+    {
+      "trait": "Emotional detachment from relationships",
+      "observation": "Fang Yuan consciously decides not to pursue revenge or cultivate personal relationships, viewing family, servants, and clan as irrelevant to his goals.",
+      "quote": "As long as you don't get in my way, then you can go aside and scram, I don't need to care about you.",
+      "chapter": 3
+    },
+    {
+      "trait": "Equanimity in the face of social disappointment",
+      "observation": "When revealed to have only C grade talent, Fang Yuan remains calm while others are shocked and disappointed.",
+      "quote": "What does other people's disappointments have to do with me? The most important thing is to carry hope inside my heart!",
+      "chapter": 6
+    },
+    {
+      "trait": "Risk tolerance / willingness to gamble",
+      "observation": "Rather than conserving primeval stones, Fang Yuan spends all he has on wine to attract the Liquor worm, reasoning the potential reward justifies the risk.",
+      "quote": "Today shall be considered the final gamble, it's all or nothing!",
+      "chapter": 13
+    },
+    {
+      "trait": "Self-reliance and rejection of clan loyalty",
+      "observation": "After finding the Flower Wine Monk's treasure, Fang Yuan decides to keep it all rather than report it to the clan.",
+      "quote": "Do not depend on anyone; you must rely on yourself on everything in this world.",
+      "chapter": 16
+    },
+    {
+      "trait": "Ruthlessness / willingness to intimidate",
+      "observation": "When Shen Cui attempts to seduce and frame him, Fang Yuan physically chokes her and questions whether he could kill her, coldly demonstrating his dominance.",
+      "quote": "Shen Cui, do you think I can kill you, or not?",
+      "chapter": 11
+    },
+    {
+      "trait": "Indifference to sentiment / transactional view of relationships",
+      "observation": "Fang Yuan sells Shen Cui's service to Fang Zheng for primeval stones and formally severs the brother relationship without visible emotion.",
+      "quote": "From today onwards, you are not my little brother, and I am no longer your older brother.",
+      "chapter": 18
+    },
+    {
+      "trait": "Iron will / perseverance",
+      "observation": "Despite two days and two nights of difficult refining with minimal progress, Fang Yuan shows no anxiety or discouragement.",
+      "quote": "Fang Yuan's heart was clear like a mirror, not a single trace of anxiety and discouragement in him.",
+      "chapter": 18
+    },
+    {
+      "trait": "Controlled joy / rapid recalibration",
+      "observation": "Upon discovering the Spring Autumn Cicada survived, Fang Yuan feels great joy but quickly suppresses it to assess consequences rationally.",
+      "quote": "The immense joy he felt did not overcome his mind; he quickly calmed down and started to consider the consequences.",
+      "chapter": 20
+    }
+  ],
+  "speech_evidence": [
+    {
+      "pattern": "Poetic reflection at moments of finality",
+      "example": "The sun sets above the blue mountain, the autumn moon with the wind of spring. The morning is fine like hair and night is like snow, whether you succeed or fail when you look back there's nothing left.",
+      "chapter": 1
+    },
+    {
+      "pattern": "Terse dismissal of others",
+      "example": "You can leave.",
+      "chapter": 2
+    },
+    {
+      "pattern": "Cold, minimal commands that carry implicit threat",
+      "example": "Before I change my mind, you better disappear from my eyes.",
+      "chapter": 18
+    },
+    {
+      "pattern": "Blunt rhetorical self-questioning to expose manipulation",
+      "example": "So it's just a power play.",
+      "chapter": 11
+    },
+    {
+      "pattern": "Understated, ironic delivery to humiliate authority",
+      "example": "If there is no one earlier than me… Then it seems like it.",
+      "chapter": 20
+    },
+    {
+      "pattern": "Calm factual statements about violent capability",
+      "example": "Shen Cui, do you think I can kill you, or not?",
+      "chapter": 11
+    },
+    {
+      "pattern": "Direct acknowledgment of others' emotional truths without sympathy",
+      "example": "Love is very normal, be more honest. There's no use hiding away.",
+      "chapter": 18
+    }
+  ],
+  "decision_evidence": [
+    {
+      "situation": "Cornered and dying, having cultivated the Spring Autumn Cicada",
+      "decision": "Uses the Spring Autumn Cicada to attempt rebirth, accepting death as the cost",
+      "reasoning": "He was cornered with no escape; the potential of rebirth outweighed the certainty of death",
+      "outcome": "Successfully reborn 500 years in the past",
+      "chapter": 1
+    },
+    {
+      "situation": "Reborn without the Spring Autumn Cicada but with 500 years of memories",
+      "decision": "Prioritizes rapid cultivation over all else, deciding to stay in Gu Yue Village as a 'cage' until reaching Rank three",
+      "reasoning": "Without cultivation he is helpless; the village provides safety and resources; leaving requires at least Rank three strength",
+      "outcome": "Sets a clear cultivation plan",
+      "chapter": 2
+    },
+    {
+      "situation": "Aunt and uncle attempt to have him adopted to strip his inheritance rights",
+      "decision": "Refuses adoption without explanation and declines the 200 primeval stone offer",
+      "reasoning": "He has seen through the plot to strip his inheritance; adoption would forfeit his rights",
+      "outcome": "Retains his inheritance rights; uncle plots to frame him instead",
+      "chapter": 9
+    },
+    {
+      "situation": "Shen Cui sent to seduce and frame him",
+      "decision": "Physically intimidates her into compliance, then dismisses her and moves out of the house to the inn",
+      "reasoning": "He detected the conspiracy; staying in the house leaves him vulnerable to further plots",
+      "outcome": "Escapes the trap; moves to inn; later exchanges Shen Cui to Fang Zheng for primeval stones",
+      "chapter": 11
+    },
+    {
+      "situation": "Needs primeval stones and suspects Flower Wine Monk's treasure exists",
+      "decision": "Spends all remaining primeval stones on expensive green bamboo wine for a final search attempt rather than conserving stones for Moonlight Gu refining",
+      "reasoning": "Three favorable conditions converged; the Liquor worm would be more valuable than the Moonlight Gu; the risk was acceptable",
+      "outcome": "Finds the Liquor worm and the Flower Wine Monk's remains with 15 primeval stones",
+      "chapter": 13
+    },
+    {
+      "situation": "Discovers the Flower Wine Monk's cave with evidence that could be sold to rival clans",
+      "decision": "Takes everything for himself and does not report it to the Gu Yue clan",
+      "reasoning": "No clan loyalty; the reward from reporting would be small relative to risk; self-reliance is paramount",
+      "outcome": "Keeps 15 primeval stones and the Liquor worm; conceals the discovery",
+      "chapter": 16
+    },
+    {
+      "situation": "Liquor worm counterattacks during refining, threatening to overwhelm his aperture",
+      "decision": "Uses a trace of the Spring Autumn Cicada's aura to suppress the Liquor worm's will",
+      "reasoning": "The Spring Autumn Cicada is weak enough not to destroy his aperture but strong enough to crush a Rank one Gu's will",
+      "outcome": "Liquor worm refined quickly; then uses same method to refine Moonlight Gu in under five minutes",
+      "chapter": 20
+    },
+    {
+      "situation": "Fang Zheng confronts him about Shen Cui and speaks disrespectfully",
+      "decision": "Slaps Fang Zheng twice, remonstrates him, then formally severs the brotherhood and sells Shen Cui's service for primeval stones",
+      "reasoning": "Fang Zheng's disrespect and ingratitude warranted correction; the primeval stones were needed; sentiment is not a reason to maintain the relationship",
+      "outcome": "Gains five and a half primeval stones; permanently alters relationship with Fang Zheng",
+      "chapter": 18
+    }
+  ]
+}

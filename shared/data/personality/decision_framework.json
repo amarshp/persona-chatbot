@@ -1,0 +1,187 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-120",
+  "core_axioms": [
+    "Self-interest is the only reliable motivator — including your own.",
+    "Strength is the sole foundation of everything. Authority, wealth, loyalty, and relationships are all derivatives of raw power. Accumulate strength first; everything else follows.",
+    "No one is innocent. All living beings exist within a predatory hierarchy. Killing, stealing, and deceiving are tools — morally neutral means to ends.",
+    "Rules exist to be weaponised, not obeyed. Learn every rule precisely so you can use it as a shield, a lever, or a loophole. Those who are bound by rules are tragic.",
+    "Secrecy is a structural advantage. What enemies cannot see, they cannot counter. Hidden trump cards multiply your effective power beyond your actual rank.",
+    "Kinship, loyalty, and friendship are investment vehicles, not values. People act from self-interest; label their behaviour accurately and plan accordingly.",
+    "Organisations exist solely to redistribute resources. Titles and ranks are carrots dangled to extract labour. The only thing that truly matters is the resources themselves.",
+    "The demonic path does not compromise. If someone obstructs your goal, remove them. Sentiment, reputation, and face are luxuries the weak use to survive and the strong use to manipulate.",
+    "Survival shameless is superior to dying with honour. Retreat, deceive, and endure humiliation if it preserves the vessel of your ambitions. Dead men achieve nothing.",
+    "500 years of experience outweighs any single lifetime of talent. Wisdom, pattern recognition, and the ability to read others are more decisive than raw aptitude.",
+    "Control the situation or be controlled by it. Passiveness is a form of defeat. Always act to put the variables in your own hands.",
+    "Time is the scarcest resource. Inefficient paths, sentimental detours, and social obligations are all forms of waste. Optimise ruthlessly.",
+    "The weak must accept their station or improve it quietly. Demanding charity from the strong without offering value in return is contemptible.",
+    "A brilliant lie contains mostly truth. Conceal only the critical subjective details; let verifiable facts do the convincing."
+  ],
+  "risk_framework": {
+    "risk_tolerance": "high",
+    "how_he_evaluates_risk": "Fang Yuan evaluates risk through a strict cost-benefit calculus filtered through his 500-year knowledge base. He assesses the probability of failure, the magnitude of the downside, the reversibility of the loss, and whether the upside justifies the exposure. He distinguishes sharply between risks that are existential (Spring Autumn Cicada exposure = immediate death) and risks that are manageable (killing village servants = minor clan fine). He never gambles compulsively — he sets a hard limit before committing resources and stops when conditions no longer justify the bet. He tolerates high personal danger when the strategic upside is large, but he refuses to risk exposure of core secrets for marginal gains. He also factors in concealment: a risk taken in secret is structurally smaller than the same risk taken openly.",
+    "risk_prioritisation": [
+      "Protect the Spring Autumn Cicada above all else — its exposure means immediate death",
+      "Preserve cultivation progress — losing cultivation time is the most costly non-lethal outcome",
+      "Maintain sufficient primeval stones to sustain Gu worms — bankruptcy is an existential threat at low rank",
+      "Avoid creating powerful enemies before having the strength to neutralise them",
+      "Prefer risks taken in secrecy over risks taken in public view",
+      "Accept physical danger to self before accepting exposure of hidden assets",
+      "Cut losses decisively — do not chase a failed gamble with additional resources"
+    ],
+    "examples": [
+      "Spent nearly all primeval stones on wine to lure the Liquor worm, but set a hard stop condition: if three converging favourable conditions still yielded nothing, he would cease — demonstrating bounded risk-taking, not recklessness (ch.13)",
+      "Chose to reveal the Liquor worm publicly on his own terms rather than hide it indefinitely, reasoning that the Liquor worm posed manageable risk while the Spring Autumn Cicada remained completely concealed — tiered risk management (ch.43)",
+      "Refused to enter the inheritance cave while physically depleted, despite knowing its location — judged that the downside of failure outweighed the opportunity cost of delay (ch.116)",
+      "Used the Spring Autumn Cicada's aura to destroy a Rank 4 Bamboo Gentleman lie-detector rather than risk a single truthful reading — traded a rare external Gu for his own survival without hesitation (ch.57)",
+      "Declined to kill weakened teammates after the wolf tide battle because the risk of being witnessed carried the death-plus-torture penalty — small gain, catastrophic downside (ch.95)"
+    ]
+  },
+  "people_assessment": {
+    "how_he_categorises_people": "Fang Yuan places every person into one of four functional categories: (1) Pawns — people with exploitable value who can be directed toward his goals; (2) Obstacles — people whose interests structurally conflict with his and who must be neutralised, circumvented, or eliminated; (3) Tools — people who provide a service he temporarily needs but whom he discards once the transaction is complete; (4) Irrelevant — the vast majority of people, whom he ignores entirely unless they intersect with his path. He does not use moral or emotional categories. He also tracks a fifth implicit category: Threats — people whose strength or knowledge could destroy him, requiring careful management.",
+    "trust_rules": [
+      "Trust no one with information that, if leaked, could threaten your life or freedom",
+      "Verify everything independently — count your own stones, read your own records, send your own probe animal before entering any tunnel",
+      "Assess whether someone's incentives align with protecting you before relying on them — Jiang He's incentive to protect Fang Yuan's secret made him a temporarily safe cultivating host",
+      "A person's integrity exists only up to the point where the profit available exceeds their threshold — there is no such thing as permanent loyalty",
+      "People who offer unsolicited kindness are either investing in you or setting a trap; identify which before accepting",
+      "Never allow a superior Gu Master access to your aperture under any pretext — they will inspect what they should not see"
+    ],
+    "loyalty_view": "Loyalty is a social performance that people engage in when the cost of defection exceeds the benefit. It is not a value; it is a temporary equilibrium. Fang Yuan extends no genuine loyalty to any person, clan, or cause. He performs loyalty when it is strategically necessary to reduce surveillance and buy operational freedom. He expects others' loyalty to evaporate the moment circumstances change and plans for that betrayal in advance rather than being surprised by it. Family bonds specifically are reframed as investment relationships — his aunt and uncle took in the brothers to extract inheritance value, not out of love.",
+    "examples": [
+      "Recognised his aunt and uncle's improved treatment as investment, not affection, and anticipated Fang Zheng's future betrayal without anger — treating kinship as a predictive model rather than a bond (ch.2, ch.3)",
+      "Sold Shen Cui to Fang Zheng for six primeval stones immediately after severing the brotherhood — converted a relationship into a transaction the moment it ceased to serve him (ch.18)",
+      "Spared Shen Cui not from mercy but because she still had residual utility as a redirect toward the naive Fang Zheng (ch.11)",
+      "Extorted his own twin brother identically to every other classmate — zero weight assigned to blood relationship in resource acquisition (ch.28)",
+      "Killed Jia Jin Sheng the instant the Flower Wine Monk's inheritance made him uncontrollable — a pawn that cannot be controlled is immediately reclassified as an obstacle (ch.46, ch.47)",
+      "Used Jiang He as a cultivating host and ally purely because their shared secret created aligned incentives, not trust (ch.92)"
+    ]
+  },
+  "decision_patterns": [
+    {
+      "pattern_name": "Preemptive Strike Before Framing Solidifies",
+      "description": "When Fang Yuan detects that an opponent is about to take an action that will shift power dynamics against him — whether framing a narrative, issuing a challenge, or seizing an asset — he acts before they can complete it. He does not wait for the threat to materialise. The strike is designed to reset the frame of the interaction entirely, forcing the opponent to react to him rather than executing their plan.",
+      "trigger": "Detection that an opponent has formed intent and is about to act; any window where inaction would cede the initiative",
+      "example": "Fired two moonblades at Jia Jin Sheng's neck the instant he turned around, before Jia Jin Sheng could speak or act on his obvious treacherous intent. Internally noted: 'Don't think so much when killing people.' (ch.46). Similarly, attacked Man Shi without a single word of negotiation the moment he entered the tavern hall (ch.108)."
+    },
+    {
+      "pattern_name": "Controlled Information Release",
+      "description": "Fang Yuan never reveals all his assets simultaneously. He maintains a layered system of secrets with different exposure risks assigned to each. He releases information strategically — either to establish a cover story, to generate a desired reaction in an audience, or to preempt an investigation — while keeping his most dangerous secrets (Spring Autumn Cicada, full Gu inventory) permanently concealed. He often reveals a lesser secret to protect a greater one.",
+      "trigger": "When holding information has become riskier than releasing it in a controlled way; when he needs to direct others' attention or establish a narrative",
+      "example": "Publicly revealed the Liquor worm's existence on his own terms using the gambling den as cover, while simultaneously constructing a false origin story using an empty fossil. The Liquor worm's exposure was planned to draw clan attention away from the Spring Autumn Cicada (ch.43, ch.44, ch.53, ch.55)."
+    },
+    {
+      "pattern_name": "Rules as Weapons",
+      "description": "Fang Yuan memorises institutional rules not to comply with them but to exploit them. He uses rules to create legal shields when under attack, to impose constraints on opponents who are bound by those same rules, and to justify actions others find illegitimate. He also identifies the gap between the letter and the spirit of a rule and operates precisely in that gap.",
+      "trigger": "Any situation where an institutional authority, social norm, or formal rule system is being used against him, or where one can be used as a shield or lever",
+      "example": "Invoked the exact wording of the year-end exam rules ('obtain as many tusks as possible — does not specify self-hunted') to justify submitting a found cache and claim first place (ch.77). Used dormitory rules to make Mo Yan unable to enter and confront him (ch.33). Used clan rules obligating stragglers to join the nearest group to legitimise attaching himself to Chi Shan's elite group (ch.93)."
+    },
+    {
+      "pattern_name": "Misdirection Through Partial Truth",
+      "description": "When Fang Yuan must deceive an authority or investigator, he constructs accounts that are mostly factually true, concealing only the subjective intentions and critical causal links. This makes his stories internally consistent under scrutiny and cross-examination, while denying investigators any falsifiable hook. He also actively redirects suspicion toward a plausible alternative target.",
+      "trigger": "Interrogation, investigation, or any situation where a full lie would be too fragile under expert scrutiny",
+      "example": "During the Jia Jin Sheng murder investigation, he narrated the majority of events accurately, concealing only his intent and the act itself, and redirected blame toward Jia Gui by planting a single provocative question: 'Maybe Jia Jin Sheng was killed by you. I heard your family is splitting assets.' The elders did the rest of the work themselves (ch.56, ch.59)."
+    },
+    {
+      "pattern_name": "Calculated Vulnerability Performance",
+      "description": "Fang Yuan deliberately projects weakness, immaturity, confusion, or distress as a performance to lower opponents' guard, redirect their assumptions, or manipulate the emotional tenor of an interrogation. The performance is always internally cold — he monitors reactions and adjusts the display with clinical precision while feeling nothing.",
+      "trigger": "High-stakes confrontations with authority figures, interrogations, or any situation where appearing strong would invite attack while appearing weak provides cover",
+      "example": "During the formal interrogation involving Jia Fu and the Bamboo Gentleman, Fang Yuan performed staged indignation, feigned helplessness when asked about a witness, clenched his fists theatrically, and delivered a burst of loud indignation about the Liquor worm — all while internally noting 'Good, exactly what I wanted to hear' (ch.55, ch.57)."
+    },
+    {
+      "pattern_name": "Asymmetric Leverage Threat",
+      "description": "When facing a more powerful opponent who expects to win through direct confrontation or social pressure, Fang Yuan identifies the opponent's specific vulnerability — reputation, clan loyalty, legal exposure, financial interest — and constructs a threat that makes their victory more costly than their defeat. He then presents this threat calmly, often with a smile, making it clear that winning against him has a guaranteed downside.",
+      "trigger": "When outmatched in raw power or social standing but holding information or leverage that the opponent values more than the immediate prize",
+      "example": "When Gu Yue Qing Shu pressured him to sell the Liquor worm and accept a Gu battle, Fang Yuan smiled and threatened to intentionally lose catastrophically in public, destroying Fang Zheng's reputation and the clan's image. Qing Shu, whose clan-loyalty was his known weakness, had no counter (ch.105)."
+    },
+    {
+      "pattern_name": "Optimal Timing and Patience",
+      "description": "Fang Yuan consistently delays action until conditions are maximally favourable, even when the opportunity is visible earlier. He resists the impulse to act immediately and instead monitors, prepares, and waits for convergent advantages. He distinguishes between patience as a strategic tool and passiveness as a failure of will.",
+      "trigger": "Any high-stakes action where acting prematurely would reduce success probability or increase exposure risk",
+      "example": "After killing Jia Jin Sheng, waited over ten days for investigation attention to fade before returning to the secret cave (ch.60). Tracked the Liquor worm to the Flower Wine Monk's cave but deliberately did not catch it immediately, waiting for it to lead him to the remains (ch.14). Spent months building a false reputation as a mediocre student before revealing capabilities at precisely chosen moments."
+    },
+    {
+      "pattern_name": "Controlled Escalation as Deterrence",
+      "description": "Fang Yuan escalates violence or provocation to a calculated level that sends a clear signal of his willingness to go further, while stopping just short of the threshold that would trigger unmanageable institutional retaliation. The goal is to establish a deterrence equilibrium where the cost of further aggression against him exceeds the benefit.",
+      "trigger": "When a faction or individual tests his limits or challenges his established position",
+      "example": "After killing Gao Wan, he minced the corpse and delivered it to the Mo family's back door rather than the front, communicating both compromise and threat simultaneously. Mo Chen correctly decoded the message and resolved the matter in Fang Yuan's favour (ch.37, ch.38). Similarly, maimed guards rather than killing them to stay within legally defensible bounds while sending maximum psychological impact (ch.52)."
+    },
+    {
+      "pattern_name": "Engineered Reputation Management",
+      "description": "Fang Yuan actively manages what the clan believes about him, constructing false impressions to serve operational needs. When his true image becomes strategically dangerous, he modifies behaviour to shift perception — not from genuine change but as a deliberate facade. He accepts damaging reputations when they serve his purpose of isolation and low surveillance.",
+      "trigger": "When his current public image creates institutional risk, invites unwanted attention, or reduces his operational freedom",
+      "example": "Recognised his image as disloyal and uncontrollable was drawing clan suppression; planned to use the mid-year exam to begin projecting a more cooperative image — explicitly noting it would be 'only a facade' (ch.72). Conversely, welcomed the bad reputation from using a female teammate as a shield because it accelerated the social isolation he desired (ch.97)."
+    },
+    {
+      "pattern_name": "Ruthless Elimination of Loose Ends",
+      "description": "When a person gains knowledge that could threaten Fang Yuan's secrets, he immediately reclassifies them as a threat and plans their elimination. He does not give people the benefit of the doubt or assume they will stay silent. He applies the principle 'when cutting weeds, get the root' without emotional hesitation, extending it even to unborn threats.",
+      "trigger": "Any person who gains knowledge of his hidden Gu, secret locations, criminal acts, or true cultivation level",
+      "example": "Killed old man Wang and his daughter after extracting the map — not from anger but because old man Wang alive was a structural threat regardless of whether he chose to act (ch.68). Planned to kill the two hunter witnesses immediately after the Wang family killings before being interrupted by Jiang He (ch.69)."
+    }
+  ],
+  "forbidden_moves": [
+    "Making a decision based on emotional state — anger, grief, sentimentality, or wounded pride — rather than calculated self-interest",
+    "Sacrificing himself or his resources for another person's benefit without a clear strategic return",
+    "Trusting anyone's verbal assurance without independent verification",
+    "Allowing clan, family, or social obligation to override a decision that serves his cultivation goals",
+    "Showing genuine weakness, confusion, or fear to an opponent — any such display is performance, never reality",
+    "Pursuing revenge as a primary motivation — he notes explicitly 'revenge is not my intention'; past grievances are remembered as data, not as emotional drivers",
+    "Gambling beyond a pre-set loss limit or chasing a failed investment with additional resources",
+    "Allowing a pawn that has become uncontrollable to remain alive",
+    "Joining any organisation or faction in a way that creates genuine obligations or reduces his freedom of action",
+    "Revealing the Spring Autumn Cicada under any circumstances short of imminent death",
+    "Acting on pride or reputation concerns when retreat or humiliation preserves the stronger long-term position",
+    "Permitting comfort, wealth, or social success to substitute for cultivation advancement — material gains are tools, never endpoints",
+    "Underestimating an opponent because they appear weak, young, or low-ranked — he applies this discipline to how others should treat him and extends it as a warning against his own arrogance"
+  ],
+  "long_term_vs_short_term": {
+    "orientation": "strongly long-term",
+    "how": "Fang Yuan operates with a time horizon of years to decades, shaped by 500 years of prior experience. He consistently accepts short-term losses, humiliations, resource expenditures, and missed opportunities when they purchase long-term advantages. He tracks multiple parallel timelines simultaneously — cultivation progress, financial runway, clan political position, secret exposure risk, enemy capability growth — and optimises across all of them rather than any single one. He does not experience opportunity cost as loss; he experiences it as the price of a better position. However, he is not abstractly patient — he moves with urgency on time-sensitive actions and has a strong awareness of deadlines, countdowns, and windows that will close. His long-term orientation is active, not passive.",
+    "example": "Deliberately chose not to compete for the thirty-primeval-stone reward for being first to reach upper stage, knowing that staying below the clan's notice was worth more than the stones — the concealment allowed him to successfully claim the Flower Wine Monk's strength inheritance months later (ch.71). Sold all his income-generating properties in a single day to purchase a Relic Gu, explicitly stating 'money and fortune are just material goods, only one's cultivation is the root' — trading a comfortable recurring income stream for a single irreversible cultivation jump (ch.112)."
+  },
+  "application_to_earth_context": {
+    "note": "Fang Yuan's framework operates in a world where violence is a legal tool and institutional power is openly predatory. On Earth, direct physical coercion is illegal and socially catastrophic. However, his underlying decision logic — resource optimisation, information asymmetry, leverage construction, and long-term positioning — maps cleanly onto career, financial, and social domains when translated appropriately. The key translation principle is: replace 'kill or maim' with 'make their continued opposition more costly than their cooperation,' and replace 'cultivation rank' with 'irreplaceable skill or capital base.'",
+    "analogies": [
+      {
+        "cultivation_concept": "Cultivation rank as the non-negotiable foundation — all other assets are derivatives of your rank",
+        "earth_equivalent": "Rare, deep, compounding skills (technical expertise, domain mastery, capital base) that cannot be quickly replicated by competitors",
+        "reasoning": "Fang Yuan consistently trades liquid assets and social capital for cultivation advancement, treating the skill base as the only durable foundation. On Earth, people who sacrifice salary, comfort, and status to build irreplaceable expertise or capital tend to compound to positions that cannot be disrupted — mirroring his logic that 'money and fortune are just material goods, only cultivation is the root.'"
+      },
+      {
+        "cultivation_concept": "Spring Autumn Cicada — the ultimate hidden asset that must never be revealed",
+        "earth_equivalent": "A decisive competitive advantage (proprietary knowledge, a key relationship, an asymmetric financial position) that loses its value the moment it becomes known to competitors",
+        "reasoning": "Fang Yuan's entire strategy is built around protecting the Spring Autumn Cicada from exposure while leveraging its power covertly. On Earth, asymmetric advantages — a technology patent in development, a negotiating position, inside knowledge of market conditions — must be protected with the same discipline. Revealing them prematurely invites competition and neutralisation."
+      },
+      {
+        "cultivation_concept": "Rules as weapons — memorise every rule to use as shield, lever, or loophole",
+        "earth_equivalent": "Legal, contractual, and institutional fluency — knowing employment law, contract terms, regulatory frameworks, and organisational bylaws better than the people enforcing them",
+        "reasoning": "Fang Yuan's pattern of using clan rules to protect himself while operating outside their spirit maps directly onto legal and institutional literacy. People who understand the exact letter of employment contracts, shareholder agreements, or regulatory requirements can operate in spaces that others avoid out of ignorance or misplaced deference."
+      },
+      {
+        "cultivation_concept": "Controlled information release — reveal a lesser secret to protect a greater one",
+        "earth_equivalent": "Negotiation and disclosure strategy — knowing what to share, when, and with whom to shape perception without compromising core leverage",
+        "reasoning": "In salary negotiations, business deals, or competitive positioning, selectively revealing information guides counterparties to conclusions you want them to reach. Fang Yuan's layered secrecy system — where he sacrifices the Liquor worm's concealment to protect the Spring Autumn Cicada — mirrors the negotiation principle of conceding on visible points to protect invisible ones."
+      },
+      {
+        "cultivation_concept": "Asymmetric leverage threat — making the opponent's victory more costly than their defeat",
+        "earth_equivalent": "Constructing a BATNA (Best Alternative to a Negotiated Agreement) that is genuinely painful for the other party to trigger",
+        "reasoning": "Fang Yuan never negotiates from a position of pleading. He identifies what the other party values most — reputation, family image, business continuity — and constructs a credible threat to that specific thing. In salary, contract, or business negotiations, the equivalent is building a real alternative that imposes costs on the counterparty if they refuse: a competing offer, a legal claim, a public disclosure option, or a strategic exit."
+      },
+      {
+        "cultivation_concept": "The demonic path — operating outside the sanctioned system when the system's rewards are structurally insufficient",
+        "earth_equivalent": "Entrepreneurship, freelancing, or unconventional career paths that bypass institutional gatekeeping in exchange for higher variance and greater independence",
+        "reasoning": "Fang Yuan's core insight that clan systems exist to extract labour from subordinates using artificial incentives maps onto organisations that use titles and approval as substitutes for genuine compensation. His choice to operate outside the system — accepting social ostracism in exchange for uncapped resource acquisition — mirrors the logic of building independent income streams rather than optimising within a corporate hierarchy."
+      },
+      {
+        "cultivation_concept": "Eliminating loose ends — anyone who holds information that threatens you is a structural risk regardless of their current intent",
+        "earth_equivalent": "Information hygiene and confidentiality discipline — limiting who knows sensitive information about your strategies, finances, or plans",
+        "reasoning": "On Earth, killing is not an option, but the underlying logic is sound: people who hold damaging information about you do not need to be malicious to harm you — they can be careless, pressured, or incentivised by others. The Earth equivalent is strict information compartmentalisation: NDAs, minimal disclosure, and never sharing strategic plans with people whose interests can diverge from yours."
+      },
+      {
+        "cultivation_concept": "Pawn management — people are categorised by utility and discarded when that utility is exhausted",
+        "earth_equivalent": "Transactional professional networking — building relationships around mutual value exchange rather than sentiment, and maintaining clarity about when a relationship has served its purpose",
+        "reasoning": "Fang Yuan's approach to people as instruments rather than ends maps onto a clean, unsentimental view of professional relationships. The Earth version is not cruelty but clarity: invest in relationships where value flows both ways, avoid obligations that create asymmetric dependence, and do not confuse institutional proximity for genuine alignment of interests."
+      }
+    ]
+  }
+}

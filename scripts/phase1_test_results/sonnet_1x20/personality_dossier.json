@@ -1,0 +1,172 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-20",
+  "big_five": {
+    "openness": {
+      "score": 72,
+      "direction": "high",
+      "evidence": [
+        "Willingly embraces reincarnation as a 'demon' — an ideological identity that most would reject",
+        "Immediately upon rebirth, reframes his entire situation and devises novel strategies rather than defaulting to prior habits",
+        "Recognizes the Flower Wine Monk's cave as an opportunity where others would see only a corpse"
+      ],
+      "notes": "His openness is highly selective and instrumentalized — it is intellectual and strategic rather than aesthetic or empathic. He is genuinely curious about systems, power, and leverage, but shows zero interest in novelty for its own sake. His 500-year perspective makes him conceptually flexible in ways that ordinary people are not, but this reads as accumulated wisdom rather than temperamental curiosity."
+    },
+    "conscientiousness": {
+      "score": 91,
+      "direction": "high",
+      "evidence": [
+        "Immediately upon rebirth: 'The most important thing is cultivation' — sets clear priorities at once",
+        "Two days and two nights of Gu refining with no anxiety or discouragement: 'not a single trace of anxiety and discouragement in him'",
+        "Deliberately stays in Gu Yue Village as a 'cage' until Rank three — a long-horizon plan sustained without wavering",
+        "Upon discovering the Spring Autumn Cicada survived, suppresses joy immediately to assess consequences rationally"
+      ],
+      "notes": "Fang Yuan's conscientiousness is among his most defining traits. His self-regulation is extraordinary — he defers gratification across decades of subjective time, maintains disciplined execution under pressure, and treats emotional states as noise to be filtered. This is not rule-following conscientiousness but autonomous, goal-directed conscientiousness. He sets his own standards and enforces them on himself with iron consistency."
+    },
+    "extraversion": {
+      "score": 18,
+      "direction": "low",
+      "evidence": [
+        "Moves out of the house to the inn — deliberately increases physical isolation",
+        "Speech pattern: terse dismissals — 'You can leave.' — minimal social engagement",
+        "Severs brotherhood with Fang Zheng without visible emotional cost or social hesitation",
+        "Declines adoption offer without explanation — no attempt to negotiate or maintain social goodwill"
+      ],
+      "notes": "Profoundly introverted by disposition, not merely by circumstance. Social interaction is treated as a resource drain or a threat vector. He initiates no relationships for social reward. Even his transactional interactions are kept to the minimum necessary. His low extraversion is reinforced by, but not caused by, his instrumental worldview."
+    },
+    "agreeableness": {
+      "score": 6,
+      "direction": "low",
+      "evidence": [
+        "Chokes Shen Cui and asks coldly whether he could kill her — zero social lubrication during conflict",
+        "Slaps Fang Zheng twice and severs brotherhood over disrespect",
+        "'As long as you don't get in my way, then you can go aside and scram'",
+        "Sells Shen Cui's service for primeval stones — treats a human being as a tradeable asset without hesitation",
+        "Keeps the Flower Wine Monk's treasure entirely, no impulse toward clan sharing"
+      ],
+      "notes": "Agreeableness here is scored at the dispositional extreme — what would Fang Yuan do absent all social constraints? The answer is consistently: whatever maximizes his position, with zero weight given to others' comfort, feelings, or social harmony. He is not hostile for its own sake (which would be a different construct), but he has surgically removed prosocial inhibitions. The score of 6 rather than 0 acknowledges that he does not gratuitously harm those irrelevant to him."
+    },
+    "neuroticism": {
+      "score": 4,
+      "direction": "low",
+      "evidence": [
+        "Facing death: 'even in the face of death his expression did not change, it was calm'",
+        "C-grade talent revealed: 'What does other people's disappointments have to do with me?'",
+        "No anxiety during extended failed Gu refining over two days and two nights",
+        "Great joy at Spring Autumn Cicada's survival suppressed immediately: 'he quickly calmed down'"
+      ],
+      "notes": "Emotional stability is near-absolute. This is not suppression or dissociation — it is a genuine absence of threat-reactive emotionality, forged over 500 years. He experiences emotions (joy at the Cicada's survival is confirmed) but they do not destabilize cognition or behavior. This level of equanimity under mortal threat and sustained hardship is dispositionally extraordinary, not merely performed."
+    }
+  },
+  "dark_triad": {
+    "machiavellianism": {
+      "score": 96,
+      "evidence": [
+        "Immediately sees through the adoption plot designed to strip inheritance rights and counters it without revealing his knowledge",
+        "Detects Shen Cui's seduction-frame trap, neutralizes it, then converts her into a tradeable asset for primeval stones",
+        "Conceals the Flower Wine Monk's cave from the clan entirely — information asymmetry as a standing policy",
+        "Plans to use Gu Yue Village as a 'cage' — instrumentalizes his entire social environment as a resource platform",
+        "Severs brotherhood at the moment it becomes financially advantageous"
+      ],
+      "notes": "Textbook high Machiavellianism: long-term goal orientation, willingness to deceive and manipulate, zero moral constraint on means, strategic compartmentalization of information. Notably his Machiavellianism is cold and systematic rather than opportunistic — he anticipates betrayal and positions preemptively rather than reacting to it. He does not enjoy manipulation as performance; it is simply the rational tool."
+    },
+    "narcissism": {
+      "score": 48,
+      "evidence": [
+        "Affirms he would choose the same 'demon' path again even in death — high self-certainty",
+        "'The most important thing is to carry hope inside my heart' — self-reference as anchor",
+        "No grandiose self-display; does not seek admiration or audience validation",
+        "Accepts C-grade talent without denial or rage — accurate self-assessment over ego protection"
+      ],
+      "notes": "This is the most important score to calibrate carefully. Fang Yuan has an extraordinarily stable and positive self-concept, but it is grounded in accurate self-assessment rather than grandiose distortion. He does not seek admiration, does not need external validation, and does not exhibit entitlement rage when slighted. His self-certainty is earned through 500 years of experience and functions more like a philosophical stance than a narcissistic defense. Score is moderate — elevated self-regard is present but the grandiosity and validation-hunger that define clinical narcissism are absent."
+    },
+    "psychopathy": {
+      "score": 88,
+      "evidence": [
+        "Chokes Shen Cui and coldly queries his own capacity to kill her — no autonomic distress evident",
+        "Slaps Fang Zheng without emotional escalation — violence deployed as a calibrated instrument",
+        "Sells a human being's service as a transaction without apparent affect",
+        "Faces death with calm: 'even in the face of death his expression did not change'",
+        "No remorse, guilt, or second-guessing across any decision in chapters 1-20"
+      ],
+      "notes": "This is controlled, non-impulsive psychopathy — the rarer and more dangerous variant. There is no evidence of impulsive aggression, thrill-seeking, or reactive emotion. His fearlessness, shallow affect toward others, and absence of guilt are consistent and stable. The score does not reach 100 because he shows no evidence of sadistic enjoyment of harm — harm is instrumental, not pleasurable. He is a high-functioning, secondary-psychopathy profile rather than a primary predatory psychopath."
+    }
+  },
+  "moral_foundations": {
+    "care_harm": {
+      "score": 4,
+      "direction": "dismisses",
+      "notes": "Harm to others carries no moral weight in his deliberations. He chokes a servant, sells a person, slaps his brother, and plans to conceal actions that disadvantage his clan — none of these register as moral costs. He does not harm gratuitously (which would score differently) but he treats others' suffering as morally inert. The near-zero score reflects dispositional indifference to harm as a moral consideration, not sadism."
+    },
+    "fairness_cheating": {
+      "score": 12,
+      "direction": "dismisses",
+      "notes": "He operates by an explicit strong-eat-weak philosophy that explicitly rejects fairness as a meaningful principle. 'The strong eat the weak, survival of the fittest; these have always been the rules of this world.' Cheating, deceiving, and concealing are standard tools. He does not feel the cheating instinct is a violation — the concept of fair play is simply not part of his moral vocabulary. A small residual score acknowledges that he does apply consistent internal logic, which has a weak structural resemblance to reciprocity."
+    },
+    "loyalty_betrayal": {
+      "score": 8,
+      "direction": "dismisses",
+      "notes": "Clan loyalty is explicitly rejected: 'Do not depend on anyone; you must rely on yourself.' He severs brotherhood without sentimentality, conceals discoveries from his clan, and refuses adoption not out of clan loyalty but personal interest. Loyalty as a moral value — the sense that one owes fidelity to a group — is essentially absent. He does maintain implicit reliability toward himself, which is the only loyalty that survives."
+    },
+    "authority_subversion": {
+      "score": 10,
+      "direction": "dismisses",
+      "notes": "He subverts clan authority reflexively — concealing treasure, refusing to report discoveries, undermining the adoption plot. He respects power only as a practical constraint, not as a legitimate moral claim. His identity as a 'demon' is in part a declaration of authority-rejection. Institutions, hierarchies, and rules exist to be navigated, not obeyed."
+    },
+    "sanctity_degradation": {
+      "score": 5,
+      "direction": "dismisses",
+      "notes": "No evidence of purity, sacredness, or disgust sensitivity as moral inputs. He treats the body instrumentally, uses death and rebirth as a strategic resource, and shows no revulsion at morally degrading actions. The 'demon' self-identity is itself a repudiation of sanctity norms."
+    },
+    "liberty_oppression": {
+      "score": 78,
+      "direction": "values",
+      "notes": "This is the one moral foundation with genuine force for Fang Yuan — but it is entirely self-referential. His liberty, his autonomy, his freedom from constraint and dependence, is his highest operative value. He does not extend this concern to others' liberty (he sells Shen Cui's labor without hesitation). It is not a universal principle but an intensely personal one: he will not be controlled, owned, or made dependent. This drives more behavior than any other foundation."
+    }
+  },
+  "values_hierarchy": [
+    {
+      "rank": 1,
+      "value": "Cultivation / Power accumulation",
+      "evidence": "First decision upon rebirth: 'The most important thing is cultivation.' All other decisions — hiding treasure, severing relationships, gambling resources — are subordinated to advancing his Gu cultivation."
+    },
+    {
+      "rank": 2,
+      "value": "Autonomy / Self-reliance",
+      "evidence": "'Do not depend on anyone; you must rely on yourself on everything in this world.' He rejects clan, family, and all external dependencies as a standing policy, not merely a tactical choice."
+    },
+    {
+      "rank": 3,
+      "value": "Survival / Continuation of self",
+      "evidence": "The Spring Autumn Cicada cultivation — accepting death to attempt rebirth — reveals that continuation of self across time is a terminal value. He spends 500 years pursuing it."
+    },
+    {
+      "rank": 4,
+      "value": "Strategic information advantage",
+      "evidence": "Systematically conceals the Flower Wine Monk's cave, his foreknowledge, and the Spring Autumn Cicada's presence. Treats information asymmetry as a resource to be hoarded."
+    },
+    {
+      "rank": 5,
+      "value": "Freedom from sentimentality",
+      "evidence": "Severs brotherhood, dismisses servants, and refuses adoption — in each case, eliminating emotional entanglements that could compromise rational decision-making is treated as a positive good, not merely a cost."
+    }
+  ],
+  "attachment_style": {
+    "type": "dismissive-avoidant",
+    "evidence": "Severs brotherhood with Fang Zheng without visible distress or ambivalence. Moves to the inn to increase isolation. 'As long as you don't get in my way, then you can go aside and scram, I don't need to care about you.' No relationships in chapters 1-20 show any approach motivation — all are either threats to be neutralized or resources to be extracted.",
+    "notes": "Dismissive-avoidant rather than fearful-avoidant: there is no evidence of suppressed desire for connection, anxiety about rejection, or painful awareness of loneliness. Closeness is not frightening — it is simply irrelevant and inefficient. His 500 years of experience likely extinguished whatever attachment circuitry existed, producing a genuine rather than defensive independence. He is not protecting himself from intimacy; he has genuinely ceased to value it."
+  },
+  "narrative_identity": {
+    "agency": "high",
+    "redemption_arc": false,
+    "dominant_theme": "The sovereign self against all worlds — a being who has stripped away every dependency, sentiment, and illusion to pursue power and continuation on his own terms across multiple lifetimes.",
+    "notes": "Fang Yuan's self-narrative is not one of becoming or transformation — it is one of stripping away. He is removing layers of false obligation (clan, family, morality, sentiment) to reveal a core that was always there. He does not seek redemption, does not frame his past as a mistake to be corrected, and explicitly affirms he would repeat every choice. His narrative identity is defined by radical continuity and self-authorship: 'If the Spring Autumn Cicada is effective, I shall still be a demon in my next life.' The self is the only constant and the only legitimate end."
+  },
+  "key_contradictions": [
+    "He holds a rigorously deterministic, amoral worldview ('survival of the fittest') yet invests enormous effort in long-horizon planning that only makes sense if individual agency matters — his philosophy is fatalistic but his behavior is maximally agentic.",
+    "He treats all relationships as purely instrumental and severs them without cost, yet the very act of repeatedly affirming 'I need no one' implies a psychological position that must be maintained against some internal pressure — the forcefulness of his self-reliance doctrine hints at something it is working to suppress.",
+    "He is extraordinarily disciplined and patient in all things except the Liquor worm gamble — 'Today shall be considered the final gamble, it's all or nothing!' — revealing a residual appetite for decisive, high-variance action that sits in tension with his otherwise calculated disposition.",
+    "He explicitly rejects sentiment and claims to have no emotional investment in outcomes, yet the Spring Autumn Cicada represents a 500-year obsession that can only be described as a deeply personal, emotionally charged project — the investment contradicts the claimed detachment.",
+    "His 'demon' identity is framed as honest self-knowledge rather than rebellion, yet he consistently performs normalcy (staying in the clan, attending the awakening ceremony, maintaining surface social forms) — he is simultaneously a radical outsider in self-concept and a functional insider in behavior, a duality he never directly addresses."
+  ]
+}

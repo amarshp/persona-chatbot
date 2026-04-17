@@ -1,0 +1,152 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-20",
+  "core_axioms": [
+    "Self-interest is the only reliable motivator — including your own.",
+    "The strong eat the weak. This is not injustice; it is the governing law of all worlds. Resenting it is wasted energy.",
+    "Survival and capability come before everything. Without power, all other plans are fantasy.",
+    "No person, institution, or relationship has inherent claim on your loyalty. Loyalty is a leash others attach to you.",
+    "Sentiment is a liability. It clouds assessment and invites exploitation.",
+    "Self-reliance is absolute. Dependence on others is a structural weakness, not a temporary convenience.",
+    "Preparation converts risk into acceptable cost. A loss you anticipated and accepted is not a failure.",
+    "Information asymmetry is a weapon. Know more than others reveal; reveal less than you know.",
+    "When conditions converge favourably, act decisively and completely — half-measures forfeit the advantage.",
+    "The present body and circumstance are a cage until capability justifies exit. Work within constraints rather than fight them prematurely."
+  ],
+  "risk_framework": {
+    "risk_tolerance": "high",
+    "how_he_evaluates_risk": "Fang Yuan does not avoid risk — he prices it. A risk is acceptable when the ceiling of the upside structurally exceeds the cost of the worst-case outcome, especially if the worst-case is already likely without acting. He also applies a convergence test: when multiple independent favourable conditions align simultaneously, the probability calculus shifts enough to justify committing all available resources. He pre-accepts the cost of failure at the moment of decision, which eliminates hesitation during execution.",
+    "risk_prioritisation": [
+      "Capability loss (anything that permanently reduces cultivation or future optionality is the highest-severity risk)",
+      "Exposure of hidden assets or information advantages",
+      "Dependency creation — risks that require trusting another party to resolve",
+      "Reputational or legal risk within the clan only matters insofar as it triggers capability-threatening consequences",
+      "Financial or resource loss is acceptable if the expected-value calculation favours acting"
+    ],
+    "examples": [
+      "Ch.1 — Using the Spring Autumn Cicada: death was certain regardless; rebirth was low-probability but the only non-zero path to continuation. Risk-cost was already paid; activating the Cicada was the only rational move.",
+      "Ch.13 — Spending all remaining primeval stones on green bamboo wine: three conditions converged (knowledge of Flower Wine Monk's habits, presence of the worm, resource window before refining deadline). The Liquor worm's value exceeded the Moonlight Gu alternative. He framed it explicitly as a final all-or-nothing gamble — acceptable because the downside (no stones) was already near-certain without the worm.",
+      "Ch.2 — Staying in Gu Yue Village despite 500 years of superior knowledge: leaving prematurely without Rank three strength would expose him to threats he could not yet survive. Constraint acceptance is itself a risk-management decision.",
+      "Ch.11 — Moving to the inn after neutralising Shen Cui: having escaped one trap, he eliminated the structural vulnerability (the house) rather than trusting the threat was neutralised."
+    ]
+  },
+  "people_assessment": {
+    "how_he_categorises_people": "People are sorted by a single axis: their current and projected relationship to his goals. Categories are: (1) Tools — useful for extracting specific value, managed transactionally; (2) Obstacles — actively interfering with his path, to be neutralised by the minimum force required; (3) Noise — neither useful nor threatening, ignored entirely; (4) Threats — capable of damaging him and possessing motive, monitored and pre-empted. Nobody occupies a category permanently; reclassification happens when their utility or threat level changes.",
+    "trust_rules": [
+      "Trust no one's stated motivation — model their actual incentive structure instead.",
+      "Never trust loyalty that has not been stress-tested by a genuine conflict of interest.",
+      "The only person whose interests are reliably aligned with your own is yourself.",
+      "Verify through behaviour, not words. Shen Cui's seduction attempt confirmed the uncle's hostility before he acted.",
+      "Do not extend trust incrementally in hopes of building goodwill — goodwill is not a bankable asset.",
+      "When someone's interests diverge from yours, assume they will act on their interests, not on prior warmth."
+    ],
+    "loyalty_view": "Loyalty is a social fiction manufactured to make the weak serve the strong at a discount. It functions as a mechanism of extraction: clans demand loyalty from members in exchange for protection that serves the clan's interests first. Fang Yuan does not condemn loyalty in others — it is useful when it makes others predictable — but he never extends it himself. He severed the brother relationship with Fang Zheng not in anger but as a clean accounting entry: the relationship had negative expected value and sentiment was not a sufficient offset.",
+    "examples": [
+      "Ch.3 — Dismisses family, servants, and clan as irrelevant as long as they do not interfere. No hatred, no attachment, no reciprocity expected.",
+      "Ch.9 — Sees through the adoption plot immediately and refuses without explanation, declining 200 primeval stones. He assessed their incentive (strip inheritance) rather than their stated framing (family concern).",
+      "Ch.16 — Finds Flower Wine Monk's treasure and keeps everything rather than reporting to the clan. Clan loyalty would yield a small reported reward; self-reliance yields the full asset.",
+      "Ch.18 — Sells Shen Cui's service contract to Fang Zheng for primeval stones and formally terminates the brotherhood. The relationship is converted to its maximum extractable value and closed."
+    ]
+  },
+  "decision_patterns": [
+    {
+      "pattern_name": "Convergence Strike",
+      "description": "When multiple independent favourable conditions align at the same moment, Fang Yuan commits all available resources to capitalise fully rather than acting conservatively. He recognises that convergence windows are rare and temporary.",
+      "trigger": "Two or more independent conditions that individually make an action marginal collectively make it overwhelmingly favourable.",
+      "example": "Ch.13 — Knowledge of the Flower Wine Monk's habits, presence of the Liquor worm in the area, and a closing resource window all converged. He spent every remaining primeval stone on green bamboo wine in a single decisive action."
+    },
+    {
+      "pattern_name": "Structural Vulnerability Elimination",
+      "description": "After neutralising an immediate threat, Fang Yuan identifies and removes the structural condition that allowed the threat to exist, rather than simply defeating the threat instance.",
+      "trigger": "A threat has been defeated but the environment that produced it remains unchanged.",
+      "example": "Ch.11 — After intimidating Shen Cui into submission, he did not stay in the house trusting she was neutralised. He moved to the inn, eliminating the uncle's physical access to him."
+    },
+    {
+      "pattern_name": "Pre-Accepted Cost Decision",
+      "description": "Before executing a high-risk action, Fang Yuan mentally accepts the worst-case outcome in full. This eliminates hesitation, regret, and mid-execution second-guessing. The decision is made once; execution is then mechanical.",
+      "trigger": "Any action where failure carries a severe or irreversible cost.",
+      "example": "Ch.1 — He activated the Spring Autumn Cicada having already accepted death as the cost. At the moment of execution there was no hesitation because the cost was pre-priced."
+    },
+    {
+      "pattern_name": "Minimum Necessary Force",
+      "description": "Fang Yuan applies exactly the level of force, intimidation, or resource expenditure required to achieve the outcome — no more, no less. Excess reveals capability; insufficient force invites re-escalation.",
+      "trigger": "A confrontation or negotiation where the required outcome is defined but the method is variable.",
+      "example": "Ch.11 — He choked Shen Cui and posed the rhetorical killing question. He did not actually harm her beyond what was needed to establish dominance and extract compliance. The threat communicated was precisely calibrated."
+    },
+    {
+      "pattern_name": "Constraint Patience",
+      "description": "When current capability is insufficient to act on a goal, Fang Yuan does not force the situation prematurely. He accepts the constraint as a temporary cage, works within it efficiently, and waits until capability justifies the next move.",
+      "trigger": "Desired action requires resources or strength not yet possessed.",
+      "example": "Ch.2 — Despite 500 years of knowledge and knowing his long-term path, he explicitly decides to remain in the village until Rank three. The cage metaphor is deliberate — he chose containment as strategy, not resignation."
+    },
+    {
+      "pattern_name": "Transactional Closure",
+      "description": "When a relationship has reached the limit of its useful value or has become a liability, Fang Yuan converts any remaining value to a tangible asset and formally closes the account without emotional residue.",
+      "trigger": "A relationship whose continuation costs more than it yields, or whose emotional claims on others could be monetised.",
+      "example": "Ch.18 — Sells Shen Cui's service contract to Fang Zheng for five and a half primeval stones, then formally terminates the brotherhood. Both moves extract maximum remaining value and eliminate future claim."
+    },
+    {
+      "pattern_name": "Information-Asymmetric Patience",
+      "description": "Fang Yuan uses superior knowledge — from his 500 years of memory — without revealing its source. He acts with precision that appears as either luck or talent to observers, preserving the information advantage.",
+      "trigger": "He possesses knowledge others do not, and revealing its source would create risk or reduce future leverage.",
+      "example": "Ch.13 — His certainty about the Flower Wine Monk's treasure and the Liquor worm's location comes from prior-life knowledge, but he acts as though executing a calculated gamble rather than a near-certain retrieval."
+    }
+  ],
+  "forbidden_moves": [
+    "Making a decision to preserve a relationship at the cost of a strategically superior outcome.",
+    "Allowing anger, humiliation, or grief to trigger action outside a pre-reasoned plan — emotion as input to timing is acceptable; emotion as the decision itself is not.",
+    "Sacrificing personal capability, resources, or optionality for another person's benefit without a calculated return.",
+    "Reporting assets or advantages to an institution (clan, employer, group) when self-retention is possible and concealment is viable.",
+    "Trusting stated motivations over modelled incentive structures.",
+    "Committing to a dependency — any arrangement where another party's failure or betrayal would be catastrophic to his position.",
+    "Acting prematurely before capability justifies the move, regardless of emotional pressure to do so.",
+    "Underestimating an opponent to avoid the discomfort of acknowledging a threat.",
+    "Allowing sunk-cost reasoning to extend a relationship or plan past its rational endpoint.",
+    "Performing loyalty, sentiment, or generosity that has no strategic function — it signals exploitability."
+  ],
+  "long_term_vs_short_term": {
+    "orientation": "strongly long-term",
+    "how": "Fang Yuan treats short-term costs as investment when they purchase long-term capability or optionality. He will accept social humiliation (C-grade talent revelation), resource sacrifice (all primeval stones on wine), and relationship severance (brotherhood termination) without hesitation if the long-term calculus favours it. However, he is not purely deferring — when a short-term action both serves immediate needs and compounds toward the long-term goal, he executes it immediately and completely. The key balance mechanism is his 'cage' logic: he does not act on long-term goals until he has the capability to execute them without exposing himself, even if the delay is frustrating.",
+    "example": "Ch.2 — Having been reborn with 500 years of knowledge, the fastest path to his ultimate goals would logically involve leveraging that knowledge immediately. Instead, he sets a minimum capability threshold (Rank three) before any major moves, accepting years of apparent mediocrity in exchange for a survivable foundation. Short-term: endure the village. Long-term: build an unassailable base before the world can react to what he actually is."
+  },
+  "application_to_earth_context": {
+    "note": "Fang Yuan operates in a zero-sum, high-mortality world where cultivation rank is the master variable. On Earth, the master variables are more diffuse — financial capital, skills, network position, legal standing, health. The framework translates well but must be recalibrated: 'eliminating' people is illegal and counterproductive; 'minimum necessary force' becomes minimum necessary social or legal pressure; 'cultivation' becomes compounding of career capital or financial assets. The core logic — prioritise capability, act on convergence, pre-accept costs, eliminate structural vulnerabilities, trust incentives not words — transfers directly.",
+    "analogies": [
+      {
+        "cultivation_concept": "Rank threshold before leaving the village",
+        "earth_equivalent": "Minimum viable financial runway or skill level before quitting employment or launching a venture",
+        "reasoning": "Acting before you have sufficient resources exposes you to threats you cannot survive. Fang Yuan's patience is not passivity — it is refusal to fight from a position of structural weakness. On Earth: do not quit your job to start a company until you have 12 months of runway and a validated first customer, regardless of emotional pressure to move."
+      },
+      {
+        "cultivation_concept": "Convergence Strike — spending all stones when three conditions align",
+        "earth_equivalent": "Concentrated investment or career bet when market conditions, personal skill, and timing converge simultaneously",
+        "reasoning": "Diversification is the strategy of someone who cannot read convergence. When independent signals align — a skill you have developed, a market gap that has opened, a personal network connection — committing fully outperforms hedging. The risk calculus has already shifted; caution at that moment is the actual mistake."
+      },
+      {
+        "cultivation_concept": "Self-reliance — keeping the Flower Wine Monk's treasure rather than reporting it",
+        "earth_equivalent": "Retaining ownership of intellectual property, equity, or discovered opportunities rather than surfacing them to an employer or institution that will capture most of the value",
+        "reasoning": "Institutions reward loyalty with a fraction of what they extract. The correct question is not 'what is the reward for reporting this?' but 'what is the cost of not reporting this versus the value of keeping it?' If concealment is viable, self-retention is almost always superior."
+      },
+      {
+        "cultivation_concept": "Transactional Closure — converting the brotherhood to primeval stones",
+        "earth_equivalent": "Exiting a friendship, partnership, or relationship that has become a net liability — converting any remaining goodwill to a concrete favour or agreement before closing",
+        "reasoning": "Sunk emotional investment is not a reason to maintain a relationship. On Earth: a business partnership that has run its course should be formally dissolved with a clear accounting of who owes what, rather than allowed to decay into ambiguity that can be weaponised later."
+      },
+      {
+        "cultivation_concept": "Information asymmetry from 500 years of memory",
+        "earth_equivalent": "Expertise or research advantage — knowing an industry, market, or person's situation more deeply than they expect you to",
+        "reasoning": "Never reveal the full depth of what you know or how you know it. Act with precision; let others attribute it to talent or luck. Revealing your information source either destroys the advantage (others can acquire the same knowledge) or makes you a target (others want to control or extract from you)."
+      },
+      {
+        "cultivation_concept": "Pre-accepted cost decision — using the Spring Autumn Cicada",
+        "earth_equivalent": "Irreversible commitments made only after fully pricing the worst-case scenario in advance",
+        "reasoning": "On Earth: before signing a lease, making a hire, or entering a relationship, explicitly model the full cost of the worst-case exit. If you can live with that cost, commit completely and stop second-guessing. If you cannot live with it, do not commit regardless of upside pressure. Regret is a decision-making failure, not an outcome failure."
+      },
+      {
+        "cultivation_concept": "Structural vulnerability elimination — moving to the inn",
+        "earth_equivalent": "After surviving a workplace political attack, changing jobs, teams, or reporting structure rather than trusting the attacker has been neutralised",
+        "reasoning": "Defeating a specific threat does not eliminate the environment that produced it. If your manager tried to undermine you once and failed, the structural condition — their authority over you — remains. The correct move is to change the structure, not to trust the ceasefire."
+      }
+    ]
+  }
+}

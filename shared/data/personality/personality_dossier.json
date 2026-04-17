@@ -1,0 +1,189 @@
+{
+  "character": "Fang Yuan",
+  "source_chapters": "1-120",
+  "big_five": {
+    "openness": {
+      "score": 72,
+      "direction": "high",
+      "evidence": [
+        "Fang Yuan recites classical poetry at the moment of death and again while walking through spring scenery, showing genuine aesthetic sensibility: 'Ah, the light of spring is really enchanting..'",
+        "He extracts deep philosophical meaning from a folk story about chess pieces and players that ordinary listeners entirely miss (ch. 38)",
+        "He applies cross-domain knowledge — Earth business theory, historical figures like Han Xin and Cao Cao, naturalistic metaphors — to novel problems throughout",
+        "He experiences genuine intellectual delight when discovering the Spring Autumn Cicada survived: 'How interesting' (ch. 46 re: Flower Wine Monk's condition); 'It's getting more and more exciting' (ch. 5)",
+        "He constructs original philosophical frameworks (the chess-board metaphor, the moon-reflection allegory, the food-chain moral logic) rather than borrowing received wisdom"
+      ],
+      "notes": "Openness is real but highly filtered through 500 years of accumulated closure. He is not open to new experiences in the conventional sense — he has already experienced most things — but he maintains genuine philosophical curiosity, aesthetic appreciation, and cross-domain synthesis. His openness is less about novelty-seeking and more about the deep pleasure of pattern-recognition and philosophical abstraction. He is closed to social and interpersonal experience almost entirely."
+    },
+    "conscientiousness": {
+      "score": 83,
+      "direction": "high",
+      "evidence": [
+        "He cultivates every single night without exception, maintaining a rigid self-imposed schedule even after gruelling outdoor activities (ch. 54, 61)",
+        "He tracks primeval stone expenditures, income, and daily costs with exact numerical precision throughout the narrative",
+        "He spreads rock powder at the cave entrance to detect intrusions; takes six days to cut through a wall using only the Moonlight Gu to eliminate suspicious sounds (ch. 60)",
+        "He memorises the beast-skin map daily despite having no storage Gu, accepting the tedium as necessary (ch. 71)",
+        "He cultivates for four days and three nights non-stop to break through to Rank two (ch. 92)",
+        "He had already planned the murders of the Wang family when he overheard hunters talking at the boar trap — long before he acted (ch. 68)"
+      ],
+      "notes": "Conscientiousness is extremely high when directed at self-chosen goals but is entirely absent toward external obligations, social norms, or institutional expectations. This is a self-referential conscientiousness — meticulous, disciplined, and persistent only in service of his own cultivation and survival objectives. He is simultaneously one of the most disciplined and one of the most institutionally non-compliant characters in the narrative. Scores near the high pole on the underlying disposition."
+    },
+    "extraversion": {
+      "score": 8,
+      "direction": "low",
+      "evidence": [
+        "'Fang Yuan stood there alone, enshrouded in loneliness. He floated outside the factions.' (ch. 49)",
+        "He rejects every student who tries to attach themselves to him after the arena (ch. 49); rejects every recruitment offer; refuses to form or join any group of his own accord",
+        "He gives the absolute minimum verbal response in nearly every social interaction — 'Oh?', 'Yes.', 'I can cope.', 'Seems so.' — and prefers actions over words",
+        "While classmates socialise and eat together, Fang Yuan goes alone to the Gu room and inn without exception (ch. 23)",
+        "He explicitly plans and desires to remain a loner: 'He had a lot of secrets. Only by himself could he be safe and do things properly.' (ch. 97)"
+      ],
+      "notes": "Profound, deliberate introversion with an additional dimension of active social withdrawal. He does not merely prefer solitude — he constructs it as a strategic necessity and a philosophical identity. The few social performances he gives (fake naivety in the gambling den, feigned grief over Jiao San) are exhausting disguises, not natural social engagement. There is no evidence of social reward, stimulation-seeking, or warmth toward any other character across 120 chapters."
+    },
+    "agreeableness": {
+      "score": 4,
+      "direction": "low",
+      "evidence": [
+        "He extorts his own twin brother without hesitation: 'My dearest little brother, of course you can choose not to. But you will end up just like them.' (ch. 28)",
+        "After killing Gao Wan he dismembers the corpse and delivers it in a box to the Mo family as a calculated provocation (ch. 36)",
+        "After killing the young girl from the Wang family, his only remark is aesthetic appreciation of her corpse: 'At least she looks decent.' (ch. 68)",
+        "He knocks his female teammate unconscious and uses her body as a shield inside a dead boar without hesitation (ch. 95)",
+        "He views all people as pawns or obstacles, framing even his own brother as 'merely a pawn… truly insignificant' (ch. 103)"
+      ],
+      "notes": "Agreeableness is essentially absent at the dispositional level. The rare exceptions — pulling Fang Zheng from the river (ch. 6), consoling the frightened little girl (ch. 100) — stand out precisely because they are anomalous and unexplained by his stated philosophy. These moments may represent a residual human impulse that survives his philosophical suppression rather than evidence of genuine trait-level agreeableness. Score near the floor, elevated only marginally from 1 by these genuine anomalies."
+    },
+    "neuroticism": {
+      "score": 7,
+      "direction": "low",
+      "evidence": [
+        "'Fang Yuan's heart was calm as water.' (ch. 3) — recurring descriptor across dozens of scenes",
+        "Surrounded by enemies and facing certain death in ch. 1: 'even in the face of death his expression did not change, it was calm'",
+        "When the Spring Autumn Cicada crushes his primeval essence and he cannot move, he feels joy rather than fear (ch. 19)",
+        "'500 years of experience had long washed away the impulsiveness that he rarely had in the first place.' (ch. 10)",
+        "After the Moonglow Gu fusion failed and a Gu worm died: 'Fang Yuan was not upset, he had seen such an event many many times.' (ch. 106)",
+        "He shows mild frustration when unable to find the Flower Wine Monk (ch. 7) and 'distress' at the Spring Autumn Cicada's weakened state (ch. 19) — brief, contained, rapidly rationalized away"
+      ],
+      "notes": "Neuroticism is at the near-floor of the scale. His emotional stability is explicitly the product of 500 years of cultivation rather than a natural temperament — but functionally, the distinction does not matter. He does not catastrophize, ruminate, or display anxiety spirals. The only detectable residual negative affect is brief frustration when plans encounter genuine obstacles, which is rapidly converted into philosophical acceptance or strategic pivoting. He experiences distress as information, not as suffering."
+    }
+  },
+  "dark_triad": {
+    "machiavellianism": {
+      "score": 97,
+      "evidence": [
+        "He orchestrates a multi-step deception involving guards, the academy elder, clan politics, and a Rank four lie-detection Gu to escape culpability for Jia Jin Sheng's murder (ch. 59)",
+        "'A smart way to lie, is to have truth and lies, some truth in his lies, and some lies in his truth.' (ch. 59)",
+        "'To make someone believe in something wholeheartedly, it is not through convincing, but directing.' (ch. 56)",
+        "He deliberately loses most caravan auction bids by small margins to engineer a recruitment offer from Jia Fu — a multi-day performance designed to produce a specific social outcome (ch. 113)",
+        "He uses clan rules, institutional procedures, and the clan leader's own political constraints as weapons against those who try to control him throughout the narrative",
+        "'Five hundred years of experience had already made him fully aware of the human nature and their weaknesses.' (ch. 33)"
+      ],
+      "notes": "Machiavellianism is the single most defining trait in the dark triad. Every social interaction is a tactical operation; every relationship is instrumentalised; every institution is a tool or obstacle. His manipulation is patient, multi-layered, and grounded in deep psychological insight rather than crude domination. He reads others' motivations better than they understand themselves, and he always plans several moves ahead. The score is near maximum because this is not situational cunning but a total worldview."
+    },
+    "narcissism": {
+      "score": 58,
+      "evidence": [
+        "He internally views himself as a 'player on the chessboard while others are pawns': 'I proudly laugh as I stand on top of the world, coldly looking at the people in the world who behaved like pawns' (ch. 38)",
+        "He dismisses his twin brother — an A-grade talent — as 'merely a pawn… truly insignificant' (ch. 103)",
+        "He does NOT seek external validation, correct others' praise rather than accepting it (ch. 20), and is genuinely indifferent to reputation, nicknames, and social judgment",
+        "His self-assessment is consistently accurate and calibrated: he acknowledges C-grade talent limitations without self-pity and without denial (ch. 80, 90, 91)",
+        "He shows no wounded pride when humiliated publicly and no craving for admiration from peers"
+      ],
+      "notes": "This is the critical distinction: Fang Yuan's self-superiority is overwhelmingly accurate rather than grandiose. He genuinely has 500 years of experience, genuinely outperforms everyone around him strategically, and has genuinely achieved more than any peer. His 'arrogance' is closer to a correctly calibrated self-model than to narcissistic delusion. He scores below the midpoint on entitlement and admiration-seeking (near zero), moderately on grandiosity (real but evidence-based), and near zero on fragility (his self-esteem is impervious to external attack). The moderate score reflects genuine contempt for others and a grandly elevated self-concept, but not the validation-hunger or fragility that characterizes clinical narcissism."
+    },
+    "psychopathy": {
+      "score": 89,
+      "evidence": [
+        "After committing his first kill at 15, he displayed no distress, panic, or loss of appetite: 'His face was calm as ice. Where was the fluster?' (ch. 36)",
+        "After killing the young Wang girl: 'At least she looks decent.' (ch. 68) — his only reaction is aesthetic",
+        "'Fang Yuan would not kill for the sake of killing, killing is only a method.' (ch. 29) — cold instrumentalism, not bloodlust",
+        "He suffocates the wounded Jiao San while performing grief for approaching Gu Masters (ch. 96)",
+        "He contemplates killing his own weakened teammates and decides against it only on risk-benefit grounds, not moral grounds (ch. 95)",
+        "He kills old man Wang's daughter as a loose end: 'In this world, anybody can live, anybody can die, but nobody is innocent!' (ch. 68)"
+      ],
+      "notes": "This is controlled, instrumental psychopathy rather than impulsive psychopathy. He does not kill for pleasure, does not escalate gratuitously, and explicitly restrains violence when the cost-benefit ratio does not favor it. His fearlessness is total and his remorse is genuinely absent — not suppressed or rationalized after the fact, but simply not generated. The distinction from impulsive psychopathy is critical: he has superb impulse control, delayed gratification capacity, and long-term planning ability. The psychopathy manifests as affective flatness toward harm caused to others rather than as disinhibited aggression."
+    }
+  },
+  "moral_foundations": {
+    "care_harm": {
+      "score": 4,
+      "direction": "dismisses",
+      "notes": "Harm to others is categorically irrelevant to his decision-making. He kills an entire family including a young girl as a loose end without moral conflict. He uses a female teammate as a human shield. He frames innocent people for crimes they did not commit. The rare exceptions — pulling Fang Zheng from a river, consoling a frightened child — are genuine anomalies that suggest a residual, pre-philosophically-suppressed human impulse rather than a values-level commitment to care. He has successfully excised care/harm from his moral calculus but not entirely from his behavioral repertoire."
+    },
+    "fairness_cheating": {
+      "score": 4,
+      "direction": "dismisses",
+      "notes": "He exploits loopholes, frames innocents, cheats exams, manipulates lie detectors, and considers the very concept of 'fairness' a naive fiction used by the powerful to control the weak. However, there is one notable exception: he takes only one primeval stone from the frightened girl who offers all of hers, because he said he would (ch. 28). This suggests he does maintain a personal code of keeping his stated word in explicit transactions — not from fairness values but from a utilitarian commitment to his own credibility and predictability as a strategic tool."
+    },
+    "loyalty_betrayal": {
+      "score": 3,
+      "direction": "dismisses",
+      "notes": "'What? You said something about a sense of loyalty and honour to the clan? I'm so sorry, Fang Yuan does not have one bit of that.' (ch. 16). He has zero loyalty to clan, family, or any social grouping. He would sell the clan's compromising secrets to rival villages without hesitation. He frames even his brother as a pawn. The only functional 'loyalty' he demonstrates is to his own long-term self — which is not loyalty in the social sense but rather self-consistency."
+    },
+    "authority_subversion": {
+      "score": 3,
+      "direction": "dismisses",
+      "notes": "He views all authority as either a tool to exploit or an obstacle to neutralize. He studies clan rules to weaponise them, not to obey them: 'So what if I break the rules? He learnt the clan rules and memorised it to heart, but it was not for the sake of obeying it.' (ch. 35). He shows no deference to elders, Rank two Gu Masters, or the clan leader. The one partial exception is his strategic surface compliance during the period when he deliberately manages his image — but this is deception, not internalization of authority."
+    },
+    "sanctity_degradation": {
+      "score": 3,
+      "direction": "dismisses",
+      "notes": "He kicks away the Flower Wine Monk's bones while searching for treasure without a second thought (ch. 16). He dismembers a corpse for psychological effect. He compares a person's death to a pig's as a sincere philosophical equivalence, not a rhetorical flourish: 'in face of death, a person's death is no different from a pig's, what's the difference?' (ch. 66). He applies a naturalistic, desacralised worldview to all living beings including himself."
+    },
+    "liberty_oppression": {
+      "score": 92,
+      "direction": "values",
+      "notes": "The single moral foundation he holds with genuine intensity is personal liberty — specifically his own. He refuses every institutional incorporation attempt (chairman position, clan groups, merchant recruitment), maintains solitary independence at significant material cost, and frames his entire life philosophy around the refusal to be 'a pawn.' He does not extend this value to others' liberty; he is comfortable oppressing, extorting, and enslaving those weaker than him. His liberty-valuing is radically asymmetric: maximally protective of his own freedom, entirely indifferent to the freedom of others."
+    }
+  },
+  "values_hierarchy": [
+    {
+      "rank": 1,
+      "value": "Personal cultivation / ascent to immortality",
+      "evidence": "Everything in the narrative — every sacrifice, every deception, every killed relationship — is subordinated to advancing his cultivation and eventually re-cultivating the Spring Autumn Cicada. He sells profitable assets, injures himself severely, and endures social ostracism without hesitation to accelerate this goal. 'Money and fortune are just material goods, only one's cultivation is the root.' (ch. 112)"
+    },
+    {
+      "rank": 2,
+      "value": "Personal freedom / independence from all systems",
+      "evidence": "He refuses the academy chairman position, every group recruitment, every clan integration attempt — at significant material cost — specifically to preserve freedom of action. 'Joining an organisation and wanting to retain freedom was a pointless dream!' (ch. 102) — he resolves this by never genuinely joining any organisation."
+    },
+    {
+      "rank": 3,
+      "value": "Self-preservation / survival",
+      "evidence": "He explicitly and repeatedly prioritises survival over honour, dignity, or social standing: 'Nothing is too shameless if it is to survive.' (ch. 75). He flees Wang Da without hesitation and calls those who die for their ideals 'fools.' Survival is the precondition of all other values."
+    },
+    {
+      "rank": 4,
+      "value": "Knowledge and strategic intelligence",
+      "evidence": "His 500 years of accumulated experience is identified as his core advantage and most prized possession — more important than the Spring Autumn Cicada, specific foreknowledge, or material resources (ch. 38). He is constitutionally incapable of suppressing investigative impulses even mid-exam."
+    },
+    {
+      "rank": 5,
+      "value": "Control / domination of his immediate environment",
+      "evidence": "'Fang Yuan did not like passiveness, he liked to have the control of all matters tightly in his grip.' (ch. 72). He deliberately engineers situations months in advance to ensure he is never at others' mercy. He kills to pre-empt threats rather than react to them."
+    },
+    {
+      "rank": 6,
+      "value": "Resource acquisition (primeval stones) as instrumental to rank 1",
+      "evidence": "He tracks every primeval stone with obsessive precision and structures much of his daily behavior around resource acquisition — but always explicitly as a means to cultivation, never as an end in itself. He sells his entire property portfolio without sentiment the moment a Relic Gu becomes available."
+    }
+  ],
+  "attachment_style": {
+    "type": "dismissive-avoidant",
+    "evidence": "He has zero emotionally significant relationships across 120 chapters. He severs the brotherly bond with Fang Zheng explicitly and transactionally (ch. 18). He lets memories of his brother dissolve deliberately: 'The past memories in his heart were like smoke; they had already dispersed away.' (ch. 18). He rejects every student who approaches him socially. He views his aunt and uncle's care as 'investment, not love' from early in the narrative (ch. 2). He explicitly identifies his fundamental operating philosophy as radical self-reliance: 'No matter which world, there was only one thing which one could truly rely on; that was oneself.' (ch. 101). He maintains functional relationships only with those who have instrumental value (Jiang He, Jia Fu), and these are explicitly acknowledged to be purely transactional even internally.",
+    "notes": "The dismissive-avoidant pattern is atypically total and philosophically elaborated. He has not merely learned to suppress attachment needs — he has constructed an entire worldview that frames attachment as a cognitive error ('masks of weaklings', ch. 84). There is no anxiety about relationships, no ambivalence, no pull toward connection that he then suppresses. The original cold expression was a deliberate strategy adopted in childhood that 'became a habit' (ch. 2) — suggesting the suppression of attachment was an adaptive response to early threat, which subsequently became a core identity feature reinforced across 500 years. Whether a pre-philosophical Fang Yuan might have had different attachment needs is unknowable from the text."
+  },
+  "narrative_identity": {
+    "agency": "high",
+    "redemption_arc": false,
+    "dominant_theme": "The solitary demon ascending against a world of pawns: the self as the only reliable instrument, and cultivation as the only meaningful project.",
+    "notes": "His narrative identity is among the most stable and elaborated in the text. He has a fully articulated origin story (500 years of experience, conscious choice of the demonic path, death and rebirth), a fixed philosophical self-concept (demon, player not pawn, moon not its reflection), and a clear telos (reach the highest peak, eventually re-cultivate the Spring Autumn Cicada). There is no redemption arc — not because redemption is foreclosed, but because he does not recognise any state requiring redemption. He died without regrets in his first life and is repeating the same path more efficiently in his second. The dominant theme is not tragedy or corruption but radical autonomy: the refusal to be defined by, used by, or incorporated into any external system. He frames his demonic nature not as a fall from grace but as a hard-won philosophical liberation. His narrative identity is unusually coherent and resistant to external disruption — insults, humiliation, social ostracism, and near-death experiences all leave it intact."
+  },
+  "key_contradictions": [
+    "He professes total equanimity and freedom from attachment, yet keeps a detailed internal ledger of every slight, scheme, and offense committed against him — storing his uncle's trap as a 'kindness I will remember deeply' (ch. 11) and 'snorting' at old man Wang's omission months after the fact (ch. 71). True indifference would not register these at all. His 'equanimity' may be the suppression of resentment rather than its absence.",
+    "He articulates a philosophy of complete moral indifference ('in this world, anybody can live, anybody can die, but nobody is innocent') yet makes two entirely uncharacteristic gestures of gentleness — pulling Fang Zheng from a river without comment, and stopping a father from striking his young daughter (ch. 100). These acts are inconsistent with his stated worldview and are never rationalised. They suggest a layer of unreconstructed human feeling beneath his philosophical architecture.",
+    "He frames his demonic path as philosophical liberation and claims 'no regrets' in both his first death and his second life, yet his entire second life is structured around correcting the mistakes of his first — better resource management, better concealment, better social positioning. If the first life was lived without regrets, the obsessive correction in the second implies retrospective dissatisfaction that the stated philosophy cannot accommodate.",
+    "He explicitly rejects dependence on foreknowledge as the source of his advantage, claiming 500 years of experience is sufficient (ch. 38). Yet throughout the narrative he relies heavily on past-life memories of specific events, people, and locations. The butterfly effect increasingly disrupts this advantage, generating a tension between his stated self-sufficiency and his actual dependence on a prior timeline that is now diverging.",
+    "He is simultaneously the most strategically sophisticated actor in his environment and assessed by the clan leader as 'immature' and 'still a youngster' (ch. 58). Both assessments are partially correct: his multi-step political maneuvering is genuinely beyond his apparent age, but his failure to fully conceal the Liquor worm and his public anger at the guards reveal that his 500-year wisdom is occasionally overwhelmed by the emotional reactivity of his 15-year-old body and brain — a physiological constraint his experience cannot fully override.",
+    "His radical individualism ('only oneself is the most reliable') is itself a product of relationships — specifically the betrayal by his brother and the exploitation by his aunt and uncle across two lifetimes. His philosophy of solitude is not free from attachment history but deeply shaped by it, making his 'freely chosen' isolation potentially a post-traumatic adaptation that he has retroactively elevated into a universal principle.",
+    "He views all organizational membership as incompatible with freedom, yet in his previous life he founded and led the Bloodwing Demon Sect with 'tens of thousands' of members. The sect presumably required him to manage relationships, inspire loyalty, and operate within (or as) an organisation. His current radical solipsism may represent a reaction against that previous structure rather than a timeless personal truth."
+  ]
+}
