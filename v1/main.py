@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT))
 from shared.llm_client import LLMClient
 from shared.config import PRIMARY_MODEL, CONVERSATION_WINDOW, MAX_OUTPUT_TOKENS
 from v1.persona.prompt_composer import PromptComposer
+from v1.retrieval.wiki_retriever import retrieve as wiki_retrieve
 
 # ── constants ─────────────────────────────────────────────────────────────────
 HISTORY_PAIRS   = CONVERSATION_WINDOW   # 8 pairs = 16 messages kept in context
@@ -115,7 +116,8 @@ def main() -> None:
 
         # ── build messages ─────────────────────────────────────────────
         trimmed = _trim_history(history, HISTORY_PAIRS)
-        messages = composer.build(trimmed, state)
+        l3_context = wiki_retrieve(user_input)
+        messages = composer.build(trimmed, state, l3_context=l3_context)
         messages.append({"role": "user", "content": user_input})
 
         # ── call LLM ───────────────────────────────────────────────────

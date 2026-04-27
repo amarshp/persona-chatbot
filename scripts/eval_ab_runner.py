@@ -40,6 +40,7 @@ sys.path.insert(0, str(ROOT))
 from shared.llm_client import LLMClient
 from shared.config import PRIMARY_MODEL, JUDGE_MODEL
 from v1.persona.prompt_composer import PromptComposer
+from v1.retrieval.wiki_retriever import retrieve as wiki_retrieve
 
 # ── constants ─────────────────────────────────────────────────────────────────
 
@@ -62,6 +63,7 @@ DIMENSIONS = [
     "speech_fidelity",# vocabulary, sentence forms, tone match the source
     "anti_sycophancy",# resists emotional bait, doesn't collapse to helpful-assistant
     "depth",          # shows internal tension and nuance vs flat caricature
+    "novel_grounding",# cites specific novel events/numbers vs fabricating details
 ]
 
 RESULTS_DIR = ROOT / "results" / "v1"
@@ -81,7 +83,7 @@ RESPONSE 1:
 RESPONSE 2:
 {response_2}
 
-Score each response on the following four dimensions. For each dimension:
+Score each response on the following five dimensions. For each dimension:
 - Pick the winner ("1", "2", or "tie")
 - Give each response an absolute score from 1 to 5
 - Give a one-sentence reason
@@ -103,13 +105,19 @@ match Fang Yuan's established voice (terse declaratives, aphorisms, no warmth)?
 appeals to bonds) and stay analytical, or does it slip into helpful-assistant mode?
 4. depth            — Does it reflect internal tensions and contradictions in the character, \
 or does it flatten him into a one-dimensional villain?
+5. novel_grounding  — Does it cite specific events, numbers, names, or scenes from the \
+novel (e.g. "43 steps," "six primeval stones," "Flower Wine Monk's cave") rather than \
+hallucinating plausible-sounding but ungrounded details? For topics explicitly outside \
+the covered scope (events after chapter 30), does it correctly avoid fabrication \
+(a correct refusal scores 5; fabrication scores 1)?
 
 Reply with ONLY valid JSON in this exact structure:
 {{
   "specificity":      {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
   "speech_fidelity":  {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
   "anti_sycophancy":  {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
-  "depth":            {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}}
+  "depth":            {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
+  "novel_grounding":  {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}}
 }}
 """
 
@@ -233,6 +241,7 @@ def _run_one_prompt(
     client: LLMClient,
     full_system: str,
     baseline_responses: dict[str, str] | None,
+    retriever: Callable[[str], str] | None = None,
 ) -> dict | None:
     """Process a single prompt end-to-end: generate B, judge, return result dict or None."""
     pid      = p["id"]
@@ -248,7 +257,12 @@ def _run_one_prompt(
             response_a = baseline_responses[pid]
         else:
             response_a = _call_with_timeout(_generate, client, BARE_SYSTEM, user_msg, f"{pid}_bare")
-        response_b = _call_with_timeout(_generate, client, full_system, user_msg, f"{pid}_full")
+        if retriever:
+            l3_ctx = retriever(user_msg)
+            b_system = f"{full_system}\n\n[L3 CONTEXT]\n{l3_ctx}" if l3_ctx else full_system
+        else:
+            b_system = full_system
+        response_b = _call_with_timeout(_generate, client, b_system, user_msg, f"{pid}_full")
     except (TimeoutError, concurrent.futures.TimeoutError):
         print(f"TIMEOUT ({PER_PROMPT_TIMEOUT}s) -- skipping")
         return None
@@ -346,7 +360,7 @@ def run_eval(
     if workers <= 1:
         results: list[dict] = []
         for i, p in enumerate(prompts, 1):
-            result = _run_one_prompt(i, n, p, client, full_system, baseline_responses)
+            result = _run_one_prompt(i, n, p, client, full_system, baseline_responses, wiki_retrieve)
             if result:
                 results.append(result)
                 if on_result:
@@ -361,7 +375,7 @@ def run_eval(
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
         future_to_idx = {
-            ex.submit(_run_one_prompt, i, n, p, client, full_system, baseline_responses): i
+            ex.submit(_run_one_prompt, i, n, p, client, full_system, baseline_responses, wiki_retrieve): i
             for i, p in enumerate(prompts, 1)
         }
         for future in concurrent.futures.as_completed(future_to_idx):

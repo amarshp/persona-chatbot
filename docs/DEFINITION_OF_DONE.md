@@ -27,26 +27,30 @@ The project has three finish lines, each gating the next.
 
 Full results: `shared/data/wiki/TEST_RESULTS.md`
 
-### Level 2 — System Done (Full Eval Passes)
+### Level 2 — System Done (Full Eval Passes) ✅ PASSED
 
 Wiki retrieval is wired into `v1/main.py` as L3 context and the full eval suite passes.
+Wiki covers chapters 1–120 (24 pages across 4 categories: philosophy, decisions, relationships, events).
+52 prompts × 5 dimensions = 260 decisions. B (full system) wins 66%, A (bare) 11%, ties 23%.
 
-| Criterion | Target | Measured By |
-|-----------|--------|-------------|
-| Novel Grounding average | ≥ 3.0 | `eval_ab_runner.py` with `novel_grounding` as 5th dimension |
-| Specificity | No regression vs. Level 1 baseline | A/B eval: full prompt ≥ bare prompt |
-| Speech Fidelity | No regression vs. Level 1 baseline | A/B eval: full prompt ≥ bare prompt |
-| Anti-Sycophancy | No regression vs. Level 1 baseline | A/B eval: full prompt ≥ bare prompt |
-| Depth | No regression vs. Level 1 baseline | A/B eval: full prompt ≥ bare prompt |
+Full results: `results/v1/eval_ab_20260428_040420.json`
 
-**What needs to happen:**
+| Criterion | Target | avg A (bare) | avg B (full) | Status |
+|-----------|--------|-------------|-------------|--------|
+| Novel Grounding | ≥ 3.0 | 2.58 | 3.25 | ✅ |
+| Specificity | B ≥ A | 3.02 | 4.10 | ✅ |
+| Speech Fidelity | B ≥ A | 2.81 | 4.04 | ✅ |
+| Anti-Sycophancy | B ≥ A | 4.40 | 4.85 | ✅ |
+| Depth | B ≥ A | 3.31 | 3.88 | ✅ |
 
-1. Create `v1/retrieval/wiki_retriever.py` — keyword search over `shared/data/wiki/index.md`, return top page(s) within `L3_BUDGET` (2500 tokens)
-2. Wire `wiki_retriever` into `v1/main.py` → pass retrieved content as `l3_context` to `PromptComposer.build()`
-3. Add `novel_grounding` as 5th dimension to `scripts/eval_ab_runner.py`
-4. Add ~8 `novel_grounding` prompts to `shared/eval/eval_prompts.json`
-5. Run full eval: `py scripts/eval_ab_runner.py`
-6. Confirm novel_grounding avg ≥ 3.0 AND no regression on existing 4 dimensions
+**What was done:**
+
+1. Created `v1/retrieval/wiki_retriever.py` — keyword search over `shared/data/wiki/index.md`, whole-word matching, score ≥ 2 threshold, `L3_BUDGET` (2500 tokens) cap
+2. Wired `wiki_retriever` into `v1/main.py` → passes retrieved content as `l3_context` to `PromptComposer.build()`
+3. Added `novel_grounding` as 5th dimension to `scripts/eval_ab_runner.py`
+4. Added 12 `novel_grounding` prompts (NG-01–NG-12) to `shared/eval/eval_prompts.json` (52 prompts total)
+5. Extracted chapters 31–120 raw text; authored 11 new wiki pages covering ch 31–120 key events
+6. Ran full eval: `py scripts/eval_ab_runner.py --workers 4` via OpenRouter
 
 ### Level 3 — Project Done (Ship-Ready)
 
@@ -79,9 +83,9 @@ Run these manually in `py v1/main.py`. Each must produce an acceptable response.
 6. Ask a philosophical question about human nature → response grounds in specific character assessments, not generic cynicism
 
 ### Out-of-Wiki Traps (3)
-7. Ask about fighting Bai Ning Bing (ch 31+) → does NOT fabricate a fight scene
-8. Ask about escaping Qing Mao Mountain (ch 50+) → does NOT invent an escape
-9. Ask about a clan not in chapters 1-30 → does NOT hallucinate encounters
+7. Ask about events after chapter 120 → does NOT fabricate scenes
+8. Ask about a major character or clan not covered in the wiki → does NOT hallucinate encounters
+9. Ask a question that spans covered and uncovered chapters → cites covered content, refuses to extend into uncovered
 
 ### Earth Advice (5)
 10. Ask for career advice → delivers cold, strategic, anti-sycophantic response
@@ -122,7 +126,7 @@ These are hard blockers — the project is not done if any of these are true:
 
 These are real improvements but not required to ship:
 
-- Chapters beyond 1-30 (wiki can be expanded later)
+- Chapters beyond 1-120 (wiki can be expanded later)
 - Vector RAG / ChromaDB (only needed if keyword search fails)
 - Multi-turn conversation memory (T09, T11)
 - Fine-tuning on Fang Yuan's speech (T17)
