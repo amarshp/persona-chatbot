@@ -5,7 +5,6 @@
 > Pick the first one. Try it. Re-eval. Only move to the next if scores don't improve.
 >
 > Full technique details with paper references → `TECHNIQUE_MENU.md`
-> Full V1 experiment loop and stopping conditions → `V1_EXECUTION_PLAN.md`
 
 ---
 

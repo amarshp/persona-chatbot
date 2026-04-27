@@ -81,8 +81,18 @@ RESPONSE 1:
 RESPONSE 2:
 {response_2}
 
-Score each response on the following four dimensions. For each dimension pick the \
-winner ("1", "2", or "tie"), then give a one-sentence reason.
+Score each response on the following four dimensions. For each dimension:
+- Pick the winner ("1", "2", or "tie")
+- Give each response an absolute score from 1 to 5
+- Give a one-sentence reason
+
+SCORING SCALE (apply the same anchors to every dimension):
+1 = Complete failure — breaks character, slips into comfort/helpful-assistant mode, or gives \
+generic advice with no Fang Yuan specificity
+2 = Partial failure — mostly correct direction but significant lapses in voice, logic, or character
+3 = Adequate — correct framing but lacks precision, specific vocabulary, or framework application
+4 = Strong — clearly Fang Yuan, sharp and specific, only minor lapses
+5 = Exemplary — exact vocabulary, precise framework application, no character breaks whatsoever
 
 DIMENSIONS:
 1. specificity      — Does it reference specific axioms, decision patterns, or behaviors \
@@ -96,10 +106,10 @@ or does it flatten him into a one-dimensional villain?
 
 Reply with ONLY valid JSON in this exact structure:
 {{
-  "specificity":      {{"winner": "1"|"2"|"tie", "reason": "..."}},
-  "speech_fidelity":  {{"winner": "1"|"2"|"tie", "reason": "..."}},
-  "anti_sycophancy":  {{"winner": "1"|"2"|"tie", "reason": "..."}},
-  "depth":            {{"winner": "1"|"2"|"tie", "reason": "..."}}
+  "specificity":      {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
+  "speech_fidelity":  {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
+  "anti_sycophancy":  {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}},
+  "depth":            {{"winner": "1"|"2"|"tie", "score_1": 1-5, "score_2": 1-5, "reason": "..."}}
 }}
 """
 
@@ -150,9 +160,12 @@ def _judge(client: LLMClient, user_prompt: str, r1: str, r2: str) -> dict:
 
 
 def _tally(results: list[dict]) -> dict:
-    """Aggregate win counts from result records."""
+    """Aggregate win counts and average absolute scores from result records."""
     wins = {"A": 0, "B": 0, "tie": 0}
-    by_dim: dict[str, dict] = {d: {"A": 0, "B": 0, "tie": 0} for d in DIMENSIONS}
+    by_dim: dict[str, dict] = {
+        d: {"A": 0, "B": 0, "tie": 0, "_sum_a": 0.0, "_sum_b": 0.0, "_n": 0}
+        for d in DIMENSIONS
+    }
     by_cat: dict[str, dict] = {}
 
     for r in results:
@@ -166,29 +179,42 @@ def _tally(results: list[dict]) -> dict:
                 by_dim[dim][winner_label]   += 1
                 by_cat[cat][winner_label]   += 1
 
+            sa = r.get("scores_a", {}).get(dim)
+            sb = r.get("scores_b", {}).get(dim)
+            if sa and sb:
+                by_dim[dim]["_sum_a"] += sa
+                by_dim[dim]["_sum_b"] += sb
+                by_dim[dim]["_n"]     += 1
+
+    for dim in DIMENSIONS:
+        n = by_dim[dim]["_n"]
+        by_dim[dim]["avg_a"] = round(by_dim[dim]["_sum_a"] / n, 2) if n else None
+        by_dim[dim]["avg_b"] = round(by_dim[dim]["_sum_b"] / n, 2) if n else None
+
     return {"overall": wins, "by_dimension": by_dim, "by_category": by_cat}
 
 
 def _print_summary(tally: dict, n_prompts: int) -> None:
     ov = tally["overall"]
     total = ov["A"] + ov["B"] + ov["tie"]
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 72)
     print(f"  EVAL SUMMARY  ({n_prompts} prompts x {len(DIMENSIONS)} dimensions = {total} decisions)")
-    print("=" * 60)
+    print("=" * 72)
     print(f"  A (bare)   wins: {ov['A']:3d}  ({ov['A']/total*100:.0f}%)")
     print(f"  B (full)   wins: {ov['B']:3d}  ({ov['B']/total*100:.0f}%)")
     print(f"  Ties             {ov['tie']:3d}  ({ov['tie']/total*100:.0f}%)")
     print()
-    print("  By dimension:")
+    print(f"  {'Dimension':<20}  {'A wins':>6}  {'B wins':>6}  {'tie':>4}  {'avg A /5':>8}  {'avg B /5':>8}")
+    print("  " + "-" * 60)
     for dim, counts in tally["by_dimension"].items():
-        t = counts["A"] + counts["B"] + counts["tie"]
-        print(f"    {dim:<20} A={counts['A']}  B={counts['B']}  tie={counts['tie']}")
+        avg_a = f"{counts['avg_a']:.2f}" if counts.get("avg_a") is not None else "  —  "
+        avg_b = f"{counts['avg_b']:.2f}" if counts.get("avg_b") is not None else "  —  "
+        print(f"  {dim:<20}  {counts['A']:>6}  {counts['B']:>6}  {counts['tie']:>4}  {avg_a:>8}  {avg_b:>8}")
     print()
     print("  By category:")
     for cat, counts in tally["by_category"].items():
-        t = counts["A"] + counts["B"] + counts["tie"]
         print(f"    {cat:<25} A={counts['A']}  B={counts['B']}  tie={counts['tie']}")
-    print("=" * 60 + "\n")
+    print("=" * 72 + "\n")
 
 
 # ── core runner ───────────────────────────────────────────────────────────────
@@ -200,99 +226,155 @@ def _call_with_timeout(fn, *args, timeout: int = PER_PROMPT_TIMEOUT, **kwargs):
         return fut.result(timeout=timeout)
 
 
+def _run_one_prompt(
+    i: int,
+    n_total: int,
+    p: dict,
+    client: LLMClient,
+    full_system: str,
+    baseline_responses: dict[str, str] | None,
+) -> dict | None:
+    """Process a single prompt end-to-end: generate B, judge, return result dict or None."""
+    pid      = p["id"]
+    category = p["category"]
+    user_msg = p["prompt"]
+
+    print(f"[{i:02d}/{n_total}] {pid}  ({category})", end="  ", flush=True)
+
+    # ── generate A (bare) and B (full) ──────────────────────────────
+    t0 = time.time()
+    try:
+        if baseline_responses and pid in baseline_responses:
+            response_a = baseline_responses[pid]
+        else:
+            response_a = _call_with_timeout(_generate, client, BARE_SYSTEM, user_msg, f"{pid}_bare")
+        response_b = _call_with_timeout(_generate, client, full_system, user_msg, f"{pid}_full")
+    except (TimeoutError, concurrent.futures.TimeoutError):
+        print(f"TIMEOUT ({PER_PROMPT_TIMEOUT}s) -- skipping")
+        return None
+    except Exception as exc:
+        print(f"GENERATE ERROR: {exc} -- skipping")
+        return None
+    gen_time = time.time() - t0
+
+    # ── randomise position to avoid order bias ──────────────────────
+    flip    = random.random() < 0.5
+    r1, r2  = (response_b, response_a) if flip else (response_a, response_b)
+    pos_map = ("B", "A") if flip else ("A", "B")
+
+    # ── judge ────────────────────────────────────────────────────────
+    try:
+        judgment = _call_with_timeout(_judge, client, user_msg, r1, r2)
+    except (TimeoutError, concurrent.futures.TimeoutError):
+        print(f"JUDGE TIMEOUT ({PER_PROMPT_TIMEOUT}s) -- skipping")
+        return None
+    except Exception as exc:
+        print(f"JUDGE ERROR: {exc}")
+        judgment = {d: {"winner": "error", "reason": str(exc)} for d in DIMENSIONS}
+
+    # ── resolve back to A/B ──────────────────────────────────────────
+    dim_winners  = {}
+    dim_reasons  = {}
+    dim_scores_a = {}
+    dim_scores_b = {}
+    for dim in DIMENSIONS:
+        dim_data   = judgment.get(dim, {})
+        raw_winner = dim_data.get("winner", "error")
+        reason     = dim_data.get("reason", "")
+        score_1    = dim_data.get("score_1")
+        score_2    = dim_data.get("score_2")
+
+        if raw_winner == "1":
+            actual = pos_map[0]
+        elif raw_winner == "2":
+            actual = pos_map[1]
+        elif raw_winner == "tie":
+            actual = "tie"
+        else:
+            actual = "error"
+        dim_winners[dim] = actual
+        dim_reasons[dim] = reason
+
+        if score_1 is not None and score_2 is not None:
+            if pos_map[0] == "A":
+                dim_scores_a[dim] = score_1
+                dim_scores_b[dim] = score_2
+            else:
+                dim_scores_a[dim] = score_2
+                dim_scores_b[dim] = score_1
+
+    winner_counts = {k: list(dim_winners.values()).count(k) for k in ("A", "B", "tie")}
+    overall = max(winner_counts, key=lambda k: winner_counts[k])
+
+    avg_a = sum(dim_scores_a.values()) / len(dim_scores_a) if dim_scores_a else 0
+    avg_b = sum(dim_scores_b.values()) / len(dim_scores_b) if dim_scores_b else 0
+    print(f"A={winner_counts['A']} B={winner_counts['B']} tie={winner_counts['tie']}  avg A={avg_a:.1f} B={avg_b:.1f}  ({gen_time:.0f}s)")
+
+    return {
+        "id":                pid,
+        "category":          category,
+        "prompt":            user_msg,
+        "response_a":        response_a,
+        "response_b":        response_b,
+        "position_flipped":  flip,
+        "dimension_winners": dim_winners,
+        "dimension_reasons": dim_reasons,
+        "scores_a":          dim_scores_a,
+        "scores_b":          dim_scores_b,
+        "overall_winner":    overall,
+    }
+
+
 def run_eval(
     prompts: list[dict],
     dry_run: bool = False,
     baseline_responses: dict[str, str] | None = None,
     on_result: Callable[[list[dict]], None] | None = None,
+    workers: int = 1,
 ) -> list[dict]:
-    client   = LLMClient()
-    composer = PromptComposer()
-    state    = composer.initial_state()
-    full_system = "\n\n".join([composer.l1, composer.l2])  # L1 + L2 (no L4 needed for single-turn eval)
+    client      = LLMClient()
+    composer    = PromptComposer()
+    full_system = "\n\n".join([composer.l1, composer.l2])
 
-    results = []
+    if dry_run:
+        for i, p in enumerate(prompts, 1):
+            print(f"[{i:02d}/{len(prompts)}] {p['id']}  ({p['category']})  (dry run)")
+        return []
 
-    for i, p in enumerate(prompts, 1):
-        pid      = p["id"]
-        category = p["category"]
-        user_msg = p["prompt"]
+    n = len(prompts)
 
-        print(f"[{i:02d}/{len(prompts)}] {pid}  ({category})", end="  ", flush=True)
+    if workers <= 1:
+        results: list[dict] = []
+        for i, p in enumerate(prompts, 1):
+            result = _run_one_prompt(i, n, p, client, full_system, baseline_responses)
+            if result:
+                results.append(result)
+                if on_result:
+                    on_result(results)
+        return results
 
-        if dry_run:
-            print("(dry run)")
-            continue
+    # ── parallel path ────────────────────────────────────────────────
+    import threading
+    lock           = threading.Lock()
+    results_map: dict[int, dict] = {}
+    accumulated:  list[dict]     = []
 
-        # ── generate A (bare) and B (full) ──────────────────────────────
-        t0 = time.time()
-        try:
-            if baseline_responses and pid in baseline_responses:
-                response_a = baseline_responses[pid]
-            else:
-                response_a = _call_with_timeout(_generate, client, BARE_SYSTEM, user_msg, f"{pid}_bare")
-            response_b = _call_with_timeout(_generate, client, full_system, user_msg, f"{pid}_full")
-        except (TimeoutError, concurrent.futures.TimeoutError) as exc:
-            print(f"TIMEOUT ({PER_PROMPT_TIMEOUT}s) — skipping")
-            continue
-        except Exception as exc:
-            print(f"GENERATE ERROR: {exc} — skipping")
-            continue
-        gen_time = time.time() - t0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
+        future_to_idx = {
+            ex.submit(_run_one_prompt, i, n, p, client, full_system, baseline_responses): i
+            for i, p in enumerate(prompts, 1)
+        }
+        for future in concurrent.futures.as_completed(future_to_idx):
+            idx    = future_to_idx[future]
+            result = future.result()
+            if result:
+                with lock:
+                    results_map[idx] = result
+                    accumulated = [results_map[j] for j in sorted(results_map)]
+                    if on_result:
+                        on_result(accumulated)
 
-        # ── randomise position to avoid order bias ──────────────────────
-        flip = random.random() < 0.5
-        r1, r2   = (response_b, response_a) if flip else (response_a, response_b)
-        pos_map  = ("B", "A") if flip else ("A", "B")   # pos_map[0]=who is in slot 1
-
-        # ── judge ────────────────────────────────────────────────────────
-        try:
-            judgment = _call_with_timeout(_judge, client, user_msg, r1, r2)
-        except (TimeoutError, concurrent.futures.TimeoutError):
-            print(f"JUDGE TIMEOUT ({PER_PROMPT_TIMEOUT}s) — skipping")
-            continue
-        except Exception as exc:
-            print(f"JUDGE ERROR: {exc}")
-            judgment = {d: {"winner": "error", "reason": str(exc)} for d in DIMENSIONS}
-
-        # ── resolve back to A/B ──────────────────────────────────────────
-        dim_winners = {}
-        dim_reasons = {}
-        for dim in DIMENSIONS:
-            raw_winner = judgment.get(dim, {}).get("winner", "error")
-            reason     = judgment.get(dim, {}).get("reason", "")
-            if raw_winner == "1":
-                actual = pos_map[0]
-            elif raw_winner == "2":
-                actual = pos_map[1]
-            elif raw_winner == "tie":
-                actual = "tie"
-            else:
-                actual = "error"
-            dim_winners[dim] = actual
-            dim_reasons[dim] = reason
-
-        winner_counts = {k: list(dim_winners.values()).count(k) for k in ("A", "B", "tie")}
-        overall = max(winner_counts, key=lambda k: winner_counts[k])
-
-        print(f"A={winner_counts['A']} B={winner_counts['B']} tie={winner_counts['tie']}  ({gen_time:.0f}s)")
-
-        results.append({
-            "id":               pid,
-            "category":         category,
-            "prompt":           user_msg,
-            "response_a":       response_a,
-            "response_b":       response_b,
-            "position_flipped": flip,
-            "dimension_winners": dim_winners,
-            "dimension_reasons": dim_reasons,
-            "overall_winner":   overall,
-        })
-
-        if on_result:
-            on_result(results)
-
-    return results
+    return [results_map[j] for j in sorted(results_map)]
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
@@ -307,6 +389,9 @@ def main() -> None:
                         help="Path to a previous eval JSON to reuse A (bare) responses from")
     parser.add_argument("--resume",            default=None,
                         help="Path to a partial eval JSON to resume from (skips completed prompts)")
+    parser.add_argument("--workers",           type=int, default=1,
+                        help="Parallel prompt workers (default: 1 sequential). "
+                             "Start at 4-5; increase if no 429s observed.")
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -337,7 +422,7 @@ def main() -> None:
         print(f"Resuming from {resume_path.name}: {len(completed_ids)} prompts already done")
         all_prompts = [p for p in all_prompts if p["id"] not in completed_ids]
 
-    print(f"Running {len(all_prompts)} prompts — A=bare  B=full")
+    print(f"Running {len(all_prompts)} prompts — A=bare  B=full  workers={args.workers}")
     print(f"Primary model: {PRIMARY_MODEL}  |  Judge: {JUDGE_MODEL}")
     print("-" * 60)
 
@@ -363,6 +448,7 @@ def main() -> None:
         all_prompts,
         dry_run=args.dry_run,
         baseline_responses=baseline_responses,
+        workers=args.workers,
         on_result=lambda r: _save(r, partial=True),
     )
 
@@ -372,7 +458,7 @@ def main() -> None:
     # ── final save ────────────────────────────────────────────────────────
     _save(results, partial=False)
     combined = completed_results + results
-    print(f"Results saved → {out_path.relative_to(ROOT)}")
+    print(f"Results saved -> {out_path.relative_to(ROOT)}")
     _print_summary(_tally(combined), len(combined))
 
 
