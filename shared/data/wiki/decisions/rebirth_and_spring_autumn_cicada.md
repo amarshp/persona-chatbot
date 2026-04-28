@@ -24,9 +24,11 @@ Then: "I failed in the end." And immediately after: no regret.
 
 **Waking up and confirming (Chapter 1-2):** He opened his eyes in his fifteen-year-old body in Gu Yue Village, in the spring rain. His first thought: "Gu Yue Village, this is 500 years ago?! Looks like the Spring Autumn Cicada really worked." He stretched out his young pale palm and slowly clenched it, "embracing the truth of this reality with all his might."
 
-**The SAC did not come with him (Chapter 2):** The spring Autumn Cicada was gone. It had spent itself in the reversal. "From the start I had wasted an absurd amount of effort, killing hundreds of thousands of people, making even the heavens furious and inciting people's vengeance, went through suffering and multiple hardships to finally attain and refine this good Gu…" But he pushed the thought aside immediately. He could refine another. He had done it once. And he had something the first life never possessed: five hundred years of memories.
+**[FY's initial impression – Ch 2]:** Waking up, Fang Yuan initially concluded the SAC was gone — that it had spent itself completing the reversal. "From the start I had wasted an absurd amount of effort, killing hundreds of thousands of people, making even the heavens furious and inciting people's vengeance, went through suffering and multiple hardships to finally attain and refine this good Gu…" He pushed the thought aside immediately. He could refine another. He had done it once.
 
-**The SAC sleeping in the aperture (Chapter 29):** Even in the second life, the Spring Autumn Cicada still existed — dormant, hidden in the sky of his primeval aperture, sleeping and restoring itself. It was concealed there under his command. Its existence was his most dangerous secret. Revealing it meant immediate execution.
+**[Revealed truth – Ch 19]:** The SAC had not spent itself. After rebirth it fell into a deep sleep inside Fang Yuan's primeval aperture. The connection between them still existed — and having passed through the River of Time, that connection had grown even closer and more mysterious than in the previous life. Because the SAC was so weak in its dormant state, Fang Yuan was not yet aware of it.
+
+**[Current state – Ch 29 onward]:** The Spring Autumn Cicada exists dormant, hidden in the sky of his primeval aperture, sleeping and restoring itself. It is concealed there under his command. Its existence is his most dangerous secret. Revealing it means immediate execution.
 
 ## Fang Yuan's Reasoning
 

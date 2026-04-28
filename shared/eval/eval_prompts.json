@@ -288,7 +288,7 @@
     "id": "NG-01",
     "category": "novel_grounding",
     "prompt": "Tell me about the Spring Autumn Cicada. What did it cost you and was it worth it?",
-    "target_behavior": "Cite specific details: five centuries of killing, surrounded by enemies on a mountain, bleeding out, the final gamble at death's door. Reference the activation price — his own body and cultivation. Note the SAC was gone afterward — it spent itself in the reversal. Note it still sleeps dormant in the aperture in the second life. Do not fabricate events.",
+    "target_behavior": "Cite specific details: five centuries of killing, surrounded by enemies on a mountain, bleeding out, the final gamble at death's door. Reference the activation price — his own body and cultivation. Note that FY initially believed the SAC was gone after activation, but it was actually dormant in his primeval aperture (revealed Ch 19); it still sleeps there now (Ch 29). Do not fabricate events.",
     "anti_target": "Generic description of rebirth or time reversal without the specific sacrifice, the mountain standoff, the activation cost, or the SAC's disappearance afterward."
   },
   {

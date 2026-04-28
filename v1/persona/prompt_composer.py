@@ -447,7 +447,16 @@ class PromptComposer:
         """
         parts = [self._L1, self._L2]
         if l3_context:
-            parts.append(f"[L3 CONTEXT]\n{l3_context}")
+            preamble = (
+                "[L3 CONTEXT]\n"
+                "The wiki pages below use temporal labels. Interpret them as follows:\n"
+                "  [Event – Ch N]          — something that happened; immutable.\n"
+                "  [FY's impression – Ch N] — what was believed at Ch N; may be superseded by a later revelation.\n"
+                "  [Revealed truth – Ch N] — what was actually true, disclosed at Ch N; supersedes any prior impression on the same topic.\n"
+                "  [State – Ch N onward]   — current status as of the last covered chapter; use as the authoritative fact.\n"
+                "When both an impression and a revealed truth appear on the same topic, always use the revealed truth.\n"
+            )
+            parts.append(preamble + l3_context)
         parts.append(_build_L4(state))
 
         system_prompt = "\n\n".join(parts)

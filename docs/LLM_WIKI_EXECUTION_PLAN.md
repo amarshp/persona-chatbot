@@ -289,7 +289,8 @@
  ├──────┼────────────────────────────────────────────────────────────────┼───────────┤
  │ 2    │ Single pass: read ch 1-30, build all wiki pages + index.md     │ 60-90 min │
  ├──────┼────────────────────────────────────────────────────────────────┼───────────┤
- │ 3    │ Review pages for quality (quotes, reasoning, cross-refs, tags) │ 20 min    │
+ │ 3    │ Review pages for quality: quotes, reasoning, cross-refs, tags.  │ 20 min    │
+ │      │ Check that temporal facts follow CONVENTIONS.md label rules.   │           │
  ├──────┼────────────────────────────────────────────────────────────────┼───────────┤
  │ 4    │ Start fresh Claude Code session, point it at SCHEMA.md         │ 5 min     │
  ├──────┼────────────────────────────────────────────────────────────────┼───────────┤
@@ -303,6 +304,21 @@
  Total: ~2.5-3 hours
 
  ---
+ Wiki Expansion (adding chapters beyond initial build)
+
+ When expanding wiki coverage to new chapters:
+ 1. Read shared/data/wiki/CONVENTIONS.md before authoring or editing any page.
+ 2. Do NOT rewrite existing sections — append new labeled sections with updated chapter numbers.
+ 3. For entities with changing state (Gu, characters, factions), update the [State – Ch N onward] entry.
+ 4. Add new chapters to chapters_covered frontmatter.
+ 5. Add new event pages for significant scenes; never rewrite old event pages.
+ 6. Update index.md to include any new pages.
+
+ The prompt used to build pages should begin:
+    "Read shared/data/wiki/CONVENTIONS.md first. Follow its labeling rules strictly.
+     Then read chapters N–M and [create / extend] these pages: ..."
+
+ ---
  Critical Files
 
  ┌───────────────────────────────────────────────────────┬──────────────────────────────────────────────────────┐
@@ -312,7 +328,10 @@
  ├───────────────────────────────────────────────────────┼──────────────────────────────────────────────────────┤
  │ shared/data/raw/manifest.json                         │ Chapter titles and word counts                       │
  ├───────────────────────────────────────────────────────┼──────────────────────────────────────────────────────┤
- │ shared/data/wiki/SCHEMA.md                            │ New — persona definition + query protocol            │
+ │ shared/data/wiki/SCHEMA.md                            │ New — persona definition + query protocol (Option A) │
+ ├───────────────────────────────────────────────────────┼──────────────────────────────────────────────────────┤
+ │ shared/data/wiki/CONVENTIONS.md                       │ Authoring rules for wiki expansion — must be read    │
+ │                                                       │ before creating or editing any wiki page             │
  ├───────────────────────────────────────────────────────┼──────────────────────────────────────────────────────┤
  │ shared/data/wiki/index.md                             │ New — page catalog with tags                         │
  ├───────────────────────────────────────────────────────┼──────────────────────────────────────────────────────┤
