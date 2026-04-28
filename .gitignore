@@ -1,9 +1,9 @@
 .env
 __pycache__/
 *.pyc
-shared/data/chunks_db/
-shared/data/raw/
-results/
+# shared/data/chunks_db/
+# shared/data/raw/
+# results/
 *.egg-info/
 .venv/
-chapters_pdf/
+# chapters_pdf/
