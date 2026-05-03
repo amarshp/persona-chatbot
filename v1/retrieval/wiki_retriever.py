@@ -188,16 +188,24 @@ def retrieve_sections(query: str) -> list[tuple[int, WikiSection]]:
     return relevant
 
 
-def format_sections(scored: list[tuple[int, WikiSection]]) -> str:
+def format_sections(
+    scored: list[tuple[int, WikiSection]],
+    *,
+    budget_tokens: int | None = None,
+) -> str:
     """
     Format scored sections with the existing token-budget assembler and joiner.
+
+    If budget_tokens is None, uses L3_BUDGET. Otherwise uses the supplied
+    token budget.
     """
     if not scored:
         return ""
 
     joiner = "\n\n---\n\n"
     joiner_cost = len(joiner)
-    remaining_budget = L3_BUDGET * _CHARS_PER_TOKEN
+    token_budget = L3_BUDGET if budget_tokens is None else budget_tokens
+    remaining_budget = token_budget * _CHARS_PER_TOKEN
     parts: list[str] = []
 
     for _, section in scored:
