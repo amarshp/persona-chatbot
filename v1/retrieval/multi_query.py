@@ -112,7 +112,7 @@ def _generate_phrasings(
         raw = client.generate(
             messages,
             model=JUDGE_MODEL,
-            temperature=0.3,
+            temperature=0,
             max_tokens=400,
             purpose="multi_query_rephrase",
             response_format={"type": "json_object"},
