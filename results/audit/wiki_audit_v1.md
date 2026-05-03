@@ -115,21 +115,82 @@ The 9-errors-in-8-pages rate suggests Tier 2 (the 16 unaudited pages) likely con
 ## What was NOT audited
 
 - Interpretive content ("Fang Yuan's reasoning was X") — this is Tier 3.
-- Cross-arc claims that the LLM may have synthesized across non-cited chapters.
+- Cross-arc claims the LLM may have synthesized across non-cited chapters.
 - Frontmatter `chapters_covered` lists — only the chapters cited inline were verified.
-- The other 16 wiki content pages (Tier 2 / 3).
 
 ---
 
-## Files modified in this audit
+# Tier 2 audit (2026-05-04, manual)
 
-- `shared/data/wiki/decisions/rebirth_and_spring_autumn_cicada.md` (3 fixes)
-- `shared/data/wiki/decisions/liquor_worm_acquisition.md` (1 fix)
-- `shared/data/wiki/decisions/jia_jin_sheng_killing.md` (1 typo fix)
-- `shared/data/wiki/events/beast_horde_survival.md` (2 paragraph rewrites)
+The user rejected an automated claim-extraction harness ("if the extraction harness itself is wrong then again there will be issues"). Tier 2 was therefore done page-by-page, manually, with raw chapter cross-reference, same method as Tier 1.
 
-Plus, from the prior commit (`6521b9c`):
-- `scripts/smoke_test_runner.py` (ST-02: 7 → 27)
-- `shared/data/wiki/decisions/extortion_campaign.md` (2× monthly → weekly)
-- `shared/data/wiki/philosophy/self_interest_and_human_nature.md` (monthly → weekly)
-- `shared/data/wiki/philosophy/strength_as_foundation.md` (monthly → weekly)
+## Tier 2 headline finding
+
+**4 additional factual errors found across 16 audited pages.** 12 of 16 pages were clean. The error rate dropped from ~1.0 per page (Tier 1) to ~0.25 per page (Tier 2). This suggests the most error-prone pages were already in Tier 1 — events with specific numeric/quote claims tend to attract LLM error more than the philosophy / relationship pages, which are interpretive.
+
+Cumulative across both tiers: **13 distinct factual errors corrected across 24 audited pages.**
+
+## Tier 2 errors found and corrected
+
+### `decisions/class_chairman_refusal.md` (1 error)
+
+| Wiki said | Source | Fix |
+|---|---|---|
+| "charging Mo Bei an additional two stones based on his new rank, and charging Fang Zheng three instead of one" | `chapter_0054.txt:111` — "Each of you hand over one piece of primeval stone, vice chairmen three pieces, class chairman eight pieces." | Wiki conflated the chairman rate (8 pieces) with the vice-chairman rate (3 pieces, which is 2 more than normal). Corrected to "the class chairman (Mo Bei) eight pieces, vice chairmen (Chi Cheng and Fang Zheng) three pieces, and normal students one piece" with citation. |
+
+### `events/flower_wine_monk_cave.md` (1 error)
+
+| Wiki said | Source | Fix |
+|---|---|---|
+| "Seventy steps of darkness" through the stone fissure | `chapter_0014.txt:115` — "He continued walking for another fifty to sixty steps, the red light growing brighter." | "Roughly fifty to sixty steps of darkness" + citation |
+
+### `philosophy/self_interest_and_human_nature.md` (1 chapter attribution error)
+
+| Wiki said | Source | Fix |
+|---|---|---|
+| "In this world, anybody can live, anybody can die, but nobody is innocent!" attributed to chapters 15-16 (Photo-audio Gu replay) | `chapter_0068.txt:147` — quote is from after the hunter family killing, not the cave revelation | Reworked to keep the Ch 15-16 cover-up reference but explicitly attribute the quote to ch 68 with line numbers. |
+
+### `relationships/uncle_and_aunt.md` (1 chapter attribution error)
+
+| Wiki said | Source | Fix |
+|---|---|---|
+| Uncle's "Fang Yuan is just too smart, too cunning..." quote attributed to "Chapter 30" after the academy extortion | `chapter_0018.txt:179` — quote is from after the Shen Cui sale, not the academy extortion | Re-attributed to chapter 18 with line number; preserved the chapter 30 fact (uncle's response was to weaponize Fang Zheng). |
+
+## Tier 2 pages verified clean (12)
+
+- `decisions/shen_cui_confrontation.md` — all chapter 11 quotes verbatim verified
+- `decisions/liquor_worm_strategy.md` — Qing Shu proposal quotes ch 105 line 67 verified
+- `decisions/jiao_san_team_selection.md` — ch 87 verified
+- `decisions/mo_yan_corpse_gift.md` — ch 36-37 verified
+- `events/hunter_family_killing.md` — all chapter 68 quotes verbatim
+- `philosophy/killing_logic.md` — ch 75 quotes (Han Xin/Cao Cao/Yue Wang/etc.) verbatim
+- `philosophy/demonic_path_survival.md` — ch 2 (Demonic path quote) and ch 28 (stick/carrot) verbatim
+- `philosophy/strength_as_foundation.md` — talent/rank caps verified ch 7 (some recovery-rate sub-claims unverified but plausible)
+- `relationships/shen_cui.md` — quotes covered by `shen_cui_confrontation.md` audit
+- `relationships/mo_yan.md` — quotes covered by `mo_yan_corpse_gift.md` audit
+- `relationships/gu_yue_qing_shu.md` — ch 105 lines 13–25 verified
+- `relationships/jiao_san.md` — ch 97 line 27 confirms "all group members died"
+
+## Files modified in Tier 2
+
+- `shared/data/wiki/decisions/class_chairman_refusal.md`
+- `shared/data/wiki/events/flower_wine_monk_cave.md`
+- `shared/data/wiki/philosophy/self_interest_and_human_nature.md` (in addition to earlier monthly→weekly fix)
+- `shared/data/wiki/relationships/uncle_and_aunt.md`
+
+---
+
+## Combined audit summary
+
+**Total errors corrected across both tiers: 13** (Tier 1: 9, Tier 2: 4) across **24 wiki content pages**.
+
+| Severity | Count | Examples |
+|---|---|---|
+| Highest (changes a foundational claim) | 2 | SAC = Rank 6 not Rank 10; Hua Xin / meat-shield character conflation |
+| High (factual error in retrieval-relevant text) | 4 | weekly vs monthly stipend ×3 sites + smoke test ST-02 step count |
+| Medium (specific numeric/quote drift) | 3 | seventy vs fifty-sixty steps; ninth vs eighth night; chairman vs vice chairman pricing |
+| Low (chapter attribution / typo) | 4 | Jia Fa→Jia Fu; nobody-innocent-quote ch 15-16→ch 68; uncle quote ch 30→ch 18; "since evening" wording |
+
+The audit confirms what the user predicted: an LLM-built wiki has ~0.5–1.0 factual errors per page, concentrated in events with specific numbers and quotes.
+
+The wiki is now substantially more trustworthy as a retrieval source. Remaining caveats for future work: interpretive claims, cross-arc synthesis claims, and the half-dozen places where the audit accepted plausible but not directly-verified detail (e.g., 8% / 4% recovery rates in `strength_as_foundation.md`).

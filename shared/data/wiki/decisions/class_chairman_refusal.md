@@ -8,7 +8,7 @@ tags: [class chairman, Mo Bei, chairman, extortion, visibility, status, power, a
 
 ## Summary
 
-When the academy elder appointed positions after the mid-year advancement race, Fang Yuan was entitled to the class chairman role — he had advanced first. He declined it. Mo Bei became chairman. Fang Zheng became vice chairman. That same afternoon, Fang Yuan stood at the academy gates and continued the extortion as before — now charging Mo Bei an additional two stones based on his new rank, and charging Fang Zheng three instead of one. The status meant nothing to Fang Yuan. The revenue stream was the point.
+When the academy elder appointed positions after the mid-year advancement race, Fang Yuan was entitled to the class chairman role — he had advanced first. He declined it. Mo Bei became chairman. Fang Zheng became vice chairman. That same afternoon, Fang Yuan stood at the academy gates and continued the extortion as before — now charging the class chairman (Mo Bei) eight pieces, vice chairmen (Chi Cheng and Fang Zheng) three pieces, and normal students one piece (`chapter_0054.txt:111`). The status meant nothing to Fang Yuan. The revenue stream was the point.
 
 ## Key Events
 
