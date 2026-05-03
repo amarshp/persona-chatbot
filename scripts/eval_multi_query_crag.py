@@ -7,6 +7,7 @@ Run from project root:
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -16,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from scripts.boundary_tests import VOCABULARY_TESTS, format_header, truncate
-from shared.config import JUDGE_MODEL, L3_BUDGET, RESULTS_DIR
+from shared.config import DATA_DIR, JUDGE_MODEL, L3_BUDGET, RESULTS_DIR
 from shared.llm_client import LLMClient
 from v1.retrieval.crag_filter import CragJudgement, CragResult, crag_filter
 from v1.retrieval.multi_query import MultiQueryResult, multi_query_retrieve
@@ -30,6 +31,7 @@ MQ_ONLY_CAPTURED_ON = "2026-05-03"
 DEFAULT_PHRASINGS = 3
 DEFAULT_THRESHOLD = 7
 DEFAULT_K_MAX = 12
+CACHE_PATH = DATA_DIR / "eval" / "v_rephrasings_cache.json"
 
 
 @dataclass(frozen=True)
@@ -99,6 +101,23 @@ def _render_judgements_table(judgements: tuple[CragJudgement, ...]) -> list[str]
     return lines
 
 
+def _cached_phrasings_for_query(
+    cache_payload: dict[str, object] | None,
+    query: str,
+) -> list[str] | None:
+    if cache_payload is None:
+        return None
+    rephrasings = cache_payload.get("rephrasings")
+    if not isinstance(rephrasings, dict):
+        return None
+    cached = rephrasings.get(query)
+    if not isinstance(cached, list) or not all(
+        isinstance(item, str) for item in cached
+    ):
+        return None
+    return cached
+
+
 def _print_rows(rows: list[EvalRow]) -> None:
     print("Phase 2 paid eval: multi-query + CRAG vocabulary boundary")
     print(
@@ -126,10 +145,15 @@ def _build_results_markdown(
     n: int,
     threshold: int,
     k_max: int,
+    rephrasings_source: str,
 ) -> str:
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
     current_passes = sum(1 for row in rows if row.passed)
     lines = [
+        "---",
+        f"rephrasings_source: {rephrasings_source}",
+        "---",
+        "",
         "# Multi-Query + CRAG Eval",
         "",
         f"- Generated: {generated_at}",
@@ -239,6 +263,15 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    cache_payload: dict[str, object] | None = None
+    rephrasings_source = "live"
+    if CACHE_PATH.exists():
+        cache_payload = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+        rephrasings_source = "cache"
+        print(f"[cache] loaded rephrasings from {CACHE_PATH}")
+    else:
+        print(f"[cache] no rephrasings cache; LLM rephrase per query")
+
     try:
         client = LLMClient()
     except Exception as exc:
@@ -250,10 +283,12 @@ def main() -> None:
         VOCABULARY_TESTS,
         start=1,
     ):
+        cached = _cached_phrasings_for_query(cache_payload, query)
         multi_query_result = multi_query_retrieve(
             query,
             n=args.n,
             client=client,
+            cached_phrasings=cached,
         )
         crag_result = crag_filter(
             query,
@@ -305,6 +340,7 @@ def main() -> None:
             n=args.n,
             threshold=args.threshold,
             k_max=args.k_max,
+            rephrasings_source=rephrasings_source,
         ),
         n=args.n,
         threshold=args.threshold,

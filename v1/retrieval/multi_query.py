@@ -131,14 +131,15 @@ def multi_query_retrieve(
     *,
     n: int = 3,
     client: LLMClient | None = None,
+    cached_phrasings: list[str] | None = None,
 ) -> MultiQueryResult:
     """
     Public entry point. Always returns a result and never raises on rephrase
     failure.
     """
-    phrasings: list[str] = []
+    phrasings: list[str] = list(cached_phrasings or [])
     rephrase_error: str | None = None
-    if n > 0:
+    if cached_phrasings is None and n > 0:
         active_client = client
         if active_client is None:
             try:

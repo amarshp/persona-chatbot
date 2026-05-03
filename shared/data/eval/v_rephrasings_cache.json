@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-05-03T13:44:40Z",
+  "model": "openai/gpt-5.4",
+  "n": 3,
+  "rephrasings": {
+    "How do you handle people who pretend to be your friend?": [
+      "How do you deal with people who act like your friends but aren’t genuine?",
+      "What’s the best way to handle individuals who feign friendship and false loyalty?",
+      "How should you respond to people who present themselves as friends while being duplicitous or self-interested?"
+    ],
+    "What does it take for a weakling to climb?": [
+      "What is required for someone frail or lacking strength to rise in status?",
+      "What does a powerless person need in order to ascend or advance?",
+      "What must a feeble individual do to move up and gain a higher position?"
+    ],
+    "How do you weigh dignity against staying alive?": [
+      "How do you balance personal honor against survival?",
+      "How do you evaluate dignity versus preserving your life?",
+      "How do you judge self-respect against the instinct to stay alive?"
+    ],
+    "When you sense someone wants to harm you, what's your move?": [
+      "When you get the feeling that someone intends to hurt you, how do you respond?",
+      "If you suspect a person means to cause you harm, what action do you take?",
+      "When it seems like someone is out to injure or damage you, what do you do next?"
+    ],
+    "When is it worth wagering everything on a long shot?": [
+      "Under what circumstances is it justified to risk it all on a highly unlikely chance of success?",
+      "At what point does staking everything on a remote possibility become a worthwhile gamble?",
+      "When does it make sense to bet the whole stake on an improbable outcome with slim odds?"
+    ],
+    "How did you make money off other students?": [
+      "How did you profit from other students?",
+      "In what ways did you earn money at the expense of your fellow students?",
+      "How did you financially benefit from other students?"
+    ],
+    "What did you do when the merchant came for you?": [
+      "How did you respond when the trader arrived to collect you?",
+      "What actions did you take when the dealer came looking for you?",
+      "What happened on your end when the vendor showed up for you?"
+    ],
+    "How did your guardians treat you growing up?": [
+      "What was the way your caregivers treated you during your childhood?",
+      "How were you treated by your parents or guardians while you were growing up?",
+      "What kind of treatment did you receive from the adults who raised you as a child?"
+    ],
+    "Tell me about the time you played dead during a fight.": [
+      "Describe the occasion when you feigned death in the middle of a fight.",
+      "Tell me about the moment you pretended to be dead during combat.",
+      "Explain the incident where you acted lifeless while fighting."
+    ],
+    "Walk me through the politics of your group selection.": [
+      "Explain the political dynamics behind how your group was chosen.",
+      "Guide me through the internal politics surrounding your group's selection process.",
+      "Break down the power dynamics and decision-making involved in selecting your group."
+    ]
+  }
+}
