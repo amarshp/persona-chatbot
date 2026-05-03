@@ -6,6 +6,7 @@ Run from project root:
 
 from __future__ import annotations
 
+import argparse
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -118,7 +119,14 @@ def _print_rows(rows: list[EvalRow]) -> None:
         )
 
 
-def _build_results_markdown(rows: list[EvalRow], total_llm_calls: int) -> str:
+def _build_results_markdown(
+    rows: list[EvalRow],
+    total_llm_calls: int,
+    *,
+    n: int,
+    threshold: int,
+    k_max: int,
+) -> str:
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
     current_passes = sum(1 for row in rows if row.passed)
     lines = [
@@ -126,9 +134,9 @@ def _build_results_markdown(rows: list[EvalRow], total_llm_calls: int) -> str:
         "",
         f"- Generated: {generated_at}",
         f"- JUDGE_MODEL: `{JUDGE_MODEL}`",
-        f"- Phrasings per query: `{DEFAULT_PHRASINGS}`",
-        f"- Threshold: `{DEFAULT_THRESHOLD}`",
-        f"- k_max: `{DEFAULT_K_MAX}`",
+        f"- Phrasings per query: `{n}`",
+        f"- Threshold: `{threshold}`",
+        f"- k_max: `{k_max}`",
         f"- L3_BUDGET: `{L3_BUDGET}`",
         f"- Total LLM calls: `{total_llm_calls}`",
         "",
@@ -178,7 +186,7 @@ def _build_results_markdown(rows: list[EvalRow], total_llm_calls: int) -> str:
                 f"{MQ_ONLY_PASS_COUNT}/{total} PASS |"
             ),
             (
-                "| MQ + CRAG (n=3, threshold=7) | "
+                f"| MQ + CRAG (n={n}, threshold={threshold}) | "
                 f"{current_passes}/{total} PASS |"
             ),
         ]
@@ -186,11 +194,18 @@ def _build_results_markdown(rows: list[EvalRow], total_llm_calls: int) -> str:
     return "\n".join(lines)
 
 
-def _write_results(markdown: str) -> Path:
+def _write_results(markdown: str, *, n: int, threshold: int, k_max: int) -> Path:
     output_dir = RESULTS_DIR / "v1"
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    output_path = output_dir / f"multi_query_crag_eval_{timestamp}.md"
+    suffix = ""
+    if (
+        n != DEFAULT_PHRASINGS
+        or threshold != DEFAULT_THRESHOLD
+        or k_max != DEFAULT_K_MAX
+    ):
+        suffix = f"_n{n}_t{threshold}_k{k_max}"
+    output_path = output_dir / f"multi_query_crag_eval_{timestamp}{suffix}.md"
     output_path.write_text(markdown, encoding="utf-8")
     return output_path
 
@@ -199,6 +214,30 @@ def main() -> None:
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8", errors="replace")
+
+    parser = argparse.ArgumentParser(
+        description="Phase 2 paid eval: multi-query + CRAG over V01-V10.",
+    )
+    parser.add_argument(
+        "--n",
+        type=int,
+        default=DEFAULT_PHRASINGS,
+        help="Number of multi-query rephrasings (default: 3)",
+    )
+    parser.add_argument(
+        "--threshold",
+        type=int,
+        default=DEFAULT_THRESHOLD,
+        help="CRAG keep threshold, scores below dropped (default: 7)",
+    )
+    parser.add_argument(
+        "--k-max",
+        type=int,
+        default=DEFAULT_K_MAX,
+        dest="k_max",
+        help="Max candidates CRAG-scores per row (default: 12)",
+    )
+    args = parser.parse_args()
 
     try:
         client = LLMClient()
@@ -213,14 +252,14 @@ def main() -> None:
     ):
         multi_query_result = multi_query_retrieve(
             query,
-            n=DEFAULT_PHRASINGS,
+            n=args.n,
             client=client,
         )
         crag_result = crag_filter(
             query,
             list(multi_query_result.merged_sections),
-            threshold=DEFAULT_THRESHOLD,
-            k_max=DEFAULT_K_MAX,
+            threshold=args.threshold,
+            k_max=args.k_max,
             client=client,
         )
         formatted = format_sections(list(crag_result.survivors))
@@ -254,12 +293,23 @@ def main() -> None:
         f"[captured {MQ_ONLY_CAPTURED_ON}]"
     )
     print(
-        "MQ + CRAG (n=3, threshold=7): "
+        f"MQ + CRAG (n={args.n}, threshold={args.threshold}): "
         f"{current_passes}/{total} PASS"
     )
 
     total_llm_calls = client.get_metrics()["num_calls"]
-    output_path = _write_results(_build_results_markdown(rows, total_llm_calls))
+    output_path = _write_results(
+        _build_results_markdown(
+            rows,
+            total_llm_calls,
+            n=args.n,
+            threshold=args.threshold,
+            k_max=args.k_max,
+        ),
+        n=args.n,
+        threshold=args.threshold,
+        k_max=args.k_max,
+    )
     print(f"Total LLM calls used: {total_llm_calls}")
     print(f"Saved markdown: {output_path}")
 
