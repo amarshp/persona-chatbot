@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LLM Council — Phase 2 Next Move</title>
+<style>
+:root {
+  --bg: #fafaf9;
+  --panel: #ffffff;
+  --ink: #1c1c1c;
+  --muted: #5a5a5a;
+  --rule: #e2e2e0;
+  --accent: #1f4068;
+  --warn: #b35900;
+  --ok: #2d6a4f;
+  --tag-contrarian: #b22222;
+  --tag-firstprinciples: #1f4068;
+  --tag-expansionist: #2d6a4f;
+  --tag-outsider: #6b3fa0;
+  --tag-executor: #b35900;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  padding: 32px 16px 64px;
+  line-height: 1.55;
+}
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+.header h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 700;
+}
+.header .sub {
+  color: var(--muted);
+  font-size: 14px;
+}
+.question {
+  background: #f4efe6;
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  margin: 16px 0 32px;
+  font-size: 15px;
+}
+.question h2 {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+.verdict {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.verdict h2 {
+  font-size: 22px;
+  margin: 0 0 16px;
+  color: var(--accent);
+}
+.verdict h3 {
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 24px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--rule);
+}
+.verdict h3:first-of-type {
+  margin-top: 0;
+}
+.verdict p, .verdict ol, .verdict ul {
+  margin: 8px 0;
+}
+.verdict ol { padding-left: 22px; }
+.verdict ol li { margin: 6px 0; }
+.verdict .pull {
+  background: #fff8e1;
+  border-left: 4px solid var(--warn);
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-weight: 500;
+}
+.verdict .key {
+  background: #e6f3ee;
+  border-left: 4px solid var(--ok);
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-weight: 500;
+}
+.alignment {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+.advisor-card {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 10px 8px;
+  text-align: center;
+  background: white;
+  font-size: 12px;
+}
+.advisor-card .name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+.advisor-card .vote {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+}
+.vote-fix { background: #2d6a4f; }
+.vote-pathb { background: #b35900; }
+.vote-patha { background: #b22222; }
+.advisor-card.contrarian { border-top: 3px solid var(--tag-contrarian); }
+.advisor-card.firstprinciples { border-top: 3px solid var(--tag-firstprinciples); }
+.advisor-card.expansionist { border-top: 3px solid var(--tag-expansionist); }
+.advisor-card.outsider { border-top: 3px solid var(--tag-outsider); }
+.advisor-card.executor { border-top: 3px solid var(--tag-executor); }
+details {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin: 8px 0;
+  padding: 12px 16px;
+}
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 4px 0;
+  list-style: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▸ ";
+  color: var(--muted);
+  margin-right: 4px;
+}
+details[open] summary::before {
+  content: "▾ ";
+}
+details .body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+}
+.advisor-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.tag-contrarian { background: var(--tag-contrarian); }
+.tag-firstprinciples { background: var(--tag-firstprinciples); }
+.tag-expansionist { background: var(--tag-expansionist); }
+.tag-outsider { background: var(--tag-outsider); }
+.tag-executor { background: var(--tag-executor); }
+.section-h {
+  margin: 32px 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+code {
+  background: #f0eee9;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>LLM Council Verdict</h1>
+  <div class="sub">PersonaRAG · L4 Phase 2 · 2026-05-03</div>
+</div>
+
+<div class="question">
+  <h2>Question</h2>
+  <strong>Path A (build BGE now, 3–4h) or Path B (cheaper experiments first: threshold tuning, V04 diagnostic, CRAG prompt) given that V01–V10 have hit a 5/10 ceiling and run-to-run variance is large from non-deterministic rephrasings?</strong>
+</div>
+
+<div class="verdict">
+  <h2>Council Verdict</h2>
+
+  <div class="key">
+    <strong>Recommendation: Neither path as written.</strong> Do Path B's first two items only, but reframe the goal — fix the measurement instrument before any tuning or building.
+  </div>
+
+  <h3>Where the Council Agrees</h3>
+  <p><strong>4 of 5 advisors</strong> independently converged: <em>the measurement instrument is broken</em>. n=10 with temp=0.3 rephrasings has standard error ≈ 16 points. Differences of 1/10 between configs are inside the noise floor. The tag-enrichment result (one PASS→FAIL, one FAIL→PASS) is the smoking gun — coin-flipping, not signal.</p>
+
+  <p><strong>3 of 5</strong> agreed: V07 and V04 are <em>not retrieval-mechanics problems</em>. V07 is a threshold policy (1 word vs floor of 2) — a 15-minute deterministic fix. V04 is undiagnosed and might be a bug. Spending 3–4h on BGE to fix what could be a config bug is the wrong tool.</p>
+
+  <p><strong>4 of 5</strong> agreed: BGE is the right <em>eventual</em> move, just not Monday morning.</p>
+
+  <h3>Where the Council Clashes</h3>
+  <p><strong>Expansionist vs. everyone else.</strong> The Expansionist argued BGE is a platform unlock — zero per-turn LLM cost makes n=100 feasible, which itself solves variance via larger sample size.</p>
+  <div class="pull">
+    <strong>The peer reviewers shredded one specific claim:</strong> BGE does <em>not</em> kill variance because variance comes from <code>temp=0.3</code> rephrasings <em>upstream</em> of the retriever, not from the retriever. Deterministic embeddings on stochastic queries still produce stochastic results.
+  </div>
+  <p><strong>Contrarian vs. First Principles on "fix the instrument."</strong> Same direction — Contrarian operationalizes it (re-run 5x, see if you get {5,3,6,4,5}), First Principles is more thorough (bigger frozen eval, deterministic rephrasings, V04 diagnostic, plus eval-to-objective validation).</p>
+
+  <h3>Blind Spots the Council Caught</h3>
+  <p>Peer review surfaced one thing <em>every single advisor</em> missed: <strong>does 80% on V01–V10 actually predict Fang Yuan persona quality?</strong> V01–V10 is a vocabulary-boundary retrieval test. The actual goal is in-character grounded generation. You could ace V01–V10 and ship a flat persona. You could hit 60% with a great one. The eval-to-objective link is unvalidated.</p>
+
+  <h3>The Recommendation</h3>
+  <ol>
+    <li><strong>Fix the instrument.</strong> Set temp=0 on the rephraser, or cache and freeze rephrasings. Non-negotiable.</li>
+    <li><strong>Establish noise floor.</strong> Run current best config 3–5× on the frozen eval. If you get {5,3,6,4,5}, your "ceiling" was 4.6 ± 1.1.</li>
+    <li><strong>Free deterministic fixes.</strong> Threshold 2→1 (V07). V04 diagnostic — print candidates per rephrasing before CRAG.</li>
+    <li><strong>Validate the eval itself.</strong> Generate Fang Yuan responses on 3–5 prompts with current best config vs. deliberately worse config. Does V-score correlate with persona quality?</li>
+    <li><strong>Then</strong> decide BGE with real numbers and validated eval.</li>
+  </ol>
+
+  <h3>The One Thing to Do First</h3>
+  <div class="key">
+    <strong>Freeze the rephrasings.</strong> Set <code>temp=0</code> on the rephraser, or cache the V01–V10 rephrasings to disk and load them deterministically on every run. Until this is done, you have no instrument, no signal, and no basis to choose between any two configurations — including BGE.
+  </div>
+</div>
+
+<h2 class="section-h">Advisor Alignment</h2>
+<div class="alignment">
+  <div class="advisor-card contrarian">
+    <span class="name">Contrarian</span>
+    <span class="vote vote-fix">Fix instrument first</span>
+  </div>
+  <div class="advisor-card firstprinciples">
+    <span class="name">First Principles</span>
+    <span class="vote vote-fix">Fix instrument first</span>
+  </div>
+  <div class="advisor-card expansionist">
+    <span class="name">Expansionist</span>
+    <span class="vote vote-patha">PATH A — BGE</span>
+  </div>
+  <div class="advisor-card outsider">
+    <span class="name">Outsider</span>
+    <span class="vote vote-pathb">PATH B (re-ordered)</span>
+  </div>
+  <div class="advisor-card executor">
+    <span class="name">Executor</span>
+    <span class="vote vote-pathb">PATH B (items 1–2)</span>
+  </div>
+</div>
+
+<h2 class="section-h">Advisor Responses</h2>
+
+<details>
+  <summary><span class="advisor-tag tag-contrarian">CONTRARIAN</span>Both paths flawed — n=10 cannot distinguish signal from noise</summary>
+  <div class="body">
+    <p>Both paths have a fatal flaw you're not naming: <strong>n=10 with non-deterministic rephrasings cannot distinguish signal from noise.</strong> You already proved this — flipping V02 PASS / V03 FAIL on tag enrichment, 5→4 on n=5, "different fails" at t=5. That's not measurement, that's coin-flipping with $0.65 of LLM credits.</p>
+    <p>So before A or B, ask: <strong>what does 5/10 even mean?</strong> Run your "best" config 5 times. If you get {5, 3, 6, 4, 5}, your ceiling isn't 5/10 — it's 4.6 ± 1.1, and every "improvement" you've measured is inside the error bar.</p>
+    <p><strong>On Path A:</strong> BGE doesn't fix V01/V09 — those are CRAG over-rejection, downstream of retrieval. You'll spend 3-4h, hit 6/10, and discover the bottleneck moved.</p>
+    <p><strong>On Path B:</strong> Threshold 2→1 on V07 is fine — deterministic structural fix. But "tune CRAG prompt" on n=10 with temp=0.3? You'll chase ghosts.</p>
+    <p><strong>Call:</strong> Neither. Spend the next hour on (a) seed the rephrasings or set temp=0, (b) re-run best config 5x to get a real baseline, (c) re-audit V01-V10 labels.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="advisor-tag tag-firstprinciples">FIRST PRINCIPLES</span>You're optimizing the wrong loop — fix the measurement instrument</summary>
+  <div class="body">
+    <p>You're optimizing the wrong loop. Strip this back. What's the actual job? Build a Fang Yuan persona that grounds in Reverend Insanity. Not "hit 80% on V01-V10." Those vocabulary tests are a proxy you invented. A 10-sample boundary set with stochastic rephrasings cannot, mathematically, distinguish a 50% retriever from a 70% one — your standard error is roughly 16 points.</p>
+    <p>The "PATH A or PATH B?" framing assumes the bottleneck is retrieval mechanics. But your own diagnostics say otherwise. V07 fails because "merchant" is one word and your threshold is two — that's not a recall problem, that's a tokenization/threshold policy you wrote. V09 fails because CRAG scored Summary 9 and Key Events 2 of the same page — that's a chunking/labeling problem. V04 might be a bug.</p>
+    <p>Reframe: before any more knob turns or model swaps, you need (a) a bigger frozen eval set, (b) deterministic rephrasings (cache them, or temp=0), and (c) the V04 diagnostic. Then PATH A vs B dissolves.</p>
+    <p>The smallest change isn't lowering a threshold. It's fixing your measurement instrument.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="advisor-tag tag-expansionist">EXPANSIONIST</span>PATH A — BGE as platform unlock, not feature</summary>
+  <div class="body">
+    <p>PATH A. Build BGE now — but reframe what it is. BGE is the unlock that makes every downstream experiment cheaper, faster, signal-rich.</p>
+    <p>Hidden upside: (1) BGE kills variance — deterministic embeddings give clean signal for the next 50 experiments. (2) Hybrid scoring is a platform — dial ratio per-query-type, add reranker stages, persona-conditioned retrieval. Path B → 6/10. Path A → 9/10. (3) Zero per-turn LLM cost → n=100 evals possible. 80% target stops being a coin flip. (4) V07's keyword-floor isn't a bug to patch — it's the corpus telling you lexical retrieval is wrong for narrative fiction.</p>
+    <p>Path B is rearranging deck chairs. Build the boat.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="advisor-tag tag-outsider">OUTSIDER</span>You buried the actual finding under tactics</summary>
+  <div class="body">
+    <p>Reading this cold, three things jump out:</p>
+    <p><strong>You buried the actual finding under tactics.</strong> V07 has 1 meaningful word and your threshold is 2. That's not a "structural issue" — that's a deterministic, reproducible failure. Fix it by changing a 2 to a 1 in 30 seconds. Why is this in the same conversation as a 3-4 hour BGE build?</p>
+    <p><strong>Your n is too small to compare anything.</strong> Differences of 1/10 between configurations are not signal. Tag enrichment flipped one PASS→FAIL, one FAIL→PASS — that's noise. Before any more knob-turning, run your best config 3-5 times and see what the actual distribution looks like. You may already be at 6/10 ± 1.5.</p>
+    <p><strong>"Recall gap" and "never retrieved" are diagnoses, not measurements.</strong> V04 might be a bug. Spending 3-4 hours on BGE to fix a bug is the wrong tool.</p>
+    <p><strong>Path B, ordered correctly:</strong> (1) Re-run best config 3x. (2) Threshold fix. (3) V04 diagnostic. (4) THEN decide BGE with real numbers.</p>
+    <p>You're behaving like someone optimizing for hitting 80%. If you were learning what works, you'd already have the variance distribution and V04 trace.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="advisor-tag tag-executor">EXECUTOR</span>PATH B items 1 & 2 only — concrete steps</summary>
+  <div class="body">
+    <p>PATH B, items 1 and 2 only. Then re-evaluate. BGE is not Monday morning work.</p>
+    <p><strong>Step 1 (15 min):</strong> Flip section threshold 2 to 1. Re-run V01-V10. If V07 flips PASS, you've bought a data point for ~zero cost.</p>
+    <p><strong>Step 2 (30-60 min):</strong> V04 diagnostic. Print the candidate set per rephrasing before CRAG. Either the right chunk is in the union (CRAG problem) or it's not (retriever problem). You don't know which yet, and that determines everything.</p>
+    <p><strong>Stop. Reassess.</strong> Do not do step 3 (CRAG prompt tuning) blind. n=10 with temp=0.3 means signal-to-noise is already trash.</p>
+    <p>Smallest-change-first is correct when the next change is cheap and diagnostic. Steps 1-2 are. Step 3 isn't. Lock seeds on the rephraser or bump n to 30 before further sweeps. V07 fix + V04 diagnostic might get you to 7/10 by tonight.</p>
+    <p>BGE is the right next big move. Just not today.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Peer review highlights (5 reviewers)</summary>
+  <div class="body">
+    <p><strong>Strongest response (5 reviews):</strong> 3× First Principles ("names the disease, calculates ~16pt SE, exposes V07/V09 as config/chunking issues"). 2× Contrarian ("operationalizes with concrete falsification {5,3,6,4,5}").</p>
+    <p><strong>Biggest blind spot (unanimous, 5/5):</strong> Expansionist's claim "BGE kills variance." Variance comes from <code>temp=0.3</code> rephrasings, not from the embedder. Deterministic embeddings on stochastic queries still produce stochastic results.</p>
+    <p><strong>What ALL advisors missed:</strong> Whether V01–V10 actually predicts Fang Yuan persona quality. V01–V10 is vocabulary-boundary retrieval; the product goal is in-character grounded generation. You could ace V01–V10 and ship a flat persona. The eval-to-objective link is unvalidated — that's the deeper measurement problem behind the noise problem.</p>
+  </div>
+</details>
+
+<div class="footer">
+  Generated 2026-05-03 · 5 advisors · 5 peer reviewers · 1 chairman · counciled: Phase 2 next move<br>
+  Files: <code>results/council/council-report-20260503_125500.html</code> · <code>results/council/council-transcript-20260503_125500.md</code>
+</div>
+
+</div>
+</body>
+</html>
