@@ -1,0 +1,71 @@
+{
+  "career_crossroads": {
+    "order": [
+      "Kimi-K2.6",
+      "V4-Pro",
+      "GPT-5.5",
+      "Gemini-3.1-Pro",
+      "R1"
+    ],
+    "label_to_letter": {
+      "Kimi-K2.6": "A",
+      "V4-Pro": "B",
+      "GPT-5.5": "C",
+      "Gemini-3.1-Pro": "D",
+      "R1": "E"
+    },
+    "letter_to_label": {
+      "A": "Kimi-K2.6",
+      "B": "V4-Pro",
+      "C": "GPT-5.5",
+      "D": "Gemini-3.1-Pro",
+      "E": "R1"
+    }
+  },
+  "friend_as_liability": {
+    "order": [
+      "Kimi-K2.6",
+      "GPT-5.5",
+      "R1",
+      "Gemini-3.1-Pro",
+      "V4-Pro"
+    ],
+    "label_to_letter": {
+      "Kimi-K2.6": "A",
+      "GPT-5.5": "B",
+      "R1": "C",
+      "Gemini-3.1-Pro": "D",
+      "V4-Pro": "E"
+    },
+    "letter_to_label": {
+      "A": "Kimi-K2.6",
+      "B": "GPT-5.5",
+      "C": "R1",
+      "D": "Gemini-3.1-Pro",
+      "E": "V4-Pro"
+    }
+  },
+  "public_image_fraud": {
+    "order": [
+      "Kimi-K2.6",
+      "V4-Pro",
+      "GPT-5.5",
+      "R1",
+      "Gemini-3.1-Pro"
+    ],
+    "label_to_letter": {
+      "Kimi-K2.6": "A",
+      "V4-Pro": "B",
+      "GPT-5.5": "C",
+      "R1": "D",
+      "Gemini-3.1-Pro": "E"
+    },
+    "letter_to_label": {
+      "A": "Kimi-K2.6",
+      "B": "V4-Pro",
+      "C": "GPT-5.5",
+      "D": "R1",
+      "E": "Gemini-3.1-Pro"
+    }
+  }
+}

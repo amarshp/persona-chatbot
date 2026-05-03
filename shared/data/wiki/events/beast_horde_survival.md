@@ -38,6 +38,6 @@ The Rank two breakthrough: Fang Yuan chose to disclose the advancement because c
 
 ## Connections
 
-- See [decisions/jiao_san_team_selection.md](jiao_san_team_selection.md) — Jiao San's group, and why Fang Yuan joined it knowing Jiao San had an agenda
+- See [decisions/jiao_san_team_selection.md](../decisions/jiao_san_team_selection.md) — Jiao San's group, and why Fang Yuan joined it knowing Jiao San had an agenda
 - See [philosophy/demonic_path_survival.md](../philosophy/demonic_path_survival.md) — the demonic path includes abandoning people to survive; no regret
 - See [relationships/jiao_san.md](../relationships/jiao_san.md) — Jiao San's eventual fate after the beast horde

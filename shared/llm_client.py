@@ -6,9 +6,11 @@ Both the primary model and the mini model use this client.
 
 from __future__ import annotations
 
+import json as _json
 import threading
 import time
 from dataclasses import dataclass, field
+from typing import Iterator
 
 import requests
 
@@ -147,6 +149,78 @@ class LLMClient:
             return data["choices"][0]["message"]["content"] or ""
 
         raise last_error or RuntimeError("LLM request failed")
+
+    def stream_generate(
+        self,
+        messages: list[dict],
+        *,
+        model: str | None = None,
+        temperature: float | None = None,
+        max_tokens: int | None = None,
+        purpose: str = "generation",
+    ) -> Iterator[str]:
+        """Yield text chunks from a streaming LLM response (SSE).
+
+        Token metrics are logged after the stream finishes.
+        No automatic retries — raises immediately on HTTP error.
+        """
+        model = model or PRIMARY_MODEL
+        temperature = temperature if temperature is not None else TEMPERATURE
+        tokens_key = "max_completion_tokens" if model.startswith("gpt-") else "max_tokens"
+        payload: dict = {
+            "model": model,
+            "messages": messages,
+            "temperature": temperature,
+            "stream": True,
+            "stream_options": {"include_usage": True},
+        }
+        if max_tokens is not None:
+            payload[tokens_key] = max_tokens
+
+        start = time.perf_counter_ns()
+        r = requests.post(
+            self._url,
+            headers=self._headers,
+            json=payload,
+            timeout=_TIMEOUT,
+            stream=True,
+        )
+        r.raise_for_status()
+
+        tokens_in = tokens_out = 0
+        for raw_line in r.iter_lines():
+            if not raw_line:
+                continue
+            line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
+            if not line.startswith("data: "):
+                continue
+            data_str = line[6:]
+            if data_str == "[DONE]":
+                break
+            try:
+                data = _json.loads(data_str)
+            except _json.JSONDecodeError:
+                continue
+            usage = data.get("usage") or {}
+            if usage:
+                tokens_in  = usage.get("prompt_tokens", 0)
+                tokens_out = usage.get("completion_tokens", 0)
+            choices = data.get("choices") or []
+            if not choices:
+                continue
+            content = (choices[0].get("delta") or {}).get("content") or ""
+            if content:
+                yield content
+
+        elapsed_ms = (time.perf_counter_ns() - start) // 1_000_000
+        with self._lock:
+            self.call_log.append(LLMCall(
+                purpose=purpose,
+                model=model,
+                tokens_in=tokens_in,
+                tokens_out=tokens_out,
+                latency_ms=elapsed_ms,
+            ))
 
     def reset_log(self):
         """Clear the call log (e.g., between eval prompts)."""

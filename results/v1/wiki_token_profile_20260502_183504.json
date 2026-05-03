@@ -1,0 +1,153 @@
+{
+  "generated": "20260502_183504",
+  "l3_budget_tokens": 2500,
+  "l3_budget_chars": 10000,
+  "pages": [
+    {
+      "path": "decisions/liquor_worm_acquisition.md",
+      "chars": 7554,
+      "tokens": 1888,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/extortion_campaign.md",
+      "chars": 7444,
+      "tokens": 1861,
+      "over_budget": false
+    },
+    {
+      "path": "events/flower_wine_monk_cave.md",
+      "chars": 7150,
+      "tokens": 1787,
+      "over_budget": false
+    },
+    {
+      "path": "relationships/fang_zheng.md",
+      "chars": 6383,
+      "tokens": 1595,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/shen_cui_confrontation.md",
+      "chars": 6184,
+      "tokens": 1546,
+      "over_budget": false
+    },
+    {
+      "path": "relationships/uncle_and_aunt.md",
+      "chars": 6147,
+      "tokens": 1536,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/liquor_worm_strategy.md",
+      "chars": 6139,
+      "tokens": 1534,
+      "over_budget": false
+    },
+    {
+      "path": "philosophy/demonic_path_survival.md",
+      "chars": 6126,
+      "tokens": 1531,
+      "over_budget": false
+    },
+    {
+      "path": "events/awakening_ceremony.md",
+      "chars": 6051,
+      "tokens": 1512,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+      "chars": 6017,
+      "tokens": 1504,
+      "over_budget": false
+    },
+    {
+      "path": "events/beast_horde_survival.md",
+      "chars": 5939,
+      "tokens": 1484,
+      "over_budget": false
+    },
+    {
+      "path": "philosophy/strength_as_foundation.md",
+      "chars": 5915,
+      "tokens": 1478,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/talent_test_c_grade.md",
+      "chars": 5812,
+      "tokens": 1453,
+      "over_budget": false
+    },
+    {
+      "path": "philosophy/self_interest_and_human_nature.md",
+      "chars": 5654,
+      "tokens": 1413,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/jiao_san_team_selection.md",
+      "chars": 5448,
+      "tokens": 1362,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/jia_jin_sheng_killing.md",
+      "chars": 5328,
+      "tokens": 1332,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/class_chairman_refusal.md",
+      "chars": 5241,
+      "tokens": 1310,
+      "over_budget": false
+    },
+    {
+      "path": "decisions/mo_yan_corpse_gift.md",
+      "chars": 5096,
+      "tokens": 1274,
+      "over_budget": false
+    },
+    {
+      "path": "events/hunter_family_killing.md",
+      "chars": 5001,
+      "tokens": 1250,
+      "over_budget": false
+    },
+    {
+      "path": "relationships/shen_cui.md",
+      "chars": 4928,
+      "tokens": 1232,
+      "over_budget": false
+    },
+    {
+      "path": "relationships/gu_yue_qing_shu.md",
+      "chars": 4626,
+      "tokens": 1156,
+      "over_budget": false
+    },
+    {
+      "path": "philosophy/killing_logic.md",
+      "chars": 4125,
+      "tokens": 1031,
+      "over_budget": false
+    },
+    {
+      "path": "relationships/jiao_san.md",
+      "chars": 4092,
+      "tokens": 1023,
+      "over_budget": false
+    },
+    {
+      "path": "relationships/mo_yan.md",
+      "chars": 3960,
+      "tokens": 990,
+      "over_budget": false
+    }
+  ],
+  "pages_over_budget": [],
+  "total_wiki_tokens": 34082
+}

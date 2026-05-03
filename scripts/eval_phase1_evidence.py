@@ -686,6 +686,9 @@ def run_judge(
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="Phase 1 evidence cache evaluation")
     parser.add_argument("--start",      type=int, default=1,  help="First chapter (default: 1)")
     parser.add_argument("--end",        type=int, default=40, help="Last chapter (default: 40)")

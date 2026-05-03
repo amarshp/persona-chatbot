@@ -2,8 +2,8 @@
 Wiki retriever for V1 Level 2.
 
 Searches the wiki index for pages relevant to the user query using keyword
-matching against page tags and summaries, then returns the content of the
-top-matching pages up to the L3_BUDGET token limit.
+matching against page tags and summaries, then returns the top-matching wiki
+sections up to the L3_BUDGET token limit.
 
 Public API
 ----------
@@ -18,6 +18,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
@@ -44,6 +45,9 @@ _STOP_WORDS = frozenset({
 _ROW_RE = re.compile(
     r"\|\s*\[.*?\]\(([^)]+)\)\s*\|\s*([^|]+)\s*\|\s*([^|]+)\s*\|"
 )
+
+if TYPE_CHECKING:
+    from v1.retrieval.wiki_chunker import WikiSection
 
 
 def _parse_index(index_text: str) -> list[dict]:
@@ -75,44 +79,67 @@ def _score(query_words: set[str], page: dict) -> int:
     return len(query_words & page_words)
 
 
+def _score_section(qwords: set[str], section: WikiSection) -> int:
+    text_parts = [
+        section.content,
+        section.section_title,
+        section.page_summary,
+        " ".join(section.page_tags),
+    ]
+    section_words = {
+        word
+        for word in re.split(r"\W+", " ".join(text_parts).lower())
+        if word
+    }
+    return len(qwords & section_words)
+
+
 def retrieve(query: str) -> str:
     """
-    Return concatenated wiki page content relevant to `query`.
+    Return concatenated wiki section content relevant to `query`.
     Stays within L3_BUDGET (approx tokens = chars / 4).
-    Returns "" if no page scores > 0.
+    Returns "" if no section scores >= 2.
     """
     if not INDEX_PATH.exists():
         return ""
 
-    index_text = INDEX_PATH.read_text(encoding="utf-8")
-    pages = _parse_index(index_text)
-    if not pages:
+    from v1.retrieval.wiki_chunker import load_sections
+
+    sections = load_sections()
+    if not sections:
         return ""
 
     qwords = _query_words(query)
     if not qwords:
         return ""
 
-    scored = sorted(pages, key=lambda p: _score(qwords, p), reverse=True)
-    relevant = [p for p in scored if _score(qwords, p) >= 2]
+    relevant: list[tuple[int, WikiSection]] = []
+    for section in sections:
+        score = _score_section(qwords, section)
+        if score >= 2:
+            relevant.append((score, section))
+
     if not relevant:
         return ""
 
-    budget_chars = L3_BUDGET * _CHARS_PER_TOKEN
+    relevant.sort(key=lambda item: (-item[0], item[1].page_rel, item[1].section_title))
+
+    joiner = "\n\n---\n\n"
+    joiner_cost = len(joiner)
+    remaining_budget = L3_BUDGET * _CHARS_PER_TOKEN
     parts: list[str] = []
-    used = 0
 
-    for page in relevant:
-        path = page["path"]
-        if not path.exists():
-            continue
-        content = path.read_text(encoding="utf-8")
-        if used + len(content) > budget_chars:
-            remaining = budget_chars - used
-            if remaining > 200:
-                parts.append(content[:remaining])
+    for _, section in relevant:
+        if remaining_budget < 250:
             break
-        parts.append(content)
-        used += len(content)
 
-    return "\n\n---\n\n".join(parts)
+        block = f"## {section.section_title} — {section.page_rel}\n\n{section.content}"
+        block_cost = len(block)
+        total_cost = block_cost + (joiner_cost if parts else 0)
+        if total_cost > remaining_budget:
+            continue
+
+        parts.append(block)
+        remaining_budget -= total_cost
+
+    return joiner.join(parts) if parts else ""

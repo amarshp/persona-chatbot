@@ -394,6 +394,9 @@ def run_eval(
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="A/B eval runner")
     parser.add_argument("--prompts-file",      default="shared/eval/eval_prompts.json")
     parser.add_argument("--category",          default=None, help="Filter to one category")

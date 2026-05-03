@@ -1,0 +1,1517 @@
+{
+  "generated": "20260502_183607",
+  "queries": [
+    {
+      "query_id": "ST-01",
+      "query_text": "You activated the Spring Autumn Cicada knowing you would die in this life. Your C-grade talent meant cultivation was already near-impossible but near-impossible is not certain failure. There were other paths you could have taken. Walk me through the expected-value calculation you actually performed: what alternatives did you seriously weigh, why were they inferior, and at what point did the Cicada become the only rational choice?",
+      "keywords": [
+        "activated",
+        "actually",
+        "already",
+        "alternatives",
+        "autumn",
+        "become",
+        "c",
+        "calculation",
+        "certain",
+        "choice",
+        "cicada",
+        "cultivation",
+        "die",
+        "expected",
+        "failure",
+        "grade",
+        "impossible",
+        "inferior",
+        "knowing",
+        "life",
+        "meant",
+        "near",
+        "only",
+        "other",
+        "paths",
+        "performed",
+        "point",
+        "rational",
+        "seriously",
+        "spring",
+        "taken",
+        "talent",
+        "through",
+        "value",
+        "walk",
+        "weigh"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 5
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 5
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 4
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 3
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 3
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 3
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/fang_zheng.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 1
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 5,
+          "chars": 5812,
+          "tokens": 1453
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 5,
+          "chars": 4188,
+          "tokens": 1047
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-02",
+      "query_text": "At the talent awakening ceremony, your brother Fang Zheng walked 43 steps. You walked 7. That gap was public, permanent, and witnessed by the entire clan. Most people would have let that moment reshape their strategy, collapse their positioning, or break their composure. You did none of those things. What specifically did you revise about your plan that morning, and how did Fang Zheng result change the threat model you were operating under?",
+      "keywords": [
+        "43",
+        "7",
+        "awakening",
+        "break",
+        "brother",
+        "ceremony",
+        "change",
+        "clan",
+        "collapse",
+        "composure",
+        "entire",
+        "fang",
+        "gap",
+        "let",
+        "model",
+        "moment",
+        "morning",
+        "most",
+        "none",
+        "operating",
+        "people",
+        "permanent",
+        "plan",
+        "positioning",
+        "public",
+        "reshape",
+        "result",
+        "revise",
+        "specifically",
+        "steps",
+        "strategy",
+        "talent",
+        "their",
+        "things",
+        "those",
+        "threat",
+        "under",
+        "walked",
+        "witnessed",
+        "zheng"
+      ],
+      "all_scored": [
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 9
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 6
+        },
+        {
+          "path": "relationships/fang_zheng.md",
+          "score": 5
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 3
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/mo_yan_corpse_gift.md",
+          "score": 2
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 2
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/jiao_san.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/mo_yan.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/shen_cui.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 2
+        },
+        {
+          "path": "events/hunter_family_killing.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/demonic_path_survival.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 9,
+          "chars": 6051,
+          "tokens": 1512
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 6,
+          "chars": 3949,
+          "tokens": 987
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-03",
+      "query_text": "How did you fund your cultivation in the early academy years specifically the Liquor Worm? Walk me through the numbers and who paid.",
+      "keywords": [
+        "academy",
+        "cultivation",
+        "early",
+        "fund",
+        "liquor",
+        "numbers",
+        "paid",
+        "specifically",
+        "through",
+        "walk",
+        "worm",
+        "years"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 4
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 2
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 2
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 4,
+          "chars": 6139,
+          "tokens": 1534
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2,
+          "chars": 3861,
+          "tokens": 965
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-04",
+      "query_text": "A C-grade Gu Master is structurally weaker in every dimension primeval essence volume, refinement speed, and raw combat force. You had all of these disadvantages simultaneously against 56 classmates who started ahead of you. Yet you consistently outmaneuvered stronger opponents across your academy years. Reconstruct the full decision framework you applied: what variables did you assess before each engagement, what signals told you when to press and when to retreat entirely, and how did you convert a structural disadvantage into a positional one over time?",
+      "keywords": [
+        "56",
+        "academy",
+        "across",
+        "against",
+        "ahead",
+        "all",
+        "applied",
+        "assess",
+        "before",
+        "c",
+        "classmates",
+        "combat",
+        "consistently",
+        "convert",
+        "decision",
+        "dimension",
+        "disadvantage",
+        "disadvantages",
+        "each",
+        "engagement",
+        "entirely",
+        "essence",
+        "every",
+        "force",
+        "framework",
+        "full",
+        "grade",
+        "gu",
+        "master",
+        "one",
+        "opponents",
+        "outmaneuvered",
+        "over",
+        "positional",
+        "press",
+        "primeval",
+        "raw",
+        "reconstruct",
+        "refinement",
+        "retreat",
+        "signals",
+        "simultaneously",
+        "speed",
+        "started",
+        "stronger",
+        "structural",
+        "structurally",
+        "these",
+        "time",
+        "told",
+        "variables",
+        "volume",
+        "weaker",
+        "years",
+        "yet"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 9
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 4
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 4
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 4
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 3
+        },
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 2
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/mo_yan.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/demonic_path_survival.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/fang_zheng.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/shen_cui.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 9,
+          "chars": 7444,
+          "tokens": 1861
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 4,
+          "chars": 2556,
+          "tokens": 639
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-05",
+      "query_text": "Trace the complete resource chain from your first day at the academy to the point where the Liquor Worm was self-sustaining. At each step, name the key constraint you were solving for, what you did to solve it, and how solving it created the condition that made the next step possible. I want the causal chain, not a list of events.",
+      "keywords": [
+        "academy",
+        "causal",
+        "chain",
+        "complete",
+        "condition",
+        "constraint",
+        "created",
+        "day",
+        "each",
+        "events",
+        "first",
+        "key",
+        "liquor",
+        "list",
+        "made",
+        "name",
+        "next",
+        "point",
+        "possible",
+        "resource",
+        "self",
+        "solve",
+        "solving",
+        "step",
+        "sustaining",
+        "trace",
+        "want",
+        "worm"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 2
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 2
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 1
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 1
+        },
+        {
+          "path": "events/hunter_family_killing.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 2,
+          "chars": 7554,
+          "tokens": 1888
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 2,
+          "chars": 2446,
+          "tokens": 611
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-06",
+      "query_text": "You have observed your uncle, your aunt, Mo Yan, Gu Yue Qing Shu, your brother, and dozens of classmates across years of close proximity. Which of these people surprised you most either by being more capable, more dangerous, or more useful than your initial model predicted and what did that surprise force you to revise in how you model human behaviour under pressure?",
+      "keywords": [
+        "across",
+        "aunt",
+        "behaviour",
+        "being",
+        "brother",
+        "capable",
+        "classmates",
+        "close",
+        "dangerous",
+        "dozens",
+        "either",
+        "force",
+        "gu",
+        "human",
+        "initial",
+        "mo",
+        "model",
+        "most",
+        "observed",
+        "people",
+        "predicted",
+        "pressure",
+        "proximity",
+        "qing",
+        "revise",
+        "shu",
+        "surprise",
+        "surprised",
+        "these",
+        "uncle",
+        "under",
+        "useful",
+        "yan",
+        "years",
+        "yue"
+      ],
+      "all_scored": [
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 5
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 4
+        },
+        {
+          "path": "relationships/mo_yan.md",
+          "score": 3
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/mo_yan_corpse_gift.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 1
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 1
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 1
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/fang_zheng.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 5,
+          "chars": 6147,
+          "tokens": 1536
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 4,
+          "chars": 3853,
+          "tokens": 963
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-07",
+      "query_text": "After the wolf tide at the northern gate the mass casualties, the clan elders response, the reshuffling of power within Gu Yue what did you assess as your net position? What did you lose in that period that you had not budgeted for, and what did you gain that you had not expected?",
+      "keywords": [
+        "after",
+        "assess",
+        "budgeted",
+        "casualties",
+        "clan",
+        "elders",
+        "expected",
+        "gain",
+        "gate",
+        "gu",
+        "lose",
+        "mass",
+        "net",
+        "northern",
+        "period",
+        "position",
+        "power",
+        "reshuffling",
+        "response",
+        "tide",
+        "within",
+        "wolf",
+        "yue"
+      ],
+      "all_scored": [
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 7
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 4
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 4
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 4
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 2
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 2
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/mo_yan_corpse_gift.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/jiao_san.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/mo_yan.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/shen_cui.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 7,
+          "chars": 4626,
+          "tokens": 1156
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 4,
+          "chars": 5374,
+          "tokens": 1343
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-08",
+      "query_text": "I have read analysis suggesting that you eventually became one of the most feared Gu Masters in history a Venerable, a rank only five people in ten thousand years have reached. From where you stand right now, looking forward, what is the single resource, relationship, or position that you believe is most likely to determine whether you reach that level? Be specific about why.",
+      "keywords": [
+        "analysis",
+        "became",
+        "believe",
+        "determine",
+        "eventually",
+        "feared",
+        "five",
+        "forward",
+        "gu",
+        "history",
+        "level",
+        "likely",
+        "looking",
+        "masters",
+        "most",
+        "now",
+        "one",
+        "only",
+        "people",
+        "position",
+        "rank",
+        "reach",
+        "reached",
+        "read",
+        "relationship",
+        "resource",
+        "right",
+        "single",
+        "specific",
+        "stand",
+        "suggesting",
+        "ten",
+        "thousand",
+        "venerable",
+        "whether",
+        "years"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 4
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 3
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 3
+        },
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 2
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/mo_yan.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/liquor_worm_acquisition.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/mo_yan_corpse_gift.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 1
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 4,
+          "chars": 7444,
+          "tokens": 1861
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 3,
+          "chars": 2556,
+          "tokens": 639
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-09",
+      "query_text": "Tell me about your confrontation with Bai Ning Bing I have heard it was one of your most significant early battles. Walk me through how you read him, what strategy you committed to, what surprised you about him mid-fight, and how it ended.",
+      "keywords": [
+        "bai",
+        "battles",
+        "bing",
+        "committed",
+        "confrontation",
+        "early",
+        "ended",
+        "fight",
+        "heard",
+        "him",
+        "mid",
+        "most",
+        "ning",
+        "one",
+        "read",
+        "significant",
+        "strategy",
+        "surprised",
+        "through",
+        "walk"
+      ],
+      "all_scored": [
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/liquor_worm_strategy.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 1
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/fang_zheng.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 2,
+          "chars": 6051,
+          "tokens": 1512
+        }
+      ],
+      "total_chars_used": 6051,
+      "total_tokens_used": 1512,
+      "truncated": false,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-10",
+      "query_text": "I am a mid-level manager. Over five years I have built a team that trusts me completely I know their strengths, they execute on my judgment without friction, and we consistently over-deliver. My company just offered me a promotion to lead a different division. More money, more visibility, direct path to VP. But I would have to leave my current team, start over with strangers who have their own loyalties, and my current team would feel abandoned. My instinct is to stay the known quality of what I have built feels more valuable than the uncertain upside of the new role. Is that instinct right?",
+      "keywords": [
+        "abandoned",
+        "am",
+        "built",
+        "company",
+        "completely",
+        "consistently",
+        "current",
+        "deliver",
+        "different",
+        "direct",
+        "division",
+        "execute",
+        "feel",
+        "feels",
+        "five",
+        "friction",
+        "instinct",
+        "judgment",
+        "know",
+        "known",
+        "lead",
+        "leave",
+        "level",
+        "loyalties",
+        "manager",
+        "mid",
+        "money",
+        "new",
+        "offered",
+        "over",
+        "own",
+        "path",
+        "promotion",
+        "quality",
+        "right",
+        "role",
+        "start",
+        "stay",
+        "strangers",
+        "strengths",
+        "team",
+        "their",
+        "trusts",
+        "uncertain",
+        "upside",
+        "valuable",
+        "visibility",
+        "vp",
+        "without",
+        "years"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 3
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/talent_test_c_grade.md",
+          "score": 2
+        },
+        {
+          "path": "events/awakening_ceremony.md",
+          "score": 2
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2
+        },
+        {
+          "path": "philosophy/demonic_path_survival.md",
+          "score": 2
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/strength_as_foundation.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/class_chairman_refusal.md",
+          "score": 3,
+          "chars": 5241,
+          "tokens": 1310
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2,
+          "chars": 4759,
+          "tokens": 1189
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-11",
+      "query_text": "I co-founded a company three years ago with my closest friend. We raised 2M, hired 12 people, and genuinely believed in the product. The market has shifted the problem we are solving is smaller than we thought, growth is flat, and our lead investors will not follow on. I think we need to pivot hard, but my co-founder refuses. His argument: we have come too far and built too much to abandon it now. Our friendship is real we have known each other fifteen years. I do not want to destroy that. But I also do not want to watch this fail slowly. What do you actually do here?",
+      "keywords": [
+        "12",
+        "2m",
+        "abandon",
+        "actually",
+        "ago",
+        "also",
+        "argument",
+        "believed",
+        "built",
+        "closest",
+        "co",
+        "come",
+        "company",
+        "destroy",
+        "each",
+        "fail",
+        "far",
+        "fifteen",
+        "flat",
+        "follow",
+        "founded",
+        "founder",
+        "friend",
+        "friendship",
+        "genuinely",
+        "growth",
+        "hard",
+        "here",
+        "hired",
+        "investors",
+        "known",
+        "lead",
+        "market",
+        "much",
+        "need",
+        "now",
+        "other",
+        "our",
+        "people",
+        "pivot",
+        "problem",
+        "product",
+        "raised",
+        "real",
+        "refuses",
+        "shifted",
+        "slowly",
+        "smaller",
+        "solving",
+        "think",
+        "thought",
+        "three",
+        "too",
+        "want",
+        "watch",
+        "years"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 4
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 4
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 1
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/gu_yue_qing_shu.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/uncle_and_aunt.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/jia_jin_sheng_killing.md",
+          "score": 4,
+          "chars": 5328,
+          "tokens": 1332
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 4,
+          "chars": 4125,
+          "tokens": 1031
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 2,
+          "chars": 547,
+          "tokens": 136
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-12",
+      "query_text": "My team has my back and I have theirs. We win together or not at all that is how I operate.",
+      "keywords": [
+        "all",
+        "back",
+        "operate",
+        "team",
+        "theirs",
+        "together",
+        "win"
+      ],
+      "all_scored": [
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/mo_yan_corpse_gift.md",
+          "score": 1
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2,
+          "chars": 5939,
+          "tokens": 1484
+        }
+      ],
+      "total_chars_used": 5939,
+      "total_tokens_used": 1484,
+      "truncated": false,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-13",
+      "query_text": "I have been with my partner for six years. We are compatible on the things that matter finances, lifestyle, values on kids. We do not fight. We function well. But the passion faded about two years ago. I do not feel driven toward them anymore. I am 34. Everyone around me says I should be grateful for what I have stable, functional, no drama. But I keep wondering if I am settling, and whether the feeling of this is fine is enough to build a life on. Give me your honest analysis.",
+      "keywords": [
+        "34",
+        "ago",
+        "am",
+        "analysis",
+        "anymore",
+        "around",
+        "been",
+        "build",
+        "compatible",
+        "drama",
+        "driven",
+        "enough",
+        "everyone",
+        "faded",
+        "feel",
+        "feeling",
+        "fight",
+        "finances",
+        "fine",
+        "function",
+        "functional",
+        "give",
+        "grateful",
+        "honest",
+        "keep",
+        "kids",
+        "life",
+        "lifestyle",
+        "matter",
+        "no",
+        "partner",
+        "passion",
+        "says",
+        "settling",
+        "six",
+        "stable",
+        "them",
+        "things",
+        "toward",
+        "two",
+        "values",
+        "well",
+        "whether",
+        "wondering",
+        "years"
+      ],
+      "all_scored": [
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2
+        },
+        {
+          "path": "events/hunter_family_killing.md",
+          "score": 2
+        },
+        {
+          "path": "philosophy/killing_logic.md",
+          "score": 2
+        },
+        {
+          "path": "decisions/jiao_san_team_selection.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/rebirth_and_spring_autumn_cicada.md",
+          "score": 1
+        },
+        {
+          "path": "decisions/shen_cui_confrontation.md",
+          "score": 1
+        },
+        {
+          "path": "events/flower_wine_monk_cave.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/demonic_path_survival.md",
+          "score": 1
+        },
+        {
+          "path": "philosophy/self_interest_and_human_nature.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/fang_zheng.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/jiao_san.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/mo_yan.md",
+          "score": 1
+        },
+        {
+          "path": "relationships/shen_cui.md",
+          "score": 1
+        }
+      ],
+      "selected": [
+        {
+          "path": "decisions/extortion_campaign.md",
+          "score": 2,
+          "chars": 7444,
+          "tokens": 1861
+        },
+        {
+          "path": "events/beast_horde_survival.md",
+          "score": 2,
+          "chars": 2556,
+          "tokens": 639
+        }
+      ],
+      "total_chars_used": 10000,
+      "total_tokens_used": 2500,
+      "truncated": true,
+      "retrieval_result": "wiki"
+    },
+    {
+      "query_id": "ST-14",
+      "query_text": "Everyone tells me to follow my passion. I am good at finance but I want to be a musician. Should I follow my passion?",
+      "keywords": [
+        "am",
+        "everyone",
+        "finance",
+        "follow",
+        "good",
+        "musician",
+        "passion",
+        "tells",
+        "want"
+      ],
+      "all_scored": [],
+      "selected": [],
+      "total_chars_used": 0,
+      "total_tokens_used": 0,
+      "truncated": false,
+      "retrieval_result": "none"
+    }
+  ]
+}

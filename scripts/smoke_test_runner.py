@@ -376,6 +376,11 @@ def _write_md(results: list[dict], path: Path) -> None:
 
 
 def main() -> None:
+    # Force UTF-8 stdout/stderr so unicode dividers don't crash on Windows cmd (cp1252).
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", type=str, default=None, help="Output markdown path")
     parser.add_argument("--id",  type=str, default=None, help="Run only this test ID (e.g. ST-01)")

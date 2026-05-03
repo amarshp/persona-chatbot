@@ -1,9 +1,13 @@
 .env
 __pycache__/
 *.pyc
-# shared/data/chunks_db/
+shared/data/chunks_db/
 # shared/data/raw/
 # results/
 *.egg-info/
 .venv/
 # chapters_pdf/
+scripts/.live_status_state.json
+scripts/.live_status.log
+scripts/.live_status_turn.txt
+scripts/.sandbox_*

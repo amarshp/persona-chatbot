@@ -97,6 +97,9 @@ def clean_text(html: str) -> tuple[str, str]:
 
 
 def main():
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="Extract chapters from EPUB to text files")
     parser.add_argument("--start", type=int, default=1, help="First chapter number (1-indexed)")
     parser.add_argument("--end", type=int, default=120, help="Last chapter number (inclusive)")

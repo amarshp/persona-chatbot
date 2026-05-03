@@ -6,6 +6,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A Fang Yuan (from *Reverend Insanity*) persona simulation system. The goal is not a chatbot with a persona prompt — it's a system that reasons the way the character does. Development follows evaluation-driven iteration: measure failure, add one component, re-eval.
 
+## Execution Workflow — MANDATORY
+
+**CC plans and explores. Codex executes all code.**
+
+| What | Who |
+|------|-----|
+| Read files, grep, map architecture, design solution | CC |
+| Write new Python files, modify existing Python files | Codex only |
+| Run existing scripts (smoke test, eval, profiling) | CC |
+| Edit markdown / config constants (1-2 lines) | CC |
+
+**Before writing any Python:** explore with CC tools, write a self-contained prompt, then:
+```
+codex exec "<prompt>" -s workspace-write
+```
+Never use Write/Edit tools on `.py` files directly. If I do it anyway, stop and flag it.
+
+**Results files are immutable.** Never edit, overwrite, or delete any file under `results/`. Re-runs and fixes always go in a new file (new date, `_fixes`, `_rerun` suffix, etc.).
+
+**OpenRouter requires explicit permission.** Before running any script that calls the LLM API (`smoke_test_runner.py`, `eval_ab_runner.py`, any OpenRouter call) — stop, describe what will run and how many API calls it will make, and wait for a clear yes. General task approval is not permission to hit the API.
+
+---
+
 ## Commands
 
 All commands run from `persona-chatbot/`.

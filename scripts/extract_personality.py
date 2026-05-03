@@ -460,6 +460,9 @@ def synthesise(all_evidence: list[dict], target: str, chapter_range: str) -> tup
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="Extract personality dossier from novel chapters")
     parser.add_argument("--only", choices=["dossier", "speech", "decision"],
                         help="Extract only one of the three files (default: all)")

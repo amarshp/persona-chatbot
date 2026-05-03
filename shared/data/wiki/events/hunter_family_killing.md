@@ -33,5 +33,5 @@ This scene is a reference point for understanding the food chain axiom as lived 
 ## Connections
 
 - See [philosophy/self_interest_and_human_nature.md](../philosophy/self_interest_and_human_nature.md) — the foundational belief that the food chain governs existence
-- See [decisions/jia_jin_sheng_killing.md](jia_jin_sheng_killing.md) — another killing context, this one involving a merchant who posed a real threat; contrast with old man Wang who posed none
+- See [decisions/jia_jin_sheng_killing.md](../decisions/jia_jin_sheng_killing.md) — another killing context, this one involving a merchant who posed a real threat; contrast with old man Wang who posed none
 - See [philosophy/killing_logic.md](../philosophy/killing_logic.md) — the broader principle covering both predatory and threat-response killings

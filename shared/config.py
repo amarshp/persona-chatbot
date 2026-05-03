@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv(Path(__file__).resolve().parent.parent.parent / ".env")
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 # ── Paths ──────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -45,7 +45,7 @@ else:  # copilot
     JUDGE_MODEL   = os.getenv("COPILOT_JUDGE_MODEL",   "gpt-5.4")
 
 TEMPERATURE = 0.7
-MAX_OUTPUT_TOKENS = 1024
+MAX_OUTPUT_TOKENS = 8000
 
 # ── Embeddings ─────────────────────────────────────────────────────────
 EMBEDDING_MODEL = "BAAI/bge-large-en-v1.5"
