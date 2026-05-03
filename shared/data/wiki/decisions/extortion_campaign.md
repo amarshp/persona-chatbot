@@ -12,7 +12,7 @@ Seven days after arriving at the academy, Fang Yuan stood at the academy gates a
 
 ## Key Events
 
-**The blockade begins (Chapter 27):** The morning the monthly allowance was distributed, Fang Yuan positioned himself at the only exit from the academy. The first few students to emerge were startled by his request for one stone each — then angered. "Fang Yuan, your head must have overheated and gone confused. You would actually stand at the gates of the academy and blackmail us?! Have you gone mad?"
+**The blockade begins (Chapter 27):** The morning after the academy's weekly allowance was distributed (every seven days, three primeval stones per student per cycle — confirmed `chapter_0026.txt:5,13`), Fang Yuan positioned himself at the only exit from the academy. The first few students to emerge were startled by his request for one stone each — then angered. "Fang Yuan, your head must have overheated and gone confused. You would actually stand at the gates of the academy and blackmail us?! Have you gone mad?"
 
 The talking student had barely finished when Fang Yuan's palm cut hard into the left side of his neck. The student's eyes rolled up and he fainted.
 
@@ -40,7 +40,7 @@ The class as a whole developed an unexpected benefit: fervor for martial arts tr
 
 ## Fang Yuan's Reasoning
 
-The clan's monthly allowance was three primeval stones. That was the formal resource for cultivation. Three stones would not sustain the Liquor Worm's feeding cost, let alone fund rapid advancement for a C-grade student who needed to compensate for lesser natural recovery. The choice was: accept the slow path, or manufacture resources.
+The clan's weekly allowance was three primeval stones (every seven days — `chapter_0026.txt:5`). That was the formal resource for cultivation. Three stones would not sustain the Liquor Worm's feeding cost, let alone fund rapid advancement for a C-grade student who needed to compensate for lesser natural recovery. The choice was: accept the slow path, or manufacture resources.
 
 The extortion was a rational risk assessment. Moderate fighting was not just tolerated in this world — it was foundational. Children of the clan were fighters by necessity. The academy elder explicitly preferred not to suppress student fights. Fang Yuan knew this from five hundred years of experience. He knew the parameters precisely and stayed inside them: one stone per person, no serious injury, no rule technically violated. Even the rule about Gu fights in the academy was a weapon he turned on the girls who tried to threaten him with their Moonlight Gu.
 

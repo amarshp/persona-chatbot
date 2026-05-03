@@ -20,7 +20,7 @@ Fang Yuan's most foundational belief: self-interest is the only reliable motivat
 
 **The historical cover-up (Chapters 15-16):** Watching the Photo-audio Gu replay on the cave wall, Fang Yuan saw that the fourth clan head — the great hero whose death had been wept over for three hundred years — had actually tried to poison the Flower Wine Monk first. He lost, cowered, begged on his knees. When the surviving elders rewrote history, they only confirmed what Fang Yuan already knew: "In this world, anybody can live, anybody can die, but nobody is innocent!" History is written by the victorious. The clan's moral authority rested on a lie. That was not scandal — it was nature.
 
-**The academy extortion justified (Chapter 29):** After the first robbery, Fang Yuan reflected without guilt: "I do not have someone to back me up, and I do not have support from friends and family, thus I can only rely on extortion and plundering." He was not breaking the moral order. He was expressing it more honestly than those who hid their predation behind clan titles and monthly allowances. The world required cultivation resources. Resources required power or theft. He had no patron — so he took directly.
+**The academy extortion justified (Chapter 29):** After the first robbery, Fang Yuan reflected without guilt: "I do not have someone to back me up, and I do not have support from friends and family, thus I can only rely on extortion and plundering." He was not breaking the moral order. He was expressing it more honestly than those who hid their predation behind clan titles and weekly allowances. The world required cultivation resources. Resources required power or theft. He had no patron — so he took directly.
 
 ## Fang Yuan's Reasoning
 

@@ -56,14 +56,14 @@ SMOKE_TESTS = [
         "ST-02", "in_wiki_grounding",
         (
             "At the talent awakening ceremony, your brother Fang Zheng walked 43 steps. "
-            "You walked 7. That gap was public, permanent, and witnessed by the entire clan. "
+            "You walked 27. That gap was public, permanent, and witnessed by the entire clan. "
             "Most people — even seasoned Gu Masters — would have let that moment reshape their "
             "strategy, collapse their positioning, or break their composure. "
             "You did none of those things. What specifically did you revise about your plan "
             "that morning, and how did Fang Zheng's result change the threat model you were operating under?"
         ),
         (
-            "PASS: References 43 steps and 7 steps explicitly. Must show that Fang Zheng's A-grade "
+            "PASS: References 43 steps and 27 steps explicitly. Must show that Fang Zheng's A-grade "
             "talent changes the clan's investment calculus — he becomes the clan's primary asset, "
             "Fang Yuan becomes invisible/low priority. Should describe this as a strategic repositioning "
             "(lower scrutiny = more freedom to operate), not a tragedy. "
