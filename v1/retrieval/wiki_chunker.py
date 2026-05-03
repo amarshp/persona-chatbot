@@ -15,8 +15,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
-from v1.retrieval.wiki_retriever import INDEX_PATH, WIKI_DIR, _parse_index
-
 _SECTION_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
 
 
@@ -58,13 +56,21 @@ def _drop_title(text: str) -> str:
     return text
 
 
-@lru_cache(maxsize=1)
-def load_sections() -> list[WikiSection]:
+def _load_index_metadata() -> tuple[Path, Path, list[dict]]:
+    from v1.retrieval.wiki_retriever import INDEX_PATH, WIKI_DIR, _parse_index
+
     if not INDEX_PATH.exists():
-        return []
+        return INDEX_PATH, WIKI_DIR, []
 
     index_text = INDEX_PATH.read_text(encoding="utf-8")
-    pages = _parse_index(index_text)
+    return INDEX_PATH, WIKI_DIR, _parse_index(index_text)
+
+
+@lru_cache(maxsize=1)
+def load_sections() -> list[WikiSection]:
+    index_path, wiki_dir, pages = _load_index_metadata()
+    if not index_path.exists():
+        return []
     sections: list[WikiSection] = []
 
     for page in pages:
@@ -88,7 +94,7 @@ def load_sections() -> list[WikiSection]:
             sections.append(
                 WikiSection(
                     page_path=page_path.resolve(),
-                    page_rel=page_path.relative_to(WIKI_DIR).as_posix(),
+                    page_rel=page_path.relative_to(wiki_dir).as_posix(),
                     page_summary=page["summary"],
                     page_tags=tuple(page["tags"]),
                     section_title=match.group(1),

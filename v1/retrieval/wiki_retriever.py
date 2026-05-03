@@ -18,36 +18,97 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
 from shared.config import DATA_DIR, L3_BUDGET
 
-WIKI_DIR   = DATA_DIR / "wiki"
+WIKI_DIR = DATA_DIR / "wiki"
 INDEX_PATH = WIKI_DIR / "index.md"
 
 _CHARS_PER_TOKEN = 4
 
-_STOP_WORDS = frozenset({
-    "", "a", "an", "the", "i", "is", "are", "was", "were", "do", "does", "did",
-    "my", "me", "he", "she", "we", "they", "it", "you", "your", "his", "her",
-    "how", "what", "why", "who", "when", "where", "which", "that", "this",
-    "to", "of", "in", "on", "at", "for", "with", "by", "from", "and", "or",
-    "but", "not", "be", "about", "tell", "can", "could", "would", "should",
-    "have", "has", "had", "will", "just", "more", "than", "so", "if", "then",
-    "as", "up", "out", "any", "its", "into", "there",
-    # chapter numbers and ordinals are too generic
-    "chapter", "chapters",
-})
+_STOP_WORDS = frozenset(
+    {
+        "",
+        "a",
+        "an",
+        "the",
+        "i",
+        "is",
+        "are",
+        "was",
+        "were",
+        "do",
+        "does",
+        "did",
+        "my",
+        "me",
+        "he",
+        "she",
+        "we",
+        "they",
+        "it",
+        "you",
+        "your",
+        "his",
+        "her",
+        "how",
+        "what",
+        "why",
+        "who",
+        "when",
+        "where",
+        "which",
+        "that",
+        "this",
+        "to",
+        "of",
+        "in",
+        "on",
+        "at",
+        "for",
+        "with",
+        "by",
+        "from",
+        "and",
+        "or",
+        "but",
+        "not",
+        "be",
+        "about",
+        "tell",
+        "can",
+        "could",
+        "would",
+        "should",
+        "have",
+        "has",
+        "had",
+        "will",
+        "just",
+        "more",
+        "than",
+        "so",
+        "if",
+        "then",
+        "as",
+        "up",
+        "out",
+        "any",
+        "its",
+        "into",
+        "there",
+        # chapter numbers and ordinals are too generic
+        "chapter",
+        "chapters",
+    }
+)
 
 _ROW_RE = re.compile(
     r"\|\s*\[.*?\]\(([^)]+)\)\s*\|\s*([^|]+)\s*\|\s*([^|]+)\s*\|"
 )
-
-if TYPE_CHECKING:
-    from v1.retrieval.wiki_chunker import WikiSection
 
 
 def _parse_index(index_text: str) -> list[dict]:
@@ -56,17 +117,22 @@ def _parse_index(index_text: str) -> list[dict]:
     Returns list of dicts: {path, summary, tags}.
     """
     pages = []
-    for m in _ROW_RE.finditer(index_text):
-        rel_path = m.group(1).strip()
-        summary  = m.group(2).strip().lower()
-        tags_raw = m.group(3).strip()
-        tags = [t.strip().lower() for t in tags_raw.split(",")]
-        pages.append({
-            "path":    WIKI_DIR / rel_path,
-            "summary": summary,
-            "tags":    tags,
-        })
+    for match in _ROW_RE.finditer(index_text):
+        rel_path = match.group(1).strip()
+        summary = match.group(2).strip().lower()
+        tags_raw = match.group(3).strip()
+        tags = [tag.strip().lower() for tag in tags_raw.split(",")]
+        pages.append(
+            {
+                "path": WIKI_DIR / rel_path,
+                "summary": summary,
+                "tags": tags,
+            }
+        )
     return pages
+
+
+from v1.retrieval.wiki_chunker import WikiSection, load_sections
 
 
 def _query_words(query: str) -> set[str]:
@@ -94,24 +160,23 @@ def _score_section(qwords: set[str], section: WikiSection) -> int:
     return len(qwords & section_words)
 
 
-def retrieve(query: str) -> str:
+def retrieve_sections(query: str) -> list[tuple[int, WikiSection]]:
     """
-    Return concatenated wiki section content relevant to `query`.
-    Stays within L3_BUDGET (approx tokens = chars / 4).
-    Returns "" if no section scores >= 2.
+    Return sections matching `query`, sorted (-score, page_rel, section_title).
+
+    Empty list if no section scores >= 2 or query yields no useful words.
+    No token-budget trimming is applied here.
     """
     if not INDEX_PATH.exists():
-        return ""
-
-    from v1.retrieval.wiki_chunker import load_sections
+        return []
 
     sections = load_sections()
     if not sections:
-        return ""
+        return []
 
     qwords = _query_words(query)
     if not qwords:
-        return ""
+        return []
 
     relevant: list[tuple[int, WikiSection]] = []
     for section in sections:
@@ -119,21 +184,30 @@ def retrieve(query: str) -> str:
         if score >= 2:
             relevant.append((score, section))
 
-    if not relevant:
-        return ""
-
     relevant.sort(key=lambda item: (-item[0], item[1].page_rel, item[1].section_title))
+    return relevant
+
+
+def format_sections(scored: list[tuple[int, WikiSection]]) -> str:
+    """
+    Format scored sections with the existing token-budget assembler and joiner.
+    """
+    if not scored:
+        return ""
 
     joiner = "\n\n---\n\n"
     joiner_cost = len(joiner)
     remaining_budget = L3_BUDGET * _CHARS_PER_TOKEN
     parts: list[str] = []
 
-    for _, section in relevant:
+    for _, section in scored:
         if remaining_budget < 250:
             break
 
-        block = f"## {section.section_title} — {section.page_rel}\n\n{section.content}"
+        block = (
+            f"## {section.section_title} \N{EM DASH} {section.page_rel}\n\n"
+            f"{section.content}"
+        )
         block_cost = len(block)
         total_cost = block_cost + (joiner_cost if parts else 0)
         if total_cost > remaining_budget:
@@ -143,3 +217,12 @@ def retrieve(query: str) -> str:
         remaining_budget -= total_cost
 
     return joiner.join(parts) if parts else ""
+
+
+def retrieve(query: str) -> str:
+    """
+    Return concatenated wiki section content relevant to `query`.
+    Stays within L3_BUDGET (approx tokens = chars / 4).
+    Returns "" if no section scores >= 2.
+    """
+    return format_sections(retrieve_sections(query))
