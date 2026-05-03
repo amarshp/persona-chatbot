@@ -71,7 +71,7 @@ def _judge_candidate(
             _build_messages(query, section),
             model=JUDGE_MODEL,
             temperature=0,
-            max_tokens=8,
+            max_tokens=16,
             purpose="crag_relevance",
         )
     except Exception as exc:
