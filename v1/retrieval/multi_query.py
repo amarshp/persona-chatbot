@@ -21,7 +21,7 @@ _PHRASING_PROMPT = (
     "vocabulary while preserving the exact meaning. Cover synonyms "
     "and adjacent concepts (e.g. 'betrayal' -> 'duplicity', "
     "'self-interest', 'feigned loyalty'). Reply ONLY with a JSON "
-    'object of the form: {"rephrasings": ["...", "...", "..."]}. '
+    'object of the form: {{"rephrasings": ["...", "...", "..."]}}. '
     "Do not include the original. Do not add any commentary."
 )
 
