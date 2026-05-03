@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LLM Council #2 — After Persona Quality A/B</title>
+<style>
+:root { --bg:#fafaf9; --panel:#fff; --ink:#1c1c1c; --muted:#5a5a5a; --rule:#e2e2e0; --accent:#1f4068; --warn:#b35900; --ok:#2d6a4f; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding: 32px 16px 64px; line-height: 1.55; }
+.container { max-width: 880px; margin: 0 auto; }
+.header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 24px; }
+.header h1 { margin: 0 0 4px; font-size: 28px; font-weight: 700; }
+.header .sub { color: var(--muted); font-size: 14px; }
+.question { background: #f4efe6; border-left: 4px solid var(--accent); padding: 16px 20px; margin: 16px 0 32px; font-size: 15px; }
+.question h2 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px; color: var(--muted); }
+.verdict { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+.verdict h2 { font-size: 22px; margin: 0 0 16px; color: var(--accent); }
+.verdict h3 { font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin: 24px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
+.verdict h3:first-of-type { margin-top: 0; }
+.verdict ol { padding-left: 22px; }
+.verdict ol li { margin: 6px 0; }
+.key { background: #e6f3ee; border-left: 4px solid var(--ok); padding: 12px 16px; margin: 12px 0; font-weight: 500; }
+.warn { background: #fff8e1; border-left: 4px solid var(--warn); padding: 12px 16px; margin: 12px 0; }
+.alignment { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
+.advisor-card { border: 1px solid var(--rule); border-radius: 6px; padding: 10px 8px; text-align: center; background: white; font-size: 12px; }
+.advisor-card .name { font-weight: 600; display: block; margin-bottom: 4px; }
+.advisor-card .vote { display: inline-block; padding: 2px 8px; border-radius: 999px; color: white; font-size: 11px; font-weight: 600; }
+.vote-product { background: #1f4068; }
+.vote-drop { background: #2d6a4f; }
+.vote-traps { background: #b35900; }
+.vote-matrix { background: #6b3fa0; }
+.vote-grading { background: #b22222; }
+details { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; margin: 8px 0; padding: 12px 16px; }
+details summary { cursor: pointer; font-weight: 600; font-size: 14px; padding: 4px 0; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▸ "; color: var(--muted); }
+details[open] summary::before { content: "▾ "; }
+details .body { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 14px; }
+.section-h { margin: 32px 0 12px; font-size: 18px; font-weight: 600; }
+.footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; text-align: center; }
+code { background: #f0eee9; padding: 1px 5px; border-radius: 3px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>LLM Council Verdict #2</h1>
+  <div class="sub">PersonaRAG · After persona-quality A/B (council step 4) · 2026-05-04</div>
+</div>
+
+<div class="question">
+  <h2>Question</h2>
+  <strong>The persona-quality A/B (n=6) returned 2 wins for retrieval-on, 2 wins for retrieval-off, 2 ties — and ST-03 specifically showed retrieval introduced a factual error the model would have gotten right without retrieval. The PRIMARY_MODEL (gpt-5.5) has Reverend Insanity in training. What's the next move?</strong>
+</div>
+
+<div class="verdict">
+  <h2>Council Verdict</h2>
+
+  <div class="key">
+    <strong>Recommendation: Outsider's "define the product" path, executed through First Principles' "retrieval-as-output-fact-checker" lens. Build the verified ground-truth QA set FIRST.</strong>
+  </div>
+
+  <h3>Where the Council Agrees</h3>
+  <ol>
+    <li><strong>n=6 is not actionable signal.</strong> 4 advisors and all 5 reviewers agree the sample is too small to ship or pivot on.</li>
+    <li><strong>ST-03 is a stop-the-line event, not a tuning gap.</strong> Retrieval injected a wrong answer into a model that would have gotten the answer right — the worst failure mode RAG can produce.</li>
+    <li><strong>gpt-5.5 has the corpus memorized — that changes what "retrieval lift" even means.</strong> All advisors agree on the fact; they draw opposite conclusions.</li>
+  </ol>
+
+  <h3>Where the Council Clashes</h3>
+  <p><strong>Memorization: bug or feature?</strong> Expansionist saw it as an unfair-advantage research opportunity. First Principles + Contrarian saw it as making retrieval structurally redundant. Both are right conditional on different products — neither product has been chosen.</p>
+  <p><strong>More data vs. more definition.</strong> Executor wanted Path X (run traps Monday, $2, 2 hours). Outsider wanted user-definition first. Tiebreaker: cheap data on a flawed grader is worse than no data.</p>
+
+  <h3>Blind Spots the Council Caught (Unanimous)</h3>
+  <div class="warn">
+    <strong>Every advisor missed: judge-grader reliability is unverified.</strong> ST-03 was caught because a human knew the wiki. The LLM judge missed it. The 2→6 V-score, the 2A/2B/2T split, every measurement in this project flows through that same unaudited grader. There is no human-verified canon QA set anywhere in the project. Without one, every score might be measuring "judge agreement with retrieved context" rather than persona quality.
+  </div>
+  <p>Reviewer 3 added: <strong>n=6 is statistically incapable of detecting the effect sizes being argued about.</strong> The entire "marginal lift" debate is unfounded.</p>
+  <p>Reviewer 4 added: <strong>fabrication in a fan product is a reputational cost, not just a metric noise.</strong> ST-03 severity depends on this.</p>
+
+  <h3>The Recommendation</h3>
+  <p><strong>Outsider's path (D), executed through First Principles' lens (W).</strong> 4-of-5 reviewers chose D for a reason: every other path is a tactical move on top of an undefined product.</p>
+
+  <ol>
+    <li><strong>Pick the user in one sentence.</strong> "Canon-accurate Fang Yuan for r/Reverend_Insanity readers" or "vibes-correct cultivation roleplay for general fantasy fans." These demand opposite architectures.</li>
+    <li><strong>If canon-accuracy:</strong> First Principles' inversion is correct. Retrieval becomes a fact-checker on outputs, not an input augmenter. Refusal-on-uncertainty is the core feature. ST-03 becomes a regression test.</li>
+    <li><strong>If vibes:</strong> ship prompt-only on gpt-5.5. RAG is dead weight. Phase 2 was a learning, not a product.</li>
+  </ol>
+
+  <p><strong>Reject:</strong> Path Y (model swap) is reverse-engineering justification for sunk work. Path 4 (3-axis matrix) scales a compromised rubric. Path X is fine LATER, not next.</p>
+
+  <h3>The One Thing to Do First</h3>
+  <div class="key">
+    <strong>Build a 20-item human-verified canon QA set with chapter citations before running any more evals.</strong> Two hours with the wiki and a spreadsheet. This is the prerequisite to every branch of the path tree — it audits the judge, gives traps a trustworthy scoring axis, gives the product decision a real measurement, and is the one artifact that survives any future direction.
+  </div>
+</div>
+
+<h2 class="section-h">Advisor Alignment</h2>
+<div class="alignment">
+  <div class="advisor-card"><span class="name">Contrarian</span><span class="vote vote-product">Define product</span></div>
+  <div class="advisor-card"><span class="name">First Principles</span><span class="vote vote-drop">Drop retrieval (W)</span></div>
+  <div class="advisor-card"><span class="name">Expansionist</span><span class="vote vote-matrix">Build matrix (4)</span></div>
+  <div class="advisor-card"><span class="name">Outsider</span><span class="vote vote-product">Define user first</span></div>
+  <div class="advisor-card"><span class="name">Executor</span><span class="vote vote-traps">Run traps (X)</span></div>
+</div>
+
+<h2 class="section-h">Advisor Responses (collapsed)</h2>
+
+<details>
+  <summary>Contrarian — "noise dressed as data; you graded a test where you don't know the answer key"</summary>
+  <div class="body">
+    <p>You ran a 6-test A/B with a model that has the source material memorized. <strong>Fatal flaw nobody is naming:</strong> ST-03 caught only because you knew the wiki answer. How many other tests have errors you didn't catch? "Bloodwing Demon Sect" — verified? ST-03 doesn't discredit Phase 2; it discredits your grading. CRAG surfaced wrong chunk; judge model didn't catch it. <strong>The avoided move: write the product — what does user type, what should come back, who decides if it's good.</strong> Yak-shaving until then.</p>
+  </div>
+</details>
+
+<details>
+  <summary>First Principles — "PATH W: drop retrieval, use it as output fact-checker not input augmenter"</summary>
+  <div class="body">
+    <p>What is the system for? Strip back. Model knows Fang Yuan. ST-03 error. So: what does retrieval solve that base model doesn't? If "none on gpt-5.5" — that's the finding. Retrieval-augmentation on memorized-corpus = net liability. CRAG won't fix; structural. <strong>PATH W: Drop retrieval entirely on gpt-5.5. Ship prompt-only persona. Use retrieval only as a fact-checker on outputs (not input augmenter) — catches ST-03 before it ships.</strong> Different role for the wiki. You optimized a hammer. The problem isn't a nail.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Expansionist — "memorized-corpus = free oracle; build the retrieval-lift benchmark"</summary>
+  <div class="body">
+    <p><strong>Asymmetric upside: gpt-5.5 knowing RI = unfair advantage. Free oracle.</strong> PATH 4: 3-axis matrix {gpt-5.5, Sonnet, Haiku} × {no-RAG, V10-RAG} × {in-wiki, deep-canon, traps, cross-arc}. ~$8-12. Cells where retrieval flips wrong→right on Haiku but redundant on gpt-5.5 are the product value prop. ST-03 = gold (regression test distinguishing retrieval-injected wrong from model-hallucinated). Methodology generalizes — HP, ASOIAF, Warhammer. <strong>Ship V10 on Haiku. That's your product.</strong></p>
+  </div>
+</details>
+
+<details>
+  <summary>Outsider — "celebrating the wrong number; pick user, then path"</summary>
+  <div class="body">
+    <p>You're celebrating the wrong number. V01-V10 went from 2/10 to 6/10 with considerable effort. Validation says it doesn't predict what you care about. ST-03 = stop-the-line in any normal product. Model-swap dodges real question — switching to Claude is reverse-engineering justification for sunk work. Not building RAG, building context-injection wrapper around model that doesn't need it. <strong>4th path: Define what this is for before more evals. If "canon accuracy fans," ST-03 hallucinations catastrophic — need verified-citation architecture (refusal on uncertainty). If "vibes-correct chat," ship base + system prompt, go home.</strong> Pick user, then path.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Executor — "Monday: PATH X. Run ST-07-09 today, $2, 2 hours"</summary>
+  <div class="body">
+    <p>Monday morning: PATH X. Run ST-07-09 today. PATH Z premature on n=6. PATH Y is $5 detour answering different question. What blocks you: does Phase 2 prevent fabrication on stuff model genuinely doesn't know — entire reason RAG exists. ST-03 is CRAG tuning gap not architecture. V01-V10 = regression gate, scrap as quality. Concrete checklist: copy step 4 harness, swap ST-07-09, run both configs, score did B fabricate vs did A refuse/cite. If A wins, ship + Phase 3. If A also fails, Z becomes move. <strong>Stop running councils on n=6. Get trap data.</strong></p>
+  </div>
+</details>
+
+<details>
+  <summary>Peer review highlights (5 reviewers)</summary>
+  <div class="body">
+    <p><strong>Strongest:</strong> Outsider 4×, Contrarian 1×. Both name the meta-bug; Outsider ties it to product architecture (more actionable), Contrarian to grader epistemology.</p>
+    <p><strong>Biggest blind spot:</strong> Expansionist (4×) — builds research benchmark on a foundation already shown unreliable. Scales the measurement problem. Executor (1×) — treats more trap data on a flawed harness as resolution.</p>
+    <p><strong>Unanimously missed by all advisors:</strong> Judge/grader reliability. The LLM judge missed ST-03; the human caught it. Every score in this project (V01-V10 deltas, A/B splits, future trap tests) flows through the same unaudited grader. No verified ground-truth set with chapter citations exists. Reviewer 3 added: n=6 lacks statistical power to detect the effect sizes being argued. Reviewer 4 added: fabrication in a fan product is reputational cost, not just metric noise.</p>
+  </div>
+</details>
+
+<div class="footer">
+  Generated 2026-05-04 · 5 advisors · 5 peer reviewers · 1 chairman · counciled: post-step-4 next move<br>
+  Files: <code>results/council/council-report-20260504_010000.html</code> · <code>results/council/council-transcript-20260504_010000.md</code>
+</div>
+
+</div>
+</body>
+</html>
