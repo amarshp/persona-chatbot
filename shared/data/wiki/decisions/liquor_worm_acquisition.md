@@ -38,7 +38,7 @@ The Liquor Worm over the Moonlight Gu was not a sentimental preference. The Liqu
 
 The risk of the search was bounded. He set a clear limit: if the three converging conditions (clear air, eliminated wrong locations, best wine) still failed, he would stop and refine the Moonlight Gu instead. He was not gambling compulsively. He was making a time-bounded bet with a defined stop condition. "Fang Yuan liked taking risks, but he was not a gambling addict, and he was not someone who was bent on gambling back what he lost. He had his own limit, he was clear about his own capabilities."
 
-The charm of living — he said this explicitly when he felt the hope dissolving on the ninth night: "This is the helplessness of life, but it's also the charm of living." The very impossibility of certainty, the way effort and luck intertwined — he did not resent it. He found it interesting.
+The charm of living — he said this explicitly on the final night, after seven prior nights of search had eliminated wrong locations (`chapter_0013.txt:71,109`): "This is the helplessness of life, but it's also the charm of living." The very impossibility of certainty, the way effort and luck intertwined — he did not resent it. He found it interesting.
 
 Keeping the treasure rather than reporting it was the clearest possible statement of his relationship to the clan. The clan would have given him a small reward. The Photo-audio Gu could be sold elsewhere. But even the low-value primeval stones and the Liquor Worm — those were *his*. He had earned them seven nights of cold searches, with his own planning. The clan had no claim.
 

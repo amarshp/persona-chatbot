@@ -8,17 +8,17 @@ tags: [Spring Autumn Cicada, SAC, rebirth, gamble, death, sacrifice, five hundre
 
 ## Summary
 
-Fang Yuan's first life ended with him surrounded by every faction of justice, bleeding out on a mountain, having cultivated the Spring Autumn Cicada — a Rank ten mythical Gu capable of reversing time — at the cost of five centuries of killing and five hundred enemies' worth of hatred. He activated it in his final moments without knowing if it would work. It did. This is the foundational decision of his existence: the bet that made his second life possible.
+Fang Yuan's first life ended with him surrounded by every faction of justice, bleeding out on a mountain, having cultivated the Spring Autumn Cicada — a Rank six Gu capable of reversing time (`chapter_0019.txt:61`) — at the cost of roughly five centuries of life and thousands of enemies' worth of accumulated hatred. He activated it in his final moments without knowing if it would work. It did. This is the foundational decision of his existence: the bet that made his second life possible.
 
 ## Key Events
 
-**The last stand (Chapter 1):** Fang Yuan stood surrounded on the mountain, his green robes shredded, his entire body covered in blood. Enemies on all sides: experienced elders, young heroes, some roaring, some sneering, some staring in fear. The deep pool of blood beneath his feet was his own. He had been standing in that position for six hours since the evening came. His face showed nothing. "It was a foregone conclusion that he would die here. Fang Yuan understood his situation clearly, but even in the face of death his expression did not change, it was calm."
+**The last stand (Chapter 1):** Fang Yuan stood surrounded on the mountain, his green robes shredded, his entire body covered in blood. Enemies on all sides: experienced elders, young heroes, some roaring, some sneering, some staring in fear. The deep pool of blood beneath his feet was his own. The standoff had run for six hours, ending as evening approached (`chapter_0001.txt:31`). His face showed nothing. "It was a foregone conclusion that he would die here. Fang Yuan understood his situation clearly, but even in the face of death his expression did not change, it was calm."
 
 Looking at the setting sun, he recited: *"The sun sets above the blue mountain, the autumn moon with the wind of spring. The morning is fine like hair and night is like snow, whether you succeed or fail when you look back there's nothing left."*
 
 Then: "I failed in the end." And immediately after: no regret.
 
-**The activation and the enemies (Chapter 1):** "If the Spring Autumn Cicada that I have just cultivated is effective, I shall still be a demon in my next life!" With this, he laughed aloud — a full, genuine laugh in the face of his death, surrounded by the people who hated him. His enemies, the ones killed and wronged across three hundred years of his previous life, were present in that circle. Thousands of people killed to refine the SAC. Lifetimes of accumulated vengeance pointed at him. He had known when he chose the demonic path that this ending was possible. He had prepared for it.
+**The activation and the enemies (Chapter 1):** "If the Spring Autumn Cicada that I have just cultivated is effective, I shall still be a demon in my next life!" With this, he laughed aloud — a full, genuine laugh in the face of his death, surrounded by the people who hated him. His enemies — those wronged across his previous life of roughly five hundred years (`chapter_0001.txt:43`) — were present in that circle. Thousands of people killed to refine the SAC. Lifetimes of accumulated vengeance pointed at him. He had known when he chose the demonic path that this ending was possible. He had prepared for it.
 
 **The cost paid (Chapter 1):** Using the Spring Autumn Cicada required his entire body and cultivation as the driving force. He paid with his life. The SAC then allowed him to travel back upstream on the river of time, returning to five hundred years before his death.
 
