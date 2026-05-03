@@ -1,7 +1,7 @@
 ---
 title: "Killing Jia Jin Sheng: Reading Intent Before Action"
 chapters_covered: [46, 47]
-tags: [Jia Jin Sheng, killing, murder, merchant, Flower Wine Monk inheritance, moonblade, reading intent, preemptive strike, decision-making, eliminate witnesses, secret, cave, don't think too much]
+tags: [Jia Jin Sheng, killing, murder, merchant, trader, vendor, businessman, peddler, Flower Wine Monk inheritance, moonblade, reading intent, preemptive strike, decision-making, eliminate witnesses, secret, cave, don't think too much, came for me, intent to kill, threat, betrayal, double-cross]
 ---
 
 # Killing Jia Jin Sheng: Reading Intent Before Action

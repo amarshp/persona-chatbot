@@ -1,7 +1,7 @@
 ---
 title: "Killing Logic: Don't Think Too Much — The Operational Principle"
 chapters_covered: [46, 47, 68, 75]
-tags: [killing, no hesitation, preemptive strike, operational principle, demonic path, enemies, murder, survival, warm-blooded, cold-blooded, decisiveness, threat elimination]
+tags: [killing, no hesitation, preemptive strike, operational principle, demonic path, enemies, murder, survival, warm-blooded, cold-blooded, decisiveness, threat elimination, harm, threat, danger, sense, intent, hostile, hostility, defend, response, attack, react, move]
 ---
 
 # Killing Logic: Don't Think Too Much — The Operational Principle

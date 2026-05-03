@@ -1,7 +1,7 @@
 ---
 title: "Strength as the Sole Foundation"
 chapters_covered: [2, 7, 10, 27, 28, 29]
-tags: [strength, power, cultivation, resources, primeval stones, rank, talent, foundation, hierarchy, C grade, academy]
+tags: [strength, power, cultivation, resources, primeval stones, rank, talent, foundation, hierarchy, C grade, academy, weakling, weak, weakness, climb, climbing, ascend, rise, advancement, struggle, become stronger]
 ---
 
 # Strength as the Sole Foundation
