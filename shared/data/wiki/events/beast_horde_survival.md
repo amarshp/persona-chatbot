@@ -24,7 +24,7 @@ During a small-scale beast horde triggered by the encroaching wolf tide, Fang Yu
 
 **The interrogation (Chapter 97):** Three days after the beast tide, Fang Yuan was interrogated by clan elders for over an hour — the deaths of all his group members except him were suspicious. One elder whose daughter had died as a Gu Master in the battle pressed particularly hard: "Did you intentionally use your teammate — the female Gu Master — as a shield when you hid in the boar's stomach?" Fang Yuan replied: "I don't know. I was very scared at that time and hurriedly tried to hide inside the boar king, but she also entered inside and fought me for the inside position. She couldn't defeat me and was bitten to death by the lightning wolves. I am ashamed." The elder "could not find any handle on him; their hearts were filled with anger but they couldn't do anything." After five repetitions of the same account with consistent details and no contradictions, the elders conceded.
 
-**The breakthrough concealed (Chapter 97):** During the battle, Fang Yuan had broken through to Rank two. He voluntarily disclosed this to the elders — with no stealth-concealment Gu, trying to hide Rank two aura would be futile. He revealed only what he could not hide.
+**The breakthrough concealed (Chapter 97):** Fang Yuan had broken through to Rank two in the days BEFORE rejoining the wild boar king fight (`chapter_0097.txt:37` — "I used several days to breakthrough to Rank two. Upon returning to the village gate..."), not during the battle itself. At the interrogation he voluntarily disclosed the new rank — with no stealth-concealment Gu, trying to hide Rank two aura would be futile. He revealed only what he could not hide.
 
 ## Fang Yuan's Reasoning
 

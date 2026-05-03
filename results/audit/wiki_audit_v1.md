@@ -193,4 +193,55 @@ Cumulative across both tiers: **13 distinct factual errors corrected across 24 a
 
 The audit confirms what the user predicted: an LLM-built wiki has ~0.5–1.0 factual errors per page, concentrated in events with specific numbers and quotes.
 
-The wiki is now substantially more trustworthy as a retrieval source. Remaining caveats for future work: interpretive claims, cross-arc synthesis claims, and the half-dozen places where the audit accepted plausible but not directly-verified detail (e.g., 8% / 4% recovery rates in `strength_as_foundation.md`).
+The wiki is now substantially more trustworthy as a retrieval source. Remaining caveats for future work: interpretive claims, cross-arc synthesis claims, and the half-dozen places where the audit accepted plausible but not directly-verified detail.
+
+---
+
+# Sampling test (2026-05-04)
+
+The user pushed back: "are we sure you QC'd the whole wiki accurately? You yourself made the wiki, and still made errors." Valid epistemic concern — an LLM auditing an LLM-built artifact has compounding failure modes.
+
+To get a real error-rate estimate vs. self-report, I picked 20 random factual claims I had NOT specifically verified in either Tier 1 or Tier 2 audit and verified each blind against raw chapters.
+
+## Result: 19 PASS / 1 FAIL = 5% measured error rate on previously-untested claims
+
+## Test claims
+
+| # | Source page | Claim | Result |
+|---|---|---|---|
+| 1 | rebirth_SAC | "stretched out his young pale palm and slowly clenched it, embracing the truth..." | PASS |
+| 2 | jia_jin_sheng | "Ah, the heavens are sending their blessings" | PASS |
+| 3 | talent_test | Fang Yuan grabbed FZ's collar to pull him from river | PASS |
+| 4 | awakening_ceremony | Chi Chen walked 36 steps (faked B grade) | PASS |
+| 5 | beast_horde | Interrogation lasted >1 hour, 3 days after tide | PASS |
+| 6 | liquor_worm | Wind blew clouds away, moon revealed pearl-white bead | PASS |
+| 7 | shen_cui_confrontation | "better food and wine than usual" | PASS (interpretive) |
+| 8 | jiao_san | Dark yellow skin, triangular eyes | PASS |
+| 9 | mo_yan_corpse_gift | Box contained "two fingers and half a toe" | PASS |
+| 10 | class_chairman | Mo Bei second, Fang Zheng third, Chi Cheng fourth | PASS w/ caveat (ch 53 has internal inconsistency) |
+| 11 | flower_wine_monk_cave | Boulder with crevice, waterfall branches | PASS |
+| 12 | hunter_family | Wang Er identity (omitted in wiki Key Events) | PASS w/ note |
+| 13 | killing_logic | Moonblade slicing Gu detail | PASS |
+| 14 | demonic_path | Ren Zu and three Gu (Strength/Wisdom/Hope) | PASS |
+| 15 | self_interest | Aunt/uncle improved treatment with rising intelligence reputation | PASS |
+| 16 | strength_as_foundation | 8% / 4% recovery rates (the one I'd flagged "unverified") | PASS — wiki right |
+| 17 | uncle_and_aunt | Age 16, Rank 1 middle stage threshold for inheritance | PASS |
+| 18 | shen_cui | "Mother Shen, head caretaker of household" | PASS |
+| 19 | beast_horde | Hua Xin name (translation variance ch 94 vs ch 95) | PASS — source inconsistency, wiki picks one |
+| 20 | beast_horde | "During the battle, Fang Yuan had broken through to Rank two" | **FAIL** — breakthrough was BEFORE rejoining fight |
+
+## Interpretation
+
+5% measured error rate on a 20-claim sample is a real signal but not statistically tight. With n=20, the 95% CI is roughly 0%–25%, so the true rate could plausibly be anywhere from "near zero" to "1 in 4." The single failure landed on `beast_horde_survival.md`, which already had the Tier 1 narrative error — consistent with the hypothesis that a few high-density-claim pages account for most of the remaining errors.
+
+## What this validates and what it doesn't
+
+**Validates:** The audit was directionally good. Most claims that survived initial audit hold up under fresh independent verification. The wiki is materially more trustworthy than before.
+
+**Does not validate:** That the wiki is error-free. A 5% sampled rate × ~50–100 claims/page × 24 pages = ~60–120 claims still potentially wrong. Most of those are likely on event-heavy pages (beast_horde and similar). Most are likely chronology, attribution, or omission rather than outright fabrication.
+
+**Compounding-LLM caveat still stands:** I'm an LLM auditing LLM work. The errors I'd be worst at catching are the ones that sound right to a model. The 1 failure (Rank two breakthrough timing) is exactly that class — a chronology slip that sounds plausible if you don't check.
+
+## Files modified post-sampling-test
+
+- `shared/data/wiki/events/beast_horde_survival.md` — fixed Rank two breakthrough timing per `chapter_0097.txt:37`
