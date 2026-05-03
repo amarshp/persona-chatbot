@@ -181,7 +181,7 @@ def retrieve_sections(query: str) -> list[tuple[int, WikiSection]]:
     relevant: list[tuple[int, WikiSection]] = []
     for section in sections:
         score = _score_section(qwords, section)
-        if score >= 2:
+        if score >= 1:
             relevant.append((score, section))
 
     relevant.sort(key=lambda item: (-item[0], item[1].page_rel, item[1].section_title))
