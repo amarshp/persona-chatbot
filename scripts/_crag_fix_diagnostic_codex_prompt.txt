@@ -1,0 +1,109 @@
+TASK: Fix CRAG truncation + tail-keep bugs, then run a focused retrieval diagnostic for canon QA Q03 and Q08.
+
+Read these files first:
+1. v1/retrieval/crag_filter.py - current CRAG implementation, esp. lines 13, 31-52, and 154-181.
+2. v1/retrieval/multi_query.py - multi_query_retrieve signature and MultiQueryResult shape.
+3. v1/retrieval/wiki_chunker.py - WikiSection structure.
+4. shared/data/eval/canon_qa_v1.md - Q03 and Q08 entries.
+
+================================================================
+PART 1 - Edit v1/retrieval/crag_filter.py
+================================================================
+
+Change A: Bump truncation window from 600 to 2000 chars.
+- Module constant `_TRUNCATE_CHARS = 600` -> `_TRUNCATE_CHARS = 2000`.
+- In `_build_messages`, the user-content string contains: "Section content (truncated to ~600 chars):" - update the literal to "Section content (truncated to ~2000 chars):" so the model sees an accurate hint.
+
+Change B: Fix the tail unscored auto-keep bug.
+- Inside the main loop in `crag_filter` (currently around lines 157-165):
+    for index, (lexical_score, section) in enumerate(candidates):
+        if index >= k_max:
+            judgement = CragJudgement(
+                lexical_score=lexical_score,
+                crag_score=None,
+                kept=True,        # <-- bug: tail beyond k_max kept without scoring
+                error=None,
+                section=section,
+            )
+- Change `kept=True` to `kept=False` on the tail branch. Tail candidates beyond `k_max` should be dropped (out of judging budget), not auto-kept. Leave `error=None` (no error occurred).
+
+Do NOT change:
+- The fail-safe path in `_judge_candidate` that keeps a section when the LLM call or parse fails (errors -> kept=True is intentional).
+- The early-return path when `active_client is None` (lines ~138-152) which keeps everything when the LLM client failed to initialize.
+- Anything else in the file.
+
+After the edits, the only behavioural changes are: (1) CRAG sees up to 2000 chars per section instead of 600, and (2) candidates beyond rank k_max are dropped instead of auto-kept.
+
+================================================================
+PART 2 - Create scripts/diag_crag_q03_q08.py
+================================================================
+
+A self-contained diagnostic script. PEP 8, type-annotated where reasonable.
+
+Imports:
+    from v1.retrieval.multi_query import multi_query_retrieve
+    from v1.retrieval.crag_filter import crag_filter
+
+Constants (use verbatim - these are the canon_qa_v1.md user-facing questions):
+
+Q03 = (
+    "At the awakening ceremony, exactly how many steps did you walk into "
+    "the flower sea? What grade did that put you at, and what is the grade scale?"
+)
+Q08 = (
+    "You noticed something off about Gu Yue Chi Chen at the awakening "
+    "ceremony. What was it?"
+)
+
+For each (label, query) in [("Q03", Q03), ("Q08", Q08)] the script must:
+
+1. Print a header line:  ===== {label} =====
+2. Print the query.
+3. Call:
+       mq = multi_query_retrieve(query, n=3)
+   Print mq.phrasings (one per line, indented) and mq.rephrase_error if not None.
+4. Print "merged_sections count: {len(mq.merged_sections)}"
+   then the top 15 of mq.merged_sections, one per line:
+       [rank] {page_rel}::{section_title}  lex={lexical_score}
+5. Call:
+       result = crag_filter(query, list(mq.merged_sections), threshold=7, k_max=12)
+6. Print one line per judgement in result.judgements (preserve input order):
+       [rank] {page_rel}::{section_title}  lex={L}  crag={C}  kept={K}  err={E}
+   where C is crag_score or "-", K is "Y"/"N", E is error or "-".
+7. Print "SURVIVORS ({n}):" then list each survivor as:
+       {page_rel}::{section_title} (lex={lexical_score})
+8. Determine whether `events/awakening_ceremony.md::Key Events` is among the survivors. Print:
+       AWAKENING_KEY_EVENTS_SURVIVED: YES   (or NO)
+
+After processing both questions, print a final summary block:
+
+    ===== SUMMARY =====
+    Q03 awakening_key_events_kept: YES/NO
+    Q08 awakening_key_events_kept: YES/NO
+
+Use `print()` for output. No logging module. No argparse. The script runs as `python scripts/diag_crag_q03_q08.py` from the repo root.
+
+================================================================
+PART 3 - Run the diagnostic and capture output
+================================================================
+
+After both edits land:
+1. Run: `python scripts/diag_crag_q03_q08.py` from persona-chatbot/.
+2. Capture stdout to: results/v1/diag_crag_q03_q08_20260504.md
+   - Wrap the captured stdout inside a fenced markdown code block.
+   - Add a one-line header at the top: `# CRAG diagnostic - Q03/Q08 - 2026-05-04`
+   - Add a brief preface noting the two changes applied to crag_filter.py (window 600->2000, tail kept=False).
+
+API call estimate: ~26 OpenRouter calls total = 2 MQ rephrasings (1 call each) + 2 questions x 12 CRAG scoring calls.
+
+================================================================
+Report back
+================================================================
+
+After all three parts complete, report (concise, no preamble):
+- crag_filter.py edits: confirmed (paste the two changed lines for `_TRUNCATE_CHARS` and the tail-branch `kept=` line)
+- diag script created at: scripts/diag_crag_q03_q08.py
+- diag output written to: results/v1/diag_crag_q03_q08_20260504.md
+- Q03 awakening_key_events_kept: YES/NO
+- Q08 awakening_key_events_kept: YES/NO
+- For each of Q03 and Q08, list the crag_score that the awakening_ceremony.md::Key Events section received (or "tail-dropped" if it ranked beyond k_max).

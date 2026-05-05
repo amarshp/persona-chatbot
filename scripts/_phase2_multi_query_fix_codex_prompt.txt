@@ -1,0 +1,47 @@
+FIX — KeyError in v1/retrieval/multi_query.py:108
+
+REPRO
+Running `python scripts/eval_multi_query.py` produces:
+
+  File "v1/retrieval/multi_query.py", line 108, in _generate_phrasings
+    "content": _PHRASING_PROMPT.format(n=n) + f"\n\nQuery: {query}",
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  KeyError: '"rephrasings"'
+
+ROOT CAUSE
+`_PHRASING_PROMPT` (lines 19-26) contains the literal JSON example:
+
+    '{"rephrasings": ["...", "...", "..."]}'
+
+When this is passed to `str.format(n=n)`, Python tries to interpret
+`{"rephrasings"}` as a format placeholder.
+
+FIX (minimal, smallest possible diff)
+
+Edit ONLY v1/retrieval/multi_query.py. Two acceptable approaches — pick A:
+
+A. Escape every literal brace in the template by doubling it. The string
+   currently reads:
+       '{"rephrasings": ["...", "...", "..."]}'
+   Change to:
+       '{{"rephrasings": ["...", "...", "..."]}}'
+   The `{n}` placeholder stays as `{n}` — only the JSON braces double up.
+   No other change needed.
+
+CONSTRAINTS
+- Do NOT change any other file.
+- Do NOT change the prompt's wording, the function signatures, or the
+  fail-safe error handling.
+- After your edit, run from project root:
+      python scripts/boundary_tests.py
+  Confirm the SUMMARY block still reports:
+      Phase 2/4 trigger: ACTIVE (8/10 vocab fails, threshold 30%)
+      Phase 3 trigger:   ACTIVE (avg sections=6.00, avg total_tokens=2253)
+      Out-of-scope regression: clear-leak (avg sections=2.75)
+      Phase 1 routing:   PASS (0/10 unexpected classifications)
+      Phase 5 wiki health: CLEAN (0 structural issues)
+- Do NOT run scripts/eval_multi_query.py. The user gates that step.
+
+OUTPUT
+- The diff applied (just the edited line(s)).
+- The boundary_tests.py SUMMARY block.

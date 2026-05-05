@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import re
 import sys
+import time
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -27,10 +28,14 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from shared.llm_client import LLMClient
-from shared.config import PRIMARY_MODEL, CONVERSATION_WINDOW, MAX_OUTPUT_TOKENS
+from shared.config import PRIMARY_MODEL, CONVERSATION_WINDOW, MAX_OUTPUT_TOKENS, USE_MQ_CRAG, CRAG_RERANKER_THRESHOLD, FAITHFULNESS_ENABLED
+from v1.chat_logger import ChatLogger, TurnLog
+from v1.faithfulness.entity_guard import guard as _faithfulness_guard
 from v1.persona.prompt_composer import PromptComposer
+from v1.retrieval.crag_filter import crag_filter
+from v1.retrieval.multi_query import multi_query_retrieve
 from v1.retrieval.query_router import route as _route_query
-from v1.retrieval.wiki_retriever import retrieve as wiki_retrieve
+from v1.retrieval.wiki_retriever import format_sections, retrieve as wiki_retrieve
 
 # ── constants ─────────────────────────────────────────────────────────────────
 HISTORY_PAIRS   = CONVERSATION_WINDOW   # 8 pairs = 16 messages kept in context
@@ -163,15 +168,90 @@ def _print_debug(composer: PromptComposer, state: dict) -> None:
 
 # ── main loop ─────────────────────────────────────────────────────────────────
 
+def _page_names(scored_sections) -> str:
+    pages = sorted({section.page_rel for _, section in scored_sections})
+    return ", ".join(pages) if pages else "none"
+
+
+def _retrieve_l3_context(query: str, client: LLMClient, turn_log: TurnLog) -> str:
+    """Run the retrieval pipeline and populate retrieval-related TurnLog fields."""
+    route = _route_query(query)
+    turn_log.route_decision = route
+    if route == "none":
+        return ""
+
+    if not USE_MQ_CRAG:
+        print("[retrieval] path=PLAIN KEYWORD")
+        formatted = wiki_retrieve(query)
+        turn_log.l3_char_count = len(formatted)
+        turn_log.l3_empty = not formatted
+        return formatted
+
+    t0 = time.time()
+    multi_query_result = multi_query_retrieve(
+        query,
+        n=3,
+        client=client,
+        cached_phrasings=None,
+    )
+    turn_log.mq_latency_ms = int((time.time() - t0) * 1000)
+    turn_log.mq_rephrasings = list(multi_query_result.phrasings)
+    turn_log.mq_rephrase_error = multi_query_result.rephrase_error
+    turn_log.candidates_pre_crag = len(multi_query_result.merged_sections)
+    turn_log.candidates_pre_crag_pages = sorted(
+        {sec.page_rel for _, sec in multi_query_result.merged_sections}
+    )
+
+    t0 = time.time()
+    crag_result = crag_filter(
+        query,
+        list(multi_query_result.merged_sections),
+        threshold=CRAG_RERANKER_THRESHOLD,
+        k_max=30,
+        client=client,
+        sub_queries=multi_query_result.phrasings,
+    )
+    turn_log.crag_latency_ms = int((time.time() - t0) * 1000)
+    turn_log.crag_survivors = [
+        {
+            "page": j.section.page_rel,
+            "section": j.section.section_title,
+            "score": j.crag_score,
+        }
+        for j in crag_result.judgements
+        if j.kept
+    ]
+
+    formatted = format_sections(list(crag_result.survivors))
+    turn_log.l3_char_count = len(formatted)
+    turn_log.l3_empty = not formatted
+
+    print(f"[retrieval] path=MQ+CRAG n=3 threshold={CRAG_RERANKER_THRESHOLD} k_max=30")
+    if multi_query_result.rephrase_error:
+        print(f"[retrieval] rephrase_error={multi_query_result.rephrase_error}")
+    print(f"[retrieval] rephrasings={list(multi_query_result.phrasings)}")
+    print(
+        "[retrieval] before_crag="
+        f"{len(multi_query_result.merged_sections)} pages={_page_names(multi_query_result.merged_sections)}"
+    )
+    print(
+        "[retrieval] after_crag="
+        f"{len(crag_result.survivors)} pages={_page_names(crag_result.survivors)}"
+    )
+    return formatted
+
+
 def main() -> None:
     print("Loading personality files...", end=" ", flush=True)
     composer = PromptComposer()
     client   = LLMClient()
     state    = composer.initial_state()
+    logger   = ChatLogger()
     print("done.")
 
     sys_chars = len(composer.l1) + len(composer.l2)
     print(f"System prompt: ~{sys_chars // 4:,} tokens  |  Model: {MODEL}")
+    print(f"Session log:   {logger.path}")
     print('Commands: quit, reset, reload, debug, stats')
     print("─" * 60)
 
@@ -217,12 +297,19 @@ def main() -> None:
             continue
 
         # ── build messages ─────────────────────────────────────────────
+        turn_log = logger.new_turn(user_input)
+        turn_log.model = MODEL
+        turn_log.history_depth = len(history) // 2
+        turn_log.l4_state = dict(state)
+
         trimmed = _trim_history(history, HISTORY_PAIRS)
-        l3_context = "" if _route_query(user_input) == "none" else wiki_retrieve(user_input)
+        l3_context = _retrieve_l3_context(user_input, client, turn_log)
         messages = composer.build(trimmed, state, l3_context=l3_context)
         messages.append({"role": "user", "content": user_input})
 
         # ── call LLM (streaming) ───────────────────────────────────────
+        m_pre_gen = client.get_metrics()
+        t_gen = time.time()
         try:
             chunks   = client.stream_generate(
                 messages,
@@ -234,10 +321,31 @@ def main() -> None:
             response = _stream_and_display(chunks)
         except Exception as exc:
             print(f"\n[Error: {exc}]")
+            turn_log.error = repr(exc)
+            turn_log.gen_latency_ms = int((time.time() - t_gen) * 1000)
+            logger.commit(turn_log)
             continue
+
+        turn_log.gen_latency_ms = int((time.time() - t_gen) * 1000)
+        m_post_gen = client.get_metrics()
+        turn_log.tokens_in = m_post_gen["total_tokens_in"] - m_pre_gen["total_tokens_in"]
+        turn_log.tokens_out = m_post_gen["total_tokens_out"] - m_pre_gen["total_tokens_out"]
+
+        spoken, internal = _parse_response(response)
+        turn_log.spoken = spoken
+        turn_log.internal = internal
+
+        if FAITHFULNESS_ENABLED:
+            _gr = _faithfulness_guard(spoken, l3_context)
+            turn_log.guard_flagged = _gr.flagged
+            turn_log.guard_ungrounded_entities = list(_gr.ungrounded_entities)
+            if _gr.flagged:
+                print(f"[faithfulness] ungrounded entities: {_gr.ungrounded_entities}")
 
         history.append({"role": "user",      "content": user_input})
         history.append({"role": "assistant", "content": response})
+
+        logger.commit(turn_log)
 
 
 if __name__ == "__main__":

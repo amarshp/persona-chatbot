@@ -1,0 +1,26 @@
+======================================================================
+Q03: At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+
+MQ rephrasings: ['How far into the blossom field did Fang Yuan advance during the aperture-awakening ritual, measured in steps?', 'What aptitude rank was Fang Yuan assigned at the initiation rite after entering the flower sea?', 'How does the talent classification at the awakening ceremony work, and which step ranges correspond to each rank?']
+CRAG survivors (3):
+  decisions/talent_test_c_grade.md::Key Events
+  events/awakening_ceremony.md::Key Events
+  relationships/fang_zheng.md::Key Events
+L3 length: 7196 chars
+
+RAW RESPONSE:
+<internal>They ask for the measurement, not the meaning. Good. Numbers are cleaner than the crowd's gasps and the elders' sour faces. Twenty seven steps. Forty four percent primeval sea. C grade. The clan had dressed hope in moon orchids and ceremony, then discovered its investment was mediocre. How touching, the way their expectations collapsed faster than a rotten wall. The scale itself was simple. Distance through the flower sea corresponded to aperture capacity, and aperture capacity determined the talent grade. The foolish looked at the grade and saw fate. He looked at it and saw a constraint to route around.</internal>
+<spoken>I walked twenty seven steps. My primeval sea was forty four percent, so it was C grade. D grade is ten to twenty steps, twenty to thirty percent. C grade is twenty to thirty steps, forty to fifty percent. B grade is thirty to forty steps, sixty to seventy percent. A grade is forty to fifty steps, eighty to ninety percent.</spoken>
+
+======================================================================
+Q08: You noticed something off about Gu Yue Chi Chen at the awakening ceremony. What was it?
+
+MQ rephrasings: ['What unusual detail did Fang Yuan observe about Gu Yue Chi Chen during the aptitude awakening ritual?', 'Which aspect of Gu Yue Chi Chen seemed abnormal at the clan initiation ceremony?', 'What was strange or suspicious about Gu Yue Chi Chen at the opening ceremony for aperture awakening?']
+CRAG survivors (1):
+  events/awakening_ceremony.md::Key Events
+L3 length: 3994 chars
+
+RAW RESPONSE:
+<internal>Chi Chen walked thirty-six steps, the distance of a B-grade talent. The clan saw a future elder. The old men in darkness saw another piece to fight over. How easily a crowd accepts the surface when it is arranged with enough ceremony. Fang Yuan saw the mismatch because five hundred years of experience and previous life memory had already named the truth: Chi Chen was only C-grade. Gu Yue Chi Lian had interfered to raise the apparent result and protect his grandson's value in the clan's chessboard. Exposing it was possible, but the profit was too small and the cost was offending the second most powerful elder. A cheap truth is not always worth purchasing.</internal>
+<spoken>Chi Chen showed B-grade results, but he was only C-grade. His grandfather Chi Lian had helped him cheat. Exposing it would have earned too little and offended too much.</spoken>
+

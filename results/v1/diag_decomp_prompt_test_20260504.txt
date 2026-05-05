@@ -1,0 +1,21 @@
+============================================================
+Q03 (3-clause): At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+RAW:
+{"rephrasings":["awakening ceremony flower sea number of steps walked and corresponding cultivation talent rank","talent awakening flower sea step count required for each aptitude grade ranking system","awakening ritual flower sea grade scale from lowest to highest and which rank matches a specific step distance"]}
+  [1] awakening ceremony flower sea number of steps walked and corresponding cultivation talent rank
+  [2] talent awakening flower sea step count required for each aptitude grade ranking system
+  [3] awakening ritual flower sea grade scale from lowest to highest and which rank matches a specific step distance
+============================================================
+Q08 (single): You noticed something off about Gu Yue Chi Chen at the awakening ceremony. What was it?
+RAW:
+{"rephrasings":["What was unusual about Gu Yue Chi Chen during the aperture awakening ceremony?","Which odd detail was observed about Gu Yue Chi Chen at the talent awakening ritual?","What anomaly did people notice in Gu Yue Chi Chen at the awakening ceremony for opening an aperture?"]}
+  [1] What was unusual about Gu Yue Chi Chen during the aperture awakening ceremony?
+  [2] Which odd detail was observed about Gu Yue Chi Chen at the talent awakening ritual?
+  [3] What anomaly did people notice in Gu Yue Chi Chen at the awakening ceremony for opening an aperture?
+============================================================
+Q01 (multi): Where and how did you activate the Spring Autumn Cicada in your previous life? Describe the location and the circumstances at the moment of activation.
+RAW:
+{"rephrasings":["site where the Spring Autumn Cicada was first used in a previous life and the events happening at the time it was activated","previous-life activation of Spring Autumn Cicada: exact place and situational context when it was triggered","location and immediate circumstances surrounding the moment the Spring Autumn Cicada was activated in an earlier lifetime"]}
+  [1] site where the Spring Autumn Cicada was first used in a previous life and the events happening at the time it was activated
+  [2] previous-life activation of Spring Autumn Cicada: exact place and situational context when it was triggered
+  [3] location and immediate circumstances surrounding the moment the Spring Autumn Cicada was activated in an earlier lifetime

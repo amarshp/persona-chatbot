@@ -1,0 +1,77 @@
+CRAG reranker: BAAI/bge-reranker-base  threshold: 0.5
+
+======================================================================
+Q03: At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 10838.27it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+MQ rephrasings:
+  [1] How far into the flower field did Fang Yuan advance during the aperture awakening rite, measured in number of steps?
+  [2] What aptitude rank was Fang Yuan assigned at the awakening ritual after his performance in the flower sea?
+  [3] How does the talent classification at the awakening ceremony work, including the step ranges for each rank?
+merged_sections count: 95
+
+CRAG judgements (top 12):
+  [1] decisions/talent_test_c_grade.md::Key Events  lex=9  crag=0.495  kept=N  err=-
+  [2] events/awakening_ceremony.md::Connections  lex=7  crag=0.004  kept=N  err=-
+  [3] events/awakening_ceremony.md::Key Events  lex=7  crag=0.703  kept=Y  err=-
+  [4] events/awakening_ceremony.md::Summary  lex=7  crag=0.001  kept=N  err=-
+  [5] events/awakening_ceremony.md::The Ceremony's Significance  lex=7  crag=0.317  kept=N  err=-
+  [6] philosophy/demonic_path_survival.md::Key Events  lex=7  crag=0.074  kept=N  err=-
+  [7] events/flower_wine_monk_cave.md::Key Events  lex=6  crag=0.053  kept=N  err=-
+  [8] relationships/fang_zheng.md::Key Events  lex=6  crag=0.297  kept=N  err=-
+  [9] relationships/uncle_and_aunt.md::Key Events  lex=6  crag=0.339  kept=N  err=-
+  [10] decisions/jia_jin_sheng_killing.md::Key Events  lex=5  crag=0.261  kept=N  err=-
+  [11] decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning  lex=5  crag=0.013  kept=N  err=-
+  [12] decisions/liquor_worm_acquisition.md::Summary  lex=5  crag=0.251  kept=N  err=-
+
+SURVIVORS (1):
+  events/awakening_ceremony.md::Key Events (lex=7)
+AWAKENING_KEY_EVENTS_SURVIVED: YES
+L3 length: 3994 chars  |  retrieval time: 19.84s
+
+GENERATION TIME: 7.71s
+RAW RESPONSE:
+<internal>He asks for arithmetic, not comfort. Good. The awakening ceremony was a clean measurement disguised as destiny. The clan saw a poet child, expected an A-grade future, then watched twenty-seven steps turn their hopes into silence. How easily their faces changed. Before the ceremony he was treasure. After the ceremony he was cost. This is why the crowd's judgment is cheaper than primeval stones.</internal>
+<spoken>I walked twenty-seven steps. My aperture held forty-four percent primeval sea, so the result was C-grade. D-grade is ten to twenty steps, twenty to thirty percent. C-grade is twenty to thirty steps, forty to fifty percent. B-grade is thirty to forty steps, sixty to seventy percent. A-grade is forty to fifty steps, eighty to ninety percent.</spoken>
+
+======================================================================
+Q08: You noticed something off about Gu Yue Chi Chen at the awakening ceremony. What was it?
+
+MQ rephrasings:
+  [1] What unusual detail did Fang Yuan observe about Gu Yue Chi Chen during the aptitude awakening rite?
+  [2] Which aspect of Gu Yue Chi Chen seemed suspicious at the clan's awakening event?
+  [3] What was strange or inconsistent about Gu Yue Chi Chen when the coming-of-age gu master ceremony took place?
+merged_sections count: 95
+
+CRAG judgements (top 12):
+  [1] events/awakening_ceremony.md::Key Events  lex=7  crag=0.801  kept=Y  err=-
+  [2] decisions/liquor_worm_strategy.md::Key Events  lex=6  crag=0.203  kept=N  err=-
+  [3] decisions/class_chairman_refusal.md::Key Events  lex=5  crag=0.033  kept=N  err=-
+  [4] decisions/extortion_campaign.md::Key Events  lex=5  crag=0.191  kept=N  err=-
+  [5] decisions/jiao_san_team_selection.md::Connections  lex=5  crag=0.000  kept=N  err=-
+  [6] decisions/jiao_san_team_selection.md::Key Events  lex=5  crag=0.070  kept=N  err=-
+  [7] decisions/mo_yan_corpse_gift.md::Key Events  lex=5  crag=0.016  kept=N  err=-
+  [8] decisions/mo_yan_corpse_gift.md::Summary  lex=5  crag=0.020  kept=N  err=-
+  [9] decisions/talent_test_c_grade.md::Key Events  lex=5  crag=0.053  kept=N  err=-
+  [10] events/awakening_ceremony.md::Summary  lex=5  crag=0.043  kept=N  err=-
+  [11] events/beast_horde_survival.md::Key Events  lex=5  crag=0.048  kept=N  err=-
+  [12] events/beast_horde_survival.md::Summary  lex=5  crag=0.125  kept=N  err=-
+
+SURVIVORS (1):
+  events/awakening_ceremony.md::Key Events (lex=7)
+AWAKENING_KEY_EVENTS_SURVIVED: YES
+L3 length: 3994 chars  |  retrieval time: 12.69s
+
+GENERATION TIME: 9.00s
+RAW RESPONSE:
+<internal>He asks about Chi Chen as if the awakening ceremony only measured talent. It also measured the elders. Mo Bei's thirty-six steps matched a B-grade result cleanly. Chi Chen's thirty-six steps did not. Five hundred years of experience had already marked him as C-grade. A C-grade youth walking into B-grade distance meant interference, and the most obvious hand was Gu Yue Chi Lian, his grandfather, the second most powerful elder in the clan. Exposing it might have gained a little attention, perhaps a small reward. It would also create an enemy with rank, faction, and memory. Only fools trade future trouble for a mouthful of applause. Hehe, the clan called it awakening. In truth, every elder was merely calculating which pawn could be polished into a future weapon.</internal>
+<spoken>Chi Chen was not B-grade. He was C-grade, but he walked thirty-six steps because Chi Lian had helped him cheat. Exposing it was not worth offending that old man.</spoken>
+

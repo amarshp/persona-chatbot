@@ -1,0 +1,109 @@
+CACHE V01-V10 rephrasings to disk — true freeze
+
+CONTEXT
+temp=0 is insufficient. 3 paid runs at n=3,t=7 produced 2/10, 4/10, 6/10
+because OpenRouter/Azure introduces provider-side non-determinism upstream
+of the temperature parameter. To freeze the V01-V10 eval instrument we must
+cache the rephrasings to disk and load them deterministically.
+
+DELIVERABLES
+
+1. scripts/freeze_v_rephrasings.py — NEW
+   Self-contained CLI that generates rephrasings ONCE for all V01-V10
+   queries and saves them to a JSON cache file. Idempotent — refuses
+   to overwrite an existing cache unless --force is passed.
+
+       python scripts/freeze_v_rephrasings.py [--force]
+
+   Behavior:
+   - Imports VOCABULARY_TESTS from scripts.boundary_tests.
+   - For each V0N (query, page_rel, section_title), call
+     _generate_phrasings(query, n=3, client=LLMClient()) directly from
+     v1.retrieval.multi_query (it's already a public-ish helper —
+     leading underscore is fine, eval already imports private helpers).
+   - Build dict: {query: list[str]} mapping each query to its 3 cached
+     phrasings.
+   - Save to: shared/data/eval/v_rephrasings_cache.json
+     Format:
+         {
+           "generated_at": "<UTC timestamp>",
+           "model": "<JUDGE_MODEL value>",
+           "n": 3,
+           "rephrasings": {
+             "How do you handle people who pretend to be your friend?": [
+                "...", "...", "..."
+             ],
+             ...
+           }
+         }
+   - On --force, re-generate and overwrite. Otherwise refuse with a
+     clear message if the cache already exists.
+   - Print: how many queries cached, total LLM calls (== queries),
+     output path.
+
+   Errors during rephrase generation should fail loudly — print which
+   query failed and exit non-zero. Do NOT save a partial cache.
+
+2. v1/retrieval/multi_query.py — minimal additive change
+   Add an optional parameter to multi_query_retrieve:
+
+       def multi_query_retrieve(
+           query: str,
+           *,
+           n: int = 3,
+           client: LLMClient | None = None,
+           cached_phrasings: list[str] | None = None,
+       ) -> MultiQueryResult:
+
+   Behavior:
+   - If cached_phrasings is not None: SKIP the rephrase LLM call
+     entirely. Use cached_phrasings directly as the phrasings list.
+     Set rephrase_error to None (cache hit).
+   - If cached_phrasings is None: existing behavior unchanged
+     (rephrase via LLM with temp=0).
+
+   This keeps the runtime path (v1/main.py never passes
+   cached_phrasings) on its current behavior. Only the eval harness
+   uses cached input.
+
+3. scripts/eval_multi_query_crag.py — load cache, pass through
+   At the top of main(), load the cache:
+
+       from shared.config import DATA_DIR
+       CACHE_PATH = DATA_DIR / "eval" / "v_rephrasings_cache.json"
+
+       cache_payload: dict | None = None
+       if CACHE_PATH.exists():
+           cache_payload = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+           print(f"[cache] loaded rephrasings from {CACHE_PATH}")
+       else:
+           print(f"[cache] no rephrasings cache; LLM rephrase per query")
+
+   For each row in VOCABULARY_TESTS, look up cached phrasings:
+
+       cached = (
+           cache_payload["rephrasings"].get(query)
+           if cache_payload else None
+       )
+       result = multi_query_retrieve(
+           query, n=args.n, client=client, cached_phrasings=cached,
+       )
+
+   Update the markdown output to record whether the run used cached
+   phrasings (single-line frontmatter field "rephrasings_source: cache | live").
+
+CONSTRAINTS
+- PEP 8, type hints, frozen dataclasses where state is immutable.
+- DO NOT modify v1/main.py, scripts/boundary_tests.py, crag_filter.py,
+  wiki_retriever.py, shared/config.py.
+- DO NOT install new packages.
+- Verify boundary_tests.py SUMMARY block is byte-identical post-edit.
+- Do NOT run scripts/freeze_v_rephrasings.py or scripts/eval_multi_query_crag.py.
+  The user gates both.
+
+OUTPUT
+- File paths created/modified, line counts.
+- The boundary_tests.py SUMMARY block to confirm no regression.
+- A 3-line note for the user: how the cache works, how to refresh it,
+  and what variance source it does NOT eliminate (CRAG calls are still
+  LLM-driven and may vary even with cached rephrasings).

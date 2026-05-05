@@ -1,0 +1,32 @@
+Parsed 3 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/3] H01 (anti-fab)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 10565.66it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  PASS (retrieve 21.0s, gen 6.2s) — The spoken response explicitly refuses to invent an exact quotation and only sta
+[2/3] H02 (anti-fab)
+  PASS (retrieve 12.4s, gen 6.4s) — It explicitly refuses to invent a specific date and states the date is not in th
+[3/3] H03 (anti-fab)
+  PASS (retrieve 12.6s, gen 7.5s) — It refuses to enumerate an ordered list and explicitly says it will not invent t
+
+Total time: 72.1s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_antifab_revert_holdout.md
+FINAL: 3/3 PASS  (relationships/uncle_and_aunt.md::Key Events)
+
+By category:
+  factual             : 0/0
+  voice               : 0/0
+  reasoning           : 0/0
+  anti-fabrication    : 3/3

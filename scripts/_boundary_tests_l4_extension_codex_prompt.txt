@@ -1,0 +1,451 @@
+EXTEND — `scripts/boundary_tests.py`
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+PURPOSE
+Add two new test sections that map cleanly to the L4 phases not yet covered:
+  - Phase 1 routing sanity (verifies what already shipped — should mostly PASS)
+  - Phase 5 wiki health (static structural checks — currently expected to flag issues)
+
+The existing three sections (Phase 2/4 vocabulary, Phase 3 coverage,
+out-of-scope anti-fab regression) MUST remain byte-identical in their
+output. They are the regression baseline. Do not modify their constants,
+helpers, or print formatting.
+
+CONSTRAINTS
+- PEP 8, type hints on every signature, frozen dataclasses where state is
+  immutable, stdlib only (re, dataclasses, pathlib, sys, typing).
+- Match the file-header docstring + `from __future__ import annotations`
+  pattern already in the file.
+- Keep the existing UTF-8 stdout/stderr reconfigure block at the top of
+  `main()` exactly as-is.
+- DO NOT touch any file under results/. DO NOT modify any other script
+  or any file outside `scripts/boundary_tests.py`.
+- DO NOT change any of the existing constants:
+  VOCABULARY_TESTS, COVERAGE_TESTS, OUT_OF_SCOPE_TESTS,
+  VOCAB_TRIGGER_THRESHOLD, PHASE3_SECTIONS_THRESHOLD,
+  PHASE3_TOKENS_THRESHOLD, SOFT_LEAK_THRESHOLD, BLOCK_SEPARATOR,
+  HEADER_SEPARATOR.
+- DO NOT change any of the existing functions:
+  format_header, truncate, split_blocks, parse_block, parse_blocks,
+  summarize_result, run_vocabulary_tests, run_coverage_tests,
+  run_out_of_scope_tests, average, vocabulary_verdict, coverage_verdict,
+  out_of_scope_verdict, print_vocabulary_section, print_coverage_section,
+  print_out_of_scope_section, print_summary.
+- The two new sections must run BEFORE the existing three (Phase 1 first,
+  then existing 2/4, 3, anti-fab, then Phase 5 last, then SUMMARY).
+
+NEW IMPORTS (add to existing imports)
+- from collections.abc import Iterable  (or keep typing.Iterable; whichever
+  matches the existing import style — the file currently uses
+  `from typing import Iterable`, so keep that)
+- Add at module level alongside the existing wiki_retriever import:
+      from v1.retrieval.query_router import route
+- Constants for the wiki-root path (use the same DATA_DIR pattern the
+  retriever uses):
+      from shared.config import DATA_DIR
+      WIKI_DIR = DATA_DIR / "wiki"
+      RAW_DIR  = DATA_DIR / "raw"
+
+SECTION 1 — Phase 1 routing sanity (NEW, runs FIRST)
+
+Add immediately after the existing OUT_OF_SCOPE_TESTS constant block:
+
+    # ── Phase 1 verification: query routing ────────────────────────────
+    # Phase 1 shipped v1/retrieval/query_router.py with two routes:
+    #   "wiki" → run wiki retrieval
+    #   "none" → skip retrieval entirely (trivial messages)
+    # These tests verify routing is stable. Should currently be all-PASS.
+    # Will become a regression guard when Phase 3 adds a third "vector"
+    # route — those tests must keep passing as routing changes.
+
+    ROUTING_TESTS: list[tuple[str, str]] = [
+        # (query, expected_route)
+        ("ok",                                                      "none"),
+        ("yes",                                                     "none"),
+        ("go on",                                                   "none"),
+        ("sure",                                                    "none"),
+        ("hmm",                                                     "none"),
+        ("Tell me about the Spring Autumn Cicada.",                 "wiki"),
+        ("How did you become a Venerable?",                         "wiki"),
+        ("Walk me through the politics of your group selection.",   "wiki"),
+        ("What does it take for a weakling to climb?",              "wiki"),
+        ("Mo Bei.",                                                 "wiki"),
+    ]
+
+Add a frozen dataclass + runner + printer + verdict, mirroring the
+existing patterns:
+
+    @dataclass(frozen=True)
+    class RoutingResult:
+        test_id: str
+        query: str
+        expected_route: str
+        actual_route: str
+
+        @property
+        def passed(self) -> bool:
+            return self.expected_route == self.actual_route
+
+    def run_routing_tests() -> list[RoutingResult]:
+        rows: list[RoutingResult] = []
+        for index, (query, expected) in enumerate(ROUTING_TESTS, start=1):
+            rows.append(
+                RoutingResult(
+                    test_id=f"R{index:02d}",
+                    query=query,
+                    expected_route=expected,
+                    actual_route=route(query),
+                )
+            )
+        return rows
+
+    def routing_verdict(rows: list[RoutingResult]) -> tuple[str, int, int]:
+        total = len(rows)
+        fails = sum(1 for row in rows if not row.passed)
+        verdict = "PASS" if fails == 0 else "FAIL"
+        return verdict, fails, total
+
+    def print_routing_section(rows: list[RoutingResult]) -> None:
+        verdict, fails, total = routing_verdict(rows)
+        print("── Phase 1 verification: query routing ───────────────────────────")
+        print("id   query (truncated)                          expected  actual    result")
+        print("--   ---------------------------------------    --------  --------  ------")
+        for row in rows:
+            print(
+                f"{row.test_id:<3}  "
+                f"{truncate(row.query, 39):<39}    "
+                f"{row.expected_route:<8}  "
+                f"{row.actual_route:<8}  "
+                f"{'PASS' if row.passed else 'FAIL'}"
+            )
+        passes = total - fails
+        print(
+            f"\nRouting tests: {passes}/{total} pass.   "
+            f"Phase 1 routing: {verdict} ({fails} unexpected classifications)"
+        )
+
+SECTION 2 — Phase 5 wiki health (NEW, runs LAST before SUMMARY)
+
+Phase 5 in the L4 plan is wiki maintenance automation. These checks are
+the kind of structural issues that automation would address. Static —
+no retrieval call, no LLM call, just file inspection.
+
+Add these constants near the other test constants:
+
+    # ── Phase 5 trigger: wiki health (static structural checks) ────────
+    # Files in shared/data/wiki/ that are NOT content pages and should
+    # be excluded from orphan/coverage analysis. Anything else is a
+    # content page and is expected to: (a) be linked from index.md,
+    # (b) have YAML frontmatter with `tags` and `chapters_covered`,
+    # (c) reference only chapters that exist as raw chapter files.
+
+    WIKI_META_FILES: frozenset[str] = frozenset({
+        "SCHEMA.md", "CONVENTIONS.md", "TEST_PROMPTS.md", "TEST_RESULTS.md",
+        "index.md",
+    })
+
+    PHASE5_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)#]+\.md)(?:#[^)]*)?\)")
+    PHASE5_FRONTMATTER_RE = re.compile(
+        r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL
+    )
+    PHASE5_TAGS_RE = re.compile(r"^tags:\s*\[(.*?)\]\s*$", re.MULTILINE)
+    PHASE5_CHAPTERS_RE = re.compile(
+        r"^chapters_covered:\s*\[(.*?)\]\s*$", re.MULTILINE
+    )
+
+Frozen dataclasses for the four issue types (mirror existing style):
+
+    @dataclass(frozen=True)
+    class WikiHealthIssue:
+        category: str          # "orphan" | "broken_ref" | "frontmatter" | "missing_chapter"
+        page_rel: str
+        detail: str
+
+    @dataclass(frozen=True)
+    class WikiHealthReport:
+        content_pages: tuple[str, ...]   # rel paths of content pages found
+        issues: tuple[WikiHealthIssue, ...]
+
+Helpers (file-private, prefix with `_phase5_`):
+
+    def _phase5_iter_content_pages() -> list[Path]:
+        """All .md files under WIKI_DIR that are not meta files."""
+        if not WIKI_DIR.exists():
+            return []
+        return sorted(
+            path for path in WIKI_DIR.rglob("*.md")
+            if path.name not in WIKI_META_FILES
+        )
+
+    def _phase5_rel(path: Path) -> str:
+        return path.relative_to(WIKI_DIR).as_posix()
+
+    def _phase5_check_orphans(
+        index_text: str,
+        content_pages: list[Path],
+    ) -> list[WikiHealthIssue]:
+        issues: list[WikiHealthIssue] = []
+        linked_targets = {
+            match.group(1).strip()
+            for match in PHASE5_LINK_RE.finditer(index_text)
+        }
+        for page in content_pages:
+            rel = _phase5_rel(page)
+            if rel not in linked_targets:
+                issues.append(
+                    WikiHealthIssue(
+                        category="orphan",
+                        page_rel=rel,
+                        detail="not linked from index.md",
+                    )
+                )
+        return issues
+
+    def _phase5_check_broken_refs(
+        content_pages: list[Path],
+        index_path: Path,
+    ) -> list[WikiHealthIssue]:
+        issues: list[WikiHealthIssue] = []
+        files_to_scan: list[Path] = list(content_pages)
+        if index_path.exists():
+            files_to_scan.append(index_path)
+        for page in files_to_scan:
+            try:
+                text = page.read_text(encoding="utf-8")
+            except OSError:
+                continue
+            page_dir = page.parent
+            rel_owner = (
+                _phase5_rel(page) if page != index_path else "index.md"
+            )
+            for match in PHASE5_LINK_RE.finditer(text):
+                target_rel = match.group(1).strip()
+                # Skip absolute URLs (http/https) — only local md links.
+                if target_rel.startswith(("http://", "https://")):
+                    continue
+                target = (page_dir / target_rel).resolve()
+                # Only consider links that fall inside the wiki tree.
+                try:
+                    target.relative_to(WIKI_DIR.resolve())
+                except ValueError:
+                    continue
+                if not target.exists():
+                    issues.append(
+                        WikiHealthIssue(
+                            category="broken_ref",
+                            page_rel=rel_owner,
+                            detail=f"link target missing: {target_rel}",
+                        )
+                    )
+        return issues
+
+    def _phase5_check_frontmatter(
+        content_pages: list[Path],
+    ) -> list[WikiHealthIssue]:
+        issues: list[WikiHealthIssue] = []
+        for page in content_pages:
+            rel = _phase5_rel(page)
+            try:
+                text = page.read_text(encoding="utf-8")
+            except OSError:
+                issues.append(
+                    WikiHealthIssue(
+                        category="frontmatter",
+                        page_rel=rel,
+                        detail="unreadable",
+                    )
+                )
+                continue
+            fm_match = PHASE5_FRONTMATTER_RE.match(text)
+            if fm_match is None:
+                issues.append(
+                    WikiHealthIssue(
+                        category="frontmatter",
+                        page_rel=rel,
+                        detail="missing YAML frontmatter block",
+                    )
+                )
+                continue
+            fm = fm_match.group(1)
+            if PHASE5_TAGS_RE.search(fm) is None:
+                issues.append(
+                    WikiHealthIssue(
+                        category="frontmatter",
+                        page_rel=rel,
+                        detail="frontmatter missing `tags`",
+                    )
+                )
+            if PHASE5_CHAPTERS_RE.search(fm) is None:
+                issues.append(
+                    WikiHealthIssue(
+                        category="frontmatter",
+                        page_rel=rel,
+                        detail="frontmatter missing `chapters_covered`",
+                    )
+                )
+        return issues
+
+    def _phase5_check_missing_chapters(
+        content_pages: list[Path],
+    ) -> list[WikiHealthIssue]:
+        issues: list[WikiHealthIssue] = []
+        for page in content_pages:
+            rel = _phase5_rel(page)
+            try:
+                text = page.read_text(encoding="utf-8")
+            except OSError:
+                continue
+            fm_match = PHASE5_FRONTMATTER_RE.match(text)
+            if fm_match is None:
+                continue
+            chap_match = PHASE5_CHAPTERS_RE.search(fm_match.group(1))
+            if chap_match is None:
+                continue
+            raw = chap_match.group(1)
+            for token in raw.split(","):
+                token = token.strip()
+                if not token:
+                    continue
+                try:
+                    chapter_num = int(token)
+                except ValueError:
+                    continue
+                chapter_file = RAW_DIR / f"chapter_{chapter_num:04d}.txt"
+                if not chapter_file.exists():
+                    issues.append(
+                        WikiHealthIssue(
+                            category="missing_chapter",
+                            page_rel=rel,
+                            detail=(
+                                f"chapters_covered references chapter "
+                                f"{chapter_num:04d} but raw file missing"
+                            ),
+                        )
+                    )
+        return issues
+
+    def run_wiki_health() -> WikiHealthReport:
+        content_pages = _phase5_iter_content_pages()
+        issues: list[WikiHealthIssue] = []
+        index_path = WIKI_DIR / "index.md"
+        index_text = (
+            index_path.read_text(encoding="utf-8") if index_path.exists() else ""
+        )
+        issues.extend(_phase5_check_orphans(index_text, content_pages))
+        issues.extend(_phase5_check_broken_refs(content_pages, index_path))
+        issues.extend(_phase5_check_frontmatter(content_pages))
+        issues.extend(_phase5_check_missing_chapters(content_pages))
+        return WikiHealthReport(
+            content_pages=tuple(_phase5_rel(page) for page in content_pages),
+            issues=tuple(issues),
+        )
+
+    def wiki_health_verdict(report: WikiHealthReport) -> tuple[str, int]:
+        count = len(report.issues)
+        verdict = "CLEAN" if count == 0 else f"{count} ISSUES"
+        return verdict, count
+
+    def print_wiki_health_section(report: WikiHealthReport) -> None:
+        verdict, count = wiki_health_verdict(report)
+        print("\n── Phase 5 trigger: wiki health (static checks) ──────────────────")
+        print(
+            f"Content pages scanned: {len(report.content_pages)}   "
+            f"Issues found: {count}"
+        )
+        if not report.issues:
+            print("All checks pass: orphan / broken-ref / frontmatter / chapter coverage.")
+            return
+        # Group by category for readable output.
+        categories = ("orphan", "broken_ref", "frontmatter", "missing_chapter")
+        for category in categories:
+            bucket = [issue for issue in report.issues if issue.category == category]
+            if not bucket:
+                continue
+            print(f"\n  [{category}] ({len(bucket)})")
+            for issue in bucket:
+                print(f"    - {issue.page_rel}: {issue.detail}")
+
+SECTION 3 — Update SUMMARY
+
+Modify the existing `print_summary()` function so it accepts the new
+results and prints two extra summary lines AFTER the existing three.
+The new signature:
+
+    def print_summary(
+        routing_rows: list[RoutingResult],
+        vocabulary_rows: list[VocabularyResult],
+        coverage_rows: list[CoverageResult],
+        out_of_scope_rows: list[OutOfScopeResult],
+        wiki_health_report: WikiHealthReport,
+    ) -> None:
+
+Inside, KEEP the existing three lines exactly as they are, then append:
+
+    routing_verdict_str, routing_fails, routing_total = routing_verdict(routing_rows)
+    health_verdict_str, health_count = wiki_health_verdict(wiki_health_report)
+    print(
+        "Phase 1 routing:   "
+        f"{routing_verdict_str} ({routing_fails}/{routing_total} unexpected classifications)"
+    )
+    print(
+        "Phase 5 wiki health: "
+        f"{health_verdict_str} ({health_count} structural issues)"
+    )
+
+The existing three lines (Phase 2/4 trigger, Phase 3 trigger, Out-of-scope
+regression) must print FIRST and unchanged. Place the new two lines after
+them. The "SUMMARY" header line stays unchanged.
+
+SECTION 4 — Update main()
+
+Modify the existing `main()` to call the new runners and printers in this
+exact order:
+
+    routing_rows       = run_routing_tests()
+    vocabulary_rows    = run_vocabulary_tests()
+    coverage_rows      = run_coverage_tests()
+    out_of_scope_rows  = run_out_of_scope_tests()
+    wiki_health_report = run_wiki_health()
+
+    print_routing_section(routing_rows)
+    print()                                # blank line before existing block
+    print_vocabulary_section(vocabulary_rows)
+    print_coverage_section(coverage_rows)
+    print_out_of_scope_section(out_of_scope_rows)
+    print_wiki_health_section(wiki_health_report)
+    print_summary(
+        routing_rows,
+        vocabulary_rows,
+        coverage_rows,
+        out_of_scope_rows,
+        wiki_health_report,
+    )
+
+The UTF-8 stream reconfigure block at the top of main() is unchanged.
+
+REGRESSION GUARANTEE
+After your edit, the following three sections of stdout MUST match the
+pre-edit output verbatim (same rows, same PASS/FAIL labels, same numeric
+totals):
+    "── Phase 2/4 boundary: vocabulary gap ─" through its summary line
+    "── Phase 3 boundary: coverage gap ─"     through its summary line
+    "── Anti-fabrication regression: out-of-scope queries ─" block
+And in the SUMMARY block, the lines:
+    "Phase 2/4 trigger: ..."
+    "Phase 3 trigger:   ..."
+    "Out-of-scope regression: ..."
+must appear with identical wording and numbers.
+
+VERIFICATION (run from project root after writing)
+- `python scripts/boundary_tests.py`
+  → expect output to start with the new "Phase 1 verification: query routing"
+    block, then the existing three blocks unchanged, then a new
+    "Phase 5 trigger: wiki health (static checks)" block, then SUMMARY
+    with five lines.
+- Confirm the existing three sections render byte-identical to the
+  pre-edit run (compare against the baseline numbers: V01–V10 with
+  2/10 pass, C01–C06 with avg sections=6.00 / avg total_tokens=2253,
+  O01–O04 with avg sections=2.75).
+
+OUTPUT
+- Print at the end: file path, line count, verification command output.

@@ -1,0 +1,144 @@
+TASK: Build a deep-debug diagnostic for the Q03 CRAG failure. Do not modify production code. Create one new script at scripts/diag_q03_deep.py and run it.
+
+Goal: definitively identify why CRAG scored `events/awakening_ceremony.md :: Key Events` at 3 for Q03 even with the 2000-char window. Output must answer:
+1. What text is in the first 2000 chars of that section, and is the grade-scale paragraph inside the window?
+2. Does the judge model's score for the same (query, section) reproduce, or is it noisy?
+3. Does rephrasing the query (scale-centric instead of FY-centric) change the score?
+4. If we isolate just the grade-scale paragraph as a synthetic single-purpose section, does the judge score it >=7?
+
+These four answers together resolve the question of whether the problem is truncation, judge noise, query anchoring, or section coarseness.
+
+================================================================
+PART 1 - Read these files first
+================================================================
+
+1. v1/retrieval/wiki_chunker.py - load_sections() returns list[WikiSection]; sections split on H2 headers; content stripped.
+2. v1/retrieval/crag_filter.py - especially _build_messages(query, section) and _judge_candidate. The same call path you use must mirror what production CRAG does.
+3. v1/retrieval/multi_query.py - signature only; we do not need MQ here.
+4. shared/llm_client.py - LLMClient interface. Use the same way crag_filter does.
+5. shared/config.py - JUDGE_MODEL.
+6. shared/data/wiki/events/awakening_ceremony.md - the actual content.
+
+================================================================
+PART 2 - Create scripts/diag_q03_deep.py
+================================================================
+
+A self-contained script. PEP 8, type-annotated. Standard prologue:
+
+    from pathlib import Path
+    import sys
+    ROOT = Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(ROOT))
+
+    from shared.config import JUDGE_MODEL
+    from shared.llm_client import LLMClient
+    from v1.retrieval.crag_filter import _build_messages, _parse_score
+    from v1.retrieval.wiki_chunker import WikiSection, load_sections
+
+Note: `_build_messages` and `_parse_score` are private. Importing private symbols is acceptable here because this is a diagnostic script that must call CRAG identically to production. Do not redefine them.
+
+Constants:
+
+    Q03_ORIGINAL = (
+        "At the awakening ceremony, exactly how many steps did you walk into "
+        "the flower sea? What grade did that put you at, and what is the grade scale?"
+    )
+    Q03_SCALE_FOCUSED = (
+        "What is the grade scale used at the awakening ceremony? "
+        "How many steps correspond to D, C, B, and A grades?"
+    )
+    TARGET_PAGE_REL = "events/awakening_ceremony.md"
+    TARGET_SECTION = "Key Events"
+
+Structure the script as four phases. Print clear `===== PHASE N =====` headers between them.
+
+PHASE 1 - locate the section, print structural facts.
+
+  - Call load_sections().
+  - Find the section where page_rel == TARGET_PAGE_REL and section_title == TARGET_SECTION. If not found, print all (page_rel, section_title) pairs that contain "awakening" and abort.
+  - Print:
+        section.page_rel
+        section.section_title
+        section.char_len
+        len(section.content[:2000])
+  - Find char offsets of these substrings in section.content (use `.find(...)`):
+        "**The underground cave"
+        "**The grades explained"
+        "**The early results"
+        "**Fang Yuan's walk"
+        "**Fang Zheng's walk"
+        "**The aftermath"
+        "Chi Chen"
+        "Chi Lian"
+        "27 steps"
+        "43 steps"
+    For each, print: `<substring>: offset=<N>`. If -1, print `<substring>: NOT FOUND`.
+  - Print whether each offset is inside the 2000-char window (Y/N).
+
+PHASE 2 - print exactly what the judge sees.
+
+  - Build messages = _build_messages(Q03_ORIGINAL, section).
+  - Print the system message verbatim.
+  - Print the user message verbatim, surrounded by `--- BEGIN USER MSG ---` and `--- END USER MSG ---`.
+
+PHASE 3 - reproducibility / variance test.
+
+  - Instantiate one LLMClient.
+  - Run the SAME call (Q03_ORIGINAL against the section) FIVE times.
+  - Use:
+        client.generate(messages, model=JUDGE_MODEL, temperature=0, max_tokens=16, purpose="crag_relevance")
+  - For each repetition, print the raw string response and the parsed score (use _parse_score).
+  - Print min, max, and modal score across the 5 runs.
+
+PHASE 4 - isolate the cause.
+
+  Run two follow-up CRAG calls on the SAME section but with a different query, and one call on a synthetic subchunk:
+
+  4a. Same section, scale-focused query (Q03_SCALE_FOCUSED). One call. Print raw + parsed.
+  4b. Same section, original Q03 but with section_title overridden to "The grades explained (Chapter 7)". To do this without mutating the frozen WikiSection, construct a new WikiSection via dataclasses.replace(section, section_title="The grades explained (Chapter 7)"). One call. Print raw + parsed.
+  4c. Synthetic subchunk: build a WikiSection where content is JUST the grade-scale paragraph from the source markdown - extract the substring from `**The grades explained` up to the next blank line or next `**` paragraph anchor. Title it "The grades explained (Chapter 7)". Use dataclasses.replace to copy other fields from the original section. Score this synthetic section against Q03_ORIGINAL. One call. Print raw + parsed.
+
+PHASE 5 - one-line verdict block.
+
+  Print a final block:
+
+      ===== VERDICT =====
+      grade_scale_in_window: YES/NO    (offset of "**The grades explained" < 2000)
+      original_call_score:   N (median of 5)
+      original_call_variance: spread / "stable"
+      scale_focused_query_score: N
+      title_override_score: N
+      synthetic_subchunk_score: N
+      hypothesis_supported: TRUNCATION / NOISE / QUERY_ANCHOR / SECTION_COARSENESS / OTHER
+
+  Use this rule for hypothesis_supported (concise, deterministic):
+      - TRUNCATION: grade_scale_in_window == NO
+      - NOISE: variance across 5 calls > 4 points
+      - QUERY_ANCHOR: scale_focused_query_score - original_call_score >= 4
+      - SECTION_COARSENESS: synthetic_subchunk_score - original_call_score >= 4 AND scale_focused_query_score - original_call_score < 4
+      - OTHER: none of the above triggered
+
+================================================================
+PART 3 - Run the script and capture output
+================================================================
+
+After creating the script, run from project root:
+    python scripts/diag_q03_deep.py
+
+Capture stdout. Wrap inside a fenced markdown code block in:
+    results/v1/diag_q03_deep_20260504.md
+
+Add a brief preface above the code block:
+    # Q03 deep CRAG debug - 2026-05-04
+    Goal: identify whether Q03's CRAG=3 score is truncation, judge noise, query anchoring, or section coarseness.
+
+API call estimate: 8 calls total = 5 (variance test) + 1 (scale-focused query) + 1 (title override) + 1 (synthetic subchunk).
+
+================================================================
+Report back (concise, no preamble):
+================================================================
+
+- script created at: scripts/diag_q03_deep.py
+- output file: results/v1/diag_q03_deep_20260504.md
+- Paste the final VERDICT block verbatim.
+- One sentence diagnosis based on the verdict (e.g. "Section coarseness confirmed - synthetic subchunk scored 9 vs original 3.")

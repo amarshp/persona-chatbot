@@ -1,0 +1,198 @@
+PHASE 2 STEP 1 — multi-query expansion module + paid eval harness
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+PURPOSE
+Build the smallest justified Phase 2 cut: a multi-query rephrase module + a
+paid eval harness that measures its effect on the V01-V10 vocabulary
+boundary tests. Do NOT wire it into the runtime path (v1/main.py). Do NOT
+modify boundary_tests.py. The runtime path stays on the current single-query
+keyword retrieval until measurement clears the gate.
+
+DESIGN CONSTRAINTS
+- PEP 8, type hints on every signature, frozen dataclasses where state is
+  immutable, stdlib + the project's existing deps only (requests, python-
+  dotenv are already available).
+- DO NOT touch:
+  * v1/main.py
+  * scripts/boundary_tests.py
+  * v1/retrieval/wiki_retriever.py's PUBLIC retrieve(query) signature or
+    return type — its current contract (str) must still hold byte-identical
+    so the boundary test stays untouched.
+  * shared/config.py constants
+- DO NOT install new packages. Use shared.llm_client.LLMClient and
+  shared.config.JUDGE_MODEL.
+- Follow CLAUDE.md: "Results files are immutable" — the eval harness writes
+  a new timestamped file under results/v1/, never overwrites.
+
+DELIVERABLES
+
+1. v1/retrieval/wiki_retriever.py — REFACTOR (additive only)
+   Extract the existing section-scoring logic into a new public function
+   without changing the existing retrieve() contract:
+
+       def retrieve_sections(query: str) -> list[tuple[int, WikiSection]]:
+           """Return sections matching `query`, sorted (-score, page_rel,
+           section_title). Empty list if no section scores >= 2 or query
+           yields no useful words. No token-budget trimming applied here —
+           that happens at format time."""
+
+       def format_sections(scored: list[tuple[int, WikiSection]]) -> str:
+           """Existing token-budget assembly + joiner logic, extracted into
+           its own function. Identical output shape to current retrieve()."""
+
+       def retrieve(query: str) -> str:
+           """Now a thin wrapper: format_sections(retrieve_sections(query)).
+           PUBLIC CONTRACT MUST NOT CHANGE."""
+
+   The score-2 threshold, L3_BUDGET trimming, joiner format, and block
+   header format are unchanged. Verify by running boundary_tests.py before
+   and after — the V/C/O sections must print byte-identical.
+
+   Also: import WikiSection from v1.retrieval.wiki_chunker so it can be
+   referenced in retrieve_sections's return type without TYPE_CHECKING
+   gymnastics (the runtime import is fine here — wiki_chunker is already
+   imported lazily inside retrieve()).
+
+2. v1/retrieval/multi_query.py — NEW
+   Self-contained module. No dependency on v1/main.py.
+
+       """Multi-query expansion (T02) for Phase 2 vocabulary bridging.
+
+       Calls JUDGE_MODEL to generate N alternative phrasings of the user
+       query, runs section-level retrieval for each, unions sections by
+       (page_rel, section_title), keeps the max score per section, sorts,
+       and formats with the existing token-budget assembler.
+       """
+
+       from __future__ import annotations
+       from dataclasses import dataclass
+       from v1.retrieval.wiki_retriever import retrieve_sections, format_sections
+       from v1.retrieval.wiki_chunker import WikiSection
+       from shared.llm_client import LLMClient
+       from shared.config import JUDGE_MODEL
+
+       _PHRASING_PROMPT = (
+           "Rephrase the user query in {n} different ways using different "
+           "vocabulary while preserving the exact meaning. Cover synonyms "
+           "and adjacent concepts (e.g. 'betrayal' -> 'duplicity', "
+           "'self-interest', 'feigned loyalty'). Reply ONLY with a JSON "
+           "object of the form: {{\"rephrasings\": [\"...\", \"...\", \"...\"]}}. "
+           "Do not include the original. Do not add any commentary."
+       )
+
+       @dataclass(frozen=True)
+       class MultiQueryResult:
+           original_query: str
+           phrasings: tuple[str, ...]            # excludes the original
+           queries_used: tuple[str, ...]         # original + phrasings, in order
+           merged_sections: tuple[tuple[int, WikiSection], ...]
+           formatted: str
+           rephrase_error: str | None            # populated if rephrase failed
+
+       def _parse_phrasings(raw: str, n: int) -> list[str]:
+           """Tolerant JSON parse. Strips code fences, accepts both
+           {"rephrasings": [...]} and a bare list. Returns up to n
+           non-empty stripped strings. Returns [] on any failure."""
+           # implementation: try json.loads; if that fails, find first '[' and
+           # last ']' and try again; coerce to list[str]; strip and filter
+           # empty; cap to n.
+           ...
+
+       def _generate_phrasings(
+           query: str, n: int, client: LLMClient
+       ) -> tuple[list[str], str | None]:
+           """Returns (phrasings, error_or_None). Single LLM call to
+           JUDGE_MODEL. Caller does NOT retry on failure — the retrieve
+           pipeline falls back to original-query-only with the error captured
+           in MultiQueryResult.rephrase_error."""
+           messages = [{
+               "role": "user",
+               "content": _PHRASING_PROMPT.format(n=n) + f"\n\nQuery: {query}",
+           }]
+           try:
+               raw = client.generate(
+                   messages,
+                   model=JUDGE_MODEL,
+                   temperature=0.3,
+                   max_tokens=400,
+                   purpose="multi_query_rephrase",
+                   response_format={"type": "json_object"},
+               )
+           except Exception as exc:
+               return [], f"rephrase_call_failed: {exc!r}"
+           parsed = _parse_phrasings(raw, n)
+           if not parsed:
+               return [], "rephrase_parse_failed: empty list"
+           return parsed, None
+
+       def multi_query_retrieve(
+           query: str,
+           *,
+           n: int = 3,
+           client: LLMClient | None = None,
+       ) -> MultiQueryResult:
+           """Public entry point. Always returns a MultiQueryResult — never
+           raises. On rephrase failure, falls back to original query only
+           and records the error string in `rephrase_error`."""
+           # 1. Generate phrasings (or fail-safe to original-only).
+           # 2. queries_used = [query, *phrasings]
+           # 3. For each q: retrieve_sections(q). Union by (page_rel, section_title).
+           #    Keep MAX score per unique section.
+           # 4. Sort merged sections by (-score, page_rel, section_title).
+           # 5. formatted = format_sections(merged_sorted).
+           # 6. Return MultiQueryResult.
+
+   IMPORTANT: do NOT import from scripts/. Multi-query is library code; the
+   harness imports it, not the other way around.
+
+3. scripts/eval_multi_query.py — NEW (paid harness)
+   Self-contained script. Imports VOCABULARY_TESTS and format_header from
+   scripts.boundary_tests so we share the exact V01-V10 specs and PASS
+   definition. Runs from project root: `python scripts/eval_multi_query.py`.
+
+   Behavior:
+   - For each (V01..V10) entry: run multi_query_retrieve(query, n=3).
+     Compute expected_header via format_header(page_rel, section_title).
+     PASS iff expected_header is a substring of result.formatted.
+   - Print a per-row table: id, query (truncated 39), expected (truncated 54),
+     phrasings_count, pass/fail. Match the visual style of
+     print_vocabulary_section() in boundary_tests.py.
+   - Print summary: passes/total, ACTIVE vs INACTIVE per VOCAB_TRIGGER_THRESHOLD
+     (0.30) — same definition boundary_tests.py uses, so the gate is directly
+     comparable to the offline baseline (current = 2/10 PASS = ACTIVE).
+   - Print PRE/POST comparison: "Baseline (no multi-query): 2/10 PASS.
+     With multi-query (n=3): X/10 PASS."  Hardcode the baseline number 2 —
+     it is the offline boundary-test result we just verified. Comment in
+     code that this baseline was captured 2026-05-03.
+   - Save full eval to results/v1/multi_query_eval_<UTC-timestamp>.md.
+     Include: model used (JUDGE_MODEL value), N phrasings setting, per-row
+     PASS/FAIL with the phrasings actually generated, the merged-section
+     headers retrieved, and the rephrase_error for any row where it occurred.
+   - On any LLMClient instantiation error (missing token), print a clear
+     message and exit non-zero — do NOT swallow it.
+
+   Print at the end: total LLM calls made (== rows that didn't fail to
+   instantiate), the path of the saved markdown file, and the verdict line.
+
+VERIFICATION (no LLM calls)
+After writing, run from project root:
+  - `python scripts/boundary_tests.py`
+    Expected: V/C/O/R/Phase-5 sections print byte-identical to the
+    pre-edit output (V01-V10 = 2/10 PASS, C avg sections=6.00 / avg
+    total_tokens=2253, O avg sections=2.75, routing 10/10 PASS, wiki
+    health 24 pages 0 issues). The retrieve() refactor must not change
+    these numbers.
+  - `python -c "from v1.retrieval.multi_query import multi_query_retrieve;
+     print(multi_query_retrieve.__doc__)"`
+    Expected: prints the docstring without import errors.
+
+DO NOT RUN scripts/eval_multi_query.py YOURSELF — it costs API calls and
+the user gates that approval separately.
+
+OUTPUT (print at end of your run)
+- File paths created or modified, with line counts.
+- Verification command outputs (boundary_tests.py summary lines, the
+  multi_query import line).
+- A 4-6 line note explaining what was done, suitable for the user's notes
+  (covering: rephrase prompt design, fail-safe behavior, how merging works,
+  why retrieve() public contract is preserved).

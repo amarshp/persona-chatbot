@@ -1,0 +1,270 @@
+CREATE — `scripts/persona_boundary_tests.py`
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+PURPOSE
+Character-quality regression test for the Fang Yuan persona, parallel to the
+retrieval `scripts/boundary_tests.py`. For each named failure mode in
+`docs/PERSONA_FAILURE_MODES.md`, runs a small set of probe prompts through
+the full v1 pipeline (prompt composer + wiki retriever + LLM client),
+applies a structural predicate to the response, and reports per-mode
+pass/fail. No LLM judge — predicates are regex-based on the response text.
+
+LLM CALLS REQUIRE EXPLICIT OPT-IN. Default behaviour is `--dry-run`: print
+the catalog and probe map, exit without any API call. The runner only hits
+the LLM when invoked with `--run`.
+
+CONSTRAINTS
+- PEP 8, type hints on every signature, `from __future__ import annotations`,
+  `sys.path.insert(0, str(ROOT))` immediately after `ROOT = Path(...)`.
+- Frozen dataclasses for static config (Probe, FailureMode, PredicateResult).
+- Stdlib only: argparse, dataclasses, json, re, sys, time, typing, pathlib,
+  datetime. Plus the project imports listed below.
+- UTF-8 stdout/stderr reconfigure block at the top of `main()` matching
+  the pattern in `scripts/retrieval_diagnostic.py` and other scripts:
+      for stream in (sys.stdout, sys.stderr):
+          if hasattr(stream, "reconfigure"):
+              stream.reconfigure(encoding="utf-8", errors="replace")
+- DO NOT touch any file under `results/`. The script may print to stdout
+  only — no file writes in v1. (A future `--out` flag can be added later.)
+- DO NOT modify any other script.
+
+PROJECT IMPORTS
+    from shared.llm_client import LLMClient
+    from shared.config import PRIMARY_MODEL, MAX_OUTPUT_TOKENS
+    from v1.persona.prompt_composer import PromptComposer
+    from v1.retrieval.wiki_retriever import retrieve as wiki_retrieve
+
+The exact call shape — copy from `scripts/smoke_test_runner.py:270-290`:
+    state = composer.initial_state()
+    l3_context = wiki_retrieve(question)
+    messages = composer.build([], state, l3_context=l3_context)
+    messages.append({"role": "user", "content": question})
+    response = client.generate(
+        messages,
+        model=PRIMARY_MODEL,
+        temperature=0.7,
+        max_tokens=MAX_OUTPUT_TOKENS,
+        purpose="persona_boundary",
+    )
+
+PROBES (hard-coded list in the file)
+
+Six probes total. IDs match docs/PERSONA_FAILURE_MODES.md.
+
+PROBES: list[Probe] = [
+    Probe(
+        id="P01",
+        modes=("M1", "M2", "M3"),
+        text=(
+            "I have a simple thought after watching a reel — "
+            "why not run a Satoshi BTC key guesser running perpetually — "
+            "brute force. mostly 100% it won't trigger, but it is free of "
+            "cost for me, why not try. Would you try this?"
+        ),
+    ),
+    Probe(
+        id="P02",
+        modes=("M1",),
+        text="Should I take a year off to travel before grad school? I'm 23.",
+    ),
+    Probe(
+        id="P03",
+        modes=("M2",),
+        text=(
+            "If I find someone's wallet on the street with $500 cash and "
+            "ID inside, what's the smart move?"
+        ),
+    ),
+    Probe(
+        id="P04",
+        modes=("M2",),
+        text=(
+            "My ex left her laptop at my place when she moved out. "
+            "She hasn't asked for it back in 3 months. Can I just keep it?"
+        ),
+    ),
+    Probe(
+        id="P05",
+        modes=("M3",),
+        text=(
+            "I just heard about copy-trading on a podcast and I'm thinking "
+            "about putting $5k into it. Should I?"
+        ),
+    ),
+    Probe(
+        id="P06",
+        modes=("M1", "M3"),
+        text=(
+            "I've been thinking about leaving my well-paying job to do "
+            "photography full-time. Thoughts?"
+        ),
+    ),
+]
+
+FAILURE MODES (hard-coded list in the file)
+
+Each FailureMode has: id, name, predicate (callable taking the full response
+string, returning PredicateResult). The predicate handles section extraction
+internally.
+
+PredicateResult is a frozen dataclass:
+    @dataclass(frozen=True)
+    class PredicateResult:
+        passed: bool
+        evidence: str   # short text — matched pattern or "no markers" — for the report.
+
+Section helpers:
+    INTERNAL_RE = re.compile(r"<internal>(.*?)</internal>", re.DOTALL | re.IGNORECASE)
+    SPOKEN_RE   = re.compile(r"<spoken>(.*?)</spoken>",     re.DOTALL | re.IGNORECASE)
+    def extract_internal(response: str) -> str: ...   # returns "" if no tag
+    def extract_spoken(response: str) -> str: ...
+
+Predicate M1 — lecture-monologue (applied to <internal> block):
+    Compile these patterns at module level:
+      M1_PATTERNS = [
+          re.compile(r"\bif (he|she|they) (wants?|wanted|chooses?|chose|prefers?)\b[\s\S]{0,200}?\b(could|can|should|might)\b", re.IGNORECASE),
+          re.compile(r"\b(a better|the better) (use|approach|option|alternative|way|move)\b", re.IGNORECASE),
+          re.compile(r"\binstead of\b[\s\S]{0,200}?\b(he|she|they) (could|can|should|might)\b", re.IGNORECASE),
+      ]
+    Logic: check each pattern against extract_internal(response). The first
+    match (if any) -> failed=True, evidence is the matched substring
+    truncated to 80 chars. If no pattern matches -> passed=True, evidence
+    is "no lecture markers".
+    If extract_internal returns "" -> passed=False, evidence is
+    "no <internal> tag".
+
+Predicate M2 — external-morality-leak (applied to full response):
+    M2_FORBIDDEN_WORDS = [
+        r"\btheft\b", r"\bstealing\b", r"\bmorally\b", r"\bimmoral\b",
+        r"\bunethical\b", r"\bethically\b", r"\bethical\b", r"\bcriminal\b",
+    ]
+    M2_FORBIDDEN_PHRASES = [
+        r"\blegally dirty\b",
+    ]
+    M2_ILLEGAL_PATTERN = re.compile(r"\billegal(ly)?\b", re.IGNORECASE)
+    M2_ILLEGAL_ALLOWLIST = [
+        "legal shield", "legal exposure", "legally defensible",
+        "legal framework", "legal claim",
+    ]
+    Logic:
+      1. Compile each word/phrase pattern with re.IGNORECASE.
+      2. For each pattern, search the full response. First match -> fail
+         with evidence "<pattern> at: <60-char window>".
+      3. For M2_ILLEGAL_PATTERN: if it matches, check whether the match
+         falls inside any allowlist phrase (case-insensitive substring of
+         the response). If yes, ignore. If no, fail with evidence.
+      4. If nothing matches -> passed=True, evidence "no morality leakage".
+
+Predicate M3 — idea-not-mind (applied to <internal> block):
+    M3_DIAGNOSIS_PATTERNS = [
+        re.compile(r"\b(the|that|this) (reel|podcast|video|article|tweet|post|tip|friend) (did|sold|gave|produced|delivered)\b", re.IGNORECASE),
+        re.compile(r"\bbefore he\b", re.IGNORECASE),
+        re.compile(r"\bhe (had not|has not|did not|didn't|hasn't|hadn't) (calculate|think|consider|test|verify|do|run)\b", re.IGNORECASE),
+        re.compile(r"\b(the path|the process|the sequence|the ordering|the order) (that|which|this)\b", re.IGNORECASE),
+        re.compile(r"\b(the question|his question|his framing|the way he) (reveal|reveals|revealed|tells|told|shows|showed)\b", re.IGNORECASE),
+    ]
+    Logic: check each pattern against extract_internal(response). If at
+    least one matches -> passed=True, evidence is the first matched
+    substring truncated to 80 chars. If none match -> passed=False,
+    evidence is "no diagnostic markers in <internal>". If extract_internal
+    is empty -> passed=False, evidence "no <internal> tag".
+
+CLI
+
+argparse with these flags:
+    --run                actually call the LLM (default: dry-run only)
+    --mode {M1,M2,M3}    run only probes tagged for this mode (default: all)
+    --probe {P01..P06}   run only this probe (default: all)
+    --temperature FLOAT  override default 0.7
+    --model TEXT         override PRIMARY_MODEL
+    --verbose            print full response text per probe (default: just
+                         per-mode pass/fail and a 200-char excerpt)
+
+When --mode and --probe are both given, --probe wins and the result is
+filtered to that probe; modes are derived from the probe's `modes` tuple.
+
+DRY RUN BEHAVIOUR
+With no --run flag, the script prints:
+    1. Catalog summary: 3 modes, 6 probes, mode-count breakdown.
+    2. Probe-mode matrix (one row per probe).
+    3. Plan: how many LLM calls would happen with current filters.
+    4. Exits with code 0. No client is constructed.
+
+The dry-run output should make it clear that --run is required to actually
+hit the API. Last line of the dry-run output:
+    "Re-run with --run to execute. This will make N LLM calls."
+
+LIVE RUN BEHAVIOUR
+With --run, the script:
+    1. Constructs LLMClient and PromptComposer once.
+    2. For each probe in the filtered set, runs one LLM call. Time it.
+    3. For each mode the probe is tagged for, applies the mode's predicate
+       to the response. Records (probe_id, mode_id, passed, evidence,
+       latency_s).
+    4. After all probes, prints two tables:
+
+       ── Per-probe results ─────────────────────────────────────────────
+       probe  modes_tested  result_per_mode               latency  excerpt
+       P01    M1 M2 M3      M1:FAIL  M2:FAIL  M3:PASS     12.3s    "<spoken>...</spoken>"[:200]
+       ...
+
+       ── Per-mode summary ──────────────────────────────────────────────
+       mode  description                  probes_run  passed  failed  status
+       M1    lecture-monologue            3           1       2       OPEN
+       M2    external-morality-leak       3           0       3       OPEN
+       M3    idea-not-mind                3           2       1       OPEN
+
+       SUMMARY
+       6 LLM calls. Open modes: M1, M2, M3.
+
+A mode is CLOSED if all probes for it passed; OPEN if any failed.
+
+ERROR HANDLING
+- LLM call exceptions per probe: catch, mark all the probe's modes as
+  failed with evidence "LLM_ERROR: <type>", continue with next probe.
+- Empty response: mark as failed with evidence "EMPTY_RESPONSE".
+
+DATACLASSES (sketch — Codex finalises)
+
+    @dataclass(frozen=True)
+    class Probe:
+        id: str
+        modes: tuple[str, ...]
+        text: str
+
+    @dataclass(frozen=True)
+    class FailureMode:
+        id: str           # "M1", "M2", "M3"
+        name: str         # "lecture-monologue" etc.
+        predicate: Callable[[str], PredicateResult]
+
+    @dataclass(frozen=True)
+    class PredicateResult:
+        passed: bool
+        evidence: str
+
+    @dataclass(frozen=True)
+    class ProbeOutcome:
+        probe_id: str
+        response: str
+        latency_s: float
+        per_mode: dict[str, PredicateResult]   # only the modes this probe is tagged for
+
+VERIFICATION (run from project root after writing)
+- python scripts/persona_boundary_tests.py
+  → expect a clean dry-run with the catalog summary, probe matrix, and the
+    "Re-run with --run to execute" line. Exit code 0. No HTTP traffic.
+
+- python scripts/persona_boundary_tests.py --mode M1
+  → dry-run filtered to M1; should show 3 probes (P01, P02, P06), report
+    "Re-run with --run to execute. This will make 3 LLM calls."
+
+- python scripts/persona_boundary_tests.py --probe P01
+  → dry-run filtered to P01; should show 1 probe and "1 LLM call".
+
+DO NOT run with --run during verification. The user will green-light the
+baseline run separately.
+
+OUTPUT
+- Print at the end of the Codex run: file path, line count, and the dry-run
+  verification command output for the three commands above.

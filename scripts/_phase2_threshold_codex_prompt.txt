@@ -1,0 +1,56 @@
+LOWER section score threshold from 2 to 1
+
+CONTEXT
+The wiki retriever in v1/retrieval/wiki_retriever.py has a hard floor:
+  if score >= 2:
+      relevant.append((score, section))
+
+This blocks single-meaningful-word queries (V07 query "What did you do
+when the merchant came for you?" has only "merchant" as a non-stopword
+match). With multi-query rephrasings adding more candidate words, the
+threshold may now be over-restrictive.
+
+The change is intentionally aggressive: with CRAG downstream filtering
+on relevance, lowering recall threshold and letting CRAG prune noise
+should net positive.
+
+CHANGE (one-line edit)
+File: v1/retrieval/wiki_retriever.py
+Function: retrieve_sections (around line 168-188)
+
+The score check is currently:
+    if score >= 2:
+        relevant.append((score, section))
+
+Change to:
+    if score >= 1:
+        relevant.append((score, section))
+
+Do not change anything else.
+
+CONSTRAINTS
+- Edit ONLY v1/retrieval/wiki_retriever.py.
+- Do NOT modify v1/main.py, scripts/boundary_tests.py, multi_query.py,
+  crag_filter.py, eval_multi_query_crag.py.
+- Note: this WILL change boundary_tests.py output because retrieve()
+  now surfaces more sections per query. The V01-V10 PASS count may
+  shift, the C01-C06 coverage rows will see more sections, the O01-O04
+  out-of-scope rows will see more sections. That's expected. Do not
+  try to keep boundary_tests output byte-identical — this is the test
+  changing as a result of a deliberate retrieval change.
+- Do NOT run scripts/eval_multi_query_crag.py. The user gates that.
+
+VERIFICATION
+After your edit, run:
+  python scripts/boundary_tests.py
+Print the new SUMMARY block. We expect:
+- Phase 2/4 trigger: still ACTIVE (still has fails because some Vs
+  are CRAG-dropped, not threshold-blocked)
+- Phase 3 trigger: avg sections will go UP (more candidates per query)
+- Out-of-scope: avg sections will go UP (worse anti-fab)
+- This is expected; CRAG in the eval pipeline filters the noise but
+  boundary_tests doesn't run CRAG, so it shows the raw retrieval lift.
+
+OUTPUT
+- The applied diff (one-line change).
+- The new boundary_tests.py SUMMARY block.

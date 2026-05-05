@@ -1,0 +1,115 @@
+BUILD scripts/eval_persona_quality.py — council step 4
+
+PURPOSE
+Validate the V01-V10 -> persona-quality correlation. Council's deepest
+concern: we may be optimizing a vanity metric. Take retrieval-heavy
+smoke tests and generate Fang Yuan responses under two retrieval
+configs. Side-by-side markdown for manual review.
+
+DESIGN
+The smoke tests in scripts/smoke_test_runner.py have hand-labeled
+PASS/FAIL criteria for each question. Reuse them directly. Pick a
+subset that should be retrieval-sensitive (in_wiki_grounding +
+near_wiki_synthesis = ST-01..ST-06 = 6 questions). Skip out_of_wiki
+traps and earth_advice for this experiment — they're not the right
+probe for retrieval quality.
+
+For each of the 6 questions, generate two responses:
+  CONFIG A: MQ + CRAG retrieval (current Phase 2 best)
+            - Use multi_query_retrieve(question, n=3, client=judge_client,
+              cached_phrasings=None) — note: smoke test queries are NOT
+              in the V01-V10 cache, so multi_query_retrieve will rephrase
+              live with temp=0. That's fine — we're measuring retrieval
+              effect, not measuring V01-V10 here.
+            - Apply crag_filter(question, list(mqr.merged_sections),
+              threshold=7, k_max=12, client=judge_client)
+            - format_sections(list(crag.survivors)) -> l3_context
+  CONFIG B: No retrieval at all
+            - l3_context = ""
+
+For each config, build the messages with PromptComposer.build(
+[], state, l3_context=l3_context) (matches smoke_test_runner.py:278).
+
+Generate response with PRIMARY_MODEL, temperature=0.7,
+max_tokens=MAX_OUTPUT_TOKENS, purpose="persona_quality_eval".
+
+DELIVERABLE
+
+scripts/eval_persona_quality.py — NEW. Self-contained. Run from project
+root:
+    python scripts/eval_persona_quality.py [--ids ST-01,ST-02,...]
+
+Default: ST-01..ST-06.
+
+Imports:
+- SMOKE_TESTS from scripts.smoke_test_runner (it's a module-level constant tuple list)
+- PromptComposer from v1.persona.prompt_composer
+- multi_query_retrieve, crag_filter, format_sections from v1.retrieval.*
+- LLMClient, PRIMARY_MODEL, JUDGE_MODEL, MAX_OUTPUT_TOKENS from shared.*
+
+Single LLMClient instance reused for all calls (rephrase, CRAG, generate).
+
+Output markdown saved to results/v1/persona_quality_eval_<UTC>.md with
+this structure:
+
+```
+# Persona Quality A/B — MQ+CRAG vs No Retrieval
+
+- Generated: <UTC timestamp>
+- PRIMARY_MODEL: ...
+- JUDGE_MODEL (rephrase/CRAG): ...
+- Tests run: ST-01..ST-06
+
+## ST-01 [in_wiki_grounding]
+
+**Question:** <full question>
+
+**PASS criteria (smoke test):** <criteria text>
+
+### Config A — MQ + CRAG
+- Sections retrieved: <count>
+- Sections kept by CRAG: <count>
+- L3 token count (approx): <chars/4>
+
+<full Fang Yuan response>
+
+### Config B — No retrieval
+- L3 context: empty
+
+<full Fang Yuan response>
+
+### Manual review
+- [ ] Config A response meets PASS criteria
+- [ ] Config B response meets PASS criteria
+- [ ] Config A is materially better than Config B (yes/no/marginal)
+- Notes: ___
+
+---
+
+## ST-02 ...
+```
+
+For each row, also print to stdout:
+  ST-XX  category  config-A-tokens  config-B-tokens  latency-A  latency-B
+
+At the end print:
+  Saved markdown: <path>
+  Total LLM calls: <N>  (rephrase + CRAG + 2 generates per question)
+  Total approx cost: rough estimate (skip if uncertain)
+
+CONSTRAINTS
+- DO NOT modify smoke_test_runner.py, multi_query.py, crag_filter.py,
+  wiki_retriever.py, boundary_tests.py, eval_multi_query_crag.py.
+- DO NOT install new packages.
+- Per CLAUDE.md results files immutable: timestamp the output filename.
+- Verify boundary_tests.py SUMMARY block is byte-identical post-edit
+  (you should not have changed anything that affects it).
+- Do NOT run scripts/eval_persona_quality.py. The user gates that.
+
+OUTPUT
+- File path created, line count.
+- Verification: boundary_tests.py SUMMARY block.
+- A 4-6 line note for the user explaining the experimental design,
+  what they should look for in manual review, and the cost estimate
+  (12 PRIMARY_MODEL calls + ~24 mini-LLM calls = ~$2 OpenRouter / 0
+  Copilot).

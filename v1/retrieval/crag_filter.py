@@ -1,22 +1,43 @@
-"""CRAG relevance filter for Phase 2 multi-query retrieval."""
+"""CRAG relevance filter for Phase 2 multi-query retrieval.
+
+Uses a cross-encoder reranker (BAAI/bge-reranker-base by default) instead of
+an LLM-as-judge. Cross-encoders are trained specifically on (query, passage,
+relevance) triplets, output deterministic sigmoid-normalised scores in [0, 1],
+and run locally on CPU - eliminating the temperature=0 non-determinism that
+chat-tuned LLMs exhibit when used as relevance scorers.
+
+When `sub_queries` is provided, each candidate section is scored against
+every query in (query, *sub_queries) and the max is taken. Combined with the
+multi-query decomposition prompt in v1.retrieval.multi_query, this neutralises
+the multi-clause anchor bias that affected Q03 in canon QA.
+
+Backwards compatibility:
+- The `client: LLMClient | None` kwarg is accepted and ignored - the cross-
+  encoder runs locally and does not need an LLM client.
+- `CragJudgement.crag_score` is now `float | None` in [0, 1] rather than
+  `int | None` in [1, 10]. Threshold default changes from 7 (LLM judge) to
+  0.5 (sigmoid neutral).
+"""
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
+from functools import lru_cache
+from typing import TYPE_CHECKING
 
-from shared.config import JUDGE_MODEL
-from shared.llm_client import LLMClient
+from shared.config import CRAG_RERANKER_MODEL, CRAG_RERANKER_THRESHOLD
 from v1.retrieval.wiki_chunker import WikiSection
 
-_SCORE_RE = re.compile(r"\b(10|[1-9])\b")
-_TRUNCATE_CHARS = 600
+if TYPE_CHECKING:
+    from sentence_transformers import CrossEncoder
+
+_TRUNCATE_CHARS = 2000
 
 
 @dataclass(frozen=True)
 class CragJudgement:
     lexical_score: int
-    crag_score: int | None
+    crag_score: float | None
     kept: bool
     error: str | None
     section: WikiSection
@@ -28,78 +49,17 @@ class CragResult:
     survivors: tuple[tuple[int, WikiSection], ...]
 
 
-def _build_messages(query: str, section: WikiSection) -> list[dict[str, str]]:
-    content = section.content[:_TRUNCATE_CHARS]
-    return [
-        {
-            "role": "system",
-            "content": (
-                "you are a relevance scorer. Reply with one integer 1-10 only. "
-                "No words, no JSON, no punctuation."
-            ),
-        },
-        {
-            "role": "user",
-            "content": (
-                f"Query: {query}\n"
-                f"Section title: {section.section_title}\n"
-                "Section content (truncated to ~600 chars):\n"
-                f"{content}\n\n"
-                "Score 1-10 for how well this section answers the query. "
-                "Reply with the integer only."
-            ),
-        },
-    ]
+@lru_cache(maxsize=1)
+def _load_reranker() -> "CrossEncoder":
+    """Lazy singleton load of the cross-encoder model.
 
+    Cached so the model loads once per process. First call downloads weights
+    (~278MB for bge-reranker-base) to the HuggingFace cache; subsequent calls
+    are instant.
+    """
+    from sentence_transformers import CrossEncoder
 
-def _parse_score(raw: str) -> int | None:
-    match = _SCORE_RE.search(raw.strip())
-    if match is None:
-        return None
-    return int(match.group(1))
-
-
-def _judge_candidate(
-    query: str,
-    lexical_score: int,
-    section: WikiSection,
-    client: LLMClient,
-    threshold: int,
-) -> CragJudgement:
-    try:
-        raw = client.generate(
-            _build_messages(query, section),
-            model=JUDGE_MODEL,
-            temperature=0,
-            max_tokens=16,
-            purpose="crag_relevance",
-        )
-    except Exception as exc:
-        return CragJudgement(
-            lexical_score=lexical_score,
-            crag_score=None,
-            kept=True,
-            error=f"crag_call_failed: {exc!r}",
-            section=section,
-        )
-
-    score = _parse_score(raw)
-    if score is None:
-        return CragJudgement(
-            lexical_score=lexical_score,
-            crag_score=None,
-            kept=True,
-            error=f"crag_parse_failed: {raw.strip()!r}",
-            section=section,
-        )
-
-    return CragJudgement(
-        lexical_score=lexical_score,
-        crag_score=score,
-        kept=score >= threshold,
-        error=None,
-        section=section,
-    )
+    return CrossEncoder(CRAG_RERANKER_MODEL, max_length=512)
 
 
 def _sort_survivors(
@@ -117,31 +77,44 @@ def crag_filter(
     query: str,
     candidates: list[tuple[int, WikiSection]],
     *,
-    threshold: int = 7,
+    threshold: float = CRAG_RERANKER_THRESHOLD,
     k_max: int = 12,
-    client: LLMClient | None = None,
+    client: object | None = None,  # noqa: ARG001 - kept for API compat
+    sub_queries: tuple[str, ...] | None = None,
+    reranker: "CrossEncoder | None" = None,
 ) -> CragResult:
-    """Score each of the top k_max candidates 1-10 for relevance to
-    `query`. Drop scores < threshold. Sections that fail to score
-    (call/parse error) are KEPT with crag_score=None, error set."""
+    """Score the top k_max candidates with a cross-encoder reranker. Drop
+    scores < threshold. Tail beyond k_max is dropped (kept=False).
+
+    When `sub_queries` is provided, each candidate is scored against every
+    query in (query, *sub_queries) and the max is taken. This neutralises
+    the multi-clause anchor bias of long original queries by letting any
+    one decomposed sub-query lift the section above threshold.
+
+    On reranker load/predict failure, every scored candidate is KEPT
+    (crag_score=None, error set) - same fail-safe behaviour as the prior
+    LLM-judge implementation, so an outage degrades to plain lexical
+    retrieval rather than dropping everything.
+    """
     if not candidates:
         return CragResult(judgements=(), survivors=())
 
-    active_client = client
-    client_error: str | None = None
-    if active_client is None:
+    active_model = reranker
+    model_error: str | None = None
+    if active_model is None:
         try:
-            active_client = LLMClient()
+            active_model = _load_reranker()
         except Exception as exc:
-            client_error = f"crag_client_init_failed: {exc!r}"
+            model_error = f"crag_reranker_load_failed: {exc!r}"
 
-    if active_client is None:
+    if active_model is None:
+        # Reranker unavailable -> keep all candidates (fail-safe).
         judgements = tuple(
             CragJudgement(
                 lexical_score=lexical_score,
                 crag_score=None,
                 kept=True,
-                error=client_error,
+                error=model_error,
                 section=section,
             )
             for lexical_score, section in candidates
@@ -151,28 +124,97 @@ def crag_filter(
             survivors=_sort_survivors(list(candidates)),
         )
 
+    queries: tuple[str, ...] = (query,) + tuple(sub_queries or ())
+
+    # Build all (query, content) pairs for the top-k_max candidates, in a
+    # flat list so the reranker can score them in one batched forward pass.
+    pairs: list[tuple[str, str]] = []
+    pair_owner: list[int] = []  # pair_idx -> candidate_idx
+    for cand_idx, (_lex, section) in enumerate(candidates):
+        if cand_idx >= k_max:
+            break
+        content = section.content[:_TRUNCATE_CHARS]
+        for q in queries:
+            pairs.append((q, content))
+            pair_owner.append(cand_idx)
+
+    scores: list[float]
+    predict_error: str | None = None
+    if pairs:
+        try:
+            raw = active_model.predict(pairs, batch_size=32, show_progress_bar=False)
+            scores = [float(s) for s in raw]
+        except Exception as exc:
+            predict_error = f"crag_predict_failed: {exc!r}"
+            scores = []
+    else:
+        scores = []
+
+    # Aggregate max score per candidate.
+    max_per_candidate: dict[int, float] = {}
+    if predict_error is None:
+        for pair_idx, cand_idx in enumerate(pair_owner):
+            s = scores[pair_idx]
+            current = max_per_candidate.get(cand_idx)
+            if current is None or s > current:
+                max_per_candidate[cand_idx] = s
+
     judgements: list[CragJudgement] = []
     survivors: list[tuple[int, WikiSection]] = []
 
-    for index, (lexical_score, section) in enumerate(candidates):
-        if index >= k_max:
-            judgement = CragJudgement(
+    for cand_idx, (lexical_score, section) in enumerate(candidates):
+        if cand_idx >= k_max:
+            judgements.append(
+                CragJudgement(
+                    lexical_score=lexical_score,
+                    crag_score=None,
+                    kept=False,
+                    error=None,
+                    section=section,
+                )
+            )
+            continue
+
+        if predict_error is not None:
+            # Predict failed -> fail-safe keep this scored slot.
+            judgements.append(
+                CragJudgement(
+                    lexical_score=lexical_score,
+                    crag_score=None,
+                    kept=True,
+                    error=predict_error,
+                    section=section,
+                )
+            )
+            survivors.append((lexical_score, section))
+            continue
+
+        best = max_per_candidate.get(cand_idx)
+        if best is None:
+            # Should not happen given pair construction, but be defensive.
+            judgements.append(
+                CragJudgement(
+                    lexical_score=lexical_score,
+                    crag_score=None,
+                    kept=True,
+                    error="crag_no_pairs_for_candidate",
+                    section=section,
+                )
+            )
+            survivors.append((lexical_score, section))
+            continue
+
+        kept = best >= threshold
+        judgements.append(
+            CragJudgement(
                 lexical_score=lexical_score,
-                crag_score=None,
-                kept=True,
+                crag_score=best,
+                kept=kept,
                 error=None,
                 section=section,
             )
-        else:
-            judgement = _judge_candidate(
-                query,
-                lexical_score,
-                section,
-                active_client,
-                threshold,
-            )
-        judgements.append(judgement)
-        if judgement.kept:
+        )
+        if kept:
             survivors.append((lexical_score, section))
 
     return CragResult(

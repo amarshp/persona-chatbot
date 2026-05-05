@@ -1,0 +1,35 @@
+FREEZE the rephraser — change temp=0.3 to temp=0
+
+PURPOSE
+Council verdict: V01-V10 ceiling readings are inside the variance band
+because temp=0.3 rephrasings are non-deterministic. Step 1 of the
+fix-the-instrument plan is to make rephrasings deterministic.
+
+CHANGE (one-line edit)
+File: v1/retrieval/multi_query.py
+Function: _generate_phrasings (around line 100)
+
+The client.generate call currently passes:
+    temperature=0.3,
+
+Change to:
+    temperature=0,
+
+Do not change anything else — same model, same max_tokens=400, same
+response_format, same prompt template.
+
+CONSTRAINTS
+- Edit ONLY v1/retrieval/multi_query.py.
+- Do NOT change crag_filter.py, wiki_retriever.py, eval_multi_query_crag.py,
+  boundary_tests.py, or anything else.
+- Verify boundary_tests.py still prints byte-identical SUMMARY block:
+      Phase 2/4 trigger: ACTIVE (8/10 vocab fails, threshold 30%)
+      Phase 3 trigger:   ACTIVE (avg sections=6.00, avg total_tokens=2253)
+      Out-of-scope regression: clear-leak (avg sections=2.75)
+      Phase 1 routing:   PASS (0/10 unexpected classifications)
+      Phase 5 wiki health: CLEAN (0 structural issues)
+- Do NOT run scripts/eval_multi_query_crag.py. The user gates that.
+
+OUTPUT
+- The applied diff (one-line change).
+- The boundary_tests.py SUMMARY block to confirm no regression.

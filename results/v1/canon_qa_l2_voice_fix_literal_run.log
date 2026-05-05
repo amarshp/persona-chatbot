@@ -1,0 +1,48 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Parsed 7 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/7] Q05 (factual / reasoning)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  86%|########5 | 335/391 [00:00<00:00, 3345.82it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3369.44it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-large-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 2451.25it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  PASS (retrieve 64.7s, gen 15.4s) — SPOKEN explicitly says they were not worth the effort, did not advance cultivati
+[2/7] Q07 (factual / reasoning)
+  FAIL (retrieve 36.9s, gen 18.6s) — SPOKEN mentions Rank three and the cage, but does not explicitly state mortal/no
+[3/7] Q11 (voice)
+  PASS (retrieve 35.4s, gen 11.8s) — The spoken response explicitly rejects guilt and frames killing as a tool within
+[4/7] Q12 (voice)
+  FAIL (retrieve 36.3s, gen 9.3s) — SPOKEN rejects panic and mentions compounding, but it does not explicitly reject
+[5/7] Q14 (reasoning)
+  FAIL (retrieve 37.7s, gen 16.0s) — SPOKEN mentions five hundred years of experience but lacks explicit foreknowledg
+[6/7] Q15 (reasoning)
+  PASS (retrieve 35.8s, gen 10.3s) — SPOKEN states he had just been reborn, could not fake long-term cultivation spee
+[7/7] Q17 (anti-fab)
+  PASS (retrieve 35.5s, gen 10.4s) — The SPOKEN response explicitly refuses to invent tactical details and only ackno
+
+Total time: 392.0s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_l2_voice_fix_literal.md
+FINAL: 4/7 PASS  (raw/chapter_0084.txt::chunk3)
+
+By category:
+  factual             : 0/0
+  voice               : 1/2
+  reasoning           : 2/4
+  anti-fabrication    : 1/1

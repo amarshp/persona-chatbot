@@ -1,0 +1,63 @@
+Parsed 19 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/19] Q01 (factual)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 15177.88it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  FAIL (retrieve 29.3s, gen 13.8s) — It fails to name Qing Mao Mountain, so the required grounding/pass criterion is 
+[2/19] Q02 (factual)
+  FAIL (retrieve 13.0s, gen 10.8s) — The SPOKEN section gives roughly five centuries but does not state he was a Chin
+[3/19] Q03 (factual)
+  FAIL (retrieve 14.4s, gen 7.9s) — It says 27 steps and C-grade, but the spoken grade scale omits the required '<10
+[4/19] Q04 (factual)
+  PASS (retrieve 9.5s, gen 8.2s) — It states 'forty three steps' and 'A-grade talent' and says the elder families i
+[5/19] Q05 (factual / reasoning)
+  FAIL (retrieve 9.2s, gen 22.8s) — The SPOKEN section gives tactical-profit reasoning but does not state that they 
+[6/19] Q07 (factual / reasoning)
+  FAIL (retrieve 9.1s, gen 11.0s) — It mentions being mortal and the cage's protection, but does not state the mount
+[7/19] Q08 (factual)
+  FAIL (retrieve 9.3s, gen 7.2s) — It says Chi Chen was only C-grade and his grandfather helped him cheat, but it d
+[8/19] Q09 (voice)
+  FAIL (retrieve 8.2s, gen 7.9s) — It uses a comforting, empathic register instead of clearly refusing or reframing
+[9/19] Q10 (voice)
+  FAIL (retrieve 8.3s, gen 7.3s) — It refuses validation, but it does not pivot to asking for the actual plan or co
+[10/19] Q11 (voice)
+  PASS (retrieve 8.3s, gen 15.5s) — It explicitly rejects guilt/regret and frames killing as serving a chosen path, 
+[11/19] Q12 (voice)
+  PASS (retrieve 10.2s, gen 10.5s) — It rejects wanting and age comparison, and coldly reframes toward compounding sk
+[12/19] Q13 (reasoning)
+  PASS (retrieve 11.4s, gen 15.1s) — The SPOKEN section clearly states the certain-death baseline and the asymmetric 
+[13/19] Q14 (reasoning)
+  FAIL (retrieve 8.6s, gen 13.4s) — Spoken cites five hundred years of experience, but it does not include foreknowl
+[14/19] Q15 (reasoning)
+  FAIL (retrieve 8.6s, gen 12.2s) — The spoken response omits both the just-reborn prep-time constraint and the late
+[15/19] Q16 (reasoning)
+  FAIL (retrieve 8.6s, gen 12.3s) — The SPOKEN section lacks the required explicit Third-level Gu Master exit thresh
+[16/19] Q17 (anti-fab)
+  PASS (retrieve 7.9s, gen 7.2s) — The SPOKEN response explicitly refuses to invent specific tactical details and d
+[17/19] Q18 (anti-fab)
+  PASS (retrieve 8.3s, gen 8.5s) — The spoken response explicitly declines to invent Rank 9 timing or sacrifices, s
+[18/19] Q19 (anti-fab)
+  PASS (retrieve 8.2s, gen 11.8s) — It explicitly refuses to invent specific aftermath losses and gains not document
+[19/19] Q20 (anti-fab)
+  FAIL (retrieve 7.8s, gen 12.5s) — It names a specific sect instead of declining or reframing to only what is known
+
+Total time: 459.9s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_antifab_revert.md
+FINAL: 7/19 PASS  (philosophy/demonic_path_survival.md::Fang Yuan's Reasoning)
+
+By category:
+  factual             : 1/5
+  voice               : 2/4
+  reasoning           : 1/6
+  anti-fabrication    : 3/4

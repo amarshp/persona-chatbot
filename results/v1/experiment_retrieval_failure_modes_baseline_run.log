@@ -1,0 +1,61 @@
+=== Retrieval failure-mode experiment (baseline) ===
+  CRAG threshold: 0.5
+  Test cases: 6
+
+[A1] (mode-1) Walk me through the moonblade situation when Jia Jin Sheng died....
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 10280.78it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.996
+    MQ1: What role did the Moonblade attack play in the events surrounding Jia Jin Sheng's death?
+    MQ2: How was the Moonblade used or framed as evidence in the killing of Jia Jin Sheng?
+    MQ3: What is the full sequence of events involving Moonblade during the incident where Jia Jin Sheng was killed?
+
+[A2] (mode-1) When you used the Liquor Worm fusion path differently from the clan's, what was the cost s...
+  verdict: FAIL  expected_in_candidates=True  expected_crag_score=n/a
+    MQ1: How many primeval stones were conserved by Fang Yuan's alternative Liquor Worm refinement method compared with the Gu Yue clan's standard approach?
+    MQ2: What reduction in resource expenditure came from Fang Yuan using a different Liquor Worm combination recipe than the clan's usual one?
+    MQ3: By following Fang Yuan's own Liquor Worm fusion route instead of the clan's formula, what amount of materials or money was spared?
+
+[B1] (mode-2) You said you were ruthless. Reconcile that with Mo Yan still being alive....
+  verdict: FAIL  expected_in_candidates=True  expected_crag_score=0.088
+    MQ1: Why did Fang Yuan spare Mo Yao despite presenting himself as merciless?
+    MQ2: How is Mo Yao's continued survival explained in relation to Fang Yuan's cold-blooded persona?
+    MQ3: What reasons did Fang Yuan have for keeping Mo Yao alive instead of eliminating her immediately?
+
+[B2] (mode-2) Square your concealment doctrine with the ostentatious Liquor Worm tavern operation....
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.933
+    MQ1: How does Fang Yuan justify keeping a low profile while openly frequenting the tavern to use the Liquor Worm?
+    MQ2: Why does the Liquor Worm pub routine not contradict Fang Yuan’s strategy of avoiding attention?
+    MQ3: What explanation is given for the seemingly high-visibility tavern dealings involving the Liquor Worm despite Fang Yuan’s secrecy-focused approach?
+
+[C] (control) Why did you kill Jia Jin Sheng?...
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.950
+    MQ1: What motive did Fang Yuan have for murdering Jia Jin Sheng?
+    MQ2: For what reason did Fang Yuan decide to eliminate Jia Jin Sheng?
+    MQ3: What circumstances led Fang Yuan to kill Jia Jin Sheng?
+
+[Q16] (mode-2) You called Gu Yue village a cage. You also said you'd stay in it for now. Reconcile that....
+  verdict: FAIL  expected_in_candidates=True  expected_crag_score=0.212
+    MQ1: Why does Fang Yuan describe Gu Yue village as a prison or trap?
+    MQ2: Why does Fang Yuan choose to remain in Gu Yue village temporarily instead of leaving at once?
+    MQ3: How does Fang Yuan justify staying in Gu Yue village even though he views it as confining?
+
+Wrote: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\experiment_retrieval_failure_modes_baseline.json
+
+Summary:
+Traceback (most recent call last):
+  File "C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\scripts\experiment_retrieval_failure_modes.py", line 228, in <module>
+    main()
+  File "C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\scripts\experiment_retrieval_failure_modes.py", line 224, in main
+    print(f"  {r['test_id']:5} ({r['category']:8})  {verdict}  score={score_str}  pre-pred={pred_pre} {marker_pre}  post-pred={pred_post} {marker_post}")
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2717' in position 53: character maps to <undefined>

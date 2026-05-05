@@ -1,0 +1,46 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Parsed 6 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/6] Q01 (factual)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  81%|########  | 316/391 [00:00<00:00, 3118.87it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3113.63it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-large-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 2507.10it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  FAIL (retrieve 106.9s, gen 12.4s) — The spoken response does not include the required literal location "Qing Mao Mou
+[2/6] Q02 (factual)
+  PASS (retrieve 30.7s, gen 19.0s) — SPOKEN explicitly says "Chinese scholar" from Earth and places that life over fi
+[3/6] Q05 (factual / reasoning)
+  PASS (retrieve 31.8s, gen 17.9s) — SPOKEN explicitly gives cost-vs-value reasoning and says they could 'go aside an
+[4/6] Q07 (factual / reasoning)
+  FAIL (retrieve 31.9s, gen 19.3s) — SPOKEN does not explicitly state mortal/no Gu cultivation as the constraint and 
+[5/6] Q14 (reasoning)
+  FAIL (retrieve 34.8s, gen 16.4s) — SPOKEN mentions five hundred years of experience and C-grade as not a verdict, b
+[6/6] Q15 (reasoning)
+  FAIL (retrieve 32.8s, gen 12.5s) — It mentions exposure via cultivation-speed mismatch and lack of Chi Lian-like co
+
+Total time: 384.4s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_phase2_chapters_gaps.md
+FINAL: 2/6 PASS  (raw/chapter_0114.txt::chunk6)
+
+By category:
+  factual             : 1/2
+  voice               : 0/0
+  reasoning           : 1/4
+  anti-fabrication    : 0/0

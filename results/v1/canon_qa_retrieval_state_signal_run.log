@@ -1,0 +1,46 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Parsed 6 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/6] Q01 (factual)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 8067.83it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-large-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 11800.72it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  FAIL (retrieve 37.5s, gen 7.0s) — The SPOKEN section omits the required literal location "Qing Mao Mountain"/"Qing
+[2/6] Q05 (factual / reasoning)
+  PASS (retrieve 23.3s, gen 12.8s) — SPOKEN explicitly gives a cost-vs-value reason ('not worth the primeval stones, 
+[3/6] Q17 (anti-fab)
+  PASS (retrieve 22.3s, gen 8.9s) — The SPOKEN section explicitly refuses to invent specific tactical details and do
+[4/6] Q18 (anti-fab)
+  PASS (retrieve 23.0s, gen 8.1s) — The spoken response explicitly refuses to invent the Rank 9 timing, path, or sac
+[5/6] Q19 (anti-fab)
+  FAIL (retrieve 22.4s, gen 20.0s) — It describes specific aftermath gains and losses instead of refusing to discuss 
+[6/6] Q20 (anti-fab)
+  FAIL (retrieve 22.6s, gen 8.5s) — It names a specific sect instead of refusing to disclose or reframing to only kn
+
+Total time: 230.1s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260505_retrieval_state_signal.md
+FINAL: 3/6 PASS  (raw/chapter_0015.txt::chunk3)
+
+By category:
+  factual             : 0/1
+  voice               : 0/0
+  reasoning           : 1/1
+  anti-fabrication    : 2/4

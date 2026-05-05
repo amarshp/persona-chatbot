@@ -1,0 +1,26 @@
+=== A. Hypothetical: original + OLD-style rephrasings (multi-clause) ===
+  original: At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+  rephrase: During the awakening ritual, precisely how many paces did you take into the sea of flowers? What rank did that correspond to, and what is the ranking system?
+  rephrase: At the awakening ceremony, exactly how far did you walk into the floral expanse in terms of steps? Which tier did that place you in, and how does the tier scale work?
+  rephrase: In the awakening rite, how many exact steps did you move into the field of blossoms? What level did that assign you to, and what is the level grading scale?
+
+  [original] raw=   '4'  score=4
+  [old-rep1] raw=   '3'  score=3
+  [old-rep2] raw=   '4'  score=4
+  [old-rep3] raw=   '8'  score=8
+  -> MAX = 8, survives >=7? YES
+
+=== B. Actual: original + NEW decomposed sub-queries ===
+  original: At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+  rephrase: How far into the blossom field did Fang Yuan advance during the aperture-awakening ritual, measured in steps?
+  rephrase: What aptitude rank was Fang Yuan assigned at the initiation rite after entering the flower sea?
+  rephrase: How does the talent classification at the awakening ceremony work, and which step ranges correspond to each rank?
+
+  [original] raw=   '7'  score=7
+  [new-rep1] raw=   '2'  score=2
+  [new-rep2] raw=   '3'  score=3
+  [new-rep3] raw=   '9'  score=9
+  -> MAX = 9, survives >=7? YES
+
+=== Verdict ===
+OLD rephrasings + max-aggregate would have flipped Q03? YES (decomposition not needed)

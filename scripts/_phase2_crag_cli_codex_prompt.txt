@@ -1,0 +1,76 @@
+PARAMETERIZE eval_multi_query_crag.py
+
+PURPOSE
+Add CLI flags so we can sweep multi-query/CRAG settings without code
+edits. Single deliverable — a tiny argparse addition to the existing
+harness. Do not change anything in v1/.
+
+CONSTRAINTS
+- Edit ONLY scripts/eval_multi_query_crag.py.
+- Do NOT change v1/retrieval/multi_query.py, v1/retrieval/crag_filter.py,
+  v1/retrieval/wiki_retriever.py, scripts/boundary_tests.py.
+- Existing default behavior MUST be preserved when no flags are passed:
+      n=3, threshold=7, k_max=12
+- The defaults remain DEFAULT_PHRASINGS=3, DEFAULT_THRESHOLD=7,
+  DEFAULT_K_MAX=12 in the constants block.
+
+CHANGES
+
+1. Add argparse to main():
+
+       import argparse
+       ...
+       parser = argparse.ArgumentParser(
+           description="Phase 2 paid eval: multi-query + CRAG over V01-V10.",
+       )
+       parser.add_argument(
+           "--n", type=int, default=DEFAULT_PHRASINGS,
+           help="Number of multi-query rephrasings (default: 3)",
+       )
+       parser.add_argument(
+           "--threshold", type=int, default=DEFAULT_THRESHOLD,
+           help="CRAG keep threshold, scores below dropped (default: 7)",
+       )
+       parser.add_argument(
+           "--k-max", type=int, default=DEFAULT_K_MAX,
+           dest="k_max",
+           help="Max candidates CRAG-scores per row (default: 12)",
+       )
+       args = parser.parse_args()
+
+2. Replace the hardcoded DEFAULT_PHRASINGS/DEFAULT_THRESHOLD/DEFAULT_K_MAX
+   in the per-row loop with args.n / args.threshold / args.k_max.
+
+3. Update the markdown output and console summary lines to reflect the
+   ACTUAL values used:
+   - Console: "MQ + CRAG (n=<args.n>, threshold=<args.threshold>): X/10 PASS"
+   - Markdown frontmatter: include actual n, threshold, k_max.
+
+4. Filename uniqueness: if n != 3 or threshold != 7 or k_max != 12,
+   append a settings tag to the output filename so different sweeps
+   don't collide. Use:
+
+       suffix = f"_n{args.n}_t{args.threshold}_k{args.k_max}"
+       filename = f"multi_query_crag_eval_{timestamp}{suffix}.md"
+
+   When all values match the defaults, suffix is empty (preserving the
+   existing naming convention).
+
+VERIFICATION (no LLM calls)
+After your edit, run from project root:
+- `python scripts/eval_multi_query_crag.py --help`
+  Expected: argparse help text shows --n, --threshold, --k-max with
+  defaults 3, 7, 12.
+- `python scripts/boundary_tests.py`
+  Expected: SUMMARY block byte-identical to current baseline.
+- `python -c "import scripts.eval_multi_query_crag as m; print(m.DEFAULT_PHRASINGS, m.DEFAULT_THRESHOLD, m.DEFAULT_K_MAX)"`
+  Expected: prints `3 7 12`.
+
+DO NOT RUN scripts/eval_multi_query_crag.py for an actual eval. The user
+gates that.
+
+OUTPUT
+- The applied diff.
+- The --help output.
+- Confirmation that running without args produces the same console
+  layout as before.

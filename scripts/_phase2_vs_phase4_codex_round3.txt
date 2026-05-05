@@ -1,0 +1,54 @@
+FOLLOW-UP ROUND 3 — user pushback
+
+The user is calling out a hidden assumption in your Path D recommendation. Quote: "just because the plan says multi-query will be removed doesn't mean it will. We're doing incremental building. If multi-query does the job then we may not need BGE."
+
+This is the strict eval-driven principle (Sculley, Karpathy, Google's Rules of ML) applied properly: never invest in a harder solution if the simpler one might suffice — measure first.
+
+Re-examining your Path D under this lens:
+
+1. Your "multi-query is least durable" argument requires us to believe BGE will dominate it on THIS corpus. We have no evidence for that. Both are vocabulary bridges:
+   - Multi-query: LLM general-knowledge paraphrasing
+   - BGE: learned semantic embeddings
+   For a Chinese-cultivation novel with neologisms (Gu, Liquor Worm, Spring Autumn Cicada, Aperture), neither is obviously better. The plan's assumption that BGE deprecates multi-query is itself an unmeasured claim.
+
+2. Cost: 1 rephrase call/turn at JUDGE_MODEL = ~1k input + ~100 output tokens ≈ $0.001/turn. For a persona chatbot, total recurring cost is pennies. The "sticky cost forever" concern is theoretically real but quantitatively negligible.
+
+3. Implementation cost: multi-query is ~50 LOC + one prompt template + a list-of-phrasings JSON parse. BGE requires embedding model load, vector persistence (numpy or chroma), startup-time cost, and matching infra. Multi-query is materially smaller to implement.
+
+4. Critically: the user's failure case ("paraphrase queries miss") is precisely what multi-query was invented to solve. The whole T02 technique exists because keyword retrieval misses paraphrases. We are deliberately discarding the canonical solution because we suspect a different solution might be better — without measuring.
+
+UPDATED PROPOSAL — strict eval-driven Path A':
+
+  Step 1: Multi-Query expansion only (v1/retrieval/multi_query.py).
+          retrieve() takes a list of queries (orig + N rephrases), unions/dedups results.
+          No CRAG yet, no BGE yet.
+          ~50 LOC + one JUDGE_MODEL call wrapper.
+
+  Step 2: Paid eval harness exercises new pipeline against the 10 vocab boundary tests
+          (V01-V10 from boundary_tests.py).
+          Measure: does multi-query close the 8/10 fails?
+          Cost: ~10 rephrase calls + 10 retrievals = trivial.
+
+  Step 3: Decision gate
+          - If V fails drop to ≤2/10: vocab gap is solved by multi-query. STOP. Do not
+            build BGE. Move to CRAG to address the leak failures (separate concern).
+          - If V fails drop modestly (3-5/10): multi-query is partial. Add BGE on top
+            (hybrid scoring), re-measure.
+          - If V fails barely move: multi-query is the wrong tool for THIS corpus
+            (likely because novel neologisms aren't in JUDGE_MODEL's training distribution).
+            Skip multi-query, ship BGE.
+
+  Step 4: CRAG addresses the leak failures (coverage avg 6, out-of-scope avg 2.75).
+          This is a separate failure class and a separate decision.
+
+THE QUESTIONS
+
+1. Given the user's strict eval-driven framing, does Path A' (multi-query alone first, measure, only then decide BGE) actually beat Path D (skip multi-query)?
+
+2. Defend your Path D position OR concede to Path A'. Be honest — when an argument hinges on "BGE will probably be better" without measurement, that's the kind of thing eval-driven dev was created to discipline.
+
+3. Is the V01-V10 boundary suite a sufficient eval gate for the multi-query decision in Step 2? Or do we need more than 10 paraphrase queries to reach a confident verdict?
+
+4. If you concede Path A', what's the smallest-justified ship for Step 1 — just multi_query.py + a measurement script? Or also a runtime-path wire-up?
+
+Keep response under 300 words.

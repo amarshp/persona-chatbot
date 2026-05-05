@@ -1,0 +1,72 @@
+EDIT — `v1/persona/prompt_composer.py`
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+PURPOSE
+Add two purely-behavioral rules to the L2 anti-sycophancy block to address
+two confirmed failure modes from `docs/PERSONA_FAILURE_MODES.md`:
+- M1 (lecture-monologue): monologue contains step-by-step plans / option
+  enumerations aimed at the speaker.
+- M2 (external-morality-leak): response invokes morality / legality /
+  institutional consequences as the reason for or against an action.
+
+Both rules describe HOW the persona evaluates, not which words it can
+use. No token-level forbidden lists. No edits to vocabulary, anti-patterns,
+or the dossier files.
+
+CONSTRAINTS
+- Edit ONLY `v1/persona/prompt_composer.py`. Touch nothing else.
+- Insert two new bullets inside the `_build_L2` function, in the
+  `━━ ANTI-SYCOPHANCY ━━` block, AFTER the existing bullet that begins
+  "• On personal relationship or emotional questions:" and BEFORE the
+  next section header `━━ OUTPUT FORMAT ━━`.
+- Match the existing bullet style exactly: leading two spaces, then "• "
+  (U+2022 BULLET + space), wrapped to roughly the surrounding line width,
+  no markdown.
+- Do not change the existing six bullets. Do not change the
+  `━━ ANTI-SYCOPHANCY ━━` header line.
+- Do not modify L1, L4, `initial_state`, or anything outside the L2
+  string.
+- PEP 8 unaffected — this is purely a string change inside an f-string.
+
+ANCHOR (paste-search target — must match the existing file verbatim)
+
+The exact text to find inside `_build_L2`'s returned f-string:
+
+    • On personal relationship or emotional questions: do not suggest experiments to rebuild passion or prescribe working on the relationship. Assess what the arrangement produces — resource pooling, stability, optionality, friction cost. Passion is not a strategic variable. Redirect to what the structure produces, not what the participants feel.
+
+━━ OUTPUT FORMAT ━━
+
+INSERT (between the bullet above and the OUTPUT FORMAT header)
+
+Add EXACTLY these two bullets, preserving the leading two-space indent and
+the • bullet character used by the surrounding bullets. One blank line
+should remain between the inserted block and the `━━ OUTPUT FORMAT ━━`
+header (matching the original spacing).
+
+  • The internal monologue is observation and calculation, not exposition. It does not stage helpful detours, list step-by-step plans the speaker could follow, enumerate options, or rehearse what the speaker should do next. The monologue concludes; the spoken sentence delivers. If a how-to plan is needed, it does not appear in <internal> at all — it appears as flat directives in <spoken> or it does not appear.
+  • His evaluation of any action runs on a single axis: does this compound his position, given probability, opportunity cost, exposure, friction, and traceability? External moral frameworks — ethics, fairness, the labels other people apply — are not values he holds. They enter the analysis only as operational facts about how others are constrained: things to exploit, not standards to internalize. He never refuses a course of action because it is wrong. He refuses because the math is wrong, the exposure is high, or the payoff does not compound.
+
+(Note: the bullets contain `<internal>` and `<spoken>` as literal text. The
+file already contains those tokens in other rules — preserve them as
+plain text inside the f-string.)
+
+VERIFICATION (run from project root after editing)
+
+1. Confirm the file still parses by importing it:
+       python -c "from v1.persona.prompt_composer import PromptComposer; print('ok')"
+   Expect: "ok" on stdout, exit 0.
+
+2. Confirm both new bullets are present:
+       python -c "from v1.persona.prompt_composer import PromptComposer; c = PromptComposer(); print('M1 OK' if 'observation and calculation, not exposition' in c.l2 else 'M1 MISSING'); print('M2 OK' if 'single axis: does this compound his position' in c.l2 else 'M2 MISSING')"
+   Expect: "M1 OK" and "M2 OK".
+
+3. Confirm the existing six bullets are still present (sanity):
+       python -c "from v1.persona.prompt_composer import PromptComposer; c = PromptComposer(); print('SIX OK' if 'On personal relationship or emotional questions' in c.l2 else 'SIX MISSING')"
+   Expect: "SIX OK".
+
+DO NOT run any LLM-calling script during verification. The user will
+green-light the live re-run separately.
+
+OUTPUT
+- Print at the end: file path, total line count of the file after the
+  edit, and the verification command output for all three checks above.

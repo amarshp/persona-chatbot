@@ -1,0 +1,32 @@
+FOLLOW-UP ROUND 2
+
+Your Path D recommendation (CRAG -> BGE -> maybe never multi-query) is compelling. Pushing back on three concerns before we commit:
+
+CONCERN 1 — CRAG cannot rescue what retrieve() never surfaces
+The vocabulary gap is "the right page never made it into the candidate list because the keyword score was 0". CRAG only filters the candidate list — it cannot pull in a page that scored zero. So:
+  - CRAG-first will move out-of-scope leak (avg 2.75 sections) DOWN -> good
+  - CRAG-first will move coverage leak (avg 6 sections) DOWN -> good
+  - CRAG-first will leave vocab fails AT 8/10 -> unchanged
+Confirm: CRAG alone provides ZERO recall lift. The vocab fix only arrives with BGE (or multi-query). Yes/no?
+
+CONCERN 2 — Test infra cost
+boundary_tests.py is currently 100% offline (deterministic, zero LLM calls, ~3s wall time). The moment CRAG enters the retrieval pipeline, every test cycle starts costing LLM calls — ~5 calls × 20 boundary queries = ~100 mini-LLM calls per `python scripts/boundary_tests.py` run. That's a real shift in the development loop economics: today I can run boundary tests freely; after CRAG ships, every run is metered.
+
+Two ways to keep the loop cheap:
+  (a) boundary_tests.py keeps calling pre-CRAG retrieve() (offline). A separate `scripts/eval_crag.py` exercises CRAG on a small held-out set when explicitly invoked. Net: boundary_tests stays zero-LLM forever as a regression guard for keyword retrieval; a separate paid harness gates phase advancement.
+  (b) boundary_tests.py absorbs CRAG into the pipeline and the test becomes a paid run.
+
+Which do you prefer, and why? My instinct is (a) — the boundary tests' zero-LLM property is genuinely valuable (anyone can run them in CI without keys, regression bisection is free, debugging is reproducible).
+
+CONCERN 3 — CRAG kill criterion calibration
+The plan says "if CRAG over-filters > 50% of sections, lower threshold from 7 to 5". But we have no baseline yet for what "normal" filter rate looks like on this corpus. First CRAG run may show, say, 80% filter rate on V01-V10 because the keyword retrieval surfaced wrong sections AND CRAG correctly rejected them — that's the desired behavior, not a failure. We need a way to distinguish "CRAG dropped the wrong section because retrieval was bad" (good) vs "CRAG dropped the right section because the model misjudged relevance" (bad).
+
+Proposal: in the CRAG eval harness, log every dropped section's score + page_rel + section_title. Manually spot-check 10 drops on first run to calibrate the threshold. Reasonable?
+
+ASKS
+1. Confirm CRAG-first leaves vocab at 8/10 (concern 1).
+2. Pick (a) or (b) for test infra (concern 2).
+3. Endorse or revise the calibration approach (concern 3).
+4. Given concerns 1+2, is the smallest justified ship unit "CRAG with a separate paid eval harness, boundary_tests.py untouched"? Or is there an even smaller cut?
+
+Keep response under 300 words.

@@ -1,0 +1,44 @@
+ROLE: Decision advisor for a Fang Yuan persona-RAG project. CC is asking for your independent take on the next implementation step.
+
+CONTEXT (project)
+- The user follows eval-driven iterative dev (Sculley 2015, Google Rules of ML, Karpathy): simplest baseline first, add a component only when a measured failure justifies it.
+- Current state, freshly verified by `python scripts/boundary_tests.py`:
+  - Phase 1 (section retrieval + query routing): SHIPPED. 14/14 smoke gate cleared.
+  - Phase 2 (multi-query + CRAG): NOT STARTED. Justified by 8/10 vocab fails in the boundary test.
+  - Phase 3 (vector RAG fallback on raw chapters): NOT STARTED.
+  - Phase 4 (semantic BGE embedding scoring): NOT STARTED.
+  - Phase 5 (wiki health): CLEAN.
+- Three failure modes the boundary test exposes RIGHT NOW:
+  1. Vocabulary gap: 8/10 paraphrase queries fail (e.g. "betrayal" query does not retrieve `philosophy/self_interest_and_human_nature.md` because the page never uses the word "betrayal").
+  2. Coverage leak: queries about uncovered topics (Mo Bei, Wang Da, year-end exam) return avg 6 sections / 2253 tokens — false-positive content.
+  3. Out-of-scope leak: post-ch-120 queries (Bai Ning Bing fight, Venerable rank) return avg 2.75 sections — clear-leak.
+
+L4 PLAN ORDER (from LIVE_STATUS.md, written by the user)
+- Phase 2 = Multi-Query rephrase (T02, ~1 mini-LLM call/turn) + CRAG filter (T12, ~5 mini-LLM calls/turn). 4-5h. Adds runtime $/turn forever unless deprecated.
+- Phase 4 = Semantic BGE embedding scoring (zero per-turn LLM cost) + keep CRAG. 3-4h. Plan explicitly says "if semantic scoring provides sufficient recall, disable multi-query".
+
+THE QUESTION
+The user wants to decide between three paths:
+
+PATH A — Strict eval-driven: Multi-Query alone -> re-run boundary tests -> CRAG only if needed -> BGE only if needed.
+  - 3 separate measurements, smallest commits
+  - Risk: multi-query alone could mask whether CRAG is needed; coverage and out-of-scope leaks won't be touched until CRAG ships
+  - Note: boundary_tests.py is currently zero-LLM. Multi-query adds an LLM call to retrieval, so to measure its effect on the boundary tests, the test harness or a parallel harness has to call the LLM. That cost recurs every test cycle.
+
+PATH B — Plan-as-written: Multi-Query + CRAG together (Phase 2 as one unit) -> measure -> BGE later only if needed.
+  - 1 measurement gate
+  - Risk: pays multi-query cost forever if BGE later deprecates it (Phase 4 step 3 in the plan acknowledges this)
+  - Concretely: if Phase 2 closes all three failure modes, Phase 4 may never ship — saving the embedding work
+
+PATH C — Skip multi-query: BGE + CRAG together -> measure.
+  - Lower per-turn cost (no rephrase call)
+  - Risk: violates eval-driven principle; we haven't measured whether multi-query alone would have been enough; BGE infra (preload, numpy persistence) is more setup than multi-query
+  - Counter-risk: Phase 4 alone (without CRAG) makes coverage/out-of-scope leaks WORSE because semantic similarity casts wider — so BGE+CRAG is the sensible bundle if going this route
+
+WHAT I WANT FROM YOU
+1. Which path do you recommend, and why? Be opinionated.
+2. Specifically address the eval-driven concern: is "skip multi-query because BGE will deprecate it" a defensible move, or is it premature optimization?
+3. Is there a 4th path I am missing?
+4. If you pick A or B, what is the SMALLEST unit of code change that justifies running the boundary test again (i.e. what is "one component" here)?
+
+Respond as a senior engineer giving direct advice. No code yet — just the strategic call. Keep it under 400 words.

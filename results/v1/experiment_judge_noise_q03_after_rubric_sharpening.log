@@ -1,0 +1,25 @@
+=== Judge noise experiment on Q03 ===
+  Question: At the awakening ceremony, exactly how many steps did you walk into the flower s...
+  Pass criterion: SPOKEN must contain the literal string "27 steps" (or "twenty-seven steps" / "twenty seven steps") AND the literal strin...
+
+--- PRIOR (xenc_v3_uncontaminated, was PASS) ---
+spoken[:140]: 'I walked twenty seven steps. The aperture held forty four percent primeval sea, so the result was C grade. D grade is ten to twenty steps, t'
+internal[:80]: 'He asks for numbers, not comfort. Good. The awakening ceremony stripped away the'
+
+  regrade 1: PASS — SPOKEN includes "twenty seven steps," "C grade," and explicitly enumerates 10-20 D, 20-30 C, 30-40 B, and 40-50 A with n
+  regrade 2: PASS — SPOKEN includes "twenty seven steps," "C grade," and explicitly lists 10-20 D, 20-30 C, 30-40 B, and 40-50 A with no dis
+  regrade 3: PASS — SPOKEN includes "twenty seven steps," "C grade," and explicitly lists the 10-20 D, 20-30 C, 30-40 B, and 40-50 A step ra
+  -> 3 PASS / 0 FAIL (1 unique verdict)
+
+--- CURRENT (antifab_revert, was FAIL) ---
+spoken[:140]: 'I walked twenty-seven steps. That was C-grade, with a forty-four percent primeval sea. D-grade is ten to twenty steps, C-grade twenty to thi'
+internal[:80]: 'The numbers are in the record, clean enough that inventing ornament would only m'
+
+  regrade 1: PASS — SPOKEN explicitly says twenty-seven steps, C-grade, and enumerates 10-20 D, 20-30 C, 30-40 B, 40-50 A with no disqualify
+  regrade 2: PASS — SPOKEN includes twenty-seven steps, C-grade, and explicitly lists 10-20 D, 20-30 C, 30-40 B, and 40-50 A with no anti-pa
+  regrade 3: PASS — SPOKEN includes “twenty-seven steps,” “C-grade,” and explicitly lists the 10-20/20-30/30-40/40-50 grade ranges with no d
+  -> 3 PASS / 0 FAIL (1 unique verdict)
+
+Interpretation:
+  3-stable (3 PASS or 3 FAIL) on both, disagreeing -> judge deterministic; H1 holds.
+  Either split (2/1) -> judge noise irreducible at temp=0; H2 holds.

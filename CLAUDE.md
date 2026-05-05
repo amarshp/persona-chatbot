@@ -27,6 +27,8 @@ Never use Write/Edit tools on `.py` files directly. If I do it anyway, stop and 
 
 **OpenRouter requires explicit permission.** Before running any script that calls the LLM API (`smoke_test_runner.py`, `eval_ab_runner.py`, any OpenRouter call) — stop, describe what will run and how many API calls it will make, and wait for a clear yes. General task approval is not permission to hit the API.
 
+**LIVE_STATUS.md auto-curation.** A Stop hook in `.claude/settings.json` runs `scripts/run_live_status.sh` after every turn — extracts the latest user→assistant pair, spawns headless Sonnet (`claude -p`) with the rules in `scripts/live_status_curator.md`, and appends to `results/LIVE_STATUS.md` if substantive (skips slash commands, "ok"/"yes"/etc. pings, tool-only turns). Append-only — `LIVE_STATUS.md` is the explicit exception to the "results/ files are immutable" rule. To tune skip/keep behavior or output format, edit `scripts/live_status_curator.md`. Logs at `scripts/.live_status.log`; dedup state at `scripts/.live_status_state.json`.
+
 ---
 
 ## Commands

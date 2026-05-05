@@ -1,0 +1,28 @@
+===== PHASE 3 - variance test (5 reps, original Q03 + original section) =====
+  [rep1] raw=       '7'  parsed=7
+  [rep2] raw=       '3'  parsed=3
+  [rep3] raw=       '4'  parsed=4
+  [rep4] raw=       '3'  parsed=3
+  [rep5] raw=       '4'  parsed=4
+  scores: [7, 3, 4, 3, 4]
+  min=3  max=7  spread=4  modal=3
+
+===== PHASE 4a - same section, scale-focused query =====
+  [4a] raw=      '10'  parsed=10
+
+===== PHASE 4b - title override (section_title = The grades explained), original query =====
+  [4b] raw=       '2'  parsed=2
+
+===== PHASE 4c - synthetic subchunk (only the grade-scale paragraph), original query =====
+  subchunk len: 413 chars
+  subchunk preview: '**The grades explained (Chapter 7):** D-grade: primeval sea at 20-30%, can reach Rank two maximum. C-grade: primeval sea at 40-50%, can reach Rank three with luck. B-grade: primeval sea at 60-70%, can'...
+  [4c] raw=       '3'  parsed=3
+
+===== VERDICT =====
+grade_scale_in_window:     YES (offset 704)
+original_call_score:       4 (median of 5)
+original_call_variance:    spread=4 (noisy)
+scale_focused_query_score: 10
+title_override_score:      2
+synthetic_subchunk_score:  3
+hypothesis_supported:      QUERY_ANCHOR

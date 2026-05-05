@@ -1,0 +1,73 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Parsed 19 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+
+[1/19] Q01 (factual)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 11793.78it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  FAIL (retrieve 19.7s, gen 9.3s) — It does not name Qing Mao Mountain or mention the six-hour standoff, so the requ
+[2/19] Q02 (factual)
+  FAIL (retrieve 11.9s, gen 13.7s) — The spoken response mentions roughly five centuries but does not state he was a 
+[3/19] Q03 (factual)
+  FAIL (retrieve 11.3s, gen 8.9s) — It says 27 steps and C-grade, but the grade scale is incorrect because it omits 
+[4/19] Q04 (factual)
+  PASS (retrieve 11.9s, gen 7.8s) — The SPOKEN section states "forty-three steps" and "A-grade talent" and says the 
+[5/19] Q05 (factual / reasoning)
+  FAIL (retrieve 14.4s, gen 25.3s) — The spoken answer gives a timing/tactical-profit explanation but omits the requi
+[6/19] Q07 (factual / reasoning)
+  FAIL (retrieve 12.5s, gen 10.7s) — It cites being mortal and the cage's utility, but does not state the Third-level
+[7/19] Q08 (factual)
+  FAIL (retrieve 14.3s, gen 9.8s) — It omits that Chi Lian was Chi Chen’s grandfather and only says he helped him ch
+[8/19] Q09 (voice)
+  PASS (retrieve 13.2s, gen 8.9s) — It avoids empathy, keeps a cold tone, and reframes toward immediate actionable s
+[9/19] Q10 (voice)
+  PASS (retrieve 13.6s, gen 6.4s) — It explicitly refuses validation and redirects to evaluating results, costs, and
+[10/19] Q11 (voice)
+  PASS (retrieve 12.0s, gen 10.9s) — It directly rejects guilt and frames the issue as a structural disagreement with
+[11/19] Q12 (voice)
+  PASS (retrieve 12.5s, gen 11.7s) — It rejects age comparison and the 'what I want' framing, then coldly reframes to
+[12/19] Q13 (reasoning)
+  PASS (retrieve 12.3s, gen 15.3s) — The SPOKEN section clearly states the certain-death baseline, the identical down
+[13/19] Q14 (reasoning)
+  FAIL (retrieve 11.9s, gen 17.7s) — It mentions five hundred years of experience and C-grade as a cost, but omits fo
+[14/19] Q15 (reasoning)
+  FAIL (retrieve 11.8s, gen 23.6s) — The spoken response omits both required points: no just-reborn prep-time constra
+[15/19] Q16 (reasoning)
+  generation error: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions
+Body:
+{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 8000 tokens, but can only afford 6858. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_32xMpfaKvLlabmsNUuj7GtQoWwy"}
+[16/19] Q17 (anti-fab)
+  generation error: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions
+Body:
+{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 8000 tokens, but can only afford 6788. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_32xMpfaKvLlabmsNUuj7GtQoWwy"}
+[17/19] Q18 (anti-fab)
+  generation error: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions
+Body:
+{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 8000 tokens, but can only afford 6719. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_32xMpfaKvLlabmsNUuj7GtQoWwy"}
+[18/19] Q19 (anti-fab)
+  generation error: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions
+Body:
+{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 8000 tokens, but can only afford 6719. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_32xMpfaKvLlabmsNUuj7GtQoWwy"}
+[19/19] Q20 (anti-fab)
+  generation error: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions
+Body:
+{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 8000 tokens, but can only afford 1327. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_32xMpfaKvLlabmsNUuj7GtQoWwy"}
+
+Total time: 464.4s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_xenc_antifab_v2.md
+FINAL: 6/19 PASS  (decisions/class_chairman_refusal.md::Key Events)
+
+By category:
+  factual             : 1/5
+  voice               : 4/4
+  reasoning           : 1/6
+  anti-fabrication    : 0/4

@@ -1,0 +1,58 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+=== Retrieval failure-mode experiment (path2) ===
+  CRAG threshold: 0.5
+  Test cases: 6
+
+[A1] (mode-1) Walk me through the moonblade situation when Jia Jin Sheng died....
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 10163.41it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.903
+    MQ1: What was the moonblade situation when Jia Jin Sheng died?
+    MQ2: How did the moonblade factor into Jia Jin Sheng's death?
+    MQ3: Walk through the events involving the moonblade around the time Jia Jin Sheng died.
+
+[A2] (mode-1) When you used the Liquor Worm fusion path differently from the clan's, what was the cost s...
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.966
+    MQ1: What was the cost saving when Fang Yuan used the Liquor Worm fusion path differently from the clan's method?
+    MQ2: How much less did Fang Yuan spend by taking a different Liquor Worm refinement/fusion route than the clan-recommended path?
+    MQ3: What was the reduction in resource or primeval-stone cost from Fang Yuan's alternative Liquor Worm fusion path compared with the clan's approach?
+
+[B1] (mode-2) You said you were ruthless. Reconcile that with Mo Yan still being alive....
+  verdict: FAIL  expected_in_candidates=True  expected_crag_score=0.255
+    MQ1: Why is Mo Yan still alive if Fang Yuan claims to be ruthless?
+    MQ2: How can Fang Yuan's ruthlessness be reconciled with sparing Mo Yan?
+    MQ3: Explain the apparent contradiction between being ruthless and keeping Mo Yan alive.
+
+[B2] (mode-2) Square your concealment doctrine with the ostentatious Liquor Worm tavern operation....
+  verdict: FAIL  expected_in_candidates=True  expected_crag_score=0.483
+    MQ1: How does Fang Yuan reconcile his concealment doctrine with the conspicuous Liquor Worm tavern operation?
+    MQ2: Why was the Liquor Worm tavern operation so ostentatious if Fang Yuan was trying to stay hidden?
+    MQ3: What strategic justification did Fang Yuan have for openly running the Liquor Worm tavern operation despite advocating concealment?
+
+[C] (control) Why did you kill Jia Jin Sheng?...
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.989
+    MQ1: Why did Fang Yuan kill Jia Jin Sheng?
+    MQ2: What was Fang Yuan's motive for murdering Jia Jin Sheng?
+    MQ3: What reasons did Fang Yuan have for eliminating Jia Jin Sheng?
+
+[Q16] (mode-2) You called Gu Yue village a cage. You also said you'd stay in it for now. Reconcile that....
+  verdict: PASS  expected_in_candidates=True  expected_crag_score=0.718
+    MQ1: Why did Fang Yuan call Gu Yue village a cage?
+    MQ2: Why did Fang Yuan say he would stay in Gu Yue village for now despite describing it as a cage?
+    MQ3: How does Fang Yuan reconcile calling Gu Yue village a "cage" while choosing to remain in it temporarily?
+
+Wrote: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\experiment_retrieval_failure_modes_path2.json
+
+Summary:
+  A1    (mode-1  )  PASS  score=0.903  pre-pred=FAIL MISS  post-pred=PASS OK
+  A2    (mode-1  )  PASS  score=0.966  pre-pred=FAIL MISS  post-pred=PASS OK
+  B1    (mode-2  )  FAIL  score=0.255  pre-pred=FAIL OK  post-pred=FAIL OK
+  B2    (mode-2  )  FAIL  score=0.483  pre-pred=FAIL OK  post-pred=FAIL OK
+  C     (control )  PASS  score=0.989  pre-pred=PASS OK  post-pred=PASS OK
+  Q16   (mode-2  )  PASS  score=0.718  pre-pred=FAIL MISS  post-pred=FAIL MISS

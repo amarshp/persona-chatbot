@@ -1,0 +1,48 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Parsed 7 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/7] Q05 (factual / reasoning)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 8192.86it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-large-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:  94%|#########4| 189/201 [00:00<00:00, 1872.69it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 1921.60it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  PASS (retrieve 70.1s, gen 15.7s) — SPOKEN explicitly gives cost-vs-value reasoning and says if they did not block h
+[2/7] Q07 (factual / reasoning)
+  FAIL (retrieve 31.8s, gen 11.4s) — SPOKEN does not explicitly mention mortal/no Gu cultivation as the constraint or
+[3/7] Q11 (voice)
+  PASS (retrieve 32.3s, gen 12.6s) — It explicitly rejects guilt and anchors that rejection in a worldview-level food
+[4/7] Q12 (voice)
+  FAIL (retrieve 31.1s, gen 12.1s) — It rejects panic and mentions compounding, but the SPOKEN section does not expli
+[5/7] Q14 (reasoning)
+  FAIL (retrieve 31.0s, gen 11.4s) — SPOKEN lacks explicit mention of 500 years of memory/experience and foreknowledg
+[6/7] Q15 (reasoning)
+  FAIL (retrieve 37.4s, gen 11.3s) — The SPOKEN section mentions Chi Lian cover but omits both the just-reborn prep-t
+[7/7] Q17 (anti-fab)
+  PASS (retrieve 39.8s, gen 13.0s) — The spoken response explicitly refuses to invent specific tactical details or an
+
+Total time: 378.8s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_l2_voice_fix.md
+FINAL: 3/7 PASS  (raw/chapter_0084.txt::chunk3)
+
+By category:
+  factual             : 0/0
+  voice               : 1/2
+  reasoning           : 1/4
+  anti-fabrication    : 1/1

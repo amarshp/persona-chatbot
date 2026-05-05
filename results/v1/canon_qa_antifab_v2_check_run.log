@@ -1,0 +1,33 @@
+Parsed 4 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+
+[1/4] Q17 (anti-fab)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 8710.51it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  PASS (retrieve 19.4s, gen 11.6s) — The spoken response explicitly refuses to invent specific tactical details or an
+[2/4] Q18 (anti-fab)
+  PASS (retrieve 11.5s, gen 11.2s) — The spoken response explicitly declines to invent or describe reaching Rank 9, s
+[3/4] Q19 (anti-fab)
+  FAIL (retrieve 11.1s, gen 21.1s) — The spoken response describes specific aftermath gains and losses instead of ref
+[4/4] Q20 (anti-fab)
+  PASS (retrieve 11.5s, gen 6.8s) — It explicitly refuses to invent a specific sect name and reframes to the known f
+
+Total time: 113.8s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_antifab_v2_check.md
+FINAL: 3/4 PASS  (decisions/liquor_worm_strategy.md::Key Events)
+
+By category:
+  factual             : 0/0
+  voice               : 0/0
+  reasoning           : 0/0
+  anti-fabrication    : 3/4

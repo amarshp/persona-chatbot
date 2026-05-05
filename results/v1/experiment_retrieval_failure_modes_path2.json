@@ -1,0 +1,2959 @@
+{
+  "generated_at": "2026-05-04T11:03:51Z",
+  "label": "path2",
+  "crag_threshold": 0.5,
+  "results": [
+    {
+      "test_id": "A1",
+      "category": "mode-1",
+      "query": "Walk me through the moonblade situation when Jia Jin Sheng died.",
+      "expected_chunk": "decisions/jia_jin_sheng_killing.md::Key Events",
+      "phrasings": [
+        "What was the moonblade situation when Jia Jin Sheng died?",
+        "How did the moonblade factor into Jia Jin Sheng's death?",
+        "Walk through the events involving the moonblade around the time Jia Jin Sheng died."
+      ],
+      "rephrase_error": null,
+      "expected_in_candidates": true,
+      "expected_crag_score": 0.9028996825218201,
+      "expected_crag_kept": true,
+      "expected_in_survivors": true,
+      "n_survivors": 1,
+      "all_judgements": [
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning",
+          "crag_score": 0.22406528890132904,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Key Events",
+          "crag_score": 0.9028996825218201,
+          "kept": true
+        },
+        {
+          "section": "events/beast_horde_survival.md::Key Events",
+          "crag_score": 0.0006664913380518556,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Connections",
+          "crag_score": 0.006476062815636396,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Summary",
+          "crag_score": 0.014000498689711094,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Key Events",
+          "crag_score": 0.001280466211028397,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::The Principle",
+          "crag_score": 0.4012814164161682,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Key Events",
+          "crag_score": 0.014901484362781048,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Key Events",
+          "crag_score": 0.0004654011281672865,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Key Events",
+          "crag_score": 0.003563546808436513,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Key Events",
+          "crag_score": 0.0004418333410285413,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Connections",
+          "crag_score": 0.0022452392149716616,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::The Ceremony's Significance",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::What the Cave Revealed",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Fang Yuan's Assessment",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Fang Yuan's Read of Her",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Fang Yuan's Read of Them",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Summary",
+          "crag_score": null,
+          "kept": false
+        }
+      ],
+      "predicted_pre": "FAIL",
+      "predicted_post": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "test_id": "A2",
+      "category": "mode-1",
+      "query": "When you used the Liquor Worm fusion path differently from the clan's, what was the cost saving?",
+      "expected_chunk": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+      "phrasings": [
+        "What was the cost saving when Fang Yuan used the Liquor Worm fusion path differently from the clan's method?",
+        "How much less did Fang Yuan spend by taking a different Liquor Worm refinement/fusion route than the clan-recommended path?",
+        "What was the reduction in resource or primeval-stone cost from Fang Yuan's alternative Liquor Worm fusion path compared with the clan's approach?"
+      ],
+      "rephrase_error": null,
+      "expected_in_candidates": true,
+      "expected_crag_score": 0.9658726453781128,
+      "expected_crag_kept": true,
+      "expected_in_survivors": true,
+      "n_survivors": 4,
+      "all_judgements": [
+        {
+          "section": "decisions/extortion_campaign.md::Fang Yuan's Reasoning",
+          "crag_score": 0.2829129695892334,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Key Events",
+          "crag_score": 0.8191720247268677,
+          "kept": true
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+          "crag_score": 0.9658726453781128,
+          "kept": true
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Key Events",
+          "crag_score": 0.7435056567192078,
+          "kept": true
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Connections",
+          "crag_score": 0.010007800534367561,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Fang Yuan's Reasoning",
+          "crag_score": 0.04326368868350983,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::The Ceremony's Significance",
+          "crag_score": 0.3962201178073883,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning",
+          "crag_score": 0.04153638705611229,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Key Events",
+          "crag_score": 0.043801918625831604,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Key Events",
+          "crag_score": 0.2104715257883072,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Summary",
+          "crag_score": 0.727052628993988,
+          "kept": true
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Key Events",
+          "crag_score": 0.43762218952178955,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::What the Cave Revealed",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Fang Yuan's Read of Her",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::The Principle",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Fang Yuan's Assessment",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Fang Yuan's Read of Them",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Connections",
+          "crag_score": null,
+          "kept": false
+        }
+      ],
+      "predicted_pre": "FAIL",
+      "predicted_post": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "test_id": "B1",
+      "category": "mode-2",
+      "query": "You said you were ruthless. Reconcile that with Mo Yan still being alive.",
+      "expected_chunk": "decisions/mo_yan_corpse_gift.md::Key Events",
+      "phrasings": [
+        "Why is Mo Yan still alive if Fang Yuan claims to be ruthless?",
+        "How can Fang Yuan's ruthlessness be reconciled with sparing Mo Yan?",
+        "Explain the apparent contradiction between being ruthless and keeping Mo Yan alive."
+      ],
+      "rephrase_error": null,
+      "expected_in_candidates": true,
+      "expected_crag_score": 0.25502991676330566,
+      "expected_crag_kept": false,
+      "expected_in_survivors": false,
+      "n_survivors": 0,
+      "all_judgements": [
+        {
+          "section": "decisions/jiao_san_team_selection.md::Key Events",
+          "crag_score": 0.01642114482820034,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Connections",
+          "crag_score": 0.13089054822921753,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning",
+          "crag_score": 0.005904905032366514,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Key Events",
+          "crag_score": 0.25502991676330566,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Summary",
+          "crag_score": 0.05479351803660393,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Connections",
+          "crag_score": 0.013796181418001652,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Fang Yuan's Reasoning",
+          "crag_score": 0.0369408093392849,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Key Events",
+          "crag_score": 0.1131778135895729,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Summary",
+          "crag_score": 0.2355579286813736,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Connections",
+          "crag_score": 0.00022174129844643176,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Fang Yuan's Reasoning",
+          "crag_score": 0.0011784823145717382,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Key Events",
+          "crag_score": 0.0018373224884271622,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::The Ceremony's Significance",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::What the Cave Revealed",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::The Principle",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Fang Yuan's Assessment",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Fang Yuan's Read of Her",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Fang Yuan's Read of Them",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        }
+      ],
+      "predicted_pre": "FAIL",
+      "predicted_post": "FAIL",
+      "verdict": "FAIL"
+    },
+    {
+      "test_id": "B2",
+      "category": "mode-2",
+      "query": "Square your concealment doctrine with the ostentatious Liquor Worm tavern operation.",
+      "expected_chunk": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+      "phrasings": [
+        "How does Fang Yuan reconcile his concealment doctrine with the conspicuous Liquor Worm tavern operation?",
+        "Why was the Liquor Worm tavern operation so ostentatious if Fang Yuan was trying to stay hidden?",
+        "What strategic justification did Fang Yuan have for openly running the Liquor Worm tavern operation despite advocating concealment?"
+      ],
+      "rephrase_error": null,
+      "expected_in_candidates": true,
+      "expected_crag_score": 0.4826461970806122,
+      "expected_crag_kept": false,
+      "expected_in_survivors": false,
+      "n_survivors": 4,
+      "all_judgements": [
+        {
+          "section": "decisions/extortion_campaign.md::Fang Yuan's Reasoning",
+          "crag_score": 0.42181017994880676,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Key Events",
+          "crag_score": 0.016856612637639046,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Key Events",
+          "crag_score": 0.3914320170879364,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Summary",
+          "crag_score": 0.8895322680473328,
+          "kept": true
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Connections",
+          "crag_score": 0.014333728700876236,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+          "crag_score": 0.4826461970806122,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Key Events",
+          "crag_score": 0.6459143757820129,
+          "kept": true
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Summary",
+          "crag_score": 0.6902405023574829,
+          "kept": true
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Fang Yuan's Reasoning",
+          "crag_score": 0.02706168033182621,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Connections",
+          "crag_score": 0.01683388650417328,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Key Events",
+          "crag_score": 0.5713245868682861,
+          "kept": true
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Summary",
+          "crag_score": 0.06763086467981339,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::What the Cave Revealed",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::The Ceremony's Significance",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Fang Yuan's Read of Her",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Fang Yuan's Read of Them",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::The Principle",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Fang Yuan's Assessment",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Connections",
+          "crag_score": null,
+          "kept": false
+        }
+      ],
+      "predicted_pre": "FAIL",
+      "predicted_post": "FAIL",
+      "verdict": "FAIL"
+    },
+    {
+      "test_id": "C",
+      "category": "control",
+      "query": "Why did you kill Jia Jin Sheng?",
+      "expected_chunk": "decisions/jia_jin_sheng_killing.md::Key Events",
+      "phrasings": [
+        "Why did Fang Yuan kill Jia Jin Sheng?",
+        "What was Fang Yuan's motive for murdering Jia Jin Sheng?",
+        "What reasons did Fang Yuan have for eliminating Jia Jin Sheng?"
+      ],
+      "rephrase_error": null,
+      "expected_in_candidates": true,
+      "expected_crag_score": 0.9891520738601685,
+      "expected_crag_kept": true,
+      "expected_in_survivors": true,
+      "n_survivors": 5,
+      "all_judgements": [
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Connections",
+          "crag_score": 0.7621283531188965,
+          "kept": true
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning",
+          "crag_score": 0.06944701820611954,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Key Events",
+          "crag_score": 0.9891520738601685,
+          "kept": true
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Summary",
+          "crag_score": 0.5223400592803955,
+          "kept": true
+        },
+        {
+          "section": "philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)",
+          "crag_score": 0.2600913941860199,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Summary",
+          "crag_score": 0.3229402005672455,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::The Principle",
+          "crag_score": 0.22104723751544952,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning",
+          "crag_score": 0.003619567956775427,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Key Events",
+          "crag_score": 0.007113230414688587,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Fang Yuan's Reasoning",
+          "crag_score": 0.9867772459983826,
+          "kept": true
+        },
+        {
+          "section": "relationships/jiao_san.md::Connections",
+          "crag_score": 3.74260671378579e-05,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Fang Yuan's Reasoning",
+          "crag_score": 0.5095227956771851,
+          "kept": true
+        },
+        {
+          "section": "relationships/jiao_san.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::The Ceremony's Significance",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::What the Cave Revealed",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Fang Yuan's Assessment",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Fang Yuan's Read of Her",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Fang Yuan's Read of Them",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        }
+      ],
+      "predicted_pre": "PASS",
+      "predicted_post": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "test_id": "Q16",
+      "category": "mode-2",
+      "query": "You called Gu Yue village a cage. You also said you'd stay in it for now. Reconcile that.",
+      "expected_chunk": "philosophy/strength_as_foundation.md::Key Events",
+      "phrasings": [
+        "Why did Fang Yuan call Gu Yue village a cage?",
+        "Why did Fang Yuan say he would stay in Gu Yue village for now despite describing it as a cage?",
+        "How does Fang Yuan reconcile calling Gu Yue village a \"cage\" while choosing to remain in it temporarily?"
+      ],
+      "rephrase_error": null,
+      "expected_in_candidates": true,
+      "expected_crag_score": 0.7178736925125122,
+      "expected_crag_kept": true,
+      "expected_in_survivors": true,
+      "n_survivors": 1,
+      "all_judgements": [
+        {
+          "section": "philosophy/strength_as_foundation.md::Key Events",
+          "crag_score": 0.7178736925125122,
+          "kept": true
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Key Events",
+          "crag_score": 0.0023676585406064987,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Key Events",
+          "crag_score": 0.059011392295360565,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Key Events",
+          "crag_score": 0.0033689283300191164,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Key Events",
+          "crag_score": 0.06637654453516006,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Key Events",
+          "crag_score": 0.0253683403134346,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Key Events",
+          "crag_score": 0.012824238277971745,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Key Events",
+          "crag_score": 0.16443227231502533,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Key Events",
+          "crag_score": 0.07085802406072617,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Key Events",
+          "crag_score": 0.010794791392982006,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Summary",
+          "crag_score": 0.07656224817037582,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Key Events",
+          "crag_score": 0.01980712078511715,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jiao_san_team_selection.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Fang Yuan's Assessment",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Fang Yuan's Read of Her",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Fang Yuan's Read of Them",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/awakening_ceremony.md::The Ceremony's Significance",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/flower_wine_monk_cave.md::What the Cave Revealed",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/mo_yan.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/uncle_and_aunt.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/class_chairman_refusal.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/extortion_campaign.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_strategy.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/mo_yan_corpse_gift.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/shen_cui_confrontation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/talent_test_c_grade.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/beast_horde_survival.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "events/hunter_family_killing.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/demonic_path_survival.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/killing_logic.md::The Principle",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/self_interest_and_human_nature.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "philosophy/strength_as_foundation.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/fang_zheng.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/jiao_san.md::Fang Yuan's Reasoning",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Key Events",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Summary",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/liquor_worm_acquisition.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "decisions/rebirth_and_spring_autumn_cicada.md::Connections",
+          "crag_score": null,
+          "kept": false
+        },
+        {
+          "section": "relationships/shen_cui.md::Connections",
+          "crag_score": null,
+          "kept": false
+        }
+      ],
+      "predicted_pre": "FAIL",
+      "predicted_post": "FAIL",
+      "verdict": "PASS"
+    }
+  ]
+}

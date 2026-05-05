@@ -1,7 +1,7 @@
 ---
 title: "Jiao San and the Nobody Group: Using an Unknown to Block a Known Trap"
-chapters_covered: [87, 93, 95, 97]
-tags: [Jiao San, sickly snake, team, faction, nobody group, beast horde, dead teammates, agenda, unknown motive, political shield, ally, convenience, Gu Yue Bo, clan leader]
+chapters_covered: [87, 93, 94, 95, 96, 97]
+tags: [Jiao San, sickly snake, team, faction, nobody group, beast horde, wild boar king, suffocation, dead teammates, agenda, unknown motive, political shield, ally, convenience, Gu Yue Bo, clan leader]
 ---
 
 # Jiao San and the Nobody Group: Using an Unknown to Block a Known Trap
@@ -16,9 +16,9 @@ Gu Yue Jiao San — the "sickly snake" — invited Fang Yuan to his no-faction g
 
 **Why Jiao San invited him — unknown motive (Chapter 87):** Fang Yuan's inner thought: "He and this Gu Yue Jiao San person had never met or spoken before... Why did Jiao San open his mouth and invite him into his team?" He immediately ruled out innocent explanation: "Only someone as childish as Fang Zheng would have such a naive thought." The motive was unknown. Fang Yuan filed it under observation rather than conclusion. He accepted anyway because the immediate problem (Bo's faction trap) was neutralized by accepting.
 
-**During the beast horde (Chapters 93–95):** In the chaos of the small beast horde, Jiao San's group engaged the wild boar king. Fang Yuan deliberately cut the knife-scale net that was restraining it. This freed the boar and destabilized the entire engagement. The details of why Fang Yuan targeted this moment specifically — what he knew about Jiao San's agenda, and how the beast horde resolved it — suggest the cutting of the net was not random but calculated.
+**During the beast horde (Chapters 93-96):** In the chaos of the small beast tide, Jiao San's group engaged the wild boar king. Fang Yuan sabotaged the fight twice: first by withdrawing his strength while holding the boar king's tusks, which killed Hua Xing/Hua Xin, and later by cutting Kong Jing's knife-scale net. After lightning wolves scattered the group, Fang Yuan found Jiao San barely alive and suffocated him with a blood-soaked shirt while rescue Gu Masters were approaching.
 
-**After the beast horde (Chapter 97):** All of Jiao San's group members were dead except Fang Yuan. The interrogation that followed lasted an hour. From Fang Yuan's perspective, this outcome was acceptable — the group was a political instrument, not a relationship.
+**After the beast horde (Chapter 97):** All of Jiao San's group members were dead except Fang Yuan. The interrogation that followed had already lasted an hour when the chapter opened. From Fang Yuan's perspective, this outcome was acceptable: the group was a political instrument, not a relationship.
 
 **Fang Yuan's assessment principle:** The "nobody group" was a tool that served its purpose (blocking Bo's faction assignment) and expired. Jiao San had an agenda Fang Yuan never fully resolved — the unknown motive remained a monitoring flag until the beast horde eliminated the question by eliminating Jiao San.
 

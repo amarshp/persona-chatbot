@@ -1,0 +1,118 @@
+EDIT — `scripts/persona_boundary_tests.py`
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+PURPOSE
+Add response persistence to the existing `persona_boundary_tests.py` script
+so that every `--run` invocation writes the full per-probe responses and
+per-mode evidence to a fresh markdown file under `results/v1/`. No flag —
+persistence is the default, automatic side-effect of any live run.
+
+WHY
+The previous design discarded `<internal>` monologues from each probe
+response after printing the compact stdout table, wasting paid LLM calls.
+The script must now always persist what it gets back.
+
+CONSTRAINTS
+- PEP 8 + type hints; match the existing file's style (frozen dataclasses,
+  `from __future__ import annotations`, no print-debug).
+- Stdlib only; specifically use `datetime` (already imported elsewhere in
+  the project — add `from datetime import datetime` if not already
+  imported).
+- Do NOT modify any other file.
+- Do NOT touch any pre-existing file under `results/`. The script must
+  CREATE a new file each run with a timestamped name. Per the project's
+  immutability rule, never overwrite an existing file.
+- Existing CLI flags must continue working unchanged. Stdout output of
+  `print_live_results` must stay identical.
+
+CHANGES
+
+1. Add a constant near the other path constants (top of file, just below
+   `ROOT = Path(__file__).resolve().parent.parent`):
+
+       RESULTS_DIR = ROOT / "results" / "v1"
+
+   Match the pattern used in `scripts/smoke_test_runner.py:31`.
+
+2. Add a helper function `write_results_md` placed immediately above
+   `def main()`:
+
+       def write_results_md(
+           outcomes: list[ProbeOutcome],
+           args: argparse.Namespace,
+       ) -> Path:
+           """Write the full run artifact to results/v1/ and return the path.
+
+           Filename: persona_boundary_<YYYYMMDD_HHMMSS>.md.
+           Creates the directory if missing. Never overwrites — if the
+           generated filename already exists (sub-second collision),
+           append a numeric suffix _2, _3, ... until a free name is found.
+           """
+
+   The markdown body must include, in order:
+
+       # Persona Boundary Tests — <ISO timestamp>
+
+       Model: `<args.model>`  | Temperature: <args.temperature> |
+       Probes run: <N>  | LLM calls: <N>
+
+       ## Per-mode summary
+
+       | mode | description | probes_run | passed | failed | status |
+       (mirror the stdout per-mode summary table)
+
+       ## Per-probe results
+
+       For each ProbeOutcome, in the order they appear in `outcomes`, emit:
+
+           ### <probe_id>  (<latency_s>s)
+
+           **Modes tested:** <space-separated mode ids>
+
+           **Prompt:**
+           > <probe.text — verbatim, prefixed with "> " on each line>
+
+           **Per-mode evaluation:**
+           - M1: PASS|FAIL — <evidence string>
+           - M2: PASS|FAIL — <evidence string>
+           - M3: PASS|FAIL — <evidence string>
+           (only emit modes the probe was tagged for)
+
+           **Raw response:**
+           ```
+           <outcome.response — full text, no truncation>
+           ```
+
+   To resolve the probe's prompt text from `outcome.probe_id`, build a
+   lookup over `PROBES` once at the top of the function. Do not pass the
+   probes list separately.
+
+   Failure handling: if writing the file fails (IOError), print a single
+   stderr line "WARN: failed to write results artifact: <exc>" and
+   continue. Do not crash the run.
+
+3. Modify `main()` to call `write_results_md` after `outcomes` is built
+   and BEFORE `print_live_results`. Print the artifact path to stdout
+   immediately before the per-probe table:
+
+       artifact = write_results_md(outcomes, args)
+       print(f"Artifact: {artifact}")
+       print()
+       print_live_results(outcomes, args)
+
+   The new "Artifact: ..." line is the only stdout addition; do not change
+   anything else in `print_live_results`.
+
+VERIFICATION (run from project root after editing)
+- `python scripts/persona_boundary_tests.py`
+  → dry-run output unchanged. No file written. Exit code 0.
+
+- Confirm the file currently does NOT have a leftover `Artifact:` line in
+  dry-run mode by inspection.
+
+DO NOT actually run with `--run` during verification. The user will
+green-light the live run separately. The verification above is dry-run only.
+
+OUTPUT
+- Print at the end: file path, line count, dry-run verification command
+  output. Confirm `--run` was NOT executed.

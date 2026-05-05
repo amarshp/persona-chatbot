@@ -1,0 +1,169 @@
+PHASE 1 — IN-WIKI PRECISION (SECTION-LEVEL RETRIEVAL)
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+CONTEXT
+- Wiki pages live under shared/data/wiki/{philosophy,decisions,relationships,events}/*.md.
+  Each page begins with YAML frontmatter (--- ... ---), then "# Title", then 2-4 sections
+  starting with "## " (Summary, Key Events / The Principle, Fang Yuan's Reasoning,
+  Connections, etc.). Inside section bodies you may see temporal labels like
+  "[Event – Ch N]", "[FY's impression – Ch N]", "[Revealed truth – Ch N]",
+  "[State – Ch N onward]". Preserve these verbatim when emitting section text.
+- The page index lives at shared/data/wiki/index.md as markdown tables; only pages
+  listed there are retrievable. Meta files (SCHEMA.md, CONVENTIONS.md, TEST_*.md,
+  index.md) are NOT pages — never chunk them.
+- Existing retriever: v1/retrieval/wiki_retriever.py exposes
+  `retrieve(query: str) -> str` (called from v1/main.py:220). It currently scores
+  whole pages and packs them up to L3_BUDGET (2500 tokens, ~10000 chars at
+  CHARS_PER_TOKEN=4). It also exports module-level helpers `_parse_index`,
+  `_query_words`, `_score`, `_CHARS_PER_TOKEN`, `WIKI_DIR`, `INDEX_PATH`,
+  `L3_BUDGET` that scripts/retrieval_diagnostic.py imports directly. KEEP all
+  those module-level names and their current page-level semantics intact so the
+  diagnostic still runs as a baseline. Replace only the body of `retrieve()`.
+
+CONSTRAINTS
+- PEP 8, type hints on every signature, frozen dataclasses where state is immutable.
+- No LLM/API calls anywhere. No new third-party deps.
+- DO NOT modify or read any file under results/. Results files are immutable.
+- DO NOT change shared/config.py constants. Add no new env vars.
+- All paths via shared.config.DATA_DIR (already exposes DATA_DIR / "wiki").
+- Use only stdlib: pathlib, re, dataclasses, functools, typing.
+- No print() in library modules. No logging side effects on import.
+- Match the file-header docstring + "from __future__ import annotations" + sys.path
+  insert pattern of the existing wiki_retriever.py.
+
+DELIVERABLES (4 changes in one batch)
+
+1. NEW FILE — v1/retrieval/wiki_chunker.py
+   - Public dataclass:
+       @dataclass(frozen=True)
+       class WikiSection:
+           page_path: Path           # absolute path to the .md page
+           page_rel: str             # e.g. "decisions/extortion_campaign.md"
+           page_summary: str         # lower-cased summary from index.md
+           page_tags: tuple[str, ...]# lower-cased tags from index.md
+           section_title: str        # heading text after "## " (preserve case)
+           content: str              # section body verbatim, NOT including the "## " header line
+           char_len: int             # len(content)
+   - Public function:
+       def load_sections() -> list[WikiSection]
+     Behavior:
+       - Read shared/data/wiki/index.md, reuse the page list (path, summary, tags)
+         by importing _parse_index from v1.retrieval.wiki_retriever (do not duplicate
+         the regex). The returned dicts have keys {path, summary, tags}.
+       - For each page that exists on disk: read text, strip a leading YAML
+         frontmatter block delimited by lines that are exactly "---" (only if the
+         file's first non-empty line is "---"; otherwise leave content as-is).
+       - Drop the leading "# Title" line if present (first "# " heading).
+       - Split the remaining body on lines matching r"^##\s+(.+?)\s*$" (multiline).
+         Everything between one "## Heading" and the next is one section's content.
+         Strip surrounding whitespace from each section's content. Skip empty
+         sections.
+       - Build a WikiSection per heading, inheriting page_summary and page_tags
+         from the index row (tuple, lower-cased; tags already lower-cased by the
+         existing parser).
+       - Memoize the list with functools.lru_cache(maxsize=1). Public callers must
+         get the same cached list each call; tests can call
+         load_sections.cache_clear().
+       - Return [] if INDEX_PATH does not exist.
+   - No printing, no stateful globals beyond the cache.
+
+2. MODIFY — v1/retrieval/wiki_retriever.py
+   - Keep all existing module-level constants/helpers (`_STOP_WORDS`, `_ROW_RE`,
+     `_parse_index`, `_query_words`, `_score`, `_CHARS_PER_TOKEN`, `WIKI_DIR`,
+     `INDEX_PATH`, `L3_BUDGET`) untouched in name and semantics. The page-level
+     `_score(query_words, page)` must keep its current signature; the diagnostic
+     script depends on it.
+   - ADD a new private helper:
+       def _score_section(qwords: set[str], section: WikiSection) -> int
+     Score = number of distinct words in qwords that appear (whole-word match,
+     re.split on \W+, lower-cased) in any of:
+       - section.content
+       - section.section_title
+       - section.page_tags (already lower-cased; treat each tag as space-split
+         words so multi-word tags like "Spring Autumn Cicada" each contribute)
+       - section.page_summary
+     Implement once with a single combined word set per section (build inside the
+     function — don't cache on the frozen dataclass).
+   - REPLACE the body of `retrieve(query: str) -> str`:
+       a. If INDEX_PATH does not exist OR load_sections() is empty → return "".
+       b. qwords = _query_words(query); if not qwords → return "".
+       c. Score every section; keep those with score >= 2.
+       d. Sort by (-score, page_rel, section_title) so ties are deterministic.
+       e. Greedy pack into a budget of `L3_BUDGET * _CHARS_PER_TOKEN` chars.
+          For each candidate section in order:
+            - Render block = f"## {section.section_title} — {section.page_rel}\n\n{section.content}"
+            - If len(block) <= remaining_budget: include it whole; subtract its
+              length plus the joiner cost (estimate joiner as len("\n\n---\n\n")=9
+              for budgeting purposes after the first block).
+            - If it does not fit: skip it and try the next candidate (no
+              mid-section truncation). Stop iterating only when remaining_budget
+              drops below ~250 chars (no useful section fits).
+       f. Return the kept blocks joined by "\n\n---\n\n", or "" if none kept.
+   - Import WikiSection and load_sections from v1.retrieval.wiki_chunker at the
+     top of the file. Avoid circular imports — wiki_chunker imports _parse_index
+     from wiki_retriever, so wiki_retriever should import wiki_chunker lazily
+     (inside `retrieve()` or via a module-level "from v1.retrieval import
+     wiki_chunker" placed AFTER the helper definitions, so wiki_chunker can
+     successfully `from v1.retrieval.wiki_retriever import _parse_index`). Pick
+     whichever is cleanest; verify by importing both modules from a fresh Python
+     interpreter.
+   - Update the module docstring to describe section-level behavior. Keep the
+     `from v1.retrieval.wiki_retriever import retrieve` example.
+
+3. NEW FILE — v1/retrieval/query_router.py
+   - Public function:
+       def route(query: str) -> Literal["wiki", "none"]
+     Rule (matches LIVE_STATUS Phase 1 spec):
+       - Tokenize query on \W+ (lower-cased, drop empty strings).
+       - If word count >= 8 → "wiki".
+       - Otherwise: if the query contains any question word OR any novel keyword
+         → "wiki". Else → "none".
+     Constants at module top:
+       _QUESTION_WORDS = frozenset({
+           "who","what","why","how","when","where","which","whose","whom",
+           "should","would","could","can","do","does","did","is","are","was",
+           "were","will","tell","explain","describe","walk",
+       })
+       _NOVEL_KEYWORDS = frozenset({
+           # Characters (lower-cased single tokens; multi-word names are matched
+           # token-by-token so any one token triggers).
+           "fang","yuan","zheng","mo","yan","bei","chen","shen","cui","jiao",
+           "san","gu","yue","bo","qing","shu","wang","da","bai","ning","bing",
+           "chi","lian","shan","kong","jing","jia","jin","sheng","hua","xin",
+           "dong","tu","jiang","ya",
+           # Cultivation/world terms
+           "cicada","sac","liquor","worm","primeval","aperture","cultivation",
+           "clan","tribe","demonic","demon","axiom","awakening","talent","refine",
+           "refining","rank","venerable","beast","horde","wolf","tide","gate",
+           "moonblade","photo","audio","essence","stones","moonlight","cave",
+           "academy","chairman","faction","heir",
+       })
+   - Pure function. No I/O, no logging, no state.
+
+4. MODIFY — v1/main.py
+   - Add import near the existing wiki_retriever import:
+       from v1.retrieval.query_router import route as _route_query
+   - Replace exactly the line `l3_context = wiki_retrieve(user_input)` with:
+       l3_context = "" if _route_query(user_input) == "none" else wiki_retrieve(user_input)
+   - Do not change anything else in main.py.
+
+VERIFICATION (run from project root after writing all four changes)
+- python -c "from v1.retrieval.wiki_chunker import load_sections; xs=load_sections(); print(len(xs), xs[0].page_rel, xs[0].section_title)"
+  → expect a non-zero count and a sensible first section (e.g. "decisions/..." +
+  "Summary" or similar).
+- python -c "from v1.retrieval.wiki_retriever import retrieve; print(len(retrieve('Tell me about the Spring Autumn Cicada')))"
+  → expect a non-zero length string containing "## " section headers.
+- python -c "from v1.retrieval.query_router import route; print(route('hi'), route('My team has my back and I have theirs.'), route('Walk me through the Spring Autumn Cicada decision'))"
+  → expect "none", "none", "wiki" (the first two have <8 words, no question
+  word, no novel keyword; the third has both length and novel keywords).
+- python scripts/retrieval_diagnostic.py
+  → must still run and write a fresh JSON under results/v1/ (this exercises the
+  page-level helpers, which we kept intact). Do NOT delete or overwrite older
+  diagnostic JSONs.
+
+DO NOT run smoke_test_runner.py or eval_ab_runner.py — those hit OpenRouter and
+require explicit user permission.
+
+OUTPUT
+- Print a short summary at the end: files created, files modified, line counts,
+  and the verification command outputs.

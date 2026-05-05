@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from scripts.smoke_test_runner import SMOKE_TESTS
-from shared.config import JUDGE_MODEL, MAX_OUTPUT_TOKENS, PRIMARY_MODEL, RESULTS_DIR
+from shared.config import CRAG_RERANKER_THRESHOLD, JUDGE_MODEL, MAX_OUTPUT_TOKENS, PRIMARY_MODEL, RESULTS_DIR
 from shared.llm_client import LLMCall, LLMClient
 from v1.persona.prompt_composer import PromptComposer
 from v1.retrieval.crag_filter import CragResult, crag_filter
@@ -150,7 +150,7 @@ def _run_config_a(
     crag: CragResult = crag_filter(
         question,
         list(mqr.merged_sections),
-        threshold=7,
+        threshold=CRAG_RERANKER_THRESHOLD,
         k_max=12,
         client=client,
     )

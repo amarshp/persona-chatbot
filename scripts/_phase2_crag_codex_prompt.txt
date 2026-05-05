@@ -1,0 +1,160 @@
+PHASE 2 STEP 2 — CRAG relevance filter + paid comparison eval
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+Working branch: phase2-multi-query (already pushed)
+
+CONTEXT — first paid eval result (committed at 31e0ec1)
+Multi-query alone moved V01-V10 from 2/10 -> 3/10. Diagnostic from
+results/v1/multi_query_eval_20260503_112731.md: in 6/7 fails the right
+section IS retrieved (it appears in `merged_sections`) but gets dropped
+when format_sections() trims to L3_BUDGET=2500 tokens. The bottleneck is
+precision/ranking, not recall. CRAG is the right next component.
+
+PURPOSE
+Build a relevance filter that scores each merged-section 1-10 via
+JUDGE_MODEL, drops scores < threshold (default 7), then format_sections()
+assembles the survivors. Paid eval re-runs V01-V10 with MQ + CRAG, writes
+a new timestamped markdown result, and prints a clean comparison vs the
+prior multi-query-only baseline.
+
+DO NOT WIRE INTO RUNTIME (v1/main.py) YET. Library + harness only.
+DO NOT modify scripts/boundary_tests.py.
+
+DESIGN CONSTRAINTS
+- PEP 8, type hints, frozen dataclasses, stdlib + project deps only.
+- DO NOT install new packages.
+- Use shared.llm_client.LLMClient + shared.config.JUDGE_MODEL.
+- Per CLAUDE.md: results files immutable — new timestamped output, never
+  overwrite existing.
+- Fail-safe: any CRAG call failure → keep the section (do not drop on
+  uncertainty). Log the failure in the result.
+- Logging requirement (Codex's calibration advice): for every section seen
+  by CRAG, record (query, page_rel, section_title, lexical_score,
+  crag_score, kept|dropped|error). The eval markdown must include this
+  per-row.
+
+DELIVERABLES
+
+1. v1/retrieval/crag_filter.py — NEW
+   Self-contained module. Public API:
+
+       from dataclasses import dataclass
+       from v1.retrieval.wiki_chunker import WikiSection
+       from shared.llm_client import LLMClient
+
+       @dataclass(frozen=True)
+       class CragJudgement:
+           lexical_score: int           # original keyword score from retrieve_sections
+           crag_score: int | None       # 1..10, or None on call/parse failure
+           kept: bool                   # True if survived the threshold
+           error: str | None            # populated on failure
+           section: WikiSection
+
+       @dataclass(frozen=True)
+       class CragResult:
+           judgements: tuple[CragJudgement, ...]   # one per input candidate, in input order
+           survivors: tuple[tuple[int, WikiSection], ...]  # for downstream format_sections
+
+       def crag_filter(
+           query: str,
+           candidates: list[tuple[int, WikiSection]],
+           *,
+           threshold: int = 7,
+           k_max: int = 12,
+           client: LLMClient | None = None,
+       ) -> CragResult:
+           """Score each of the top k_max candidates 1-10 for relevance to
+           `query`. Drop scores < threshold. Sections that fail to score
+           (call/parse error) are KEPT with crag_score=None, error set."""
+
+   Implementation notes:
+   - Take candidates[:k_max] (already sorted by descending lexical score
+     from retrieve_sections).
+   - For each candidate: one JUDGE_MODEL call.
+       Prompt template (literal — no .format() with braces):
+           SYSTEM: you are a relevance scorer. Reply with one integer 1-10 only. No words, no JSON, no punctuation.
+           USER: Query: <query>
+                 Section title: <section_title>
+                 Section content (truncated to ~600 chars):
+                 <content[:600]>
+                 Score 1-10 for how well this section answers the query. Reply with the integer only.
+     temperature=0, max_tokens=8.
+   - Parsing: strip whitespace, take first integer 1-10 found via regex
+     `r"\b(10|[1-9])\b"`. If none, treat as error.
+   - Survivors: kept sections sorted by (-lexical_score, page_rel, section_title)
+     (preserve the existing sort order so format_sections's behavior is
+     stable).
+   - On client init failure: return all candidates as kept with error set.
+
+2. v1/retrieval/wiki_retriever.py — TINY ADDITIVE EDIT
+   Extend format_sections to optionally accept a budget override:
+
+       def format_sections(
+           scored: list[tuple[int, WikiSection]],
+           *,
+           budget_tokens: int | None = None,
+       ) -> str:
+           """If budget_tokens is None, use L3_BUDGET. Otherwise use the
+           supplied value. Public retrieve() and existing callers pass no
+           budget → behavior unchanged → boundary_tests.py byte-identical."""
+
+   The character math is `remaining_budget = (budget_tokens or L3_BUDGET) * _CHARS_PER_TOKEN`.
+   Do NOT change retrieve()'s signature. Do NOT change retrieve_sections.
+
+3. scripts/eval_multi_query_crag.py — NEW (paid harness)
+   Self-contained. Imports VOCABULARY_TESTS, format_header, truncate from
+   scripts.boundary_tests. Runs from project root.
+
+   Per row (V01..V10):
+   - mqr = multi_query_retrieve(query, n=3, client=client)
+       (10 rephrase calls)
+   - crag = crag_filter(query, list(mqr.merged_sections), threshold=7,
+                        k_max=12, client=client)
+       (up to 12 calls per row, fewer if mqr returned fewer candidates)
+   - formatted = format_sections(list(crag.survivors))
+       (uses L3_BUDGET=2500; budget knob not exercised in this run)
+   - PASS iff format_header(page_rel, section_title) is substring of formatted
+
+   Print:
+   - Header table mirroring eval_multi_query.py style: id, query (39),
+     expected (54), n_phrasings, n_candidates, n_kept, PASS/FAIL.
+   - Comparison footer:
+         Baseline (no MQ, no CRAG):    2/10 PASS  [captured 2026-05-03]
+         MQ only (n=3):                3/10 PASS  [captured 2026-05-03]
+         MQ + CRAG (n=3, threshold=7): X/10 PASS
+   - Total LLM calls used: rephrase + crag.
+
+   Save markdown to results/v1/multi_query_crag_eval_<UTC>.md including:
+   - Generation timestamp, JUDGE_MODEL, n=3, threshold=7, k_max=12, L3_BUDGET=2500.
+   - Per-row block: query, expected_header, rephrasings (3), candidate
+     judgements as a table:
+
+         | lex | crag | kept | page_rel — section_title |
+
+     Drop the row's "right section was retrieved" / "right section was
+     trimmed" / "right section never retrieved" diagnostic line: compute
+     it by checking if the expected (page_rel, section_title) appears
+     in mqr.merged_sections, in crag.survivors, and in formatted.
+   - Final summary table comparing baseline / MQ-only / MQ+CRAG pass counts.
+
+VERIFICATION (no LLM calls)
+After writing, run from project root:
+- `python scripts/boundary_tests.py`
+  Expected SUMMARY block byte-identical to current baseline:
+      Phase 2/4 trigger: ACTIVE (8/10 vocab fails, threshold 30%)
+      Phase 3 trigger:   ACTIVE (avg sections=6.00, avg total_tokens=2253)
+      Out-of-scope regression: clear-leak (avg sections=2.75)
+      Phase 1 routing:   PASS (0/10 unexpected classifications)
+      Phase 5 wiki health: CLEAN (0 structural issues)
+- `python -c "from v1.retrieval.crag_filter import crag_filter; print(crag_filter.__doc__)"`
+  Expected: prints docstring without import error.
+
+DO NOT RUN scripts/eval_multi_query_crag.py. The user gates that run.
+
+OUTPUT (print at end)
+- File paths created/modified, line counts.
+- Verification command output (boundary_tests SUMMARY + crag_filter docstring).
+- A 4-6 line note suitable for the user's records explaining:
+  * the per-section CRAG prompt design (single integer reply)
+  * the k_max=12 cap and why (bounded API cost: max 12 calls/row)
+  * fail-safe: on CRAG error, keep the section (avoid false drops)
+  * how survivors flow into the unchanged format_sections

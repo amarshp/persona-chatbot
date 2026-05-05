@@ -1,0 +1,25 @@
+=== Judge noise experiment on Q03 ===
+  Question: At the awakening ceremony, exactly how many steps did you walk into the flower s...
+  Pass criterion: Says "27 steps" and "C grade" with the correct grade scale....
+
+--- PRIOR (xenc_v3_uncontaminated, was PASS) ---
+spoken[:140]: 'I walked twenty seven steps. The aperture held forty four percent primeval sea, so the result was C grade. D grade is ten to twenty steps, t'
+internal[:80]: 'He asks for numbers, not comfort. Good. The awakening ceremony stripped away the'
+
+  regrade 1: PASS — The spoken response explicitly says 27 steps, C grade, and gives the correct 10/20/30/40/50 grade thresholds with no dis
+  regrade 2: FAIL — The SPOKEN section gives incorrect grade thresholds/percent ranges instead of the required 10/20/30/40/50 scale, so the 
+  regrade 3: PASS — The spoken response explicitly says 27 steps and C grade, and gives the correct 10/20/30/40/50 step thresholds with no d
+  -> 2 PASS / 1 FAIL (2 unique verdict)
+
+--- CURRENT (antifab_revert, was FAIL) ---
+spoken[:140]: 'I walked twenty-seven steps. That was C-grade, with a forty-four percent primeval sea. D-grade is ten to twenty steps, C-grade twenty to thi'
+internal[:80]: 'The numbers are in the record, clean enough that inventing ornament would only m'
+
+  regrade 1: FAIL — It says 27 steps and C-grade, but omits the '<10 steps = no talent' threshold so the full required grade scale is not pr
+  regrade 2: FAIL — It says 27 steps and C-grade, but the SPOKEN scale omits the required '<10 no talent' threshold and does not give the fu
+  regrade 3: FAIL — It says 27 steps and C-grade, but the spoken grade scale omits the required '<10 no talent' threshold and uses ranged la
+  -> 0 PASS / 3 FAIL (1 unique verdict)
+
+Interpretation:
+  3-stable (3 PASS or 3 FAIL) on both, disagreeing -> judge deterministic; H1 holds.
+  Either split (2/1) -> judge noise irreducible at temp=0; H2 holds.

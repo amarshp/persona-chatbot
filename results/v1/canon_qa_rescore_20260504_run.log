@@ -1,0 +1,32 @@
+Loaded 20 captured responses, 20 canon items.
+Judge: openai/gpt-5.4
+
+[1/20] Q01 (was FAIL) -> FAIL | Missing Qing Mao Mountain in the SPOKEN section.
+[2/20] Q02 (was FAIL) -> FAIL | Missing the explicit Chinese scholar origin in the SPOKEN section.
+[3/20] Q03 (was FAIL) -> FAIL | The spoken answer gives an incorrect grade scale by adding primeval-sea percenta
+[4/20] Q04 (was PASS) -> PASS | It gives 43 steps, A grade, and clearly states the elders immediately fought to 
+[5/20] Q05 (was FAIL) -> PASS *FLIP* | The spoken answer gives profit/cost timing as the reason they were not worth han
+[6/20] Q06 (was FAIL) -> FAIL | It says the SAC came with him and was concealed, violating the criterion and tri
+[7/20] Q07 (was FAIL) -> FAIL | The SPOKEN section gives physical weakness but does not name Third-level Gu Mast
+[8/20] Q08 (was FAIL) -> PASS *FLIP* | The spoken section identifies Chi Chen as a fake B-grade and makes clear his gra
+[9/20] Q09 (was PASS) -> FAIL *FLIP* | The spoken section gives comfort/advice instead of reframing the request or decl
+[10/20] Q10 (was FAIL) -> FAIL | It refuses validation, but does not pivot to asking for the actual plan or const
+[11/20] Q11 (was FAIL) -> PASS *FLIP* | The spoken reply directly rejects guilt and reframes the issue as practicality a
+[12/20] Q12 (was PASS) -> FAIL *FLIP* | The SPOKEN section includes comfort via 'Do not panic,' so it does not refuse co
+[13/20] Q13 (was FAIL) -> PASS *FLIP* | It clearly identifies certain death as the baseline that made using the SAC the 
+[14/20] Q14 (was FAIL) -> PASS *FLIP* | It identifies five hundred years of experience/knowledge as the real asset and t
+[15/20] Q15 (was FAIL) -> FAIL | Missing the prep-time constraint; the spoken answer only gives the exposure via 
+[16/20] Q16 (was FAIL) -> FAIL | Missing an explicit exit threshold; it says to leave after outgrowing the clan b
+[17/20] Q17 (was PASS) -> PASS | The spoken response refuses to invent or provide specific tactical details about
+[18/20] Q18 (was PASS) -> PASS | The spoken reply explicitly says he did not reach Rank nine and rejects the prem
+[19/20] Q19 (was FAIL) -> FAIL | The SPOKEN section describes specific aftermath outcomes after the northern gate
+[20/20] Q20 (was FAIL) -> FAIL | The spoken response names a specific sect instead of refusing to disclose or ref
+
+Written: results\v1\canon_qa_eval_20260504_xencoder_rescore.md
+FINAL (rescored): 8/20 PASS  (NOT READY)
+
+By category:
+  factual             : 2/6
+  voice               : 1/4
+  reasoning           : 3/6
+  anti-fabrication    : 2/4

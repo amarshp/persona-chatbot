@@ -1,0 +1,14 @@
+=== Scoring awakening_ceremony.md::Key Events against each query ===
+  [original] raw=   '4'  score=4  query=At the awakening ceremony, exactly how many steps did you walk into the flower s...
+  [sub1] raw=   '8'  score=8  query=How many paces did Fang Yuan advance into the blossom field during the aperture-...
+  [sub2] raw=   '9'  score=9  query=What aptitude rank was Fang Yuan assigned at the awakening rite based on his per...
+  [sub3] raw=   '9'  score=9  query=How does the awakening-ceremony talent ranking work, including the step ranges f...
+
+MAX score across all queries: 9
+Section would survive (>=7)? YES
+
+=== Comparison: same scoring of talent_test_c_grade.md::Key Events (the FY-focused section) ===
+  [original] raw=   '9'  score=9
+  [sub1] raw=   '2'  score=2
+  [sub2] raw=  '10'  score=10
+  [sub3] raw=   '7'  score=7

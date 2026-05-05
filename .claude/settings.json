@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" \"C:/Users/Amarsh/OneDrive/Documents/Personal/Projects/PersonaRAG/persona-chatbot/scripts/run_live_status.sh\" 2>/dev/null || true",
+            "timeout": 180,
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

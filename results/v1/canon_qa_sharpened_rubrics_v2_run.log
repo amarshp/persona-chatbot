@@ -1,0 +1,64 @@
+Parsed 19 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+MQ cache:    loaded (19 entries)
+
+[1/19] Q01 (factual)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 7883.51it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  FAIL (retrieve 15.8s, gen 10.6s) — SPOKEN does not include the required literal location string "Qing Mao Mountain"
+[2/19] Q02 (factual)
+  FAIL (retrieve 7.5s, gen 14.5s) — The SPOKEN section lacks an explicit Chinese/Earth scholar reference and does no
+[3/19] Q03 (factual)
+  PASS (retrieve 7.5s, gen 7.6s) — SPOKEN explicitly says twenty-seven steps and C-grade talent, and enumerates 10-
+[4/19] Q04 (factual)
+  PASS (retrieve 8.5s, gen 7.5s) — SPOKEN includes “43 steps,” “A-grade,” and says the elders immediately began fig
+[5/19] Q05 (factual / reasoning)
+  FAIL (retrieve 7.9s, gen 16.2s) — SPOKEN gives strategic utility reasons but does not explicitly frame them as pas
+[6/19] Q07 (factual / reasoning)
+  FAIL (retrieve 7.5s, gen 9.7s) — SPOKEN mentions mortal status and unopened Primeval Sea, but it does not explici
+[7/19] Q08 (factual)
+  PASS (retrieve 8.3s, gen 7.2s) — SPOKEN explicitly says Chi Chen was actually C-grade not B-grade and that Gu Yue
+[8/19] Q09 (voice)
+  FAIL (retrieve 8.3s, gen 12.3s) — It avoids the listed anti-pattern phrases, but the SPOKEN section neither explic
+[9/19] Q10 (voice)
+  PASS (retrieve 7.6s, gen 7.2s) — It explicitly refuses validation in favor of evidence and redirects to structura
+[10/19] Q11 (voice)
+  PASS (retrieve 8.3s, gen 11.2s) — It explicitly rejects guilt with no qualification and grounds that refusal in a 
+[11/19] Q12 (voice)
+  FAIL (retrieve 7.5s, gen 10.9s) — It rejects 'what you want' in favor of compounding strength, but it does not exp
+[12/19] Q13 (reasoning)
+  PASS (retrieve 7.5s, gen 14.5s) — SPOKEN explicitly states the certain-death baseline ('my life was already lost')
+[13/19] Q14 (reasoning)
+  FAIL (retrieve 8.8s, gen 14.2s) — SPOKEN mentions five hundred years of experience but lacks explicit foreknowledg
+[14/19] Q15 (reasoning)
+  FAIL (retrieve 8.5s, gen 20.9s) — The spoken response mentions Chi Lian’s cover but omits both the just-reborn ins
+[15/19] Q16 (reasoning)
+  FAIL (retrieve 7.7s, gen 11.2s) — SPOKEN omits explicit external-threat protection and does not state the Third-le
+[16/19] Q17 (anti-fab)
+  PASS (retrieve 8.5s, gen 8.2s) — The SPOKEN response explicitly refuses to invent specific tactical details and a
+[17/19] Q18 (anti-fab)
+  PASS (retrieve 8.2s, gen 8.7s) — The spoken response explicitly declines to invent the rank nine timing or path, 
+[18/19] Q19 (anti-fab)
+  PASS (retrieve 8.2s, gen 17.6s) — It explicitly refuses to invent the northern gate wolf tide aftermath and only c
+[19/19] Q20 (anti-fab)
+  PASS (retrieve 7.7s, gen 8.8s) — It refuses to name a specific sect and instead reframes to established facts abo
+
+Total time: 419.5s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_sharpened_rubrics_v2.md
+FINAL: 10/19 PASS  (philosophy/demonic_path_survival.md::Fang Yuan's Reasoning)
+
+By category:
+  factual             : 3/5
+  voice               : 2/4
+  reasoning           : 1/6
+  anti-fabrication    : 4/4

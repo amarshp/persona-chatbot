@@ -1,0 +1,56 @@
+======================================================================
+Q03: At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+
+MQ rephrasings (should be decomposed for multi-clause):
+  [1] How far into the blossom field did Fang Yuan advance during the aperture awakening rite, measured in number of paces?
+  [2] What aptitude rank was Fang Yuan assigned at the awakening ritual based on his distance in the flower ocean?
+  [3] How does the awakening talent ranking system work in Reverend Insanity, including the step ranges for each aptitude tier?
+merged_sections count: 94
+
+CRAG judgements (top 12):
+  [1] decisions/talent_test_c_grade.md::Key Events  lex=8  crag=10  kept=Y  err=-
+  [2] events/awakening_ceremony.md::Connections  lex=7  crag=2  kept=N  err=-
+  [3] events/awakening_ceremony.md::Key Events  lex=7  crag=9  kept=Y  err=-
+  [4] events/awakening_ceremony.md::Summary  lex=7  crag=2  kept=N  err=-
+  [5] events/awakening_ceremony.md::The Ceremony's Significance  lex=7  crag=2  kept=N  err=-
+  [6] relationships/fang_zheng.md::Key Events  lex=6  crag=8  kept=Y  err=-
+  [7] decisions/jia_jin_sheng_killing.md::Key Events  lex=5  crag=1  kept=N  err=-
+  [8] decisions/liquor_worm_acquisition.md::Summary  lex=5  crag=1  kept=N  err=-
+  [9] philosophy/demonic_path_survival.md::Key Events  lex=5  crag=2  kept=N  err=-
+  [10] relationships/uncle_and_aunt.md::Key Events  lex=5  crag=2  kept=N  err=-
+  [11] decisions/class_chairman_refusal.md::Connections  lex=4  crag=1  kept=N  err=-
+  [12] decisions/class_chairman_refusal.md::Fang Yuan's Reasoning  lex=4  crag=1  kept=N  err=-
+
+SURVIVORS (3):
+  decisions/talent_test_c_grade.md::Key Events (lex=8)
+  events/awakening_ceremony.md::Key Events (lex=7)
+  relationships/fang_zheng.md::Key Events (lex=6)
+AWAKENING_KEY_EVENTS_SURVIVED: YES
+
+======================================================================
+Q08: You noticed something off about Gu Yue Chi Chen at the awakening ceremony. What was it?
+
+MQ rephrasings (should be decomposed for multi-clause):
+  [1] What irregularity did Fang Yuan observe about Gu Yue Chi Chen during the aptitude-awakening ritual?
+  [2] What seemed unusual or suspicious about Gu Yue Chi Chen at the clan's opening-essence ceremony?
+  [3] During the awakening event, what detail about Gu Yue Chi Chen struck Fang Yuan as not quite right?
+merged_sections count: 95
+
+CRAG judgements (top 12):
+  [1] events/awakening_ceremony.md::Key Events  lex=8  crag=10  kept=Y  err=-
+  [2] decisions/class_chairman_refusal.md::Key Events  lex=6  crag=2  kept=N  err=-
+  [3] decisions/liquor_worm_strategy.md::Key Events  lex=6  crag=1  kept=N  err=-
+  [4] decisions/talent_test_c_grade.md::Key Events  lex=6  crag=2  kept=N  err=-
+  [5] events/awakening_ceremony.md::Summary  lex=6  crag=1  kept=N  err=-
+  [6] events/beast_horde_survival.md::Key Events  lex=6  crag=1  kept=N  err=-
+  [7] philosophy/demonic_path_survival.md::Key Events  lex=6  crag=2  kept=N  err=-
+  [8] decisions/extortion_campaign.md::Key Events  lex=5  crag=1  kept=N  err=-
+  [9] decisions/jiao_san_team_selection.md::Connections  lex=5  crag=1  kept=N  err=-
+  [10] decisions/jiao_san_team_selection.md::Key Events  lex=5  crag=1  kept=N  err=-
+  [11] decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning  lex=5  crag=1  kept=N  err=-
+  [12] decisions/mo_yan_corpse_gift.md::Key Events  lex=5  crag=1  kept=N  err=-
+
+SURVIVORS (1):
+  events/awakening_ceremony.md::Key Events (lex=8)
+AWAKENING_KEY_EVENTS_SURVIVED: YES
+

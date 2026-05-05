@@ -1,0 +1,63 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Parsed 19 canon QA items.
+Reranker:    BAAI/bge-reranker-base  threshold: 0.5
+Primary:     openai/gpt-5.5
+Judge:       openai/gpt-5.4
+
+[1/19] Q01 (factual)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 18103.35it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  FAIL (retrieve 22.0s, gen 11.5s) — It does not name Qing Mao Mountain or the six-hour standoff in the spoken sectio
+[2/19] Q02 (factual)
+  FAIL (retrieve 12.5s, gen 10.2s) — It does not explicitly state he was a Chinese scholar from Earth, so the pass cr
+[3/19] Q03 (factual)
+  FAIL (retrieve 13.2s, gen 8.2s) — It says 27 steps and C-grade, but the spoken grade scale omits the required '<10
+[4/19] Q04 (factual)
+  PASS (retrieve 12.6s, gen 8.0s) — The spoken response clearly states "forty three steps" and "A grade" and describ
+[5/19] Q05 (factual / reasoning)
+  FAIL (retrieve 12.1s, gen 17.3s) — SPOKEN mentions no-payoff but omits the required passers-by/'as long as they don
+[6/19] Q07 (factual / reasoning)
+  FAIL (retrieve 11.2s, gen 10.3s) — It mentions being mortal and the cage as protection/resources, but the SPOKEN se
+[7/19] Q08 (factual)
+  FAIL (retrieve 11.0s, gen 7.4s) — It states Chi Chen was only C-grade and that Chi Lian helped him cheat, but it d
+[8/19] Q09 (voice)
+  PASS (retrieve 11.1s, gen 8.6s) — It avoids all empathic phrases and coldly reframes grief into immediate actionab
+[9/19] Q10 (voice)
+  FAIL (retrieve 11.4s, gen 6.5s) — It refuses validation, but it does not pivot to asking for the actual plan or co
+[10/19] Q11 (voice)
+  PASS (retrieve 11.2s, gen 11.7s) — The spoken response directly rejects guilt and frames killing as a chosen path b
+[11/19] Q12 (voice)
+  PASS (retrieve 11.1s, gen 10.6s) — It rejects age comparison, reframes away from vague desire into leverage/compoun
+[12/19] Q13 (reasoning)
+  FAIL (retrieve 11.3s, gen 13.7s) — The SPOKEN section names certain death and chance, but omits the required upside
+[13/19] Q14 (reasoning)
+  FAIL (retrieve 12.0s, gen 13.4s) — The SPOKEN section does not explicitly mention 500 years of memory/experience or
+[14/19] Q15 (reasoning)
+  FAIL (retrieve 12.0s, gen 12.3s) — The spoken answer mentions exposure via cultivation speed and lack of elder cove
+[15/19] Q16 (reasoning)
+  FAIL (retrieve 11.4s, gen 10.0s) — SPOKEN lacks the required explicit Third-level Gu Master exit threshold and does
+[16/19] Q17 (anti-fab)
+  PASS (retrieve 12.2s, gen 9.0s) — The spoken response explicitly refuses to invent specific tactical details about
+[17/19] Q18 (anti-fab)
+  PASS (retrieve 14.1s, gen 9.6s) — The spoken response explicitly refuses to invent the timing or sacrifices, satis
+[18/19] Q19 (anti-fab)
+  PASS (retrieve 13.2s, gen 10.4s) — The SPOKEN response explicitly refuses to invent the unshown aftermath and only 
+[19/19] Q20 (anti-fab)
+  FAIL (retrieve 11.6s, gen 6.8s) — It names a specific sect instead of declining, withholding, or reframing to know
+
+Total time: 479.0s
+
+Written: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\canon_qa_eval_20260504_xenc_antifab.md
+FINAL: 7/19 PASS  (philosophy/demonic_path_survival.md::Key Events)
+
+By category:
+  factual             : 1/5
+  voice               : 3/4
+  reasoning           : 0/6
+  anti-fabrication    : 3/4

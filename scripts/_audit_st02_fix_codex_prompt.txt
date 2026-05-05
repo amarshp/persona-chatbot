@@ -1,0 +1,34 @@
+FIX ST-02 step count error in smoke_test_runner.py
+
+CONTEXT
+While building canon_qa_v1.md, the actual chapter source was checked:
+- chapter_0005.txt line 175: Fang Yuan walked 27 steps (C grade)
+- chapter_0006.txt line 139: Fang Zheng walked 43 steps (A grade)
+
+The smoke test ST-02 incorrectly states Fang Yuan walked "7" steps in
+two places. Our recent persona-quality A/B graded model responses
+against this wrong criterion.
+
+CHANGES (single file, two trivial replacements)
+File: scripts/smoke_test_runner.py
+
+1. Line 59 currently reads:
+       "You walked 7. That gap was public, permanent, and witnessed by the entire clan. "
+   Change to:
+       "You walked 27. That gap was public, permanent, and witnessed by the entire clan. "
+
+2. Line 66 currently reads:
+       "PASS: References 43 steps and 7 steps explicitly. Must show that Fang Zheng's A-grade "
+   Change to:
+       "PASS: References 43 steps and 27 steps explicitly. Must show that Fang Zheng's A-grade "
+
+CONSTRAINTS
+- Edit ONLY scripts/smoke_test_runner.py.
+- Do NOT change any other ST-## entry, the rest of the file, or any
+  other file in the repo.
+- After your edit, no test re-run is needed (we're not invoking the
+  smoke test). Just verify the change with `git diff`.
+
+OUTPUT
+- The applied diff (4 lines).
+- Confirmation no other files changed.

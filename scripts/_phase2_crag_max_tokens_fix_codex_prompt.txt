@@ -1,0 +1,35 @@
+FIX — CRAG calls failing with 400 max_output_tokens minimum
+
+REPRO
+`scripts/eval_multi_query_crag.py` ran. All 120 CRAG calls errored:
+  HTTPError 400 Bad Request from OpenRouter (Azure provider for gpt-5.4):
+  "Invalid 'max_output_tokens': integer below minimum value. Expected
+   a value >= 16, but got 8 instead."
+
+ROOT CAUSE
+v1/retrieval/crag_filter.py line ~74 calls client.generate(...,
+max_tokens=8, ...). Azure provider requires max_tokens >= 16. The
+multi_query_retrieve rephrase call uses max_tokens=400 and succeeds, so
+the only required change is the CRAG-call value.
+
+FIX (single-character edit)
+Edit ONLY v1/retrieval/crag_filter.py. Change `max_tokens=8` to
+`max_tokens=16`. Do not touch anything else.
+
+CONSTRAINTS
+- Do NOT change any other file.
+- Do NOT change the prompt, the parsing regex, the threshold logic, or
+  the fail-safe behavior.
+- After your edit, run from project root:
+      python scripts/boundary_tests.py
+  Confirm the SUMMARY block still reports byte-identically:
+      Phase 2/4 trigger: ACTIVE (8/10 vocab fails, threshold 30%)
+      Phase 3 trigger:   ACTIVE (avg sections=6.00, avg total_tokens=2253)
+      Out-of-scope regression: clear-leak (avg sections=2.75)
+      Phase 1 routing:   PASS (0/10 unexpected classifications)
+      Phase 5 wiki health: CLEAN (0 structural issues)
+- Do NOT run scripts/eval_multi_query_crag.py. The user gates that.
+
+OUTPUT
+- The applied diff (one line).
+- The boundary_tests.py SUMMARY block.

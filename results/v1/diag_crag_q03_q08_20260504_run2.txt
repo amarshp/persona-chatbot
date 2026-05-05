@@ -1,0 +1,207 @@
+===== Q03 =====
+At the awakening ceremony, exactly how many steps did you walk into the flower sea? What grade did that put you at, and what is the grade scale?
+phrasings:
+  During the awakening ritual, precisely how many paces did you take into the sea of flowers? What rank did that correspond to, and what is the ranking system?
+  At the awakening ceremony, exactly how far did you walk into the floral expanse in terms of steps? Which tier did that place you in, and how does the tier scale work?
+  In the awakening rite, how many exact steps did you move into the field of blossoms? What level did that assign you to, and what is the level grading scale?
+merged_sections count: 81
+[1] decisions/talent_test_c_grade.md::Key Events  lex=8
+[2] events/awakening_ceremony.md::Connections  lex=7
+[3] events/awakening_ceremony.md::Key Events  lex=7
+[4] events/awakening_ceremony.md::Summary  lex=7
+[5] events/awakening_ceremony.md::The Ceremony's Significance  lex=7
+[6] relationships/fang_zheng.md::Key Events  lex=6
+[7] decisions/talent_test_c_grade.md::Connections  lex=4
+[8] decisions/talent_test_c_grade.md::Fang Yuan's Reasoning  lex=4
+[9] decisions/talent_test_c_grade.md::Summary  lex=4
+[10] events/flower_wine_monk_cave.md::Key Events  lex=4
+[11] philosophy/demonic_path_survival.md::Key Events  lex=4
+[12] philosophy/strength_as_foundation.md::Fang Yuan's Reasoning  lex=4
+[13] philosophy/strength_as_foundation.md::Key Events  lex=4
+[14] decisions/liquor_worm_strategy.md::Key Events  lex=3
+[15] decisions/mo_yan_corpse_gift.md::Key Events  lex=3
+[1] decisions/talent_test_c_grade.md::Key Events  lex=8  crag=9  kept=Y  err=-
+[2] events/awakening_ceremony.md::Connections  lex=7  crag=1  kept=N  err=-
+[3] events/awakening_ceremony.md::Key Events  lex=7  crag=3  kept=N  err=-
+[4] events/awakening_ceremony.md::Summary  lex=7  crag=1  kept=N  err=-
+[5] events/awakening_ceremony.md::The Ceremony's Significance  lex=7  crag=1  kept=N  err=-
+[6] relationships/fang_zheng.md::Key Events  lex=6  crag=9  kept=Y  err=-
+[7] decisions/talent_test_c_grade.md::Connections  lex=4  crag=2  kept=N  err=-
+[8] decisions/talent_test_c_grade.md::Fang Yuan's Reasoning  lex=4  crag=2  kept=N  err=-
+[9] decisions/talent_test_c_grade.md::Summary  lex=4  crag=2  kept=N  err=-
+[10] events/flower_wine_monk_cave.md::Key Events  lex=4  crag=2  kept=N  err=-
+[11] philosophy/demonic_path_survival.md::Key Events  lex=4  crag=1  kept=N  err=-
+[12] philosophy/strength_as_foundation.md::Fang Yuan's Reasoning  lex=4  crag=1  kept=N  err=-
+[13] philosophy/strength_as_foundation.md::Key Events  lex=4  crag=-  kept=N  err=-
+[14] decisions/liquor_worm_strategy.md::Key Events  lex=3  crag=-  kept=N  err=-
+[15] decisions/mo_yan_corpse_gift.md::Key Events  lex=3  crag=-  kept=N  err=-
+[16] decisions/shen_cui_confrontation.md::Key Events  lex=3  crag=-  kept=N  err=-
+[17] philosophy/self_interest_and_human_nature.md::Key Events  lex=3  crag=-  kept=N  err=-
+[18] relationships/shen_cui.md::Fang Yuan's Read of Her  lex=3  crag=-  kept=N  err=-
+[19] relationships/uncle_and_aunt.md::Key Events  lex=3  crag=-  kept=N  err=-
+[20] decisions/class_chairman_refusal.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[21] decisions/extortion_campaign.md::Key Events  lex=2  crag=-  kept=N  err=-
+[22] decisions/jia_jin_sheng_killing.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[23] decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[24] decisions/jiao_san_team_selection.md::Key Events  lex=2  crag=-  kept=N  err=-
+[25] decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[26] decisions/liquor_worm_acquisition.md::Key Events  lex=2  crag=-  kept=N  err=-
+[27] decisions/liquor_worm_strategy.md::Summary  lex=2  crag=-  kept=N  err=-
+[28] decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[29] decisions/shen_cui_confrontation.md::Summary  lex=2  crag=-  kept=N  err=-
+[30] events/beast_horde_survival.md::Connections  lex=2  crag=-  kept=N  err=-
+[31] events/beast_horde_survival.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[32] events/beast_horde_survival.md::Key Events  lex=2  crag=-  kept=N  err=-
+[33] events/beast_horde_survival.md::Summary  lex=2  crag=-  kept=N  err=-
+[34] philosophy/self_interest_and_human_nature.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[35] relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[36] relationships/gu_yue_qing_shu.md::Key Events  lex=2  crag=-  kept=N  err=-
+[37] relationships/jiao_san.md::Key Events  lex=2  crag=-  kept=N  err=-
+[38] relationships/uncle_and_aunt.md::Fang Yuan's Read of Them  lex=2  crag=-  kept=N  err=-
+[39] relationships/uncle_and_aunt.md::Summary  lex=2  crag=-  kept=N  err=-
+[40] decisions/class_chairman_refusal.md::Connections  lex=1  crag=-  kept=N  err=-
+[41] decisions/class_chairman_refusal.md::Key Events  lex=1  crag=-  kept=N  err=-
+[42] decisions/class_chairman_refusal.md::Summary  lex=1  crag=-  kept=N  err=-
+[43] decisions/extortion_campaign.md::Connections  lex=1  crag=-  kept=N  err=-
+[44] decisions/extortion_campaign.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[45] decisions/extortion_campaign.md::Summary  lex=1  crag=-  kept=N  err=-
+[46] decisions/jia_jin_sheng_killing.md::Connections  lex=1  crag=-  kept=N  err=-
+[47] decisions/jia_jin_sheng_killing.md::Key Events  lex=1  crag=-  kept=N  err=-
+[48] decisions/jia_jin_sheng_killing.md::Summary  lex=1  crag=-  kept=N  err=-
+[49] decisions/jiao_san_team_selection.md::Connections  lex=1  crag=-  kept=N  err=-
+[50] decisions/jiao_san_team_selection.md::Summary  lex=1  crag=-  kept=N  err=-
+[51] decisions/liquor_worm_acquisition.md::Connections  lex=1  crag=-  kept=N  err=-
+[52] decisions/liquor_worm_acquisition.md::Summary  lex=1  crag=-  kept=N  err=-
+[53] decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[54] decisions/mo_yan_corpse_gift.md::Connections  lex=1  crag=-  kept=N  err=-
+[55] decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[56] decisions/rebirth_and_spring_autumn_cicada.md::Connections  lex=1  crag=-  kept=N  err=-
+[57] decisions/rebirth_and_spring_autumn_cicada.md::Key Events  lex=1  crag=-  kept=N  err=-
+[58] decisions/rebirth_and_spring_autumn_cicada.md::Summary  lex=1  crag=-  kept=N  err=-
+[59] events/flower_wine_monk_cave.md::Connections  lex=1  crag=-  kept=N  err=-
+[60] events/flower_wine_monk_cave.md::Summary  lex=1  crag=-  kept=N  err=-
+[61] events/flower_wine_monk_cave.md::What the Cave Revealed  lex=1  crag=-  kept=N  err=-
+[62] events/hunter_family_killing.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[63] philosophy/demonic_path_survival.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[64] philosophy/killing_logic.md::Connections  lex=1  crag=-  kept=N  err=-
+[65] philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)  lex=1  crag=-  kept=N  err=-
+[66] philosophy/killing_logic.md::Summary  lex=1  crag=-  kept=N  err=-
+[67] philosophy/killing_logic.md::The Principle  lex=1  crag=-  kept=N  err=-
+[68] philosophy/self_interest_and_human_nature.md::Connections  lex=1  crag=-  kept=N  err=-
+[69] philosophy/strength_as_foundation.md::Connections  lex=1  crag=-  kept=N  err=-
+[70] philosophy/strength_as_foundation.md::Summary  lex=1  crag=-  kept=N  err=-
+[71] relationships/fang_zheng.md::Connections  lex=1  crag=-  kept=N  err=-
+[72] relationships/fang_zheng.md::Fang Yuan's Assessment  lex=1  crag=-  kept=N  err=-
+[73] relationships/fang_zheng.md::Summary  lex=1  crag=-  kept=N  err=-
+[74] relationships/gu_yue_qing_shu.md::Connections  lex=1  crag=-  kept=N  err=-
+[75] relationships/gu_yue_qing_shu.md::Summary  lex=1  crag=-  kept=N  err=-
+[76] relationships/jiao_san.md::Connections  lex=1  crag=-  kept=N  err=-
+[77] relationships/mo_yan.md::Connections  lex=1  crag=-  kept=N  err=-
+[78] relationships/mo_yan.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[79] relationships/mo_yan.md::Key Events  lex=1  crag=-  kept=N  err=-
+[80] relationships/mo_yan.md::Summary  lex=1  crag=-  kept=N  err=-
+[81] relationships/shen_cui.md::Key Events  lex=1  crag=-  kept=N  err=-
+SURVIVORS (2):
+decisions/talent_test_c_grade.md::Key Events (lex=8)
+relationships/fang_zheng.md::Key Events (lex=6)
+AWAKENING_KEY_EVENTS_SURVIVED: NO
+===== Q08 =====
+You noticed something off about Gu Yue Chi Chen at the awakening ceremony. What was it?
+phrasings:
+  During the awakening ceremony, you sensed that something was wrong with Gu Yue Chi Chen. What exactly was it?
+  At the awakening ritual, you detected that Gu Yue Chi Chen seemed unusual or suspicious. What did you notice?
+  You picked up on something amiss about Gu Yue Chi Chen during the awakening ceremony. What was the issue?
+merged_sections count: 72
+[1] events/awakening_ceremony.md::Key Events  lex=6
+[2] decisions/talent_test_c_grade.md::Key Events  lex=5
+[3] philosophy/demonic_path_survival.md::Key Events  lex=5
+[4] decisions/liquor_worm_strategy.md::Key Events  lex=4
+[5] decisions/mo_yan_corpse_gift.md::Key Events  lex=4
+[6] events/awakening_ceremony.md::Summary  lex=4
+[7] relationships/fang_zheng.md::Key Events  lex=4
+[8] relationships/jiao_san.md::Key Events  lex=4
+[9] relationships/uncle_and_aunt.md::Key Events  lex=4
+[10] relationships/uncle_and_aunt.md::Summary  lex=4
+[11] decisions/extortion_campaign.md::Key Events  lex=3
+[12] decisions/jiao_san_team_selection.md::Connections  lex=3
+[13] decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning  lex=3
+[14] decisions/jiao_san_team_selection.md::Key Events  lex=3
+[15] decisions/liquor_worm_acquisition.md::Key Events  lex=3
+[1] events/awakening_ceremony.md::Key Events  lex=6  crag=10  kept=Y  err=-
+[2] decisions/talent_test_c_grade.md::Key Events  lex=5  crag=2  kept=N  err=-
+[3] philosophy/demonic_path_survival.md::Key Events  lex=5  crag=2  kept=N  err=-
+[4] decisions/liquor_worm_strategy.md::Key Events  lex=4  crag=1  kept=N  err=-
+[5] decisions/mo_yan_corpse_gift.md::Key Events  lex=4  crag=1  kept=N  err=-
+[6] events/awakening_ceremony.md::Summary  lex=4  crag=1  kept=N  err=-
+[7] relationships/fang_zheng.md::Key Events  lex=4  crag=2  kept=N  err=-
+[8] relationships/jiao_san.md::Key Events  lex=4  crag=1  kept=N  err=-
+[9] relationships/uncle_and_aunt.md::Key Events  lex=4  crag=2  kept=N  err=-
+[10] relationships/uncle_and_aunt.md::Summary  lex=4  crag=1  kept=N  err=-
+[11] decisions/extortion_campaign.md::Key Events  lex=3  crag=1  kept=N  err=-
+[12] decisions/jiao_san_team_selection.md::Connections  lex=3  crag=1  kept=N  err=-
+[13] decisions/jiao_san_team_selection.md::Fang Yuan's Reasoning  lex=3  crag=-  kept=N  err=-
+[14] decisions/jiao_san_team_selection.md::Key Events  lex=3  crag=-  kept=N  err=-
+[15] decisions/liquor_worm_acquisition.md::Key Events  lex=3  crag=-  kept=N  err=-
+[16] decisions/mo_yan_corpse_gift.md::Summary  lex=3  crag=-  kept=N  err=-
+[17] decisions/talent_test_c_grade.md::Fang Yuan's Reasoning  lex=3  crag=-  kept=N  err=-
+[18] events/awakening_ceremony.md::Connections  lex=3  crag=-  kept=N  err=-
+[19] events/awakening_ceremony.md::The Ceremony's Significance  lex=3  crag=-  kept=N  err=-
+[20] events/beast_horde_survival.md::Key Events  lex=3  crag=-  kept=N  err=-
+[21] events/beast_horde_survival.md::Summary  lex=3  crag=-  kept=N  err=-
+[22] events/flower_wine_monk_cave.md::Key Events  lex=3  crag=-  kept=N  err=-
+[23] philosophy/strength_as_foundation.md::Key Events  lex=3  crag=-  kept=N  err=-
+[24] relationships/gu_yue_qing_shu.md::Fang Yuan's Reasoning  lex=3  crag=-  kept=N  err=-
+[25] relationships/shen_cui.md::Fang Yuan's Read of Her  lex=3  crag=-  kept=N  err=-
+[26] relationships/uncle_and_aunt.md::Fang Yuan's Read of Them  lex=3  crag=-  kept=N  err=-
+[27] decisions/class_chairman_refusal.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[28] decisions/class_chairman_refusal.md::Key Events  lex=2  crag=-  kept=N  err=-
+[29] decisions/jia_jin_sheng_killing.md::Key Events  lex=2  crag=-  kept=N  err=-
+[30] decisions/jia_jin_sheng_killing.md::Summary  lex=2  crag=-  kept=N  err=-
+[31] decisions/jiao_san_team_selection.md::Summary  lex=2  crag=-  kept=N  err=-
+[32] decisions/liquor_worm_acquisition.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[33] decisions/liquor_worm_acquisition.md::Summary  lex=2  crag=-  kept=N  err=-
+[34] decisions/mo_yan_corpse_gift.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[35] decisions/rebirth_and_spring_autumn_cicada.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[36] decisions/rebirth_and_spring_autumn_cicada.md::Key Events  lex=2  crag=-  kept=N  err=-
+[37] decisions/shen_cui_confrontation.md::Key Events  lex=2  crag=-  kept=N  err=-
+[38] decisions/shen_cui_confrontation.md::Summary  lex=2  crag=-  kept=N  err=-
+[39] decisions/talent_test_c_grade.md::Connections  lex=2  crag=-  kept=N  err=-
+[40] decisions/talent_test_c_grade.md::Summary  lex=2  crag=-  kept=N  err=-
+[41] events/beast_horde_survival.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[42] events/flower_wine_monk_cave.md::Summary  lex=2  crag=-  kept=N  err=-
+[43] philosophy/killing_logic.md::Key Contrast: Wang Da's Attack (Chapter 75)  lex=2  crag=-  kept=N  err=-
+[44] philosophy/self_interest_and_human_nature.md::Key Events  lex=2  crag=-  kept=N  err=-
+[45] philosophy/strength_as_foundation.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[46] relationships/gu_yue_qing_shu.md::Connections  lex=2  crag=-  kept=N  err=-
+[47] relationships/gu_yue_qing_shu.md::Key Events  lex=2  crag=-  kept=N  err=-
+[48] relationships/gu_yue_qing_shu.md::Summary  lex=2  crag=-  kept=N  err=-
+[49] relationships/jiao_san.md::Summary  lex=2  crag=-  kept=N  err=-
+[50] relationships/mo_yan.md::Fang Yuan's Reasoning  lex=2  crag=-  kept=N  err=-
+[51] relationships/mo_yan.md::Key Events  lex=2  crag=-  kept=N  err=-
+[52] relationships/mo_yan.md::Summary  lex=2  crag=-  kept=N  err=-
+[53] relationships/shen_cui.md::Key Events  lex=2  crag=-  kept=N  err=-
+[54] relationships/uncle_and_aunt.md::Connections  lex=2  crag=-  kept=N  err=-
+[55] decisions/class_chairman_refusal.md::Summary  lex=1  crag=-  kept=N  err=-
+[56] decisions/extortion_campaign.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[57] decisions/liquor_worm_acquisition.md::Connections  lex=1  crag=-  kept=N  err=-
+[58] decisions/liquor_worm_strategy.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[59] decisions/mo_yan_corpse_gift.md::Connections  lex=1  crag=-  kept=N  err=-
+[60] decisions/rebirth_and_spring_autumn_cicada.md::Connections  lex=1  crag=-  kept=N  err=-
+[61] decisions/rebirth_and_spring_autumn_cicada.md::Summary  lex=1  crag=-  kept=N  err=-
+[62] decisions/shen_cui_confrontation.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[63] events/beast_horde_survival.md::Connections  lex=1  crag=-  kept=N  err=-
+[64] events/flower_wine_monk_cave.md::Connections  lex=1  crag=-  kept=N  err=-
+[65] events/flower_wine_monk_cave.md::What the Cave Revealed  lex=1  crag=-  kept=N  err=-
+[66] events/hunter_family_killing.md::Fang Yuan's Reasoning  lex=1  crag=-  kept=N  err=-
+[67] events/hunter_family_killing.md::Key Events  lex=1  crag=-  kept=N  err=-
+[68] events/hunter_family_killing.md::Summary  lex=1  crag=-  kept=N  err=-
+[69] philosophy/strength_as_foundation.md::Connections  lex=1  crag=-  kept=N  err=-
+[70] relationships/fang_zheng.md::Fang Yuan's Assessment  lex=1  crag=-  kept=N  err=-
+[71] relationships/jiao_san.md::Connections  lex=1  crag=-  kept=N  err=-
+[72] relationships/mo_yan.md::Connections  lex=1  crag=-  kept=N  err=-
+SURVIVORS (1):
+events/awakening_ceremony.md::Key Events (lex=6)
+AWAKENING_KEY_EVENTS_SURVIVED: YES
+===== SUMMARY =====
+Q03 awakening_key_events_kept: NO
+Q08 awakening_key_events_kept: YES

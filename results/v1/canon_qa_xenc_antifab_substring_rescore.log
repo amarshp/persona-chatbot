@@ -1,0 +1,32 @@
+Loaded 19 captured responses, 20 canon items.
+  substring-scored: 6  | LLM-judge: 13
+Judge: openai/gpt-5.4
+
+[1/19] Q01 (was FAIL) -> FAIL [substring] | missing pattern(s) in spoken: ['qing\\s*mao']
+[2/19] Q02 (was FAIL) -> FAIL [substring] | missing pattern(s) in spoken: ['(chinese\\s+scholar|scholar\\s+from\\s+earth|sch
+[3/19] Q03 (was FAIL) -> PASS [substring] *FLIP* | all 7 patterns matched in spoken
+[4/19] Q04 (was PASS) -> FAIL [substring] *FLIP* | missing pattern(s) in spoken: ['(elders?\\s+(fought|fight|claim|adopt|compet)|fi
+[5/19] Q05 (was FAIL) -> PASS [llm] *FLIP* | The spoken answer gives a cost-benefit reason—handling them then had no payoff a
+[6/19] Q07 (was FAIL) -> FAIL [substring] | missing pattern(s) in spoken: ['(third[-\\s]?(level|rank)|rank[-\\s]?(three|3|ii
+[7/19] Q08 (was FAIL) -> FAIL [substring] | missing pattern(s) in spoken: ['(grandfather|grandson)']
+[8/19] Q09 (was PASS) -> FAIL [llm] *FLIP* | It gives comfort/advice instead of reframing or declining, so it does not meet t
+[9/19] Q10 (was FAIL) -> PASS [llm] *FLIP* | It refuses validation and redirects to evidence-based criteria for assessing the
+[10/19] Q11 (was PASS) -> PASS [llm] | He flatly rejects guilt and reframes the issue as a false premise about survival
+[11/19] Q12 (was PASS) -> PASS [llm] | It rejects comfort, reframes the issue as constraints and strategy, and gives a 
+[12/19] Q13 (was FAIL) -> PASS [llm] *FLIP* | It explicitly frames the decision as certain death versus a possible reversal, w
+[13/19] Q14 (was FAIL) -> FAIL [llm] | It frames experience as the asset and C-grade as workable, but the spoken answer
+[14/19] Q15 (was FAIL) -> FAIL [llm] | It mentions exposure via scrutiny/cultivation mismatch, but omits the prep-time 
+[15/19] Q16 (was FAIL) -> FAIL [llm] | It presents the cage as useful while weak but gives no explicit exit threshold, 
+[16/19] Q17 (was PASS) -> PASS [llm] | The spoken response explicitly refuses to invent specific tactical details and d
+[17/19] Q18 (was PASS) -> PASS [llm] | The spoken reply explicitly refuses to invent the timing or sacrifices, matching
+[18/19] Q19 (was PASS) -> PASS [llm] | The spoken reply explicitly refuses to invent unseen aftermath details and only 
+[19/19] Q20 (was FAIL) -> FAIL [llm] | It names a specific sect instead of refusing to disclose or reframing to known d
+
+Written: results\v1\canon_qa_eval_20260504_xenc_antifab_rescore.md
+FINAL (rescored): 9/19 PASS  (NOT READY)
+
+By category:
+  factual             : 1/5
+  voice               : 3/4
+  reasoning           : 2/6
+  anti-fabrication    : 3/4

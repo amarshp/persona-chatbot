@@ -1,0 +1,26 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 11846.98it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+=== Q08 with decomposed sub-queries ===
+section                                              |   orig_Q08 |       sub1 |       sub2 |       sub3 | MAX
+awakening_ceremony::Key Events                       |      0.289 |      0.849 |      0.515 |      0.345 | 0.849
+talent_test_c_grade::Key Events                      |      0.001 |      0.072 |      0.028 |      0.063 | 0.072
+demonic_path_survival::Key Events                    |      0.109 |      0.549 |      0.061 |      0.524 | 0.549
+
+Q08 includes "Gu Yue Chi Chen" — BGE handles entity match well when the query has the proper noun directly.
+Original Q08 asks "you noticed" which is pronoun-anchored — that's why it scored only 0.289.
+After decomposition, MQ rephrasings replace "you" with "Fang Yuan" or omit pronouns — recovers high score.
+
+=== If MQ totally failed for Q08 (orig query only) ===
+  awakening: 0.289  (would FAIL at threshold>=0.3)
+
+=== Threshold sweep for Q08 awakening section ===
+  At threshold 0.2: orig=PASS
+  At threshold 0.3: orig=FAIL
+  At threshold 0.5: orig=FAIL

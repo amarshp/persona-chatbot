@@ -1,0 +1,83 @@
+Create two diagnostic scripts for the PersonaRAG project at C:/Users/Amarsh/OneDrive/Documents/Personal/Projects/PersonaRAG/persona-chatbot/.
+
+## Context
+
+The project is a Fang Yuan persona simulation system. The wiki retriever (v1/retrieval/wiki_retriever.py) does keyword matching on page tags+summary from shared/data/wiki/index.md, scoring pages by how many query words appear in their tags or summary. Score threshold is >= 2. Budget is L3_BUDGET = 2500 tokens (approximated as chars / 4 = 10,000 chars max).
+
+There are 24 content pages in shared/data/wiki/ organized in subdirectories: philosophy/ (4 pages), decisions/ (9 pages), relationships/ (6 pages), events/ (4 pages), plus index.md and some meta files.
+
+## Script 1: scripts/wiki_token_profile.py
+
+Profile all wiki content pages for token estimates.
+
+Requirements:
+- Skip non-content files: index.md, SCHEMA.md, CONVENTIONS.md, TEST_PROMPTS.md, TEST_RESULTS.md
+- For each content page:
+  - Read the file
+  - Count characters
+  - Estimate tokens as chars // 4 (same formula the retriever uses: _CHARS_PER_TOKEN = 4)
+  - Flag if token estimate > 2500 (exceeds L3_BUDGET alone)
+- Print a sorted table (largest first) showing: relative path, chars, tokens, over_budget flag
+- Save results as JSON to results/v1/wiki_token_profile_<YYYYMMDD_HHMMSS>.json with structure:
+  {
+    "generated": "<timestamp>",
+    "l3_budget_tokens": 2500,
+    "l3_budget_chars": 10000,
+    "pages": [
+      {"path": "decisions/rebirth_and_spring_autumn_cicada.md", "chars": 4521, "tokens": 1130, "over_budget": false},
+      ...
+    ],
+    "pages_over_budget": ["path1", "path2"],
+    "total_wiki_tokens": 12345
+  }
+- The script must run from the persona-chatbot/ directory: py scripts/wiki_token_profile.py
+
+## Script 2: scripts/retrieval_diagnostic.py
+
+Run all 14 smoke test queries through the retriever's internal logic and log diagnostics.
+
+Requirements:
+- Hard-code the 14 queries exactly as listed below (do NOT call the LLM -- this is analysis only)
+- For each query:
+  1. Extract keywords using the same logic as wiki_retriever._query_words()
+  2. Load and parse the index using wiki_retriever._parse_index()
+  3. Score every page using wiki_retriever._score()
+  4. Identify: pages with score >= 1 (candidates), pages with score >= 2 (selected)
+  5. Simulate budget allocation: walk through selected pages in score order, track chars used, flag if any page was truncated
+  6. Record: query_id, query_text, keywords (sorted list), all_scored (list of {path, score} for score >= 1), selected (list of {path, score, chars, tokens}), total_chars_used, total_tokens_used, truncated (bool), retrieval_result ("wiki" if any selected else "none")
+- Print a summary table per query showing: ST-id, #keywords, #candidates, #selected, tokens_used, truncated
+- Save full results as JSON to results/v1/retrieval_diagnostic_<YYYYMMDD_HHMMSS>.json with structure:
+  {
+    "generated": "<timestamp>",
+    "queries": [<per-query record as described above>, ...]
+  }
+- The script must run from the persona-chatbot/ directory: py scripts/retrieval_diagnostic.py
+
+## The 14 smoke test queries
+
+QUERIES = [
+    ("ST-01", "You activated the Spring Autumn Cicada knowing you would die in this life. Your C-grade talent meant cultivation was already near-impossible but near-impossible is not certain failure. There were other paths you could have taken. Walk me through the expected-value calculation you actually performed: what alternatives did you seriously weigh, why were they inferior, and at what point did the Cicada become the only rational choice?"),
+    ("ST-02", "At the talent awakening ceremony, your brother Fang Zheng walked 43 steps. You walked 7. That gap was public, permanent, and witnessed by the entire clan. Most people would have let that moment reshape their strategy, collapse their positioning, or break their composure. You did none of those things. What specifically did you revise about your plan that morning, and how did Fang Zheng result change the threat model you were operating under?"),
+    ("ST-03", "How did you fund your cultivation in the early academy years specifically the Liquor Worm? Walk me through the numbers and who paid."),
+    ("ST-04", "A C-grade Gu Master is structurally weaker in every dimension primeval essence volume, refinement speed, and raw combat force. You had all of these disadvantages simultaneously against 56 classmates who started ahead of you. Yet you consistently outmaneuvered stronger opponents across your academy years. Reconstruct the full decision framework you applied: what variables did you assess before each engagement, what signals told you when to press and when to retreat entirely, and how did you convert a structural disadvantage into a positional one over time?"),
+    ("ST-05", "Trace the complete resource chain from your first day at the academy to the point where the Liquor Worm was self-sustaining. At each step, name the key constraint you were solving for, what you did to solve it, and how solving it created the condition that made the next step possible. I want the causal chain, not a list of events."),
+    ("ST-06", "You have observed your uncle, your aunt, Mo Yan, Gu Yue Qing Shu, your brother, and dozens of classmates across years of close proximity. Which of these people surprised you most either by being more capable, more dangerous, or more useful than your initial model predicted and what did that surprise force you to revise in how you model human behaviour under pressure?"),
+    ("ST-07", "After the wolf tide at the northern gate the mass casualties, the clan elders response, the reshuffling of power within Gu Yue what did you assess as your net position? What did you lose in that period that you had not budgeted for, and what did you gain that you had not expected?"),
+    ("ST-08", "I have read analysis suggesting that you eventually became one of the most feared Gu Masters in history a Venerable, a rank only five people in ten thousand years have reached. From where you stand right now, looking forward, what is the single resource, relationship, or position that you believe is most likely to determine whether you reach that level? Be specific about why."),
+    ("ST-09", "Tell me about your confrontation with Bai Ning Bing I have heard it was one of your most significant early battles. Walk me through how you read him, what strategy you committed to, what surprised you about him mid-fight, and how it ended."),
+    ("ST-10", "I am a mid-level manager. Over five years I have built a team that trusts me completely I know their strengths, they execute on my judgment without friction, and we consistently over-deliver. My company just offered me a promotion to lead a different division. More money, more visibility, direct path to VP. But I would have to leave my current team, start over with strangers who have their own loyalties, and my current team would feel abandoned. My instinct is to stay the known quality of what I have built feels more valuable than the uncertain upside of the new role. Is that instinct right?"),
+    ("ST-11", "I co-founded a company three years ago with my closest friend. We raised 2M, hired 12 people, and genuinely believed in the product. The market has shifted the problem we are solving is smaller than we thought, growth is flat, and our lead investors will not follow on. I think we need to pivot hard, but my co-founder refuses. His argument: we have come too far and built too much to abandon it now. Our friendship is real we have known each other fifteen years. I do not want to destroy that. But I also do not want to watch this fail slowly. What do you actually do here?"),
+    ("ST-12", "My team has my back and I have theirs. We win together or not at all that is how I operate."),
+    ("ST-13", "I have been with my partner for six years. We are compatible on the things that matter finances, lifestyle, values on kids. We do not fight. We function well. But the passion faded about two years ago. I do not feel driven toward them anymore. I am 34. Everyone around me says I should be grateful for what I have stable, functional, no drama. But I keep wondering if I am settling, and whether the feeling of this is fine is enough to build a life on. Give me your honest analysis."),
+    ("ST-14", "Everyone tells me to follow my passion. I am good at finance but I want to be a musician. Should I follow my passion?"),
+]
+
+## Important constraints
+
+- Do NOT import or call the retrieve() function directly -- replicate the internal logic inline so the diagnostic can log intermediate state
+- Do NOT make any LLM or API calls -- purely local file reads
+- Do NOT modify any existing files
+- Save results under results/v1/ (create the directory if it does not exist)
+- Use datetime.now().strftime('%Y%m%d_%H%M%S') for the timestamp in filenames
+- Both scripts must work when run as: py scripts/wiki_token_profile.py and py scripts/retrieval_diagnostic.py from the persona-chatbot/ directory
+- Keep each script under 200 lines

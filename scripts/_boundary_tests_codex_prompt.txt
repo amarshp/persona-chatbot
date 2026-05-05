@@ -1,0 +1,154 @@
+CREATE — `scripts/boundary_tests.py`
+Project root: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot
+
+PURPOSE
+Diagnostic file that probes specific gaps in the current Phase-1 retriever.
+Each test category corresponds to one of the planned future phases — running
+the file tells us whether that phase is actually justified by a measured gap,
+or whether the current system already handles it. NO LLM CALLS. Pure
+inspection of `v1.retrieval.wiki_retriever.retrieve(query)` output.
+
+CONSTRAINTS
+- PEP 8, type hints on every signature, frozen dataclasses where state is
+  immutable, stdlib only (re, dataclasses, pathlib, sys, typing).
+- Match the file-header docstring + `from __future__ import annotations` +
+  `sys.path.insert(0, str(ROOT))` pattern of the existing
+  scripts/retrieval_diagnostic.py.
+- Apply the same UTF-8 stdout/stderr reconfigure block at the start of
+  `main()` that other scripts use (for Windows cp1252 cmd compatibility):
+      for stream in (sys.stdout, sys.stderr):
+          if hasattr(stream, "reconfigure"):
+              stream.reconfigure(encoding="utf-8", errors="replace")
+- DO NOT touch any file under results/. DO NOT modify any other script.
+- File is single-purpose; don't add a flag system, just `python
+  scripts/boundary_tests.py` runs everything and prints results.
+
+THE RETRIEVER OUTPUT FORMAT
+`retrieve(query)` returns a string of section blocks separated by
+`\n\n---\n\n`. Each block starts with a header line of the form:
+    ## {section_title} — {page_rel}
+…where {page_rel} is e.g. `decisions/extortion_campaign.md` and
+{section_title} is e.g. `Key Events`. To detect a specific (page, section)
+in the output, check that the EXACT line `## {section_title} — {page_rel}`
+appears in the result string.
+
+TEST DATA (hard-coded constants in the file)
+
+# ── Phase 2 / Phase 4 trigger: VOCABULARY GAP ──────────────────────────
+# Each query uses words that DO NOT appear (or appear minimally) in the
+# expected section, but the section is what should answer the query.
+# If the keyword scorer is robust, retrieve() output will contain the
+# expected (page_rel, section_title) header. If not — vocabulary gap is
+# real → Phase 2 (multi-query) or Phase 4 (embeddings) is justified.
+
+VOCABULARY_TESTS: list[tuple[str, str, str]] = [
+    # (query, expected_page_rel, expected_section_title)
+    ("How do you handle people who pretend to be your friend?",
+     "philosophy/self_interest_and_human_nature.md", "Fang Yuan's Reasoning"),
+    ("What does it take for a weakling to climb?",
+     "philosophy/strength_as_foundation.md", "Fang Yuan's Reasoning"),
+    ("How do you weigh dignity against staying alive?",
+     "philosophy/demonic_path_survival.md", "Fang Yuan's Reasoning"),
+    ("When you sense someone wants to harm you, what's your move?",
+     "philosophy/killing_logic.md", "The Principle"),
+    ("When is it worth wagering everything on a long shot?",
+     "decisions/rebirth_and_spring_autumn_cicada.md", "Fang Yuan's Reasoning"),
+    ("How did you make money off other students?",
+     "decisions/extortion_campaign.md", "Key Events"),
+    ("What did you do when the merchant came for you?",
+     "decisions/jia_jin_sheng_killing.md", "Key Events"),
+    ("How did your guardians treat you growing up?",
+     "relationships/uncle_and_aunt.md", "Summary"),
+    ("Tell me about the time you played dead during a fight.",
+     "events/beast_horde_survival.md", "Key Events"),
+    ("Walk me through the politics of your group selection.",
+     "decisions/jiao_san_team_selection.md", "Fang Yuan's Reasoning"),
+]
+
+# ── Phase 3 trigger: COVERAGE GAP ──────────────────────────────────────
+# Each query asks about a figure or event that index.md "Coverage Notes"
+# explicitly says is NOT covered by any dedicated wiki page. Pass means
+# retrieve() returns ≤1 section block (the system is honest about its
+# scope). Fail means retrieve() confidently returns multiple sections that
+# don't actually answer the query — those would be false positives, the
+# kind of behavior Phase 3 (vector RAG over raw chapters) would address
+# with grounded chapter-level context, OR the kind of behavior more wiki
+# pages would fix.
+
+COVERAGE_TESTS: list[str] = [
+    "Tell me about Mo Bei specifically and what role he plays in the academy power structure.",
+    "Walk me through your year-end exam — what happened and what did you decide?",
+    "What do you make of Gu Yue Bo, the clan leader?",
+    "Tell me about Wang Da and how you ended up dealing with him.",
+    "What was the Chi family patriarch like?",
+    "Tell me about Chi Shan — the top Chi faction combatant.",
+]
+
+# ── Anti-fabrication regression: OUT-OF-SCOPE QUERIES ──────────────────
+# Each query asks about post-chapter-120 content or content that simply
+# isn't in the wiki. Pass = retrieve() does NOT return a section block
+# whose page_rel/title contains the fabrication target. This is a
+# regression check that the temporal-scope guards still hold under
+# section-level retrieval.
+# Each entry is (query, list_of_forbidden_page_rels). If any forbidden
+# page_rel appears in retrieve() output, fail.
+
+OUT_OF_SCOPE_TESTS: list[tuple[str, list[str]]] = [
+    ("Walk me through the northern gate wolf tide aftermath in detail.", []),
+    ("Tell me about your fight with Bai Ning Bing — strategy and outcome.", []),
+    ("How did you become a Venerable?", []),
+    ("What happened during the immortal war years?", []),
+]
+# (For these, the wiki has no dedicated page so any retrieval is by
+# tag/keyword leakage — we report what was retrieved. The "forbidden"
+# list is empty by default; the harness reports the section count and
+# total chars so we can eyeball whether retrieval is leaking content
+# it shouldn't have. A retrieval of 0–1 weak sections is acceptable.)
+
+OUTPUT
+A `main()` that runs each category and prints a per-category summary,
+in the same plain-text style as scripts/retrieval_diagnostic.py:
+
+    ── Phase 2/4 boundary: vocabulary gap ────────────────────────────
+    id  expected                                                 result
+    --  ------------------------------------------------------   ------
+    V01 Fang Yuan's Reasoning — philosophy/self_interest...md    PASS
+    V02 Fang Yuan's Reasoning — philosophy/strength...md         FAIL
+    ...
+    Vocabulary tests: 6/10 pass.   Phase 2/4 trigger: 4 fails (≥30% threshold = ACTIVE)
+
+    ── Phase 3 boundary: coverage gap ────────────────────────────────
+    id  query (truncated)                          sections_returned  pages_touched
+    C01 Tell me about Mo Bei...                    3                  3
+    ...
+    Coverage tests: each row shows what retrieval surfaced for an officially uncovered topic.
+    A row returning ≥3 sections is a candidate false-positive (Phase 3 or wiki expansion).
+
+    ── Anti-fabrication regression: out-of-scope queries ─────────────
+    id  query (truncated)                          sections_returned  total_tokens
+    O01 Walk me through the northern gate...       2                  1820
+    ...
+
+    SUMMARY
+    Phase 2/4 trigger: ACTIVE (4/10 vocab fails, threshold 30%)  | INACTIVE
+    Phase 3 trigger:   <verdict text>
+    Out-of-scope regression: <PASS / soft-leak / clear-leak>
+
+DECISION RULES (encode these in the summary line)
+- Phase 2/4 trigger ACTIVE if vocab fails ÷ vocab total ≥ 0.30; else INACTIVE.
+- Phase 3 trigger ACTIVE if average sections_returned across COVERAGE_TESTS ≥ 3
+  AND average total_tokens ≥ 1800 (i.e. retrieval is confidently surfacing
+  content for topics with no dedicated page). Else INACTIVE.
+- Out-of-scope regression: PASS if average sections_returned across
+  OUT_OF_SCOPE_TESTS ≤ 1; "soft-leak" if 1 < avg ≤ 2; "clear-leak" if > 2.
+
+Use the helper `from v1.retrieval.wiki_retriever import retrieve, _CHARS_PER_TOKEN`
+to compute token estimates the same way as the existing diagnostic.
+
+VERIFICATION (run from project root after writing)
+- python scripts/boundary_tests.py
+  → expect a clean run with three sections of output and a SUMMARY block.
+  Numbers will surprise us — that's the point.
+
+OUTPUT
+- Print at the end: file path, line count, verification command output.

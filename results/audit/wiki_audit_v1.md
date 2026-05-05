@@ -63,8 +63,8 @@ The wiki conflated two distinct deaths into one character.
 **What the wiki said**:
 > "Hua Xin dies, Fang Yuan survives inside the boar (Chapter 95): Lightning wolves swarmed the battlefield. Fang Yuan created an exit by hiding inside the boar's stomach cavity ... A female Gu Master from the sickly snake group identified the same shelter and fought him for the position inside. She could not overpower him. She died in the wolves' mouths outside."
 
-**What the chapter actually says** (`chapter_0095.txt:7,15,39,167,169-189`):
-- Hua Xin died **first**, when the wild boar king broke loose from the knife scale web. Body found "broken in half from the waist."
+**What the chapter actually says** (`chapter_0094.txt:133-147`, `chapter_0095.txt:7,15,39,167,169-189`):
+- Hua Xing/Hua Xin died **first**, when Fang Yuan suddenly withdrew his strength while holding the wild boar king's tusks. The knife-scale net had not been deployed yet. Her body was found "broken in half from the waist."
 - A **different**, unnamed female Gu Master was alive after that. When the wolves came, Fang Yuan **knocked her unconscious** ("hit the neck of the female Gu Master near him who was in a daze, causing her to faint"), then dragged her into the boar's stomach cavity, using her body to seal the entrance.
 - She did not "fight him for shelter." She was incapacitated and used as material.
 
@@ -245,3 +245,27 @@ To get a real error-rate estimate vs. self-report, I picked 20 random factual cl
 ## Files modified post-sampling-test
 
 - `shared/data/wiki/events/beast_horde_survival.md` — fixed Rank two breakthrough timing per `chapter_0097.txt:37`
+
+---
+
+# Beast horde deep pass (2026-05-04)
+
+After the sampling test, `events/beast_horde_survival.md` was reconciled line-by-line against chapters 93-97. This confirmed the sampled Rank two chronology failure and found additional material issues concentrated on the same page.
+
+## Additional findings
+
+| Issue | Source | Fix |
+|---|---|---|
+| The page still framed Hua Xin/Hua Xing's death as tied to the knife-scale net / boar escape. | `chapter_0094.txt:133-147` shows Fang Yuan withdrew strength from the boar king's tusks before the knife-scale net appeared; `chapter_0095.txt:47-55` shows the net was deployed later. | Rewrote the event sequence to distinguish the first tusk-strength sabotage from the later knife-scale-net sabotage. |
+| The page omitted Fang Yuan actively killing Jiao San after the wolf attack. | `chapter_0096.txt:115-149` shows Jiao San was still alive and Fang Yuan covered his nose and mouth with a blood-soaked shirt; `chapter_0096.txt:167-175` confirms the medicine hall Gu Master found him dead and suspected nothing. | Added a dedicated "Fang Yuan suffocates Jiao San" event and updated the summary. |
+| The page described Fang Yuan's interrogation tactic as "no explicit lies - only omissions." | `chapter_0097.txt:41` says he fabricated events; `chapter_0097.txt:55-59` has him falsely claim the female Gu Master entered the boar body herself and fought him for the position. | Replaced with "controlled fabrication": mostly true external chronology, but fabricated intent and the shield incident. |
+| Dependent wiki summaries repeated the old compressed version. | `shared/data/wiki/index.md` and `shared/data/wiki/relationships/jiao_san.md` still centered the knife-scale net and omitted the tusk sabotage / suffocation. | Updated both dependent references. |
+
+## Files modified in deep pass
+
+- `shared/data/wiki/events/beast_horde_survival.md`
+- `shared/data/wiki/index.md`
+- `shared/data/wiki/relationships/jiao_san.md`
+- `results/audit/wiki_audit_v1.md`
+
+This deep pass strengthens the earlier caveat: `beast_horde_survival.md` was not merely a page with one residual chronology error. It was the main remaining high-risk page, with several plausible-but-wrong narrative compressions that only showed up under full source reconciliation.

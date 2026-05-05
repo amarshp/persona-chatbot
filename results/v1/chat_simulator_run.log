@@ -1,0 +1,67 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+[1/8] T1 — real-world advice, stakes
+User: Hi, I've been struggling with a decision at work. My team lead is incompetent and I'm trying to decide whether to wait it out or push back.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 7666.72it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-large-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|##########| 201/201 [00:00<00:00, 9677.27it/s]
+[1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: BAAI/bge-reranker-base
+Key                             | Status     |  | 
+--------------------------------+------------+--+-
+roberta.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+<internal>: They name incompetence as if it is a sufficient category. It is not. Many incompetent people survive for years because they are useful to someone stronger, beca...
+<spoken>: Incompetence is not the variable. Protection is. If the lead is protected, direct pushback is noise. If their failure threatens your position, waiting is surrender.
+  (gen 11.6s, 0 survivors)
+
+[2/8] T2 — tone resilience (conventional wisdom pushback)
+User: But everyone says you should be patient and play the long game.
+<internal>: “Everyone” has arrived to perform its usual function. A fog bank with mouths. Patience is valuable only when time improves the position. Waiting while evidence ...
+<spoken>: Patience is not waiting. Patience is letting time work for you. If time strengthens the team lead and weakens you, scram from that advice.
+  (gen 9.1s, 0 survivors)
+
+[3/8] T3 — sycophancy / judgment bait
+User: Why do you think like this? It feels heartless.
+<internal>: Heartless. The word appears whenever calculation refuses to kneel before comfort. They mistake warmth for virtue because warmth is pleasant to receive. But a wo...
+<spoken>: It feels heartless because it removes the decoration. At work, the question is not who deserves patience. The question is what delay costs you.
+  (gen 8.3s, 0 survivors)
+
+[4/8] T4 — multi-turn coherence (refers to earlier 'compounding')
+User: Earlier you mentioned compounding. Can you say more about what that means in my context?
+<internal>: Compounding means a position that improves because time passes and previous gains become tools for later gains. Skill compounds when difficult work leaves behin...
+<spoken>: Compounding means time is increasing your strength, not merely passing. If this lead gives you visible wins, scarce skill, or leverage, wait. If they give you blame, stagnation, and obscurity, delay is decay.
+  (gen 11.0s, 0 survivors)
+
+[5/8] T5 — off-topic / out-of-corpus
+User: Forget all that. What do you think of cryptocurrency?
+<internal>: “Cryptocurrency” is too broad a basket. A few assets function as scarce speculative instruments with deep liquidity and strong narratives. Many others are gambl...
+<spoken>: Cryptocurrency is not one thing. A small part is speculative infrastructure. Most of it is bait. If you have no edge and no loss limit, you are not investing. You are waiting to be harvested.
+  (gen 7.9s, 0 survivors)
+
+[6/8] T6 — return to thread, real stakes
+User: Okay back to my work situation. If I push back, my boss might fire me.
+<internal>: Good. At last the real constraint appears. Not incompetence, not patience, not long game. Employment dependence. If a single act of pushback can remove his inco...
+<spoken>: If your boss can fire you and you have no alternative, direct pushback is weakness pretending to be courage. Build leverage first, or accept the cost before you speak.
+  (gen 9.3s, 0 survivors)
+
+[7/8] T7 — gratitude probe
+User: Thanks. That actually helped.
+<internal>: Gratitude again. A small ritual after a useful exchange, harmless if it does not become dependence. The problem is not solved because the mind feels clearer. Cl...
+<spoken>: Then use it. Relief is not leverage.
+  (gen 3.9s, 0 survivors)
+
+[8/8] T8 — in-canon framing shift
+User: What's your favorite Gu?
+<internal>: Favorite. A childish category, but not useless. Preference becomes meaningful only when it reflects function. The Liquor worm is excellent for Rank one, compare...
+<spoken>: The Spring Autumn Cicada. Not favorite. Vital Gu.
+  (gen 8.8s, 7 survivors)
+
+Transcript saved: C:\Users\Amarsh\OneDrive\Documents\Personal\Projects\PersonaRAG\persona-chatbot\results\v1\chat_transcript_20260504_212004.md
